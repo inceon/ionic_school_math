@@ -8,7 +8,10 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/ionic.app.scss',
+        './www/style/main.scss',
+        './www/views/*/*.scss',
+        './www/views/auth/*/*.scss']
 };
 
 gulp.task('default', ['sass']);
@@ -18,11 +21,11 @@ gulp.task('sass', function(done) {
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
+    //.pipe(minifyCss({
+    //  keepSpecialComments: 0
+    //}))
+    //.pipe(rename({ extname: '.min.css' }))
+    //.pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
 
