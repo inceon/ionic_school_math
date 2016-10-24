@@ -1,0 +1,20 @@
+<ion-header-bar align-title="left" class="bar-positive">
+    <div class="buttons">
+        <button class="button" ng-click="doSomething()">Left Button</button>
+    </div>
+    <h1 class="title">Title!</h1>
+    <div class="buttons">
+        <button class="button">Right Button</button>
+    </div>
+</ion-header-bar>
+<ion-content class="has-header">
+    <label class="item item-input">
+        <span class="input-label">Telephone</span>
+        <input type="tel" ng-model="vm.authData.phone" key-enter="vm.login()" autocomplete="off" required>
+    </label>
+    <label class="item item-input">
+        <span class="input-label">Telephone</span>
+        <input type="tel" ng-model="vm.authData.password" minlength="6" maxlength="32" autocomplete="off" required>
+    </label>
+    <button ng-click="vm.login()">Login</button>
+</ion-content>
