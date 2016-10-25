@@ -2920,7 +2920,7 @@ IonicModule
           };
           self.$backButtonActions[action.id] = action;
 
-          // return a function to de-register this back button action
+          // return a function to de-registration this back button action
           return function() {
             delete self.$backButtonActions[action.id];
           };
@@ -6346,7 +6346,7 @@ function($scope, $element, $attrs, $compile, $controller, $ionicNavBarDelegate, 
   self.register = function(viewLocals) {
     var leavingView = extend({}, $ionicHistory.currentView());
 
-    // register that a view is coming in and get info on how it should transition
+    // registration that a view is coming in and get info on how it should transition
     var registerData = $ionicHistory.register($scope, viewLocals);
 
     // update which direction
@@ -6393,7 +6393,7 @@ function($scope, $element, $attrs, $compile, $controller, $ionicNavBarDelegate, 
 
 
   self.render = function(registerData, viewLocals, enteringView, leavingView, renderStart, renderEnd) {
-    // register the view and figure out where it lives in the various
+    // registration the view and figure out where it lives in the various
     // histories and nav stacks, along with how views should enter/leave
     var switcher = $ionicViewSwitcher.create(self, viewLocals, enteringView, leavingView, renderStart, renderEnd);
 
@@ -11525,7 +11525,7 @@ IonicModule
 
       return {
         pre: function($scope, $element, $attr, navBarCtrl) {
-          // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+          // only registration the plain HTML, the navBarCtrl takes care of scope/compile/link
           navBarCtrl.navElement('backButton', buttonEle.outerHTML);
           buttonEle = null;
         }
@@ -11667,7 +11667,7 @@ IonicModule
 
       return {
         pre: function($scope, $element, $attrs, navBarCtrl) {
-          // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+          // only registration the plain HTML, the navBarCtrl takes care of scope/compile/link
 
           var parentViewCtrl = $element.parent().data('$ionViewController');
           if (parentViewCtrl) {
@@ -11769,7 +11769,7 @@ IonicModule
 
       return {
         pre: function($scope, $element, $attrs, navBarCtrl) {
-          // only register the plain HTML, the navBarCtrl takes care of scope/compile/link
+          // only registration the plain HTML, the navBarCtrl takes care of scope/compile/link
 
           var parentViewCtrl = $element.parent().data('$ionViewController');
           if (parentViewCtrl) {
@@ -12011,7 +12011,7 @@ function($state, $ionicConfig) {
           latestLocals = viewLocals;
           viewData.state = viewLocals.$$state;
 
-          // register, update and transition to the new view
+          // registration, update and transition to the new view
           navViewCtrl.register(viewLocals);
         }
 

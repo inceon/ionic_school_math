@@ -6,7 +6,7 @@
 
     mainConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function mainConfig($stateProvider, $urlRouterProvider) {
+    function mainConfig($stateProvider, $urlRouterProvider ) {
 
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
@@ -17,6 +17,18 @@
                 url: '/login',
                 templateUrl: 'views/auth/login/login.html',
                 controller: 'Login',
+                controllerAs: 'vm'
+            })
+            .state('registration', {
+                url: '/registration',
+                templateUrl: 'views/auth/registration/registration.html',
+                controller: 'Registration',
+                controllerAs: 'vm'
+            })
+            .state('forgotPassword', {
+                url: '/reset-password',
+                templateUrl: 'views/auth/forgotPassword/forgot-password.html',
+                controller: 'ResetPassword',
                 controllerAs: 'vm'
             })
             .state('qqq', {
@@ -31,8 +43,8 @@
                 controller: 'Dashboard',
                 controllerAs: 'vm',
                 resolve: {
-                    dashboardPrepService: function(auth) {
-                        return auth.get();
+                    dashboardPrepService: function(user) {
+                        return user.get();
                     }
                 }
             });

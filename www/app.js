@@ -9,7 +9,7 @@
         ])
         .run(runBlock);
 
-    function runBlock($ionicPlatform, $ionicHistory, $localStorage, $sessionStorage, auth, $rootScope, $state) {
+    function runBlock($ionicPlatform, $ionicHistory, $localStorage, $sessionStorage, user, $rootScope, $state) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)

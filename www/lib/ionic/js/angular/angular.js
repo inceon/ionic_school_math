@@ -2174,7 +2174,7 @@ function setupModuleLoader(window) {
            * })
            * ```
            *
-           * See {@link ng.$animateProvider#register $animateProvider.register()} and
+           * See {@link ng.$animateProvider#register $animateProvider.registration()} and
            * {@link ngAnimate ngAnimate module} for more information.
            */
           animation: invokeLaterAndSetModuleName('$animateProvider', 'register'),
@@ -2186,7 +2186,7 @@ function setupModuleLoader(window) {
            * @param {string} name Filter name - this must be a valid angular expression identifier
            * @param {Function} filterFactory Factory function for creating new instance of filter.
            * @description
-           * See {@link ng.$filterProvider#register $filterProvider.register()}.
+           * See {@link ng.$filterProvider#register $filterProvider.registration()}.
            *
            * <div class="alert alert-warning">
            * **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
@@ -2205,7 +2205,7 @@ function setupModuleLoader(window) {
            *    keys are the names and the values are the constructors.
            * @param {Function} constructor Controller constructor function.
            * @description
-           * See {@link ng.$controllerProvider#register $controllerProvider.register()}.
+           * See {@link ng.$controllerProvider#register $controllerProvider.registration()}.
            */
           controller: invokeLaterAndSetModuleName('$controllerProvider', 'register'),
 
@@ -2242,7 +2242,7 @@ function setupModuleLoader(window) {
            * @param {Function} configFn Execute this function on module load. Useful for service
            *    configuration.
            * @description
-           * Use this method to register work which needs to be performed on module loading.
+           * Use this method to registration work which needs to be performed on module loading.
            * For more about how to configure services, see
            * {@link providers#provider-recipe Provider Recipe}.
            */
@@ -2255,7 +2255,7 @@ function setupModuleLoader(window) {
            * @param {Function} initializationFn Execute this function after injector creation.
            *    Useful for application initialization.
            * @description
-           * Use this method to register work which should be performed when the injector is done
+           * Use this method to registration work which should be performed when the injector is done
            * loading all modules.
            */
           run: function(block) {
@@ -9505,7 +9505,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
                 }
 
                 // if attribute was updated so that there is no interpolation going on we don't want to
-                // register any observers
+                // registration any observers
                 if (!interpolateFn) return;
 
                 // initialize attr object so that it's ready in case we need the value for isolate
@@ -16362,7 +16362,7 @@ function $RootScopeProvider() {
        *
        *
        * If you want to be notified whenever {@link ng.$rootScope.Scope#$digest $digest} is called,
-       * you can register a `watchExpression` function with no `listener`. (Be prepared for
+       * you can registration a `watchExpression` function with no `listener`. (Be prepared for
        * multiple calls to your `watchExpression` because it will execute multiple times in a
        * single {@link ng.$rootScope.Scope#$digest $digest} cycle if a change is detected.)
        *
@@ -16778,7 +16778,7 @@ function $RootScopeProvider() {
        * a {@link ng.$compileProvider#directive directive}), which will force a `$digest()`.
        *
        * If you want to be notified whenever `$digest()` is called,
-       * you can register a `watchExpression` function with
+       * you can registration a `watchExpression` function with
        * {@link ng.$rootScope.Scope#$watch $watch()} with no `listener`.
        *
        * In unit tests, you may need to call `$digest()` to simulate the scope life cycle.
@@ -16952,7 +16952,7 @@ function $RootScopeProvider() {
        * unrolling of the loop.
        *
        * Just before a scope is destroyed, a `$destroy` event is broadcasted on this scope.
-       * Application code can register a `$destroy` event handler that will give it a chance to
+       * Application code can registration a `$destroy` event handler that will give it a chance to
        * perform any necessary cleanup.
        *
        * Note that, in AngularJS, there is also a `$destroy` jQuery event, which can be used to
@@ -28070,7 +28070,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
     require: ['select', 'ngModel'],
     link: {
       pre: function ngOptionsPreLink(scope, selectElement, attr, ctrls) {
-        // Deactivate the SelectController.register method to prevent
+        // Deactivate the SelectController.registration method to prevent
         // option directives from accidentally registering themselves
         // (and unwanted $destroy handlers etc.)
         ctrls[0].registerOption = noop;
@@ -28294,7 +28294,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
           count = $locale.pluralCat(count - offset);
         }
 
-        // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
+        // If both `count` and `lastCount` are NaN, we don't need to re-registration a watch.
         // In JS `NaN !== NaN`, so we have to explicitly check.
         if ((count !== lastCount) && !(countIsNaN && isNumber(lastCount) && isNaN(lastCount))) {
           watchRemover();

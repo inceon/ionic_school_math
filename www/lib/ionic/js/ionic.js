@@ -731,7 +731,7 @@ window.ionic.version = '1.2.4';
       return this;
     }
 
-    // setup ionic.GesturesJS window events and register all gestures
+    // setup ionic.GesturesJS window events and registration all gestures
     // this also sets up the default options
     setup();
 
@@ -1477,7 +1477,7 @@ window.ionic.version = '1.2.4';
 
 
     /**
-     * register new gesture
+     * registration new gesture
      * @param   {Object}    gesture object, see gestures.js for documentation
      * @returns {Array}     gestures
      */
@@ -1617,7 +1617,7 @@ window.ionic.version = '1.2.4';
    * Register gestures
    * --------------------
    * When an gesture is added to the ionic.Gestures.gestures object, it is auto registered
-   * at the setup of the first ionic.Gestures instance. You can also call ionic.Gestures.detectionic.register
+   * at the setup of the first ionic.Gestures instance. You can also call ionic.Gestures.detectionic.registration
    * manually and pass your gesture object as a param
    *
    */

@@ -77,7 +77,7 @@
             console.info('error', err.config.url, err);
             $ionicLoading.hide();
 
-            if (err.data.error) {
+            if (!err.data.error) { // TODO: no error value
                 if (err.status === 200) {
                     toastr.error('Server Error: ' + err.data);
                 }
@@ -94,23 +94,19 @@
             } else {
                 toastr.error('Error: ' + err.data.error);
             }
-            return $q.reject(err.data.error);
+            throw err.data.error;
         }
 
         function requestComplete(response) {
-            var promise = $q.defer();
-
             console.info('response complete', response.config.url, response);
             $ionicLoading.hide();
 
             if (!response.data.error) {
-                promise.resolve(response.data);
+                return response.data;
             }
             else {
-                promise.reject(response);
+                throw response;
             }
-
-            return promise.promise;
         }
     }
 })();

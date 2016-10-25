@@ -4,7 +4,7 @@
   if (typeof define === 'function' && define.amd) {
     define(['angular'], factory);
   } else if (root.hasOwnProperty('angular')) {
-    // Browser globals (root is window), we don't register it.
+    // Browser globals (root is window), we don't registration it.
     factory(root.angular);
   } else if (typeof exports === 'object') {
     module.exports = factory(require('angular'));

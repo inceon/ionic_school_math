@@ -1,20 +1,24 @@
 <ion-header-bar align-title="left" class="bar-positive">
-    <div class="buttons">
-        <button class="button" ng-click="doSomething()">Left Button</button>
-    </div>
-    <h1 class="title">Title!</h1>
-    <div class="buttons">
-        <button class="button">Right Button</button>
-    </div>
+    <!--<div class="buttons">-->
+        <!--<button class="button" ng-click="doSomething()">Left Button</button>-->
+    <!--</div>-->
+    <h1 class="title text-center">LOGIN PAGE</h1>
+    <!--<div class="buttons">-->
+        <!--<button class="button">Right Button</button>-->
+    <!--</div>-->
 </ion-header-bar>
 <ion-content class="has-header">
-    <label class="item item-input">
-        <span class="input-label">Telephone</span>
-        <input type="tel" ng-model="vm.authData.phone" key-enter="vm.login()" autocomplete="off" required>
-    </label>
-    <label class="item item-input">
-        <span class="input-label">Telephone</span>
-        <input type="tel" ng-model="vm.authData.password" minlength="6" maxlength="32" autocomplete="off" required>
-    </label>
-    <button ng-click="vm.login()">Login</button>
+    <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Phone</span>
+            <input placeholder="Phone" type="tel" ng-model="vm.authData.phone" key-enter="vm.login()" autocomplete="off" required>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Password</span>
+            <input placeholder="Password" type="tel" ng-model="vm.authData.password" minlength="6" maxlength="32" autocomplete="off" required>
+        </label>
+    </div>
+    <button class="button button-block button-positive" ng-click="vm.login()">Login</button>
+    <a class="button button-block button-outline button-stable" href="#/registration">Register</a>
+    <a class="button button-block button-outline button-stable" href="#/reset-password">Forgot</a>
 </ion-content>

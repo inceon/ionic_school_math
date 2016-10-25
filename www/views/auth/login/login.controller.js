@@ -4,9 +4,9 @@
         .module('app')
         .controller('Login', Login);
 
-    Login.$inject = ['auth'];
+    Login.$inject = ['user'];
 
-    function Login(auth) {
+    function Login(user) {
 
         var vm = this;
 
@@ -14,7 +14,7 @@
         vm.authData = {};
 
         function login() {
-            auth.login(vm.authData);
+            user.login(vm.authData);
         }
     }
 })();

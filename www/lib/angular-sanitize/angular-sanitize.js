@@ -515,7 +515,7 @@ function stripCustomNsAttrs(node) {
 
 
 
-// define ngSanitize module and register $sanitize service
+// define ngSanitize module and registration $sanitize service
 angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
 
 /* global sanitizeText: false */

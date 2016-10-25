@@ -3,7 +3,9 @@
     'use strict';
     angular
         .module('services.module', [
-            'model.auth'
+            'model.user',
+            'model.site',
+            'model.discipline'
         ])
 })();
 
