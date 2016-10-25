@@ -56,7 +56,7 @@
             )
         }
 
-        initAutocomplete = function () {
+        vm.initAutocomplete = function () {
 
             var componentForm = {
                 street_number: 'short_name',

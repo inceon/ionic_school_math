@@ -31,7 +31,7 @@
         </label>
         <label class="item item-input item-floating-label">
             <span class="input-label">City</span>
-            <input placeholder="City" type="text" ng-model="vm.registerData.city" maxlength="32" autocomplete="off" required>
+            <input id="autocomplete" placeholder="City" type="text" ng-model="vm.registerData.city" maxlength="32" autocomplete="off" required>
         </label>
         <select ng-model="vm.registerData.school_id" ng-disabled="!vm.registerData.city"  required>
             <option ng-value="school.id" ng-repeat="school in vm.schools">
@@ -43,5 +43,5 @@
     <a class="button button-block button-stable" href="#/login">Login</a>
 </ion-content>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM9Imkm_MdC1MTqpyaxXR9jvz_IS0wCVI&signed_in=true&libraries=places&callback=initAutocomplete"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkSnpfwNLeEWBxrvb81-k2puMWIkTg_nM&signed_in=true&libraries=places&callback=vm.initAutocomplete"
         async defer></script>
