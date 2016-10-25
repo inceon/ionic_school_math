@@ -8,11 +8,10 @@
     discipline.$inject = ['http', 'url'];
     function discipline(http, url) {
 
-        var service = {
+        return {
             one: one,
             all: all
         };
-        return service;
 
         function one(id) {
             return http.get(

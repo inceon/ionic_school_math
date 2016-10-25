@@ -98,15 +98,26 @@
         }
 
         function requestComplete(response) {
+            var promise = $q.defer();
+
             console.info('response complete', response.config.url, response);
             $ionicLoading.hide();
 
             if (!response.data.error) {
-                return response.data;
+                promise.resolve(response.data);
             }
             else {
-                throw response;
+                promise.reject(response);
             }
+
+            //if (!response.data.error) {
+            //    return response.data;
+            //}
+            //else {
+            //    throw response;
+            //}
+
+            return promise.promise;
         }
     }
 })();
