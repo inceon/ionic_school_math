@@ -77,12 +77,15 @@
             console.info('error', err.config.url, err);
             $ionicLoading.hide();
 
-            if (!err.data.error) { // TODO: no error value
+            if (err.data == null || !err.data.error) {
                 if (err.status === 200) {
                     toastr.error('Server Error: ' + err.data);
                 }
                 else if (err.status === -1) {
                     toastr.error('Server unavailable');
+                }
+                else if (err.status === 0) {
+                    toastr.error('No internet connection');
                 }
                 else if (err.status === 500) {
                     toastr.error('Server Error: ' + err.status + ' ' + err.data.message);
@@ -94,19 +97,23 @@
             } else {
                 toastr.error('Error: ' + err.data.error);
             }
-            throw err.data.error;
+            return $q.reject(err.data.error);
         }
 
         function requestComplete(response) {
+            var promise = $q.defer();
+
             console.info('response complete', response.config.url, response);
             $ionicLoading.hide();
 
             if (!response.data.error) {
-                return response.data;
+                promise.resolve(response.data);
             }
             else {
-                throw response;
+                promise.reject(response);
             }
+
+            return promise.promise;
         }
     }
 })();
