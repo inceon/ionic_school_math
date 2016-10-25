@@ -26,19 +26,11 @@
         vm.full_class = [];
         vm.submit = reg;
 
-        vm.getSchools = getSchools;
-
         vm.label = prepGetLabels.label;
 
         function reg(){
             if (vm.form.$invalid) { return; }
         }
-
-
-        function getSchools(city) {
-            return site.getSchools(city);
-        }
-
 
         initAutocomplete = function () {
 
@@ -75,10 +67,11 @@
                 }
 
                 if (vm.registerData.sity_name) {
-                    getSchools(vm.registerData.sity_name).then(function (response) {
-                        vm.schools = response.schools;
-                        vm.registerData.school_id = vm.schools[1];
-                    });
+                    site.getSchools(vm.registerData.sity_name)
+                        .then(function (response) {
+                            vm.schools = response.schools;
+                            vm.registerData.school_id = vm.schools[1];
+                        });
                 }
 
                 $scope.$apply();
