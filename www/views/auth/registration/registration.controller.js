@@ -1,13 +1,17 @@
 ;(function () {
-    'use strict';
+    // 'use strict';
     angular
         .module('app')
         .controller('Registration', Registration);
 
-    Registration.$inject = ['user', 'site', 'discipline'];
+    Registration.$inject = ['user', 'site', 'discipline', '$scope'];
 
-    function Registration(user, site, discipline) {
+    function Registration(user, site, discipline, $scope) {
 
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCkSnpfwNLeEWBxrvb81-k2puMWIkTg_nM&signed_in=true&libraries=places&callback=initAutocomplete';
+        document.body.appendChild(script);
 
         var vm = this;
 
@@ -18,6 +22,7 @@
         };
         vm.schools = [];
         vm.full_class = [];
+        // vm.registerData.school_id = 2;
 
         vm.getSchools = getSchools;
         vm.getDisciplines = getDisciplines;
@@ -39,13 +44,7 @@
         }
 
         function getSchools(city) {
-            site.getSchools(
-                city,
-                function (data) {
-                    vm.schools = data.schools;
-                }
-            )
-
+            return site.getSchools(city)
         }
 
         function getDisciplines() {
@@ -56,7 +55,8 @@
             )
         }
 
-        vm.initAutocomplete = function () {
+
+        initAutocomplete = function () {
 
             var componentForm = {
                 street_number: 'short_name',
@@ -78,20 +78,26 @@
             google.maps.event.addListener(autocompleteForm, 'place_changed', function () {
                 var place = autocompleteForm.getPlace();
 
+                console.log('rgre');
+
                 for (var i = 0; i < place.address_components.length; i++) {
                     var addressType = place.address_components[i].types[0];
                     if (componentForm[addressType]) {
                         var val = place.address_components[i][componentForm[addressType]];
                         if (addressType == 'locality') {
-                            vm.user.sity_name = val;
+                            vm.registerData.sity_name = val;
                         } else if (addressType == 'administrative_area_level_1') {
-                            vm.user.region_name = val;
+                            vm.registerData.region_name = val;
                         }
                     }
                 }
 
-                if (vm.registerData.city) {
-                    getSchools(vm.registerData.city)
+                if (vm.registerData.sity_name) {
+                    getSchools(vm.registerData.sity_name).then(function (response) {
+                        console.log(response);
+                        vm.schools = response.schools;
+                        vm.registerData.school_id = vm.schools[1];
+                    });
                 }
 
                 $scope.$apply();

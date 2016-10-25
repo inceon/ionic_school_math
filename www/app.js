@@ -30,7 +30,7 @@
                 //auth.get();
                 $state.go('dashboard');
             } else {
-                $state.go('login');
+                $state.go('registration');
             }
         });
     }

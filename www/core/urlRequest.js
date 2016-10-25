@@ -19,8 +19,8 @@
                         getInform:   baseUrl + 'site/get-inform',
                     },
                     discipline: {
-                        one: baseUrl + 'discipline/one',
-                        all: baseUrl + 'discipline/all',
+                        one:         baseUrl + 'discipline/one',
+                        all:         baseUrl + 'discipline/all',
                     }
                 };
             }

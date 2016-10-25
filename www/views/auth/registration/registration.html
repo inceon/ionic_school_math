@@ -31,17 +31,20 @@
         </label>
         <label class="item item-input item-floating-label">
             <span class="input-label">City</span>
-            <input id="autocomplete" placeholder="City" type="text" ng-model="vm.registerData.city" maxlength="32" autocomplete="off" required>
+            <input id="autocomplete" placeholder="City" type="text" ng-model="vm.registerData.sity_name" maxlength="32" autocomplete="off" required>
         </label>
-        <select ng-model="vm.registerData.school_id" ng-disabled="!vm.registerData.city"  required>
-            <option ng-value="school.id" ng-repeat="school in vm.schools">
-                {{school.name}}
-            </option>
-        </select>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Schools</span>
+            <select ng-model="vm.registerData.school_id" ng-init="vm.registerData.school_id = vm.schools[1]" required>
+                <option ng-value="school.id" ng-repeat="school in vm.schools">
+                    {{school.name}}
+                </option>
+            </select>
+        </label>
     </div>
     <button class="button button-block button-positive" ng-click="vm.register()">Register</button>
-    <a class="button button-block button-stable" href="#/login">Login</a>
+    <a class="button button-block button-outline button-stable" href="#/login">Login</a>
 </ion-content>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkSnpfwNLeEWBxrvb81-k2puMWIkTg_nM&signed_in=true&libraries=places&callback=vm.initAutocomplete"
-        async defer></script>
+
+
