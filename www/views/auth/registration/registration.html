@@ -35,10 +35,7 @@
         </label>
         <label class="item item-input item-floating-label">
             <span class="input-label">Schools</span>
-            <select ng-model="vm.registerData.school_id" ng-init="vm.registerData.school_id = vm.schools[1]" required>
-                <option ng-value="school.id" ng-repeat="school in vm.schools">
-                    {{school.name}}
-                </option>
+            <select ng-model="vm.registerData.school_id" ng-options="school.name for school in vm.schools track by school.id" required>
             </select>
         </label>
     </div>
