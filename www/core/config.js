@@ -27,9 +27,6 @@
                 resolve: {
                     prepGetLabels: function(site) {
                         return site.getLabels('user');
-                    },
-                    prepDisciplineAll: function(discipline) {
-                        return discipline.all();
                     }
                 }
             })

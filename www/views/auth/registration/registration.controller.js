@@ -4,9 +4,9 @@
         .module('app')
         .controller('Registration', Registration);
 
-    Registration.$inject = ['user', 'site', 'discipline', '$scope', 'prepGetLabels', 'prepDisciplineAll'];
+    Registration.$inject = ['user', 'site', 'discipline', '$scope', 'prepGetLabels'];
 
-    function Registration(user, site, discipline, $scope, prepGetLabels, prepDisciplineAll) {
+    function Registration(user, site, discipline, $scope, prepGetLabels) {
 
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -22,13 +22,17 @@
             classes: []
         };
 
-        vm.schools = [];
+        vm.schools = null;
         vm.full_class = [];
+        vm.submit = reg;
 
         vm.getSchools = getSchools;
 
         vm.label = prepGetLabels.label;
-        vm.disciplines = prepDisciplineAll.models;
+
+        function reg(){
+            if (vm.form.$invalid) { return; }
+        }
 
 
         function getSchools(city) {
