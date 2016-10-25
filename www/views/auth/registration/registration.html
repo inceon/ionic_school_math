@@ -8,46 +8,40 @@
     <!--</div>-->
 </ion-header-bar>
 <ion-content class="has-header">
-    <form ng-submit="vm.submit()" novalidate name="vm.form">
-        <div class="list">
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Phone</span>
-                <input placeholder="Phone" type="tel" ng-model="vm.registerData.phone" key-enter="vm.login()"
-                       autocomplete="off" required>
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Password</span>
-                <input placeholder="Password" type="tel" ng-model="vm.registerData.password" minlength="6"
-                       maxlength="32" autocomplete="off" required>
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">First name</span>
-                <input placeholder="First name" type="text" ng-model="vm.registerData.first_name" maxlength="32"
-                       autocomplete="off" required>
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Second name</span>
-                <input placeholder="Second name" type="text" ng-model="vm.registerData.second_name" maxlength="32"
-                       autocomplete="off">
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Last name</span>
-                <input placeholder="Last name" type="text" ng-model="vm.registerData.last_name" maxlength="32"
-                       autocomplete="off" required>
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">City</span>
-                <input id="autocomplete" placeholder="City" type="text" ng-model="vm.registerData.sity_name"
-                       maxlength="32" autocomplete="off" required>
-            </label>
-            <label ng-if="vm.schools" class="item item-input item-floating-label">
-                <span class="input-label">Schools</span>
-                <select ng-model="vm.registerData.school_id"
-                        ng-options="school.name for school in vm.schools track by school.id" required>
-                </select>
-            </label>
-        </div>
-        <button class="button button-block button-positive">Register</button>
-        <a class="button button-block button-outline button-stable" href="#/login">Login</a>
-    </form>
+    <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">{{vm.label.phone}}</span>
+            <input placeholder="{{vm.label.phone}}" type="tel" ng-model="vm.registerData.phone" autocomplete="off" required>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">{{vm.label.password}}</span>
+            <input placeholder="{{vm.label.password}}" type="tel" ng-model="vm.registerData.password" minlength="6" maxlength="32" autocomplete="off" required>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">{{vm.label.first_name}}</span>
+            <input placeholder="{{vm.label.first_name}}" type="text" ng-model="vm.registerData.first_name" maxlength="32" autocomplete="off" required>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">{{vm.label.second_name}}</span>
+            <input placeholder="{{vm.label.second_name}}" type="text" ng-model="vm.registerData.second_name" maxlength="32" autocomplete="off" >
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">{{vm.label.last_name}}</span>
+            <input placeholder="{{vm.label.last_name}}" type="text" ng-model="vm.registerData.last_name" maxlength="32" autocomplete="off" required>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">{{vm.label.sity}}</span>
+            <input id="autocomplete" placeholder="{{vm.label.sity}}" type="text" ng-model="vm.registerData.sity_name" maxlength="32" autocomplete="off" required>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">{{vm.label.school}}</span>
+            <select ng-model="vm.registerData.school_id" ng-options="school.name for school in vm.schools track by school.id" required>
+            </select>
+        </label>
+    </div>
+    <button class="button button-block button-positive" ng-click="vm.register()">Register</button>
+    <a class="button button-block button-outline button-stable" href="#/login">Login</a>
 </ion-content>
+
+
+

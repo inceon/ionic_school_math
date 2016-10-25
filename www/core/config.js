@@ -17,7 +17,12 @@
                 url: '/login',
                 templateUrl: 'views/auth/login/login.html',
                 controller: 'Login',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    prepGetLabels: function(site) {
+                        return site.getLabels('user');
+                    }
+                }
             })
             .state('registration', {
                 url: '/registration',
@@ -34,7 +39,12 @@
                 url: '/reset-password',
                 templateUrl: 'views/auth/forgotPassword/forgot-password.html',
                 controller: 'ResetPassword',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    prepGetLabels: function(site) {
+                        return site.getLabels('user');
+                    }
+                }
             })
             .state('qqq', {
                 url: '/qqq',

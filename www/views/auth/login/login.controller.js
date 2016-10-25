@@ -4,14 +4,15 @@
         .module('app')
         .controller('Login', Login);
 
-    Login.$inject = ['user'];
+    Login.$inject = ['user', 'prepGetLabels'];
 
-    function Login(user) {
+    function Login(user, prepGetLabels) {
 
         var vm = this;
 
         vm.login = login;
         vm.authData = {};
+        vm.label = prepGetLabels.label;
 
         function login() {
             user.login(vm.authData);
