@@ -36,9 +36,7 @@
         function reset(data) {
             return http.post(
                 url.user.reset,
-                {
-                    phone: data.phone
-                }
+                data
             ).then(function(response){
                 $state.go('login');
             });

@@ -23,7 +23,15 @@
                 url: '/registration',
                 templateUrl: 'views/auth/registration/registration.html',
                 controller: 'Registration',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    prepGetLabels: function(site) {
+                        return site.getLabels('user');
+                    },
+                    prepDisciplineAll: function(discipline) {
+                        return discipline.all();
+                    }
+                }
             })
             .state('forgotPassword', {
                 url: '/reset-password',

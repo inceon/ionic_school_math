@@ -8,10 +8,11 @@
     site.$inject = ['http', 'url'];
     function site(http, url) {
 
-        return {
+        var service = {
             getLabels: getLabels,
             getSchools: getSchools
         };
+        return service;
 
         function getLabels(model) {
             return http.get(
@@ -19,7 +20,7 @@
                 {
                     model: model
                 }
-            )
+            );
         }
 
         function getSchools(city) {
