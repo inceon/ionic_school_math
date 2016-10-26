@@ -64,7 +64,7 @@
                 }
             });
 
-        $urlRouterProvider.otherwise('/qqq');
+        $urlRouterProvider.otherwise('/login');
     }
 
 
