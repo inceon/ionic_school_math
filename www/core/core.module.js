@@ -8,6 +8,8 @@
          */
         'ngStorage',
         'ngMessages',
+        'ngFileUpload',
+        'ui.mask',
         /*
          * Our reusable cross app code modules
          */
