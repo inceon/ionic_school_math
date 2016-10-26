@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.3.1"
   },
   "dependencies": {
-    "angular-messages": "^1.5.8"
+    "angular-messages": "^1.5.8",
+    "ng-file-upload": "^12.2.12"
   }
 }
