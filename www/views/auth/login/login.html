@@ -8,16 +8,24 @@
     <!--</div>-->
 </ion-header-bar>
 <ion-content class="has-header">
-    <div class="list">
+    <form novalidate="" class="list" name="signinForm">
         <label class="item item-input item-floating-label">
             <span class="input-label">{{vm.label.phone}}</span>
-            <input placeholder="{{vm.label.phone}}" type="tel" ng-model="vm.authData.phone" key-enter="vm.login()" autocomplete="off" required>
+            <input name="phone" placeholder="{{vm.label.phone}}" type="tel" ng-model="vm.authData.phone" key-enter="vm.login()" autocomplete="off" ng-minlength="10" required>
         </label>
+        <div class="text-center" ng-messages="signinForm.phone.$error" ng-if="signinForm.phone.$touched">
+            <div class="error-block" ng-message="minlength">Номер телефона должен быть не меньше 8 символов</div>
+            <div class="error-block" ng-message="tel">Это не номер телефона</div>
+            <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
+        </div>
         <label class="item item-input item-floating-label">
             <span class="input-label">{{vm.label.password}}</span>
-            <input placeholder="{{vm.label.password}}" type="tel" ng-model="vm.authData.password" minlength="6" maxlength="32" autocomplete="off" required>
+            <input name="password" placeholder="{{vm.label.password}}" type="tel" ng-model="vm.authData.password" minlength="6" maxlength="32" autocomplete="off" required>
         </label>
-    </div>
+        <div class="text-center" ng-messages="signinForm.password.$error" ng-if="signinForm.password.$touched">
+            <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
+        </div>
+    </form>
     <button class="button button-block button-positive" ng-click="vm.login()">Login</button>
     <div class="button-bar">
         <a class="button button-block button-outline button-stable" href="#/registration">Register</a>

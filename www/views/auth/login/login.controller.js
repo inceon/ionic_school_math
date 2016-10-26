@@ -11,7 +11,10 @@
         var vm = this;
 
         vm.login = login;
-        vm.authData = {};
+        vm.authData = {
+            phone: '',
+            password: ''
+        };
         vm.label = prepGetLabels.label;
 
         function login() {

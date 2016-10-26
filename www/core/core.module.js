@@ -7,6 +7,7 @@
          * Angular modules
          */
         'ngStorage',
+        'ngMessages',
         /*
          * Our reusable cross app code modules
          */
