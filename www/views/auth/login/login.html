@@ -11,7 +11,17 @@
     <form novalidate="" class="list" name="signinForm">
         <label class="item item-input item-floating-label">
             <span class="input-label">{{vm.label.phone}}</span>
-            <input name="phone" placeholder="{{vm.label.phone}}" type="tel" ng-model="vm.authData.phone" key-enter="vm.login()" ui-mask="+38 (999) 999 - 99 - 99" autocomplete="off" ng-minlength="10" required>
+            <input name="phone"
+                   placeholder="{{vm.label.phone}}"
+                   ui-mask-placeholder
+                   ui-mask-placeholder-char="0"
+                   type="tel"
+                   ng-model="vm.authData.phone"
+                   key-enter="vm.login()"
+                   ui-mask="+38 (999) 999 - 99 - 99"
+                   autocomplete="off"
+                   ng-minlength="10"
+                   required>
         </label>
         <div class="text-center" ng-messages="signinForm.phone.$error" ng-if="signinForm.phone.$touched">
             <div class="error-block" ng-message="minlength">Номер телефона должен быть не меньше 10 символов</div>
