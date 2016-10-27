@@ -52,19 +52,29 @@
                 controller: 'QQQ',
                 controllerAs: 'vm'
             })
-            .state('dashboard', {
+            .state('app', {
+                url: '/app',
+                templateUrl: 'views/left_menu/left_menu.html',
+                controller: 'LeftMenu',
+                controllerAs: 'vm'
+            })
+            .state('app.dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard/dashboard.html',
-                controller: 'Dashboard',
-                controllerAs: 'vm',
-                resolve: {
-                    dashboardPrepService: function(user) {
-                        return user.get();
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/dashboard/dashboard.html',
+                        controller: 'Dashboard',
+                        controllerAs: 'vm',
+                        resolve: {
+                            dashboardPrepService: function (user) {
+                                return user.get();
+                            }
+                        }
                     }
                 }
             });
 
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/registration');
     }
 
 

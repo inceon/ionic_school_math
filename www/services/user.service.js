@@ -21,7 +21,7 @@
                     $sessionStorage.auth_key = response.user.auth_key;
                     //if (response.isRememberMe) { $localStorage.auth_key = response.user.auth_key; }
                     $rootScope.user = response.user;
-                    $state.go('dashboard');
+                    $state.go('app.dashboard');
                 });
         }
 
@@ -29,8 +29,11 @@
             return http.get(url.user.token, {});
         }
 
-        function register(){
-            return 0;
+        function register(data){
+            return http.post(url.user.signup, data)
+                .then(function (response) {
+                    console.log(response);
+                });
         }
 
         function reset(data) {

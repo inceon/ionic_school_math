@@ -18,16 +18,43 @@
 
         vm.emailRegExp = /^((([a-zA-Z\-0-9_.])+[a-zA-Z0-9_.]{2,})|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        vm.registerData = {};
+        vm.registerData = {
+            phone: "1111111111",
+            password: 'PASSword',
+            first_name: 'Сергей',
+            second_name: 'Охрименко',
+            last_name: '12345454',
+            role_id: 1,
+            school_id: 2,
+            sity_id: 1
+        };
 
         vm.schools = null;
+        vm.role = [
+            {
+                name: 'Ученик',
+                id: 1
+            },
+            {
+                name: 'Учитель',
+                id: 2
+            }
+        ];
         vm.full_class = [];
-        vm.submit = reg;
 
         vm.label = prepGetLabels.label;
 
-        function reg(){
-            if (vm.form.$invalid) { return; }
+        vm.register = register;
+        function register(){
+            // if (vm.form.$invalid) { return; }
+            console.log(vm.registerData);
+
+            user.register(vm.registerData)
+                .then(function(response){
+                    console.log(response)
+                });
+            // vm.registerData.role_id = vm.registerData.role_id.id;
+            // vm.registerData.school_id = vm.registerData.school_id.id;
         }
 
         initAutocomplete = function () {
@@ -67,7 +94,7 @@
                 if (vm.registerData.sity_name) {
                     site.getSchools(vm.registerData.sity_name)
                         .then(function (response) {
-                            vm.schools = response.schools;
+                            vm.schools = response.schools.models;
                             vm.registerData.school_id = vm.schools[1];
                         });
                 }
