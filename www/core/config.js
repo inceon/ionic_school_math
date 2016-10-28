@@ -82,6 +82,16 @@
                         controllerAs: 'vm'
                     }
                 }
+            })
+            .state('app.about', {
+                url: '/about',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/about/about.html',
+                        controller: 'About',
+                        controllerAs: 'vm'
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/registration');

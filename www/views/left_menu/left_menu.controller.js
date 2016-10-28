@@ -12,6 +12,7 @@
 
         vm.logout = logout;
         vm.settings = settings;
+        vm.about = about;
 
         function logout () {
             user.logout();
@@ -19,6 +20,10 @@
 
         function settings() {
             $state.go('app.settings');
+        }
+
+        function about() {
+            $state.go('app.about');
         }
 
     }
