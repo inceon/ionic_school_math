@@ -28,7 +28,7 @@
             }
             if ($sessionStorage.auth_key) {
                 //auth.get();
-                $state.go('dashboard');
+                $state.go('app.dashboard');
             } else {
                 $state.go('login');
             }

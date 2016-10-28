@@ -79,7 +79,7 @@
                    autocomplete="off"
                    required>
         </label>
-        <label class="item item-input item-select">
+        <label class="item item-input item-select" ng-if="vm.schools.length">
             <span class="input-label">{{vm.label.school}}</span>
             <select ng-model="vm.registerData.school_id"
                     ng-options="school.name for school in vm.schools track by school.id"

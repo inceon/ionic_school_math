@@ -11,7 +11,7 @@
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/' +
-            'js?key=AIzaSyCkSnpfwNLeEWBxrvb81-k2puMWIkTg_nM&libraries=places&callback=initAutocomplete&language=uk';
+            'js?key=AIzaSyCkSnpfwNLeEWBxrvb81-k2puMWIkTg_nM&libraries=places&callback=initAutocomplete&language=ru';
         document.body.appendChild(script);
 
         var vm = this;
@@ -53,8 +53,8 @@
                 .then(function(response){
                     console.log(response)
                 });
-            // vm.registerData.role_id = vm.registerData.role_id.id;
-            // vm.registerData.school_id = vm.registerData.school_id.id;
+            vm.registerData.role_id = vm.registerData.role_id.id;
+            vm.registerData.school_id = vm.registerData.school_id.id;
         }
 
         initAutocomplete = function () {

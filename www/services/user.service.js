@@ -17,10 +17,14 @@
         };
 
         function login(data) {
+            var remember = data.remember;
+            delete data.remember;
             return http.post(url.user.login, data)
                 .then(function (response) {
+                    if (remember) {
+                        $localStorage.auth_key = response.user.auth_key;
+                    }
                     $sessionStorage.auth_key = response.user.auth_key;
-                    //if (response.isRememberMe) { $localStorage.auth_key = response.user.auth_key; }
                     $rootScope.user = response.user;
                     $state.go('app.dashboard');
                 });

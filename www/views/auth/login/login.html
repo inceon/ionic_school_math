@@ -29,11 +29,28 @@
         </div>
         <label class="item item-input item-floating-label">
             <span class="input-label">{{vm.label.password}}</span>
-            <input name="password" placeholder="{{vm.label.password}}" type="tel" ng-model="vm.authData.password" minlength="6" maxlength="32" autocomplete="off" required>
+            <input name="password"
+                   placeholder="{{vm.label.password}}"
+                   type="tel"
+                   ng-model="vm.authData.password"
+                   minlength="6"
+                   maxlength="32"
+                   autocomplete="off"
+                   required>
         </label>
         <div class="text-center" ng-messages="signinForm.password.$error" ng-if="signinForm.password.$touched">
             <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
         </div>
+        <label class="item item-toggle item-floating-label">
+            Запомнить меня
+            <label class="toggle">
+                <input type="checkbox"
+                       ng-model="vm.authData.remember">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+        </label>
     </form>
     <button class="button button-block button-positive" ng-click="vm.login()">Login</button>
     <div class="button-bar">
