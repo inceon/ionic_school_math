@@ -65,11 +65,11 @@
                         templateUrl: 'views/dashboard/dashboard.html',
                         controller: 'Dashboard',
                         controllerAs: 'vm',
-                        resolve: {
-                            dashboardPrepService: function (user) {
-                                return user.get();
-                            }
-                        }
+                    }
+                },
+                resolve: {
+                    dashboardPrepService: function (user) {
+                        return user.get();
                     }
                 }
             });

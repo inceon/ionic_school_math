@@ -5,14 +5,15 @@
         .module('model.user', [])
         .service('user', user);
 
-    user.$inject = ['http', 'url', '$rootScope', '$sessionStorage', '$state'];
-    function user(http, url, $rootScope, $sessionStorage, $state) {
+    user.$inject = ['http', 'url', '$rootScope', '$sessionStorage', '$state', '$localStorage'];
+    function user(http, url, $rootScope, $sessionStorage, $state, $localStorage) {
 
         return {
             get: get,
             login: login,
             register: register,
-            reset: reset
+            reset: reset,
+            logout: logout
         };
 
         function login(data) {
@@ -34,6 +35,13 @@
                 .then(function (response) {
                     console.log(response);
                 });
+        }
+
+        function logout() {
+            delete $rootScope.user;
+            delete $sessionStorage.auth_key;
+            delete $localStorage.auth_key;
+            $state.go('login');
         }
 
         function reset(data) {

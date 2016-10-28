@@ -12,8 +12,8 @@
 
         vm.login = login;
         vm.authData = {
-            phone: '',
-            password: ''
+            phone: '1234567936',
+            password: '11111111'
         };
         vm.label = prepGetLabels.label;
 
