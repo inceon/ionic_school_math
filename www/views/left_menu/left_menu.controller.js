@@ -4,17 +4,21 @@
         .module('app')
         .controller('LeftMenu', LeftMenu);
 
-    LeftMenu.$inject = ['user'];
+    LeftMenu.$inject = ['user', '$state'];
 
-    function LeftMenu (user) {
+    function LeftMenu (user, $state) {
 
         var vm = this;
 
         vm.logout = logout;
+        vm.settings = settings;
 
         function logout () {
             user.logout();
-            console.log('regerg');
+        }
+
+        function settings() {
+            $state.go('app.settings');
         }
 
     }

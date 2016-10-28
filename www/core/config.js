@@ -64,12 +64,22 @@
                     'menuContent': {
                         templateUrl: 'views/dashboard/dashboard.html',
                         controller: 'Dashboard',
-                        controllerAs: 'vm',
+                        controllerAs: 'vm'
                     }
                 },
                 resolve: {
                     dashboardPrepService: function (user) {
                         return user.get();
+                    }
+                }
+            })
+            .state('app.settings', {
+                url: '/settings',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/settings/settings.html',
+                        controller: 'Settings',
+                        controllerAs: 'vm'
                     }
                 }
             });
