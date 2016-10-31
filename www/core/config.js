@@ -60,41 +60,53 @@
             })
             .state('app.dashboard', {
                 url: '/dashboard',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'views/dashboard/dashboard.html',
-                        controller: 'Dashboard',
-                        controllerAs: 'vm'
-                    }
-                },
+                templateUrl: 'views/dashboard/dashboard.html',
+                controller: 'Dashboard',
+                controllerAs: 'vm',
                 resolve: {
                     dashboardPrepService: function (user) {
                         return user.get();
                     }
                 }
             })
+            .state('app.discipline', {
+                url: '/discipline/:disciplineId',
+                template: "<ion-nav-view></ion-nav-view>",
+                abstract: true
+            })
+            .state('app.discipline.all', {
+                url: 'all',
+                parent: 'app.discipline',
+                templateUrl: 'views/discipline/all/all-discipline.html',
+                controller: 'Disciplines',
+                controllerAs: 'vm'
+            })
+            .state('app.discipline.books', {
+                url: '/books',
+                templateUrl: 'views/discipline/books/books.html',
+                controller: 'DisciplineBooks',
+                controllerAs: 'vm'
+            })
+            .state('app.discipline.book', {
+                url: '/book/:bookId',
+                templateUrl: 'views/sections/sections.html',
+                controller: 'Sections',
+                controllerAs: 'vm'
+            })
             .state('app.settings', {
                 url: '/settings',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'views/settings/settings.html',
-                        controller: 'Settings',
-                        controllerAs: 'vm'
-                    }
-                }
+                templateUrl: 'views/settings/settings.html',
+                controller: 'Settings',
+                controllerAs: 'vm',
             })
             .state('app.about', {
                 url: '/about',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'views/about/about.html',
-                        controller: 'About',
-                        controllerAs: 'vm'
-                    }
-                }
+                templateUrl: 'views/about/about.html',
+                controller: 'About',
+                controllerAs: 'vm'
             });
 
-        $urlRouterProvider.otherwise('/registration');
+        $urlRouterProvider.otherwise('/login');
     }
 
 

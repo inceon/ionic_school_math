@@ -10,7 +10,8 @@
 
         return {
             one: one,
-            all: all
+            all: all,
+            books: books
         };
 
         function one(id) {
@@ -26,6 +27,15 @@
             return http.get(
                 url.discipline.all,
                 {}
+            )
+        }
+
+        function books(id) {
+            return http.get(
+                url.discipline.books,
+                {
+                    discipline_id: id
+                }
             )
         }
     }

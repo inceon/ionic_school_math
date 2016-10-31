@@ -1,0 +1,15 @@
+<ion-view>
+    <ion-content class="has-header">
+        <div class="list" ng-if="vm.books">
+            <div style="animation-delay: .{{$index}}s"
+                 ng-repeat="book in vm.books"
+                 class="card">
+
+                <a class="item item-thumbnail-left" ui-sref="app.discipline.book({ bookId: book.id })">
+                    <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466">
+                    <h2>{{book.book.author}}. {{book.book.name}}. {{book.book.edition}}, {{book.book.year}}</h2>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

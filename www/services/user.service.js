@@ -26,7 +26,7 @@
                     }
                     $sessionStorage.auth_key = response.user.auth_key;
                     $rootScope.user = response.user;
-                    $state.go('app.dashboard');
+                    $state.go('app.discipline.all');
                 });
         }
 

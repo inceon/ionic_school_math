@@ -28,7 +28,7 @@
             }
             if ($sessionStorage.auth_key) {
                 //auth.get();
-                $state.go('app.dashboard');
+                $state.go('app.discipline.all');
             } else {
                 $state.go('login');
             }
