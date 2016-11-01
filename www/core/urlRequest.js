@@ -28,6 +28,7 @@
                     },
                     book: {
                         sections:    baseUrl + 'section/all',
+                        themes:      baseUrl + 'theme/all',
                     }
                 };
             }

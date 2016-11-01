@@ -9,7 +9,8 @@
     function book(http, url) {
 
         return {
-            sections: sections
+            sections: sections,
+            themes: themes
         };
 
         function sections(id) {
@@ -17,6 +18,15 @@
                 url.book.sections,
                 {
                     book_id: id
+                }
+            )
+        }
+
+        function themes(id) {
+            return http.get(
+                url.book.themes,
+                {
+                    section_id: id
                 }
             )
         }

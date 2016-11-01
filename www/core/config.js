@@ -93,6 +93,12 @@
                 controller: 'Sections',
                 controllerAs: 'vm'
             })
+            .state('app.discipline.themes', {
+                url: '/themes',
+                templateUrl: 'views/themes/themes.html',
+                controller: 'Themes',
+                controllerAs: 'vm'
+            })
             .state('app.settings', {
                 url: '/settings',
                 templateUrl: 'views/settings/settings.html',
