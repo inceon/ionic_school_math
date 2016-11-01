@@ -10,7 +10,11 @@
 
         return {
             sections: sections,
-            themes: themes
+            themes: themes,
+            task: {
+                all: task_all,
+                one: task_one
+            }
         };
 
         function sections(id) {
@@ -27,6 +31,24 @@
                 url.book.themes,
                 {
                     section_id: id
+                }
+            )
+        }
+
+        function task_all(id) {
+            return http.get(
+                url.book.tasks,
+                {
+                    theme_id: id
+                }
+            )
+        }
+
+        function task_one(id) {
+            return http.get(
+                url.book.task,
+                {
+                    id: id
                 }
             )
         }

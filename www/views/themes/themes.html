@@ -5,7 +5,7 @@
                  ng-repeat="theme in vm.themes"
                  class="card">
 
-                <a class="item item-thumbnail-left" ui-sref="app.discipline.themes({ sectionId : section.id})">
+                <a class="item item-thumbnail-left" ui-sref="app.discipline.tasks({ themeId : theme.id})">
                     <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466">
                     <h2>{{theme.name}}</h2>
                 </a>

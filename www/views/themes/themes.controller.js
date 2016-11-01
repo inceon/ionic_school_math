@@ -13,10 +13,11 @@
 
         vm.themes = null;
         vm.sectionId = $stateParams.sectionId;
+        console.log(vm.sectionId);
 
         book.themes(vm.sectionId)
             .then(function(response){
-                vm.themes = response.theme.models;
+                vm.themes = response.models;
             });
     }
 })();

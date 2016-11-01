@@ -94,9 +94,21 @@
                 controllerAs: 'vm'
             })
             .state('app.discipline.themes', {
-                url: '/themes',
+                url: '/themes/:sectionId',
                 templateUrl: 'views/themes/themes.html',
                 controller: 'Themes',
+                controllerAs: 'vm'
+            })
+            .state('app.discipline.tasks', {
+                url: '/tasks/:themeId',
+                templateUrl: 'views/task/all/task.all.html',
+                controller: 'Tasks',
+                controllerAs: 'vm'
+            })
+            .state('app.discipline.task', {
+                url: '/task/:taskId',
+                templateUrl: 'views/task/one/task.one.html',
+                controller: 'Task',
                 controllerAs: 'vm'
             })
             .state('app.settings', {

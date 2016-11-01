@@ -7,8 +7,8 @@
 
                  // var baseUrl = 'http://192.168.0.112/api/web/v1/';
                  // var baseUrl = 'http://192.168.0.118/api/web/v1/';
-                 // var baseUrl = 'http://192.168.0.125/api/web/v2/';
-                var baseUrl = 'http://school-maths/api/web/v1/';
+                 var baseUrl = 'http://192.168.0.125/api/web/v2/';
+                // var baseUrl = 'http://school-maths/api/web/v1/';
                 return {
 
                     user: {
@@ -29,6 +29,8 @@
                     book: {
                         sections:    baseUrl + 'section/all',
                         themes:      baseUrl + 'theme/all',
+                        tasks:       baseUrl + 'task/all',
+                        task:        baseUrl + 'task/one',
                     }
                 };
             }
