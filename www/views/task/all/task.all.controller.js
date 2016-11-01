@@ -5,16 +5,16 @@
         .module('app')
         .controller('Tasks', Tasks);
 
-    Tasks.$inject = ['$stateParams', 'book'];
+    Tasks.$inject = ['$stateParams', 'task'];
 
-    function Tasks($stateParams, book) {
+    function Tasks($stateParams, task) {
 
         var vm = this;
 
         vm.tasks = null;
         vm.themeId = $stateParams.themeId;
 
-        book.task.all(vm.themeId)
+        task.all(vm.themeId)
             .then(function(response){
                 vm.tasks = response.models;
             });

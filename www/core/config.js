@@ -109,7 +109,12 @@
                 url: '/task/:taskId',
                 templateUrl: 'views/task/one/task.one.html',
                 controller: 'Task',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    prepGetLabels: function(site) {
+                        return site.getLabels('DoneTask');
+                    }
+                }
             })
             .state('app.settings', {
                 url: '/settings',

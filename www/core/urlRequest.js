@@ -29,8 +29,11 @@
                     book: {
                         sections:    baseUrl + 'section/all',
                         themes:      baseUrl + 'theme/all',
-                        tasks:       baseUrl + 'task/all',
-                        task:        baseUrl + 'task/one',
+                    },
+                    task: {
+                        all:         baseUrl + 'task/all',
+                        one:         baseUrl + 'task/one',
+                        answer:      baseUrl + 'done-task/create'
                     }
                 };
             }
