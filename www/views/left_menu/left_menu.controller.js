@@ -13,9 +13,14 @@
         vm.logout = logout;
         vm.settings = settings;
         vm.about = about;
+        vm.discipline = discipline;
 
         function logout () {
             user.logout();
+        }
+
+        function discipline() {
+            $state.go('app.discipline.all');
         }
 
         function settings() {
