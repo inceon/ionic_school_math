@@ -5,15 +5,17 @@
         .module('app')
         .controller('Themes', Sections);
 
-    Sections.$inject = ['$stateParams', 'book'];
+    Sections.$inject = ['$rootScope', '$stateParams', 'book'];
 
-    function Sections($stateParams, book) {
+    function Sections($rootScope, $stateParams, book) {
 
+        $rootScope.page = {
+            title: 'Themes'
+        };
         var vm = this;
 
         vm.themes = null;
         vm.sectionId = $stateParams.sectionId;
-        console.log(vm.sectionId);
 
         book.themes(vm.sectionId)
             .then(function(response){

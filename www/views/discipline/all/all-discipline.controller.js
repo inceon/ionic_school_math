@@ -5,9 +5,13 @@
         .module('app')
         .controller('Disciplines', Disciplines);
 
-    Disciplines.$inject = ['discipline', '$rootScope'];
+    Disciplines.$inject = ['$rootScope', 'discipline'];
 
-    function Disciplines(discipline, $rootScope) {
+    function Disciplines($rootScope, discipline) {
+
+        $rootScope.page = {
+            title: 'Disciplines'
+        };
 
         var vm = this;
 

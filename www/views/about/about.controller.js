@@ -4,9 +4,13 @@
         .module('app')
         .controller('About', About);
 
-    About.$inject = [];
+    About.$inject = ['$rootScope'];
 
-    function About () {
+    function About ($rootScope) {
+
+        $rootScope.page = {
+            title: 'Disciplines'
+        };
 
         var vm = this;
 

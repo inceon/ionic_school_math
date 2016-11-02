@@ -5,9 +5,13 @@
         .module('app')
         .controller('Sections', Sections);
 
-    Sections.$inject = ['$stateParams', 'book'];
+    Sections.$inject = ['$rootScope', '$stateParams', 'book'];
 
-    function Sections($stateParams, book) {
+    function Sections($rootScope, $stateParams, book) {
+
+        $rootScope.page = {
+            title: 'Sections'
+        };
 
         var vm = this;
 

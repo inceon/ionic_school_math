@@ -4,9 +4,13 @@
         .module('app')
         .controller('Settings', Settings);
 
-    Settings.$inject = ['user'];
+    Settings.$inject = ['$rootScope', 'user'];
 
-    function Settings (user) {
+    function Settings ($rootScope, user) {
+
+        $rootScope.page = {
+            title: 'Setting'
+        };
 
         var vm = this;
 

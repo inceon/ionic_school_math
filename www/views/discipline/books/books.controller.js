@@ -9,6 +9,10 @@
 
     function DisciplineBooks($stateParams, discipline, $rootScope) {
 
+        $rootScope.page = {
+            title: 'Discipline Books'
+        };
+
         var vm = this;
 
         vm.books = null;

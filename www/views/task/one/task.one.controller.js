@@ -5,9 +5,13 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$stateParams', 'task', 'prepGetLabels'];
+    Task.$inject = ['$rootScope', '$stateParams', 'task', 'prepGetLabels'];
 
-    function Task($stateParams, task, prepGetLabels) {
+    function Task($rootScope, $stateParams, task, prepGetLabels) {
+
+        $rootScope.page = {
+            title: 'Task '
+        };
 
         var vm = this;
 
@@ -20,6 +24,7 @@
         task.one(vm.taskId)
             .then(function(response){
                 vm.task = response;
+                $rootScope.page.task += vm.task.text;
             });
 
         function answer() {

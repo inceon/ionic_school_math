@@ -5,9 +5,13 @@
         .module('app')
         .controller('Tasks', Tasks);
 
-    Tasks.$inject = ['$stateParams', 'task'];
+    Tasks.$inject = ['$rootScope', '$stateParams', 'task'];
 
-    function Tasks($stateParams, task) {
+    function Tasks($rootScope, $stateParams, task) {
+
+        $rootScope.page = {
+            title: 'Tasks'
+        };
 
         var vm = this;
 
