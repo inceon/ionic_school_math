@@ -4,9 +4,9 @@
         .module('app')
         .controller('LeftMenu', LeftMenu);
 
-    LeftMenu.$inject = ['user', '$state'];
+    LeftMenu.$inject = ['$rootScope', 'user', '$state'];
 
-    function LeftMenu (user, $state) {
+    function LeftMenu ($rootScope, user, $state) {
 
         var vm = this;
 

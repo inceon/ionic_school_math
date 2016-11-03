@@ -5,9 +5,9 @@
         .factory('url', [
             function () {
 
-                 // var baseUrl = 'http://192.168.0.112/api/web/v1/';
-                 // var baseUrl = 'http://192.168.0.118/api/web/v1/';
-                 var baseUrl = 'http://192.168.0.125/api/web/v2/';
+                // var baseUrl = 'http://192.168.0.112/api/web/v1/';
+                // var baseUrl = 'http://192.168.0.118/api/web/v1/';
+                var baseUrl = 'http://192.168.0.124/api/web/v2/'; // Инна
                 // var baseUrl = 'http://school-maths/api/web/v1/';
                 return {
 
@@ -29,11 +29,13 @@
                     book: {
                         sections:    baseUrl + 'section/all',
                         themes:      baseUrl + 'theme/all',
+                        create:      baseUrl + 'my-book/create'
                     },
                     task: {
                         all:         baseUrl + 'task/all',
                         one:         baseUrl + 'task/one',
-                        answer:      baseUrl + 'done-task/create'
+                        answer:      baseUrl + 'done-task/create',
+                        update:      baseUrl + 'done-task/update'
                     }
                 };
             }

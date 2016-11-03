@@ -9,6 +9,7 @@
     function book(http, url) {
 
         return {
+            create: create,
             sections: sections,
             themes: themes,
             task: {
@@ -16,6 +17,15 @@
                 one: task_one
             }
         };
+
+        function create (id) {
+            return http.post(
+                url.book.create,
+                {
+                    book_discipline_id: id
+                }
+            )
+        }
 
         function sections(id) {
             return http.get(

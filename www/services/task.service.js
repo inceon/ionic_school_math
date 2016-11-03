@@ -11,7 +11,8 @@
         return {
             all: all,
             one: one,
-            answer: answer
+            answer: answer,
+            update: update
         };
 
         function all(id) {
@@ -32,11 +33,28 @@
             )
         }
 
-        function answer(data){
-            return http.post(
-                url.task.answer,
-                data
-            )
+        function answer(data) {
+            var fd = new FormData();
+            for (var field in data) {
+                if (data.hasOwnProperty(field)) {
+                    if (data[field] !== null) {
+                        fd.append(field, data[field]);
+                    }
+                }
+            }
+            return http.file(url.task.answer, fd);
+        }
+
+        function update(data) {
+            var fd = new FormData();
+            for (var field in data) {
+                if (data.hasOwnProperty(field)) {
+                    if (data[field] !== null) {
+                        fd.append(field, data[field]);
+                    }
+                }
+            }
+            return http.file(url.task.update, fd);
         }
     }
 })();

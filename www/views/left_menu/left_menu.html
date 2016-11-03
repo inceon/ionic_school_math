@@ -4,6 +4,10 @@
             <ion-nav-back-button>
             </ion-nav-back-button>
             <ion-nav-title ng-cloak>{{ $root.page.title }}</ion-nav-title>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-android-home" ng-if="!$root.isHome" ng-click="vm.discipline()">
+                </button>
+            </ion-nav-buttons>
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
@@ -11,6 +15,7 @@
         </ion-nav-bar>
         <ion-nav-view></ion-nav-view>
     </ion-side-menu-content>
+
 
     <ion-side-menu side="left">
         <ion-header-bar class="bar-positive">
@@ -29,6 +34,9 @@
                 </ion-item>
                 <ion-item menu-close ng-click="vm.logout()">
                     Logout
+                </ion-item>
+                <ion-item menu-close ng-click="vm.logout()">
+                    <pre>{{$root.isHome}}</pre>
                 </ion-item>
             </ion-list>
         </ion-content>
