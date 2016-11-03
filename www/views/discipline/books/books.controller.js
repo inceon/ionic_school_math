@@ -5,9 +5,9 @@
         .module('app')
         .controller('DisciplineBooks', DisciplineBooks);
 
-    DisciplineBooks.$inject = ['$stateParams', 'discipline', '$rootScope'];
+    DisciplineBooks.$inject = ['$stateParams', 'discipline', 'book', '$rootScope'];
 
-    function DisciplineBooks($stateParams, discipline, $rootScope) {
+    function DisciplineBooks($stateParams, discipline, book, $rootScope) {
 
         $rootScope.page = {
             title: 'Discipline Books'
@@ -17,11 +17,16 @@
 
         vm.books = null;
         vm.disciplineId = $stateParams.disciplineId;
+        vm.selectBook = selectBook;
 
         discipline.books(vm.disciplineId)
                 .then(function(response){
                     vm.books = response.models;
                 });
+
+        function selectBook (){
+            book.create(vm.data);
+        }
 
     }
 })();
