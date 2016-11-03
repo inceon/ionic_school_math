@@ -20,6 +20,5 @@
                   .then(function(response){
                       vm.disciplines = response.models;
                   });
-
     }
 })();

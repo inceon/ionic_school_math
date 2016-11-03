@@ -3,12 +3,11 @@
         <div class="list" ng-if="vm.tasks">
             <div style="animation-delay: .{{$index}}s"
                  ng-repeat="task in vm.tasks"
-                 ng-class="{'card-positive': task.done}"
                  class="card">
 
-                <!--TODO color done tasks-->
-
-                <a class="item item-thumbnail-left" ui-sref="app.discipline.task({ taskId : task.id})">
+                <a class="item item-thumbnail-left"
+                   ui-sref="app.discipline.task({ taskId : task.id})"
+                   ng-class="{'task-card-positive': task.done}">
                     <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466">
                     <h2>{{task.number}}. {{task.text}}</h2>
                 </a>

@@ -1,8 +1,7 @@
 <ion-view>
     <ion-content class="has-header">
         <div class="list" ng-if="vm.books">
-            <div style="animation-delay: .{{$index}}s"
-                 ng-repeat="book in vm.books"
+            <div ng-repeat="book in vm.books"
                  class="card">
 
                 <a class="item item-thumbnail-left" ui-sref="app.discipline.book({ bookId: book.book.id })">
