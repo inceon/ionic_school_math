@@ -1,0 +1,20 @@
+---
+engines:
+  eslint:
+    enabled: true
+    checks:
+      comma-dangle:
+        enabled: false
+ratings:
+  paths:
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
+  - "**.rb"
+exclude_paths:
+- "gulpfile.js"
+- "www/lib/**/*"
+- "Prototype/**/*"
