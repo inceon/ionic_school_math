@@ -8,6 +8,7 @@
          */
         'ngStorage',
         'ngMessages',
+        'ngMaterial',
         'ngFileUpload',
         'ui.mask',
         /*

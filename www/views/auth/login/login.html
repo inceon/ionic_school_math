@@ -1,13 +1,5 @@
-<ion-header-bar align-title="left" class="bar-positive">
-    <!--<div class="buttons">-->
-        <!--<button class="button" ng-click="doSomething()">Left Button</button>-->
-    <!--</div>-->
-    <h1 class="title text-center">LOGIN PAGE</h1>
-    <!--<div class="buttons">-->
-        <!--<button class="button">Right Button</button>-->
-    <!--</div>-->
-</ion-header-bar>
 <ion-content class="has-header">
+    <img id="auth_fox" src="../../../img/fox.png" width="130"/>
     <form novalidate="" class="list" name="signinForm">
         <label class="item item-input item-floating-label">
             <span class="input-label">{{vm.label.phone}}</span>
@@ -51,6 +43,7 @@
                 </div>
             </label>
         </label>
+        <md-button class="md-raised md-primary">Primary</md-button>
     </form>
     <button class="button button-block button-positive" ng-click="vm.login()">Login</button>
     <div class="button-bar">

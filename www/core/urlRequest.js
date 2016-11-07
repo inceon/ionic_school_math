@@ -7,7 +7,7 @@
 
                 // var baseUrl = 'http://192.168.0.112/api/web/v1/';
                 // var baseUrl = 'http://192.168.0.118/api/web/v1/';
-                var baseUrl = 'http://192.168.0.124/api/web/v2/'; // Инна
+                var baseUrl = 'http://192.168.0.115/api/web/v2/'; // Инна
                 // var baseUrl = 'http://school-maths/api/web/v1/';
                 return {
 
