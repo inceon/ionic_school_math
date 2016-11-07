@@ -1,3 +1,17 @@
-#auth_fox {
-    float: left;
+.header {
+    .title {
+        text-align: center;
+    }
+    #login_fox {
+        float:right;
+    }
+
+    &:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
 }
+

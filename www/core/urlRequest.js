@@ -7,8 +7,9 @@
 
                 // var baseUrl = 'http://192.168.0.112/api/web/v1/';
                 // var baseUrl = 'http://192.168.0.118/api/web/v1/';
-                var baseUrl = 'http://192.168.0.115/api/web/v2/'; // Инна
+                // var baseUrl = 'http://192.168.0.115/api/web/v2/'; // Инна
                 // var baseUrl = 'http://school-maths/api/web/v1/';
+                var baseUrl = 'http://school.apes-at-work.com/api/web/v1/';
                 return {
 
                     user: {
@@ -24,12 +25,13 @@
                     discipline: {
                         one:         baseUrl + 'discipline/one',
                         all:         baseUrl + 'discipline/all',
-                        books:       baseUrl + 'book-discipline/all'
+                        books:       baseUrl + 'book-discipline/all',
+                        myBook:      baseUrl + 'my-book/all'
                     },
                     book: {
                         sections:    baseUrl + 'section/all',
                         themes:      baseUrl + 'theme/all',
-                        create:      baseUrl + 'my-book/create'
+                        create:      baseUrl + 'my-book/create',
                     },
                     task: {
                         all:         baseUrl + 'task/all',

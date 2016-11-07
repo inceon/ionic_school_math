@@ -5,9 +5,9 @@
         .module('app')
         .controller('Tasks', Tasks);
 
-    Tasks.$inject = ['$rootScope', '$stateParams', 'task'];
+    Tasks.$inject = ['$rootScope', 'allTasks', 'task'];
 
-    function Tasks($rootScope, $stateParams, task) {
+    function Tasks($rootScope, allTasks, task) {
 
         $rootScope.page = {
             title: 'Tasks'
@@ -15,13 +15,7 @@
 
         var vm = this;
 
-        vm.tasks = null;
-        vm.themeId = $stateParams.themeId;
-
-        task.all(vm.themeId)
-            .then(function(response){
-                vm.tasks = response.models;
-            });
+        vm.tasks = allTasks.models;
 
     }
 })();

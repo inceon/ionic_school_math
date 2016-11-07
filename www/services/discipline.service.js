@@ -11,7 +11,8 @@
         return {
             one: one,
             all: all,
-            books: books
+            books: books,
+            myBook: myBook
         };
 
         function one(id) {
@@ -33,6 +34,15 @@
         function books(id) {
             return http.get(
                 url.discipline.books,
+                {
+                    discipline_id: id
+                }
+            )
+        }
+
+        function myBook(id){
+            return http.get(
+                url.discipline.myBook,
                 {
                     discipline_id: id
                 }

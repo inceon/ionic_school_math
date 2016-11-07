@@ -10,8 +10,8 @@ var sh = require('shelljs');
 var paths = {
   sass: ['./scss/ionic.app.scss',
         './www/style/main.scss',
-        './www/views/*/*.scss',
-        './www/views/auth/*/*.scss']
+        './www/views/**/*.scss',
+        './www/views/auth/**/*.scss']
 };
 
 gulp.task('default', ['sass']);

@@ -5,9 +5,9 @@
         .module('app')
         .controller('Sections', Sections);
 
-    Sections.$inject = ['$rootScope', '$stateParams', 'book'];
+    Sections.$inject = ['$rootScope', 'allSections', 'book'];
 
-    function Sections($rootScope, $stateParams, book) {
+    function Sections($rootScope, allSections, book) {
 
         $rootScope.page = {
             title: 'Sections'
@@ -16,12 +16,7 @@
         var vm = this;
 
         vm.sections = null;
-        vm.bookId = $stateParams.bookId;
-
-        book.sections(vm.bookId)
-            .then(function(response){
-                vm.sections = response.section.models;
-            });
+        vm.sections = allSections.section.models;
 
     }
 })();

@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$stateParams', 'task', 'prepGetLabels'];
+    Task.$inject = ['$rootScope', '$stateParams', 'task', 'prepGetLabels', 'taskInfo'];
 
-    function Task($rootScope, $stateParams, task, prepGetLabels) {
+    function Task($rootScope, $stateParams, task, prepGetLabels, taskInfo) {
 
         $rootScope.page = {
             title: 'Task '
@@ -22,15 +22,15 @@
 
         vm.submit = answer;
 
-        task.one(vm.taskId)
-            .then(function(response){
-                vm.task = response;
-                $rootScope.page.task += vm.task.text;
-                vm.data = vm.task.done;
-                vm.submit = (vm.data ? update : answer);
-                console.log(vm);
-                vm.data.task_id = vm.taskId;
-            });
+        vm.task = taskInfo;
+        $rootScope.page.task += vm.task.text;
+        vm.data = vm.task.done;
+        if (vm.data) {
+            vm.submit = update;
+        } else {
+            vm.submit = answer;
+        }
+        // vm.data.task_id = vm.taskId;
 
         function update (){
             task.update(vm.data);

@@ -79,31 +79,59 @@
                 parent: 'app.discipline',
                 templateUrl: 'views/discipline/all/all-discipline.html',
                 controller: 'Disciplines',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    allDiscipline: function (discipline) {
+                        return discipline.all();
+                    }
+                }
             })
             .state('app.discipline.books', {
                 url: '/books',
                 templateUrl: 'views/discipline/books/books.html',
                 controller: 'DisciplineBooks',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    userBook: function (discipline, $stateParams) {
+                        return discipline.myBook($stateParams.disciplineId);
+                    },
+                    allBooks: function (discipline, $stateParams) {
+                        return discipline.books($stateParams.disciplineId);
+                    }
+                }
             })
             .state('app.discipline.book', {
                 url: '/book/:bookId',
                 templateUrl: 'views/sections/sections.html',
                 controller: 'Sections',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    allSections: function (book, $stateParams) {
+                        return book.sections($stateParams.bookId);
+                    }
+                }
             })
             .state('app.discipline.themes', {
                 url: '/themes/:sectionId',
                 templateUrl: 'views/themes/themes.html',
                 controller: 'Themes',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    allThemes: function (book, $stateParams) {
+                        return book.themes($stateParams.sectionId);
+                    }
+                }
             })
             .state('app.discipline.tasks', {
                 url: '/tasks/:themeId',
                 templateUrl: 'views/task/all/task.all.html',
                 controller: 'Tasks',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    allTasks: function (task, $stateParams) {
+                        return task.all($stateParams.themeId);
+                    }
+                }
             })
             .state('app.discipline.task', {
                 url: '/task/:taskId',
@@ -113,6 +141,9 @@
                 resolve: {
                     prepGetLabels: function(site) {
                         return site.getLabels('DoneTask');
+                    },
+                    taskInfo: function (task, $stateParams){
+                        return task.one($stateParams.taskId);
                     }
                 }
             })
@@ -120,7 +151,7 @@
                 url: '/settings',
                 templateUrl: 'views/settings/settings.html',
                 controller: 'Settings',
-                controllerAs: 'vm',
+                controllerAs: 'vm'
             })
             .state('app.about', {
                 url: '/about',

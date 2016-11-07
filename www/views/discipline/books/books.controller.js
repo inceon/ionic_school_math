@@ -5,9 +5,9 @@
         .module('app')
         .controller('DisciplineBooks', DisciplineBooks);
 
-    DisciplineBooks.$inject = ['$stateParams', 'discipline', 'book', '$rootScope'];
+    DisciplineBooks.$inject = ['$state', 'discipline', 'book', '$rootScope', 'userBook', 'allBooks'];
 
-    function DisciplineBooks($stateParams, discipline, book, $rootScope) {
+    function DisciplineBooks($state, discipline, book, $rootScope, userBook, allBooks) {
 
         $rootScope.page = {
             title: 'Discipline Books'
@@ -16,13 +16,18 @@
         var vm = this;
 
         vm.books = null;
-        vm.disciplineId = $stateParams.disciplineId;
         vm.selectBook = selectBook;
 
-        discipline.books(vm.disciplineId)
-                .then(function(response){
-                    vm.books = response.models;
-                });
+        if(userBook.count_model === 1) {
+            $state.go('app.discipline.book', {
+                bookId: userBook.models[0].book.id
+            });
+        } else if(userBook.count_model > 1) {
+            vm.myBook = userBook.models;
+        } else {
+            vm.books = allBooks.models;
+        }
+
 
         function selectBook (){
             book.create(vm.data);
