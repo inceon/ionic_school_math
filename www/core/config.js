@@ -20,7 +20,7 @@
                 controllerAs: 'vm',
                 resolve: {
                     prepGetLabels: function(site) {
-                        return site.getLabels('user');
+                        return site.getLabels('User');
                     }
                 }
             })
@@ -31,7 +31,7 @@
                 controllerAs: 'vm',
                 resolve: {
                     prepGetLabels: function(site) {
-                        return site.getLabels('user');
+                        return site.getLabels('User');
                     }
                 }
             })
@@ -42,7 +42,7 @@
                 controllerAs: 'vm',
                 resolve: {
                     prepGetLabels: function(site) {
-                        return site.getLabels('user');
+                        return site.getLabels('User');
                     }
                 }
             })
@@ -151,7 +151,12 @@
                 url: '/settings',
                 templateUrl: 'views/settings/settings.html',
                 controller: 'Settings',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    userInfo: function (user) {
+                        return user.get();
+                    }
+                }
             })
             .state('app.about', {
                 url: '/about',

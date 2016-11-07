@@ -9,12 +9,23 @@
     function user(http, url, $rootScope, $sessionStorage, $state, $localStorage) {
 
         return {
+            one: one,
             get: get,
             login: login,
             register: register,
             reset: reset,
-            logout: logout
+            logout: logout,
+            update: update
         };
+
+        function one(id) {
+            return http.get(
+                url.user.one,
+                {
+                    id: id
+                }
+            )
+        }
 
         function login(data) {
             var remember = data.remember;
@@ -55,6 +66,13 @@
             ).then(function(response){
                 $state.go('login');
             });
+        }
+
+        function update(data) {
+            return http.post(
+                url.user.update,
+                data
+            )
         }
     }
 

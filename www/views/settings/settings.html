@@ -1,7 +1,92 @@
-<ion-header-bar align-title="left" class="bar-positive">
-    <h1 class="title text-center">Title!</h1>
-</ion-header-bar>
-<ion-content class="has-header">
-    <p>DASHBOARD</p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum enim impedit iure obcaecati repellendus. Placeat.
-</ion-content>
+<ion-view>
+    <ion-content class="has-header">
+        <form class="list">
+            <span class="text-center" ng-cloak>
+                <img ngf-thumbnail="vm.data.photo" alt="gregergre" width="100">
+            </span>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.photo}}</span>
+                <input type="file"
+                       ng-model="vm.data.photo"
+                       autocomplete="off"
+                       ngf-select accept="image/*"
+                       ngf-max-size="2MB"
+                       required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.first_name}}</span>
+                <input placeholder="{{vm.label.first_name}}"
+                       type="text"
+                       ng-model="vm.data.first_name"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.last_name}}</span>
+                <input placeholder="{{vm.label.last_name}}"
+                       type="text"
+                       ng-model="vm.data.last_name"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.sity}}</span>
+                <input id="autocomplete"
+                       placeholder="{{vm.label.sity_name}}"
+                       type="text"
+                       ng-model="vm.data.sity_name"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.school}}</span>
+                <input placeholder="{{vm.label.school}}"
+                       type="text"
+                       ng-model="vm.data.school"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.class}}</span>
+                <input placeholder="{{vm.label.class}}"
+                       type="text"
+                       ng-model="vm.data.class"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.phone}}</span>
+                <input name="phone"
+                       placeholder="{{vm.label.phone}}"
+                       ui-mask-placeholder
+                       ui-mask-placeholder-char="_"
+                       type="tel"
+                       ng-model="vm.data.phone"
+                       key-enter="vm.login()"
+                       ui-mask="+38 (999) 999 - 99 - 99"
+                       autocomplete="off"
+                       ng-minlength="10"
+                       required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">{{vm.label.password}}</span>
+                <input placeholder="{{vm.label.password}}"
+                       type="tel"
+                       ng-model="vm.data.password"
+                       minlength="6"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </label>
+
+            <button type="submit" class="button button-block button-positive" ng-click="vm.save()">Save</button>
+        </form>
+    </ion-content>
+</ion-view>
+
+
