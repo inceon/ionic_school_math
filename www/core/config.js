@@ -83,6 +83,9 @@
                 resolve: {
                     allDiscipline: function (discipline) {
                         return discipline.all();
+                    },
+                    todo: function (user) {
+                        return user.todo();
                     }
                 }
             })

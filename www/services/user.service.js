@@ -15,7 +15,8 @@
             register: register,
             reset: reset,
             logout: logout,
-            update: update
+            update: update,
+            todo: todo
         };
 
         function one(id) {
@@ -73,6 +74,10 @@
                 url.user.update,
                 data
             )
+        }
+
+        function todo() {
+            return http.get(url.user.todo);
         }
     }
 
