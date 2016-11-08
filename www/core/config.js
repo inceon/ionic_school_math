@@ -166,7 +166,15 @@
                 templateUrl: 'views/about/about.html',
                 controller: 'About',
                 controllerAs: 'vm'
+            })
+            .state('error', {
+                template: "<ion-nav-view></ion-nav-view>"
+            })
+            .state('error.internet', {
+                url: '/nointernet',
+                templateUrl: 'views/error/nointernet.html'
             });
+
 
         $urlRouterProvider.otherwise('/login');
     }

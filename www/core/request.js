@@ -4,9 +4,9 @@
         .module('factory.request', [])
         .factory('http', http);
 
-    http.$inject = ['$http', '$sessionStorage', 'toastr', '$ionicLoading', '$q'];
+    http.$inject = ['$http', '$sessionStorage', 'toastr', '$ionicLoading', '$q', '$state'];
 
-    function http($http, $sessionStorage, toastr, $ionicLoading, $q) {
+    function http($http, $sessionStorage, toastr, $ionicLoading, $q, $state) {
 
         return {
             get: function (url, data) {
@@ -85,7 +85,9 @@
                     toastr.error('Server unavailable');
                 }
                 else if (err.status === 0) {
+                    $state.go('error.internet');
                     toastr.error('No internet connection');
+                    return $q.reject(0);
                 }
                 else if (err.status === 500) {
                     toastr.error('Server Error: ' + err.status + ' ' + err.data.message);
