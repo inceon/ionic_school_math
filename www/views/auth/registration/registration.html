@@ -5,7 +5,7 @@
     <!--<button class="button">Right Button</button>-->
     <!--</div>-->
 </ion-header-bar>
-<ion-content class="has-header">
+<ion-content class="has-header md-padding">
     <form class="list">
         <span class="text-center" ng-cloak>
             <img ngf-thumbnail="vm.registerData.photo" alt="gregergre" width="100">
@@ -48,7 +48,7 @@
             <input placeholder="{{vm.label.first_name}}"
                    type="text"
                    ng-model="vm.registerData.first_name"
-                   maxlength="32"
+                   maxlength="55"
                    autocomplete="off"
                    required>
         </label>
@@ -57,7 +57,7 @@
             <input placeholder="{{vm.label.second_name}}"
                    type="text"
                    ng-model="vm.registerData.second_name"
-                   maxlength="32"
+                   maxlength="55"
                    autocomplete="off" >
         </label>
         <label class="item item-input item-floating-label">
@@ -65,7 +65,7 @@
             <input placeholder="{{vm.label.last_name}}"
                    type="text"
                    ng-model="vm.registerData.last_name"
-                   maxlength="32"
+                   maxlength="55"
                    autocomplete="off"
                    required>
         </label>
@@ -93,23 +93,28 @@
                     required>
             </select>
         </label>
-        <label class="item item-input item-select">
-            <span class="input-label">{{vm.label.class}}</span>
-            <select ng-model="vm.registerData.number">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-            </select>
-            <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32" autocomplete="off" required>
-        </label>
+        <label >{{vm.label.class}}</label>
+        <div layout="row">
+            <md-input-container>
+                <md-optgroup label="items">
+                    <md-select ng-model="vm.registerData.number">
+                        <md-option ng-value="1">1</md-option>
+                        <md-option ng-value="2">2</md-option>
+                        <md-option ng-value="3">3</md-option>
+                        <md-option ng-value="4">4</md-option>
+                        <md-option ng-value="5">5</md-option>
+                        <md-option ng-value="6">6</md-option>
+                        <md-option ng-value="7">7</md-option>
+                        <md-option ng-value="8">8</md-option>
+                        <md-option ng-value="9">9</md-option>
+                        <md-option ng-value="10">10</md-option>
+                        <md-option ng-value="11">11</md-option>
+                    </md-select>
+                </md-optgroup>
+            </md-input-container>
+        </div>
+        <!--TODO error-->
+        <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32" autocomplete="off" required>
 
         <button type="submit" class="button button-block button-positive" ng-click="vm.register()">Register</button>
         <a class="button button-block button-outline button-stable" href="#/login">Login</a>

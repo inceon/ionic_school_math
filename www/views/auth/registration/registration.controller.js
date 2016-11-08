@@ -19,14 +19,15 @@
         vm.emailRegExp = /^((([a-zA-Z\-0-9_.])+[a-zA-Z0-9_.]{2,})|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         vm.registerData = {
-            phone: "1111111111",
-            password: 'PASSword',
-            first_name: 'Сергей',
-            second_name: 'Охрименко',
+            phone: Math.floor(Math.random() * (9999999999 - 1111111111) + 1111111111),
+            password: '111111',
+            first_name: 'User',
+            second_name: 'User',
             last_name: '12345454',
-            role_id: 1,
-            school_id: 2,
-            sity_id: 1
+            role_id: 2,
+            school_id: 3,
+            sity_id: 1,
+            class: Math.floor(Math.random() * (11 - 3) + 3)
         };
 
         vm.schools = null;
@@ -46,15 +47,16 @@
 
         vm.register = register;
         function register(){
-            // if (vm.form.$invalid) { return; }
+            if (vm.form.$invalid) { return; }
             console.log(vm.registerData);
 
-            user.register(vm.registerData)
-                .then(function(response){
-                    console.log(response)
-                });
-            vm.registerData.role_id = vm.registerData.role_id.id;
-            vm.registerData.school_id = vm.registerData.school_id.id;
+            // vm.registerData.role_id = vm.registerData.role_id.id;
+            // vm.registerData.school_id = vm.registerData.school_id.id;
+            // user.register(vm.registerData)
+            //     .then(function (response) {
+            //         console.log(response);
+            //         console.log(i);
+            //     });
         }
 
         initAutocomplete = function () {
