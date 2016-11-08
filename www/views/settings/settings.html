@@ -2,16 +2,18 @@
     <ion-content class="has-header">
         <form class="list">
             <span class="text-center" ng-cloak>
-                <img ngf-thumbnail="vm.data.photo" alt="gregergre" width="100">
+                <img ngf-thumbnail="vm.data.photo || vm.data.image_file" alt="profile photo" width="100">
             </span>
             <label class="item item-input item-floating-label">
                 <span class="input-label">{{vm.label.photo}}</span>
                 <input type="file"
-                       ng-model="vm.data.photo"
+                       ng-model="vm.data.image_file"
                        autocomplete="off"
-                       ngf-select accept="image/*"
+                       ngf-select
+                       accept="image/*"
                        ngf-max-size="2MB"
-                       required>
+                       required
+                       base-sixty-four-input>
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label">{{vm.label.first_name}}</span>

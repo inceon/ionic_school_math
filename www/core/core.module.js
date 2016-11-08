@@ -14,7 +14,9 @@
         /*
          * Our reusable cross app code modules
          */
-        'factory.request', 'toastr',
+        'factory.request',
+        'toastr',
+        'naif.base64',
         /*
          * 3rd Party modules
          */

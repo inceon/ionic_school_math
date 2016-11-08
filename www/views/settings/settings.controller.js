@@ -23,6 +23,7 @@
 
         function save () {
             console.log(vm.data);
+            vm.data.image_file = vm.data.image_file.base64;
             user.update(vm.data);
         }
 
