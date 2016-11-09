@@ -17,20 +17,18 @@
 
         vm.label = prepGetLabels.label;
 
-        vm.task = null;
-        vm.taskId = $stateParams.taskId;
-
         vm.submit = answer;
-
         vm.task = taskInfo;
-        $rootScope.page.task += vm.task.text;
-        vm.data = vm.task.done;
-        if (vm.data) {
+
+        $rootScope.page.title += vm.task.text;
+
+        vm.data = vm.task.done || {};
+        if (vm.task.done) {
             vm.submit = update;
         } else {
             vm.submit = answer;
         }
-        // vm.data.task_id = vm.taskId;
+        vm.data.task_id = $stateParams.taskId;
 
         function update (){
             task.update(vm.data);

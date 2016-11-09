@@ -15,8 +15,18 @@
 
         var vm = this;
 
-        vm.sections = null;
+        vm.showThemes = showThemes;
         vm.sections = allSections.section.models;
 
+        function showThemes(section) {
+            if (section.data) {
+                delete section.data;
+            } else {
+                book.themes(section.id)
+                    .then(function (res) {
+                        section.data = res.models;
+                    });
+            }
+        }
     }
 })();
