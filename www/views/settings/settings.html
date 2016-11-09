@@ -61,6 +61,14 @@
                        autocomplete="off"
                        required>
             </label>
+            <md-input-container>
+                <label>{{vm.label.my_classes}}</label>
+                <md-select ng-model="vm.data.my_classes" multiple>
+                    <md-optgroup label="{{vm.label.my_classes}}">
+                        <md-option ng-value="1" ng-selected="{{vm.my_classes.indexOf(i) == -1}}" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}</md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
             <label class="item item-input item-floating-label">
                 <span class="input-label">{{vm.label.phone}}</span>
                 <input name="phone"

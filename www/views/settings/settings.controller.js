@@ -17,13 +17,16 @@
         vm.label = userInfo.label;
 
         vm.data = userInfo.user;
+        vm.my_classes = userInfo.my_classes;
         console.log(userInfo);
 
         vm.save = save;
 
         function save () {
             console.log(vm.data);
-            vm.data.image_file = vm.data.image_file.base64;
+            delete vm.data.photo;
+            if (vm.data.image_file)
+                vm.data.image_file = vm.data.image_file.base64;
             user.update(vm.data);
         }
 

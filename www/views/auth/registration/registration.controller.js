@@ -47,16 +47,16 @@
 
         vm.register = register;
         function register(){
-            if (vm.form.$invalid) { return; }
+            // if (vm.form.$invalid) { return; }
             console.log(vm.registerData);
 
             // vm.registerData.role_id = vm.registerData.role_id.id;
             // vm.registerData.school_id = vm.registerData.school_id.id;
-            // user.register(vm.registerData)
-            //     .then(function (response) {
-            //         console.log(response);
-            //         console.log(i);
-            //     });
+            user.register(vm.registerData)
+                .then(function (response) {
+                    console.log(response);
+                    console.log(i);
+                });
         }
 
         initAutocomplete = function () {
