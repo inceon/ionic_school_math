@@ -17,8 +17,10 @@
         vm.label = userInfo.label;
 
         vm.data = userInfo.user;
-        vm.my_classes = userInfo.my_classes;
-        console.log(userInfo);
+        vm.my_classes = userInfo.my_classes.map(function(item){
+            return item.number;
+        });
+        console.log(vm.my_classes);
 
         vm.save = save;
 
