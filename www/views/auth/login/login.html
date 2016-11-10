@@ -1,57 +1,49 @@
-<ion-content class="has-header">
+<md-content layout-padding>
     <div class="header">
         <p class="title">Вхід</p>
         <img id="login_fox" src="../../../img/fox.png" width="130"/>
     </div>
     <div>
-        <form novalidate="" class="list" name="signinForm">
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.phone}}</span>
-            <input name="phone"
-                   placeholder="{{vm.label.phone}}"
-                   ui-mask-placeholder
-                   ui-mask-placeholder-char="_"
-                   type="tel"
-                   ng-model="vm.authData.phone"
-                   key-enter="vm.login()"
-                   ui-mask="+38 (999) 999 - 99 - 99"
-                   autocomplete="off"
-                   ng-minlength="10"
-                   required>
-        </label>
-        <div class="text-center" ng-messages="signinForm.phone.$error" ng-if="signinForm.phone.$touched">
-            <div class="error-block" ng-message="minlength">Номер телефона должен быть не меньше 10 символов</div>
-            <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
-        </div>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.password}}</span>
-            <input name="password"
-                   placeholder="{{vm.label.password}}"
-                   type="tel"
-                   ng-model="vm.authData.password"
-                   minlength="6"
-                   maxlength="32"
-                   autocomplete="off"
-                   required>
-        </label>
-        <div class="text-center" ng-messages="signinForm.password.$error" ng-if="signinForm.password.$touched">
-            <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
-        </div>
-        <label class="item item-toggle item-floating-label">
-            Запомнить меня
-            <label class="toggle">
-                <input type="checkbox"
-                       ng-model="vm.authData.remember">
-                <div class="track">
-                    <div class="handle"></div>
+        <form novalidate="" name="signinForm">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.phone}}</label>
+                <input name="phone"
+                       ui-mask-placeholder
+                       ui-mask-placeholder-char="_"
+                       type="tel"
+                       ng-model="vm.authData.phone"
+                       key-enter="vm.login()"
+                       ui-mask="+38 (999) 999 - 99 - 99"
+                       autocomplete="off"
+                       ng-minlength="10"
+                       required
+                       md-no-asterisk>
+                <div class="text-center" ng-messages="signinForm.phone.$error" ng-if="signinForm.phone.$touched">
+                    <div class="error-block" ng-message="minlength">Номер телефона должен быть не меньше 10 символов</div>
+                    <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
                 </div>
-            </label>
-        </label>
-    </form>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.password}}</label>
+                <input name="password"
+                       type="tel"
+                       ng-model="vm.authData.password"
+                       minlength="6"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+                <div ng-messages="signinForm.password.$error" ng-if="signinForm.password.$touched">
+                    <div ng-message="required">Это поле обязательное для заполнения</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <md-checkbox ng-model="vm.authData.remember">
+                    Запомнить меня
+                </md-checkbox>
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="vm.login()">Увійти</md-button>
+        </form>
+        <a href="#/reset-password">Забули пароль?</a>
+        <a href="#/registration">Створити аккаунт</a>
     </div>
-    <button class="button button-block button-positive" ng-click="vm.login()">Login</button>
-    <div class="button-bar">
-        <a class="button button-block button-outline button-stable" href="#/registration">Register</a>
-        <a class="button button-block button-outline button-stable" href="#/reset-password">Forgot</a>
-    </div>
-</ion-content>
+</md-content>

@@ -45,10 +45,10 @@
             }
 
             if ($sessionStorage.auth_key) {
-                config.url = url + '?auth_key=' + $sessionStorage.auth_key;
+                config.url = url + '?auth_key=' + $sessionStorage.auth_key + '&lang=uk-UK';
             }
             else {
-                config.url = url;
+                config.url = url+ '?lang=uk-UK';
             }
 
             return $http(config)
@@ -75,7 +75,6 @@
 
         function requestFailed(err) {
             console.info('error', err.config.url, err);
-            $ionicLoading.hide();
 
             if (err.data == null || !err.data.error) {
                 if (err.status === 200) {
@@ -99,6 +98,8 @@
             } else {
                 toastr.error('Error: ' + err.data.error);
             }
+
+            $ionicLoading.hide();
             return $q.reject(err.data.error);
         }
 
@@ -106,7 +107,6 @@
             var promise = $q.defer();
 
             console.info('response complete', response.config.url, response);
-            $ionicLoading.hide();
 
             if (!response.data.error) {
                 promise.resolve(response.data);
@@ -115,6 +115,7 @@
                 promise.reject(response);
             }
 
+            $ionicLoading.hide();
             return promise.promise;
         }
     }
