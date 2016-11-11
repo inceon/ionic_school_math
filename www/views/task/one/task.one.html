@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view class="task">
     <div class="bar bar-subheader bar-balanced" ng-if="vm.task.done" ng-cloak="">
         <h2 class="title">Task complete</h2>
     </div>
@@ -7,44 +7,54 @@
             <div ng-if="vm.task.files.length">
                 <img ng-src="{{ file.url }}" style="max-width: 100%" alt="image" ng-repeat="file in vm.task.files">
             </div>
-            <h2>{{ vm.task.explanation }}</h2>
-            <!--<pre>{{vm.task | json}}</pre>-->
+            <p>{{ vm.task.explanation }}</p>
         </div>
-        <form novalidate="" class="list" name="answerForm">
-            <label class="item item-input item-floating-label">
-                <span class="input-label">{{vm.label.photo}}</span>
-                <input type="file"
-                       ng-model="vm.data.photo"
-                       autocomplete="off"
-                       ngf-select accept="image/*"
-                       ngf-max-size="2MB"
-                       ngf-max-files="5"
-                       required>
-                <img ng-src="{{ file.url }}" width="100" ng-repeat="file in vm.data.files">
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">{{ vm.label.result }}</span>
-                <input name="answer"
-                       placeholder="{{ vm.label.result }}"
-                       type="text"
-                       ng-model="vm.data.answer"
-                       autocomplete="off"
-                       required>
-            </label>
-            <div class="text-center" ng-messages="answerForm.answer.$error" ng-if="answerForm.answer.$touched">
-                <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
-            </div>
-            <label class="item item-toggle item-floating-label">
-                {{ vm.label.status }}
-                <label class="toggle">
-                    <input type="checkbox"
-                           ng-model="vm.data.status" value="1">
-                    <div class="track">
-                        <div class="handle"></div>
+        <md-card>
+            <form novalidate="" name="answerForm">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>{{ vm.label.result }}</label>
+                    <input name="answer"
+                           placeholder="{{ vm.label.result }}"
+                           type="text"
+                           ng-model="vm.data.answer"
+                           autocomplete="off"
+                           required>
+                    <div ng-messages="answerForm.answer.$error" ng-if="answerForm.answer.$touched">
+                        <div ng-message="required">Это поле обязательное для заполнения</div>
                     </div>
-                </label>
-            </label>
-        </form>
-        <button class="button button-block button-positive" ng-click="vm.submit()">Send</button>
+                </md-input-container>
+                <!--<choose-file-button>-->
+                    <!--<md-button layout="row" layout-align="center center"-->
+                               <!--class="md-fab md-primary button-accent"-->
+                               <!--aria-label="Upload a file">-->
+                        <!--<i class="material-icons">camera_enhance</i>-->
+                    <!--</md-button>-->
+                    <!--<input id="file" accept="image/x-png, image/jpeg"-->
+                           <!--onchange="angular.element(this).scope().vm.changePhoto(this)" type="file">-->
+                <!--</choose-file-button>-->
+                <md-input-container  class="md-block" flex-gt-sm>
+                    <!--<label for="answer-photo">{{vm.label.photo}} 132</label>-->
+                    <label for="answerPhoto">
+                        select file please
+                    </label>
+                    <md-button ng-model="vm.data.photo"
+                           autocomplete="off"
+                           ngf-select="upload($file)"
+                           accept="image/*"
+                           ngf-max-size="2MB"
+                           ngf-max-files="5"
+                           id="answerPhoto"
+                           name="answerPhoto md-fab"
+                           required> <i class="material-icons">bug_report</i> </md-button>
+                    <img ng-src="{{ file.url }}" width="100" ng-repeat="file in vm.data.files">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="vm.data.status" value="1">
+                        {{ vm.label.status }}
+                    </md-checkbox>
+                </md-input-container>
+                <md-button class="md-raised md-primary" ng-click="vm.submit()">Send</md-button>
+            </form>
+        </md-card>
     </ion-content>
 </ion-view>

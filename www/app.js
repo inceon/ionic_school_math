@@ -28,7 +28,7 @@
             }
             if ($sessionStorage.auth_key) {
                 //auth.get();
-                $state.go('app.discipline.all');
+                $state.go('app.discipline.task({taskId: 27})');
             } else {
                 $state.go('login');
             }
