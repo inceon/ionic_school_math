@@ -9,7 +9,7 @@
                             <h3>{{section.name}}</h3>
                         </div>
                     </md-list-item>
-                    <md-list-item ng-repeat="item in section.data" ui-sref="app.discipline.tasks({ themeId : item.id})">
+                    <md-list-item ng-if="section.data.show" ng-repeat="item in section.data" ui-sref="app.discipline.tasks({ themeId : item.id})">
                         <h3>{{item.name}}</h3>
                     </md-list-item>
                 </div>
