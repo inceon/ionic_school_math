@@ -1,18 +1,18 @@
-<ion-view>
+<ion-view class="sections">
     <ion-content class="has-header">
         <md-content ng-if="vm.sections">
             <md-list flex>
-                <div ng-repeat="section in vm.sections">
-                    <md-list-item ng-click="vm.showThemes(section)" style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd">
-                        <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466" class="md-avatar"/>
+                <md-card ng-repeat="section in vm.sections">
+                    <md-list-item class="name" ng-click="vm.showThemes(section)">
+                        <img src="http://s3.amazonaws.com/alivenotdead-v2/avatars/6e/57/img-7973.JPG"/>
                         <div class="md-list-item-text" layout="column">
-                            <h3>{{section.name}}</h3>
+                            {{section.name}}
                         </div>
                     </md-list-item>
                     <md-list-item ng-if="section.data.show" ng-repeat="item in section.data" ui-sref="app.discipline.tasks({ themeId : item.id})">
-                        <h3>{{item.name}}</h3>
+                        <p>{{item.name}}</p>
                     </md-list-item>
-                </div>
+                </md-card>
             </md-list>
         </md-content>
     </ion-content>

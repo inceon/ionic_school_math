@@ -16,6 +16,7 @@
         var vm = this;
 
         vm.books = null;
+        vm.slide = 0;
         vm.selectBook = selectBook;
 
         if(userBook.count_model === 1) {
@@ -29,8 +30,8 @@
         }
 
 
-        function selectBook (){
-            book.create(vm.data);
+        function selectBook (id){
+            book.create(vm.books[id]);
         }
 
     }

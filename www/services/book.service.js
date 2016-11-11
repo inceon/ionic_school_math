@@ -18,10 +18,12 @@
             }
         };
 
-        function create (data) {
+        function create (id) {
             return http.post(
                 url.book.create,
-                data
+                {
+                    book_discipline_id: id
+                }
             )
         }
 

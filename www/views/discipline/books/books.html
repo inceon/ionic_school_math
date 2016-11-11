@@ -1,5 +1,5 @@
-<ion-view ng-init="$root.isHome = false">
-    <ion-content class="has-header">
+<ion-view class="books" ng-init="$root.isHome = false">
+    <md-content class="has-header">
         <div class="list" ng-if="vm.myBook">
             <div ng-repeat="book in vm.myBook" class="card">
                 <a class="item item-thumbnail-left" ui-sref="app.discipline.book({ bookId: book.book.id })">
@@ -9,20 +9,17 @@
             </div>
         </div>
         <div class="list" ng-if="vm.books">
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    Books
-                </div>
-                <select ng-model="vm.data.book_discipline_id">
-                    <option ng-repeat="book in vm.books" value="{{ book.id }}">
-                        {{book.book.author}}. {{book.book.name}}. {{book.book.edition}}, {{book.book.year}}
-                    </option>
-                </select>
-            </label>
-
-            <!--TODO: Add book image-->
-
-            <button type="submit" class="button button-block button-positive" ng-click="vm.selectBook()">Select book</button>
+            <ion-slide-box active-slide="vm.slide">
+                <ion-slide ng-repeat="book in vm.books">
+                    <a class="slide-item">
+                        <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
+                        <p>({{book.book.author}}) <br> {{book.book.name}}. {{book.book.edition}} <br> {{book.book.year}}</p>
+                    </a>
+                </ion-slide>
+            </ion-slide-box>
+            <button type="submit" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">Select
+                book
+            </button>
         </div>
-    </ion-content>
+    </md-content>
 </ion-view>

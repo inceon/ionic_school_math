@@ -1,0 +1,29 @@
+.books {
+    .slider {
+        background-color: rgb(226, 226, 226);
+        .slide-item {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 20px;
+            img {
+                border-radius: 50%;
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+                box-sizing: content-box;
+                border: 4px solid #ffffff;
+            }
+            p {
+                font-size: 20px;
+                font-family: 'Bad Script', cursive;
+                line-height: 24px;
+                letter-spacing: 0;
+                color: rgb(30, 64, 114);
+            }
+        }
+        .slider-pager {
+            margin-bottom: 5px;
+        }
+    }
+}

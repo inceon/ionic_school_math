@@ -1,0 +1,24 @@
+.sections {
+    md-list-item {
+        p {
+            font-size: 1.2em;
+        }
+    }
+    md-list-item.name {
+        //border-top: 1px solid #ddd;
+        //border-bottom: 1px solid #ddd;
+        margin: 10px 0;
+        img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+        .md-list-item-text {
+            font-family: 'Bad Script', cursive;
+            font-size: 28px;
+            text-align: center;
+            color: #1E4072;
+        }
+    }
+}

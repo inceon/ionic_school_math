@@ -1,7 +1,10 @@
-body {
-}
+@import url('https://fonts.googleapis.com/css?family=Bad+Script');
+
 @import "../views/lazyload/lazyload";
 @import "../views/auth/login/auth";
+@import "../views/sections/sections";
+@import "../views/discipline/books/books";
+@import "../views/discipline/all/all-discipline";
 
 .error-block {
     margin: 5px auto;

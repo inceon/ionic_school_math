@@ -1,14 +1,12 @@
-<ion-view ng-init="$root.isHome = true">
-    <ion-content class="has-header">
+<ion-view class="all-discipline" ng-init="$root.isHome = true">
+    <md-content class="has-header">
         <div class="list" ng-if="vm.disciplines">
             <ion-slide-box>
                 <ion-slide ng-repeat="discipline in vm.disciplines">
-                    <div class="card">
-                        <a class="item item-thumbnail-left" ui-sref="app.discipline.books({ disciplineId: discipline.id })">
-                            <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466">
-                            <h2>{{discipline.name}}</h2>
-                        </a>
-                    </div>
+                    <a class="slide-item" ui-sref="app.discipline.books({ disciplineId: discipline.id })">
+                        <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
+                        <p>{{discipline.name}}</p>
+                    </a>
                 </ion-slide>
             </ion-slide-box>
             <h4 class="text-center">TODO</h4>
@@ -24,5 +22,5 @@
                 </ion-item>
             </ion-list>
         </div>
-    </ion-content>
+    </md-content>
 </ion-view>
