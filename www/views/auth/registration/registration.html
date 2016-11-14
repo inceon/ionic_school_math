@@ -5,22 +5,24 @@
     <!--<button class="button">Right Button</button>-->
     <!--</div>-->
 </ion-header-bar>
-<ion-content class="has-header md-padding">
+<ion-content class="registration has-header md-padding">
     <form class="list">
-        <span class="text-center" ng-cloak>
-            <img ngf-thumbnail="vm.registerData.photo" alt="gregergre" width="100">
-        </span>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.photo}}</span>
+        <md-input-container class="md-block" flex-gt-sm>
+            <span class="text-center" ng-cloak>
+                <img ngf-thumbnail="vm.registerData.photo" alt="gregergre" width="100">
+            </span>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.photo}}</label>
             <input type="file"
                    ng-model="vm.registerData.photo"
                    autocomplete="off"
                    ngf-select accept="image/*"
                    ngf-max-size="2MB"
                    required>
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.phone}}</span>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.phone}}</label>
             <input name="phone"
                    placeholder="{{vm.label.phone}}"
                    ui-mask-placeholder
@@ -32,9 +34,9 @@
                    autocomplete="off"
                    ng-minlength="10"
                    required>
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.password}}</span>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.password}}</label>
             <input placeholder="{{vm.label.password}}"
                    type="tel"
                    ng-model="vm.registerData.password"
@@ -42,35 +44,35 @@
                    maxlength="32"
                    autocomplete="off"
                    required>
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.first_name}}</span>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.first_name}}</label>
             <input placeholder="{{vm.label.first_name}}"
                    type="text"
                    ng-model="vm.registerData.first_name"
                    maxlength="55"
                    autocomplete="off"
                    required>
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.second_name}}</span>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.second_name}}</label>
             <input placeholder="{{vm.label.second_name}}"
                    type="text"
                    ng-model="vm.registerData.second_name"
                    maxlength="55"
                    autocomplete="off" >
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.last_name}}</span>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.last_name}}</label>
             <input placeholder="{{vm.label.last_name}}"
                    type="text"
                    ng-model="vm.registerData.last_name"
                    maxlength="55"
                    autocomplete="off"
                    required>
-        </label>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">{{vm.label.sity}}</span>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.sity}}</label>
             <input id="autocomplete"
                    placeholder="{{vm.label.sity}}"
                    type="text"
@@ -78,43 +80,44 @@
                    maxlength="32"
                    autocomplete="off"
                    required>
-        </label>
-        <label class="item item-input item-select" ng-if="vm.schools.length">
-            <span class="input-label">{{vm.label.school}}</span>
-            <select ng-model="vm.registerData.school_id"
-                    ng-options="school.name for school in vm.schools track by school.id"
-                    required>
-            </select>
-        </label>
-        <label class="item item-input item-select">
-            <span class="input-label">{{vm.label.role}}</span>
-            <select ng-model="vm.registerData.role_id"
-                    ng-options="role.name for role in vm.role track by role.id"
-                    required>
-            </select>
-        </label>
-        <label >{{vm.label.class}}</label>
-        <div layout="row">
-            <md-input-container>
-                <md-optgroup label="items">
-                    <md-select ng-model="vm.registerData.number">
-                        <md-option ng-value="1">1</md-option>
-                        <md-option ng-value="2">2</md-option>
-                        <md-option ng-value="3">3</md-option>
-                        <md-option ng-value="4">4</md-option>
-                        <md-option ng-value="5">5</md-option>
-                        <md-option ng-value="6">6</md-option>
-                        <md-option ng-value="7">7</md-option>
-                        <md-option ng-value="8">8</md-option>
-                        <md-option ng-value="9">9</md-option>
-                        <md-option ng-value="10">10</md-option>
-                        <md-option ng-value="11">11</md-option>
-                    </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm ng-if="vm.schools.length">
+            <label>{{vm.label.school}}</label>
+            <md-select ng-model="vm.registerData.school_id">
+                <md-optgroup label="{{vm.label.school}}">
+                    <md-option ng-value="i.id"
+                               ng-repeat="i in vm.schools">
+                        {{i.name}}
+                    </md-option>
                 </md-optgroup>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>{{vm.label.role}}</label>
+            <md-select ng-model="vm.registerData.role_id">
+                <md-optgroup label="{{vm.label.role}}">
+                    <md-option ng-value="i.id"
+                               ng-repeat="i in vm.role">
+                        {{i.name}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+        <div layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label >{{vm.label.class}}</label>
+                <md-select ng-model="vm.registerData.number">
+                    <md-optgroup label="{{vm.label.my_classes}}">
+                        <md-option ng-value="i"
+                                   ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32" autocomplete="off" required>
             </md-input-container>
         </div>
-        <!--TODO error-->
-        <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32" autocomplete="off" required>
 
         <button type="submit" class="button button-block button-positive" ng-click="vm.register()">Register</button>
         <a class="button button-block button-outline button-stable" href="#/login">Login</a>

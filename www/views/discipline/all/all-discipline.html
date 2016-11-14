@@ -19,9 +19,9 @@
                     </a>
                 </ion-slide>
             </ion-slide-box>
-            <button type="submit" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
+            <md-button type="submit" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
                 Select discipline
-            </button>
+            </md-button>
             <h4 class="text-center">TODO</h4>
             <ion-list>
                 <ion-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">
