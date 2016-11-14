@@ -103,6 +103,16 @@
                 </md-optgroup>
             </md-select>
         </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm ng-if="vm.registerData.role_id == 2">
+            <label>{{vm.label.my_classes}}</label>
+            <md-select ng-model="vm.registerData.my_classes" multiple>
+                <md-optgroup label="{{vm.label.my_classes}}">
+                    <md-option ng-value="i"
+                               ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
+                    </md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
         <div layout-gt-xs="row">
             <md-input-container class="md-block" flex-gt-xs>
                 <label >{{vm.label.class}}</label>
