@@ -1,7 +1,17 @@
 <ion-view class="all-discipline" ng-init="$root.isHome = true">
     <md-content class="has-header">
         <div class="list" ng-if="vm.disciplines">
-            <ion-slide-box>
+            <div class="left">
+                <button class="button button-positive button-clear no-animation icon ion-chevron-left"
+                        ng-click="vm.previous()" ng-if="vm.slide > 0">
+                </button>
+            </div>
+            <div class="right">
+                <button class="button button-positive button-clear no-animation icon ion-chevron-right"
+                        ng-click="vm.next()" ng-if="vm.slide != vm.disciplines.length-1">
+                </button>
+            </div>
+            <ion-slide-box active-slide="vm.slide" show-pager="false">
                 <ion-slide ng-repeat="discipline in vm.disciplines">
                     <a class="slide-item" ui-sref="app.discipline.books({ disciplineId: discipline.id })">
                         <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
@@ -9,6 +19,9 @@
                     </a>
                 </ion-slide>
             </ion-slide-box>
+            <button type="submit" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
+                Select discipline
+            </button>
             <h4 class="text-center">TODO</h4>
             <ion-list>
                 <ion-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">

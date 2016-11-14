@@ -5,9 +5,9 @@
         .module('app')
         .controller('DisciplineBooks', DisciplineBooks);
 
-    DisciplineBooks.$inject = ['$state', 'discipline', 'book', '$rootScope', 'userBook', 'allBooks'];
+    DisciplineBooks.$inject = ['$state', 'discipline', 'book', '$rootScope', 'userBook', 'allBooks', '$ionicSlideBoxDelegate'];
 
-    function DisciplineBooks($state, discipline, book, $rootScope, userBook, allBooks) {
+    function DisciplineBooks($state, discipline, book, $rootScope, userBook, allBooks, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
             title: 'Discipline Books'
@@ -29,6 +29,12 @@
             vm.books = allBooks.models;
         }
 
+        vm.next = function() {
+            $ionicSlideBoxDelegate.next();
+        };
+        vm.previous = function() {
+            $ionicSlideBoxDelegate.previous();
+        };
 
         function selectBook (id){
             book.create(vm.books[id]);

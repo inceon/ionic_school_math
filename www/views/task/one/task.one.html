@@ -7,54 +7,80 @@
             <div ng-if="vm.task.files.length">
                 <img ng-src="{{ file.url }}" style="max-width: 100%" alt="image" ng-repeat="file in vm.task.files">
             </div>
-            <p>{{ vm.task.explanation }}</p>
+            <p class="explanation" align="center">{{ vm.task.explanation }}</p>
         </div>
-        <md-card>
+        <md-card class="answer">
             <form novalidate="" name="answerForm">
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>{{ vm.label.result }}</label>
-                    <input name="answer"
-                           placeholder="{{ vm.label.result }}"
-                           type="text"
-                           ng-model="vm.data.answer"
-                           autocomplete="off"
-                           required>
+                    <textarea name="answer"
+                              md-maxlength="150"
+                              rows="3"
+                              md-select-on-focus
+                              placeholder="{{ vm.label.result }}"
+                              type="text"
+                              ng-model="vm.data.answer"
+                              autocomplete="off"
+                              required> </textarea>
                     <div ng-messages="answerForm.answer.$error" ng-if="answerForm.answer.$touched">
                         <div ng-message="required">Это поле обязательное для заполнения</div>
                     </div>
                 </md-input-container>
                 <!--<choose-file-button>-->
-                    <!--<md-button layout="row" layout-align="center center"-->
-                               <!--class="md-fab md-primary button-accent"-->
-                               <!--aria-label="Upload a file">-->
-                        <!--<i class="material-icons">camera_enhance</i>-->
-                    <!--</md-button>-->
-                    <!--<input id="file" accept="image/x-png, image/jpeg"-->
-                           <!--onchange="angular.element(this).scope().vm.changePhoto(this)" type="file">-->
+                <!--<md-button layout="row" layout-align="center center"-->
+                <!--class="md-fab md-primary button-accent"-->
+                <!--aria-label="Upload a file">-->
+                <!--<i class="material-icons">camera_enhance</i>-->
+                <!--</md-button>-->
+                <!--<input id="file" accept="image/x-png, image/jpeg"-->
+                <!--onchange="angular.element(this).scope().vm.changePhoto(this)" type="file">-->
                 <!--</choose-file-button>-->
-                <md-input-container  class="md-block" flex-gt-sm>
-                    <!--<label for="answer-photo">{{vm.label.photo}} 132</label>-->
-                    <label for="answerPhoto">
-                        select file please
-                    </label>
-                    <md-button ng-model="vm.data.photo"
-                           autocomplete="off"
-                           ngf-select="upload($file)"
-                           accept="image/*"
-                           ngf-max-size="2MB"
-                           ngf-max-files="5"
-                           id="answerPhoto"
-                           name="answerPhoto md-fab"
-                           required> <i class="material-icons">bug_report</i> </md-button>
-                    <img ng-src="{{ file.url }}" width="100" ng-repeat="file in vm.data.files">
+
+                <md-input-container class="md-block send-button">
+                    <i ng-model="vm.data.photo"
+                       autocomplete="off"
+                       ngf-select="vm.upload($file)"
+                       accept="image/*"
+                       ngf-max-size="2MB"
+                       ngf-max-files="5"
+                       id="answerPhoto"
+                       name="answerPhoto md-fab"
+                       class="fa fa-camera fa-2x photo"
+                       required></i>
+                    <img ngf-thumbnail="{{ file }}" width="100" ng-repeat="file in vm.data.photo">
+                    <!--<md-checkbox class="check-tutor" ng-model="vm.data.status" value="1">-->
+                    <!--{{ vm.label.status }}-->
+                    <!--</md-checkbox>-->
+                    <md-button class="right md-raised md-primary submit-button" ng-click="vm.submit()">
+                        Send
+                    </md-button>
                 </md-input-container>
-                <md-input-container class="md-block">
-                    <md-checkbox ng-model="vm.data.status" value="1">
-                        {{ vm.label.status }}
-                    </md-checkbox>
-                </md-input-container>
-                <md-button class="md-raised md-primary" ng-click="vm.submit()">Send</md-button>
             </form>
         </md-card>
+
+        <p class="tutor-text">Виникли запитання? Зверніться до репетитора</p>
+        <form class="ask-form">
+            <div layout-gt-sm="row">
+                <img src="../../../img/fox.png" class="fox">
+                <md-card class="ask-card">
+                    <md-input-container class="md-block" flex-gt-md>
+                        <label>{{ vm.label.result }}</label>
+                        <textarea name="ask"
+                                  rows="3"
+                                  md-select-on-focus
+                                  type="text"
+                                  ng-model="vm.data.ask"
+                                  autocomplete="off"
+                                  required> </textarea>
+                    </md-input-container>
+                    <md-input-container class="md-block send-button">
+                        <i class="fa fa-camera fa-2x photo"></i>
+                        <i class="fa fa-file-audio-o fa-2x audio"></i>
+                        <md-button class="right md-raised md-primary submit-button" ng-click="vm.submit()">
+                            Send
+                        </md-button>
+                    </md-input-container>
+                </md-card>
+            </div>
+        </form>
     </ion-content>
 </ion-view>

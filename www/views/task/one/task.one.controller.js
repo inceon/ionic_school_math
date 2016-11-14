@@ -19,6 +19,7 @@
 
         vm.submit = answer;
         vm.task = taskInfo;
+        vm.upload = upload;
 
         $rootScope.page.title += vm.task.text;
 
@@ -36,6 +37,10 @@
 
         function answer() {
             task.answer(vm.data);
+        }
+
+        function upload($file) {
+            console.log($file);
         }
 
     }

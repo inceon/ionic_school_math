@@ -1,3 +1,58 @@
 .task {
+    background-color: rgb(226, 226, 226);
+    .explanation {
+        font-weight: bold;
+        line-height: 20px;
+        letter-spacing: 0px;
+        color: rgb(0, 0, 0);
+        font-family: sans-serif, "Helvetica Neue", Arial;
+        font-size: 17px;
+    }
 
+    .photo, .audio {
+        float: left;
+        cursor: pointer;
+        margin: 7px 0 0 7px;
+        color: #555;
+    }
+
+    .submit-button {
+        float: right
+    }
+
+    .answer {
+        padding: 10px 5px 0;
+        .check-tutor {
+            position: absolute;
+            left: 30px;
+        }
+    }
+
+    md-input-container {
+        margin: 5px 0 0;
+    }
+
+    .tutor-text {
+        margin: 25px 15px 0;
+        line-height: 24px;
+        letter-spacing: 0px;
+        color: rgb(30, 64, 114);
+        font-family: "Bad Script", cursive;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .fox {
+        width: 122px;
+        float: left;
+        margin-right: 15px;
+    }
+
+    .ask-form {
+        padding-top: 15px;
+    }
+
+    .ask-card {
+        //float: right;
+    }
 }
