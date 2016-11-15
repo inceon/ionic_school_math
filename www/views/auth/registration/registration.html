@@ -83,7 +83,7 @@
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm ng-if="vm.schools.length">
             <label>{{vm.label.school}}</label>
-            <md-select ng-model="vm.registerData.school_id">
+            <md-select ng-model="vm.registerData.school_id" required>
                 <md-optgroup label="{{vm.label.school}}">
                     <md-option ng-value="i.id"
                                ng-repeat="i in vm.schools">
@@ -94,7 +94,7 @@
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
             <label>{{vm.label.role}}</label>
-            <md-select ng-model="vm.registerData.role_id">
+            <md-select ng-model="vm.registerData.role_id" required>
                 <md-optgroup label="{{vm.label.role}}">
                     <md-option ng-value="i.id"
                                ng-repeat="i in vm.role">
@@ -105,7 +105,7 @@
         </md-input-container>
         <md-input-container class="md-block" flex-gt-sm ng-if="vm.registerData.role_id == 2">
             <label>{{vm.label.my_classes}}</label>
-            <md-select ng-model="vm.registerData.my_classes" multiple>
+            <md-select ng-model="vm.registerData.my_classes" multiple required>
                 <md-optgroup label="{{vm.label.my_classes}}">
                     <md-option ng-value="i"
                                ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
@@ -116,7 +116,7 @@
         <div layout-gt-xs="row">
             <md-input-container class="md-block" flex-gt-xs>
                 <label >{{vm.label.class}}</label>
-                <md-select ng-model="vm.registerData.number">
+                <md-select ng-model="vm.registerData.number" required>
                     <md-optgroup label="{{vm.label.my_classes}}">
                         <md-option ng-value="i"
                                    ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
@@ -124,6 +124,7 @@
                     </md-optgroup>
                 </md-select>
             </md-input-container>
+             <!--TODO: FIX ng-model-->
             <md-input-container>
                 <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32" autocomplete="off" required>
             </md-input-container>
