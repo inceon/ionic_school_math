@@ -1,0 +1,49 @@
+.auth {
+    background-color: $applicationBackground;
+    md-content {
+        background-color: $applicationBackground;
+    }
+    .header {
+        position: relative;
+        .title {
+            position: absolute;
+            bottom: 0;
+            left: 40%;
+            line-height: 44px;
+            letter-spacing: 0px;
+            color: rgb(30, 64, 114);
+            font-family: "Bad Script";
+            display: inline;
+            font-size: 36px;
+            margin: 0;
+        }
+        #login_fox {
+            width: 110px;
+            float: right;
+        }
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+    .link {
+        padding: 5px 0;
+        text-align: center;
+        line-height: 20px;
+        letter-spacing: 0px;
+        font-size: 17px;
+        font-family: sans-serif, "Helvetica Neue", Arial;
+        a {
+            color: rgb(69, 122, 177);
+        }
+    }
+    .button {
+        background: #1E4072;
+        opacity: 0.66;
+        font-family: 'Open Sans', Arial;
+        font-weight: 700;
+        color: #FFFFFF;
+        font-size: 19px;
+    }
+}

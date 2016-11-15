@@ -1,122 +1,111 @@
-<ion-header-bar align-title="left" class="bar-positive">
-    <button class="button icon-left ion-chevron-left" ng-click="$ionicGoBack()"></button>
-    <h1 class="title text-center">REGISTER PAGE</h1>
-    <!--<div class="buttons">-->
-    <!--<button class="button">Right Button</button>-->
-    <!--</div>-->
-</ion-header-bar>
 <ion-content class="registration has-header md-padding">
-    <form class="list">
-        <md-input-container class="md-block" flex-gt-sm>
-            <span class="text-center" ng-cloak>
-                <img ngf-thumbnail="vm.registerData.photo" alt="gregergre" width="100">
-            </span>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.photo}}</label>
-            <input type="file"
-                   ng-model="vm.registerData.photo"
-                   autocomplete="off"
-                   ngf-select accept="image/*"
-                   ngf-max-size="2MB"
-                   required>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.phone}}</label>
-            <input name="phone"
-                   placeholder="{{vm.label.phone}}"
-                   ui-mask-placeholder
-                   ui-mask-placeholder-char="_"
-                   type="tel"
-                   ng-model="vm.registerData.phone"
-                   key-enter="vm.login()"
-                   ui-mask="+38 (999) 999 - 99 - 99"
-                   autocomplete="off"
-                   ng-minlength="10"
-                   required>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.password}}</label>
-            <input placeholder="{{vm.label.password}}"
-                   type="tel"
-                   ng-model="vm.registerData.password"
-                   minlength="6"
-                   maxlength="32"
-                   autocomplete="off"
-                   required>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.first_name}}</label>
-            <input placeholder="{{vm.label.first_name}}"
-                   type="text"
-                   ng-model="vm.registerData.first_name"
-                   maxlength="55"
-                   autocomplete="off"
-                   required>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.second_name}}</label>
-            <input placeholder="{{vm.label.second_name}}"
-                   type="text"
-                   ng-model="vm.registerData.second_name"
-                   maxlength="55"
-                   autocomplete="off" >
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.last_name}}</label>
-            <input placeholder="{{vm.label.last_name}}"
-                   type="text"
-                   ng-model="vm.registerData.last_name"
-                   maxlength="55"
-                   autocomplete="off"
-                   required>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.sity}}</label>
-            <input id="autocomplete"
-                   placeholder="{{vm.label.sity}}"
-                   type="text"
-                   ng-model="vm.registerData.sity_name"
-                   maxlength="32"
-                   autocomplete="off"
-                   required>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm ng-if="vm.schools.length">
-            <label>{{vm.label.school}}</label>
-            <md-select ng-model="vm.registerData.school_id" required>
-                <md-optgroup label="{{vm.label.school}}">
-                    <md-option ng-value="i.id"
-                               ng-repeat="i in vm.schools">
-                        {{i.name}}
-                    </md-option>
-                </md-optgroup>
-            </md-select>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm>
-            <label>{{vm.label.role}}</label>
-            <md-select ng-model="vm.registerData.role_id" required>
-                <md-optgroup label="{{vm.label.role}}">
-                    <md-option ng-value="i.id"
-                               ng-repeat="i in vm.role">
-                        {{i.name}}
-                    </md-option>
-                </md-optgroup>
-            </md-select>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-sm ng-if="vm.registerData.role_id == 2">
-            <label>{{vm.label.my_classes}}</label>
-            <md-select ng-model="vm.registerData.my_classes" multiple required>
-                <md-optgroup label="{{vm.label.my_classes}}">
-                    <md-option ng-value="i"
-                               ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
-                    </md-option>
-                </md-optgroup>
-            </md-select>
-        </md-input-container>
-        <div layout-gt-xs="row">
-            <md-input-container class="md-block" flex-gt-xs>
-                <label >{{vm.label.class}}</label>
-                <md-select ng-model="vm.registerData.number" required>
+    <md-content layout-padding>
+        <div class="header">
+            <p class="title">
+                Реєстрація
+            </p>
+            <img id="login_fox" src="../../../img/fox.png"/>
+        </div>
+        <form class="list">
+            <md-input-container class="md-block" flex-gt-sm>
+                <span class="text-center" ng-cloak>
+                    <img ngf-thumbnail="vm.registerData.photo" alt="gregergre" width="100">
+                </span>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.photo}}</label>
+                <input type="file"
+                       ng-model="vm.registerData.photo"
+                       autocomplete="off"
+                       ngf-select accept="image/*"
+                       ngf-max-size="2MB"
+                       required>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.phone}}</label>
+                <input name="phone"
+                       placeholder="{{vm.label.phone}}"
+                       ui-mask-placeholder
+                       ui-mask-placeholder-char="_"
+                       type="tel"
+                       ng-model="vm.registerData.phone"
+                       key-enter="vm.login()"
+                       ui-mask="+38 (999) 999 - 99 - 99"
+                       autocomplete="off"
+                       ng-minlength="10"
+                       required>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.password}}</label>
+                <input placeholder="{{vm.label.password}}"
+                       type="tel"
+                       ng-model="vm.registerData.password"
+                       minlength="6"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </md-input-container>
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                    <label>{{vm.label.last_name}}</label>
+                    <input placeholder="{{vm.label.last_name}}"
+                           ng-model="vm.registerData.last_name"
+                           maxlength="55"
+                           autocomplete="off"
+                           required>
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>{{vm.label.first_name}}</label>
+                    <input placeholder="{{vm.label.first_name}}"
+                           ng-model="vm.registerData.first_name"
+                           maxlength="55"
+                           autocomplete="off"
+                           required>
+                </md-input-container>
+            </div>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.second_name}}</label>
+                <input placeholder="{{vm.label.second_name}}"
+                       type="text"
+                       ng-model="vm.registerData.second_name"
+                       maxlength="55"
+                       autocomplete="off">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.sity}}</label>
+                <input id="autocomplete"
+                       placeholder="{{vm.label.sity}}"
+                       type="text"
+                       ng-model="vm.registerData.sity_name"
+                       maxlength="32"
+                       autocomplete="off"
+                       required>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm ng-if="vm.schools.length">
+                <label>{{vm.label.school}}</label>
+                <md-select ng-model="vm.registerData.school_id" required>
+                    <md-optgroup label="{{vm.label.school}}">
+                        <md-option ng-value="i.id"
+                                   ng-repeat="i in vm.schools">
+                            {{i.name}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>{{vm.label.role}}</label>
+                <md-select ng-model="vm.registerData.role_id" required>
+                    <md-optgroup label="{{vm.label.role}}">
+                        <md-option ng-value="i.id"
+                                   ng-repeat="i in vm.role">
+                            {{i.name}}
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm ng-if="vm.registerData.role_id == 2">
+                <label>{{vm.label.my_classes}}</label>
+                <md-select ng-model="vm.registerData.my_classes" multiple required>
                     <md-optgroup label="{{vm.label.my_classes}}">
                         <md-option ng-value="i"
                                    ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
@@ -124,15 +113,33 @@
                     </md-optgroup>
                 </md-select>
             </md-input-container>
-             <!--TODO: FIX ng-model-->
-            <md-input-container>
-                <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32" autocomplete="off" required>
-            </md-input-container>
-        </div>
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                    <label>{{vm.label.class}}</label>
+                    <md-select ng-model="vm.registerData.number" required>
+                        <md-optgroup label="{{vm.label.my_classes}}">
+                            <md-option ng-value="i"
+                                       ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <!--TODO: FIX ng-model-->
+                <md-input-container>
+                    <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32"
+                           autocomplete="off" required>
+                </md-input-container>
+            </div>
 
-        <button type="submit" class="button button-block button-positive" ng-click="vm.register()">Register</button>
-        <a class="button button-block button-outline button-stable" href="#/login">Login</a>
-    </form>
+            <button type="submit" class="button button-block button-positive" ng-click="vm.register()">Створити
+                аккаунт
+            </button>
+            <div class="link">
+                У Вас вже є аккаунт?
+                <a href="#/login">Увійти</a>
+            </div>
+        </form>
+    </md-content>
 </ion-content>
 
 

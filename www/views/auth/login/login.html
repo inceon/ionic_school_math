@@ -1,7 +1,9 @@
 <md-content class="login" layout-padding>
     <div class="header">
-        <p class="title">Вхід</p>
-        <img id="login_fox" src="../../../img/fox.png" width="130"/>
+        <p class="title">
+            Вхід
+        </p>
+        <img id="login_fox" src="../../../img/fox.png"/>
     </div>
     <div>
         <form novalidate="" name="signinForm">
@@ -18,9 +20,9 @@
                        ng-minlength="10"
                        required
                        md-no-asterisk>
-                <div class="text-center" ng-messages="signinForm.phone.$error" ng-if="signinForm.phone.$touched">
-                    <div class="error-block" ng-message="minlength">Номер телефона должен быть не меньше 10 символов</div>
-                    <div class="error-block" ng-message="required">Это поле обязательное для заполнения</div>
+                <div ng-messages="signinForm.phone.$error">
+                    <div ng-message="minlength">Номер телефона должен быть не меньше 10 символов</div>
+                    <div ng-message="required">Это поле обязательное для заполнения</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
@@ -32,8 +34,9 @@
                        maxlength="32"
                        autocomplete="off"
                        required>
-                <div ng-messages="signinForm.password.$error" ng-if="signinForm.password.$touched">
+                <div ng-messages="signinForm.password.$error">
                     <div ng-message="required">Это поле обязательное для заполнения</div>
+                    <div ng-message="minlength">Пароль должен быть не меньше 6 символов</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
@@ -41,9 +44,11 @@
                     Запомнить меня
                 </md-checkbox>
             </md-input-container>
-            <md-button class="md-raised md-primary" ng-click="vm.login()">Увійти</md-button>
+            <button class="button button-block button-positive" ng-click="vm.login()">Увійти</button>
         </form>
-        <a href="#/reset-password">Забули пароль?</a>
-        <a href="#/registration">Створити аккаунт</a>
+        <div class="link">
+            <a href="#/reset-password">Забули пароль?</a>
+            <a href="#/registration">Створити аккаунт</a>
+        </div>
     </div>
 </md-content>

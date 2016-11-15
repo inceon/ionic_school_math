@@ -55,7 +55,6 @@
             user.register(vm.registerData)
                 .then(function (response) {
                     console.log(response);
-                    console.log(i);
                 });
         }
 

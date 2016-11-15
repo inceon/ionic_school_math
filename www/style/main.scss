@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Bad+Script');
 
+$applicationBackground: rgb(253,253,253);
+
 @import "../views/lazyload/lazyload";
-@import "../views/auth/login/auth";
+@import "../views/auth/auth";
+@import "../views/auth/login/login";
 @import "../views/auth/registration/registration";
+@import "../views/auth/forgotPassword/forgot-password";
 @import "../views/sections/sections";
 @import "../views/settings/setting";
 @import "../views/task/one/task";
