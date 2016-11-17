@@ -1,13 +1,18 @@
 <ion-view class="task">
-    <div class="bar bar-subheader bar-balanced" ng-if="vm.task.done" ng-cloak="">
-        <h2 class="title">Task complete</h2>
-    </div>
     <ion-content class="has-header">
+        <div class="result" ng-if="vm.task.done" ng-cloak="">
+            <h2 class="title">Завдання виконано</h2>
+        </div>
         <div class="list" ng-if="vm.task">
-            <div ng-if="vm.task.files.length">
-                <img ng-src="{{ file.url }}" style="max-width: 100%" alt="image" ng-repeat="file in vm.task.files">
+            <div class="photos"
+                 ng-if="vm.task.files.length">
+                <img ng-src="{{ file.url }}"
+                     alt="image"
+                     ng-repeat="file in vm.task.files" ng-if="$index < 1">
             </div>
-            <p class="explanation" align="center">{{ vm.task.explanation }}</p>
+            <p class="explanation" align="center">
+                {{ vm.task.explanation }}
+            </p>
         </div>
         <md-card class="answer">
             <form novalidate="" name="answerForm">

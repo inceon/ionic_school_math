@@ -1,5 +1,5 @@
 <ion-view class="all-discipline" ng-init="$root.isHome = true">
-    <md-content class="has-header">
+    <ion-content class="has-header">
         <div class="list" ng-if="vm.disciplines">
             <div class="left">
                 <button class="button button-positive button-clear no-animation icon ion-chevron-left"
@@ -19,21 +19,21 @@
                     </a>
                 </ion-slide>
             </ion-slide-box>
-            <md-button type="submit" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
-                Select discipline
-            </md-button>
+            <button class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
+                Обрати предмет
+            </button>
             <h4 class="text-center">TODO</h4>
-            <ion-list>
-                <ion-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">
+            <md-list>
+                <md-list-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
-                </ion-item>
-            </ion-list>
+                </md-list-item>
+            </md-list>
             <h4 class="text-center">Push Notifi</h4>
-            <ion-list>
-                <ion-item ng-repeat="item in vm.todo.push" ui-sref="app.discipline.task({ taskId : item.id})">
+            <md-list>
+                <md-list-item ng-repeat="item in vm.todo.push" ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
-                </ion-item>
-            </ion-list>
+                </md-list-item>
+            </md-list>
         </div>
-    </md-content>
+    </ion-content>
 </ion-view>

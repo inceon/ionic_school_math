@@ -10,7 +10,7 @@
     function Task($rootScope, $stateParams, task, prepGetLabels, taskInfo) {
 
         $rootScope.page = {
-            title: 'Task '
+            title: 'Завдання'
         };
 
         var vm = this;
@@ -20,8 +20,6 @@
         vm.submit = answer;
         vm.task = taskInfo;
         vm.upload = upload;
-
-        $rootScope.page.title += vm.task.text;
 
         vm.data = vm.task.done || {};
         if (vm.task.done) {

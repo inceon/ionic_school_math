@@ -105,6 +105,7 @@
 
         function requestComplete(response) {
             var promise = $q.defer();
+            $ionicLoading.hide();
 
             console.info('response complete', response.config.url, response);
 
@@ -115,7 +116,6 @@
                 promise.reject(response);
             }
 
-            $ionicLoading.hide();
             return promise.promise;
         }
     }

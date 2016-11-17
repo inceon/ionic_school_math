@@ -1,5 +1,5 @@
 <ion-view class="books" ng-init="$root.isHome = false">
-    <md-content class="has-header">
+    <ion-content class="has-header">
         <div class="list" ng-if="vm.myBook" >
             <div ng-repeat="book in vm.myBook" class="card">
                 <a class="item item-thumbnail-left" ui-sref="app.discipline.book({ bookId: book.book.id })">
@@ -27,9 +27,9 @@
                     </a>
                 </ion-slide>
             </ion-slide-box>
-            <button type="submit" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">Select
-                book
+            <button type="submit" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
+                Обрати книгу
             </button>
         </div>
-    </md-content>
+    </ion-content>
 </ion-view>

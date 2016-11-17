@@ -5,6 +5,7 @@
     }
     .header {
         position: relative;
+        margin-bottom: 10px;
         .title {
             position: absolute;
             bottom: 0;
@@ -15,11 +16,11 @@
             font-family: "Bad Script";
             display: inline;
             //font-size: 36px;
-            font-size: 10vw;
+            font-size: 9vw;
             margin: 0;
         }
         #login_fox {
-            width: 110px;
+            width: 100px;
             float: right;
         }
         &:after {
@@ -46,5 +47,9 @@
         font-weight: 700;
         color: #FFFFFF;
         font-size: 19px;
+    }
+
+    input {
+        border-bottom: 1px solid #ccc;
     }
 }

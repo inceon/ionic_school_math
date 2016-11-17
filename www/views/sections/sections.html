@@ -1,19 +1,18 @@
 <ion-view class="sections">
-    <ion-content class="has-header">
-        <md-content ng-if="vm.sections">
-            <md-list flex>
-                <md-card ng-repeat="section in vm.sections">
-                    <md-list-item class="name" ng-click="vm.showThemes(section)">
-                        <img src="http://s3.amazonaws.com/alivenotdead-v2/avatars/6e/57/img-7973.JPG"/>
-                        <div class="md-list-item-text" layout="column">
-                            {{section.name}}
-                        </div>
-                    </md-list-item>
-                    <md-list-item ng-if="section.data.show" ng-repeat="item in section.data" ui-sref="app.discipline.tasks({ themeId : item.id})">
-                        <p>{{item.name}}</p>
-                    </md-list-item>
-                </md-card>
-            </md-list>
-        </md-content>
+    <ion-content class="has-header" ng-if="vm.sections">
+        <md-list>
+            <md-card ng-repeat="section in vm.sections">
+                <md-list-item class="name" ng-click="vm.showThemes(section)">
+                    <img src="http://s3.amazonaws.com/alivenotdead-v2/avatars/6e/57/img-7973.JPG"/>
+                    <div class="md-list-item-text" layout="column">
+                        {{section.name}}
+                    </div>
+                </md-list-item>
+                <md-list-item ng-if="section.data.show" ng-repeat="item in section.data"
+                              ui-sref="app.discipline.tasks({ themeId : item.id})">
+                    <p>{{item.name}}</p>
+                </md-list-item>
+            </md-card>
+        </md-list>
     </ion-content>
 </ion-view>

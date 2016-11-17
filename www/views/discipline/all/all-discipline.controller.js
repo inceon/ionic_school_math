@@ -10,7 +10,7 @@
     function Disciplines($rootScope, allDiscipline, $state, todo, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
-            title: 'Disciplines'
+            title: 'Предмети'
         };
 
         var vm = this;
