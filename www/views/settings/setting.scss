@@ -1,5 +1,14 @@
 .setting {
     md-input-container input{
-        border-bottom: 2px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .button {
+        background: #1E4072;
+        opacity: 0.66;
+        font-family: 'Open Sans', Arial;
+        font-weight: 700;
+        color: #FFFFFF;
+        font-size: 18px;
     }
 }

@@ -4,12 +4,12 @@
         .module('app')
         .controller('Settings', Settings);
 
-    Settings.$inject = ['$rootScope', 'user', 'userInfo'];
+    Settings.$inject = ['$rootScope', 'user', 'userInfo', 'toastr'];
 
-    function Settings ($rootScope, user, userInfo) {
+    function Settings ($rootScope, user, userInfo, toastr) {
 
         $rootScope.page = {
-            title: 'Setting'
+            title: 'Налаштування'
         };
 
         var vm = this;
@@ -29,7 +29,11 @@
             delete vm.data.photo;
             if (vm.data.image_file)
                 vm.data.image_file = vm.data.image_file.base64;
-            user.update(vm.data);
+            user
+                .update(vm.data)
+                .then(function(){
+                    toastr.success("Дані успішно оновлені");
+                });
         }
 
     }

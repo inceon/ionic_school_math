@@ -63,7 +63,7 @@
         </md-card>
 
         <p class="tutor-text">Виникли запитання? Зверніться до репетитора</p>
-        <form class="ask-form">
+        <form class="ask-form" ng-click="vm.question()">
             <div layout-gt-sm="row">
                 <img src="../../../img/fox.png" class="fox">
                 <md-card class="ask-card">
@@ -75,12 +75,13 @@
                                   type="text"
                                   ng-model="vm.data.ask"
                                   autocomplete="off"
-                                  required> </textarea>
+                                  required
+                                  disabled> </textarea>
                     </md-input-container>
                     <md-input-container class="md-block send-button">
                         <i class="fa fa-camera fa-2x photo"></i>
                         <i class="fa fa-file-audio-o fa-2x audio"></i>
-                        <md-button class="right md-raised md-primary submit-button" ng-click="vm.submit()">
+                        <md-button class="right md-raised md-primary submit-button" ng-click="vm.question()" disabled>
                             Send
                         </md-button>
                     </md-input-container>

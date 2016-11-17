@@ -1,25 +1,25 @@
 <ion-view class="setting" ng-cloak>
-    <ion-content>
-        <md-content class="has-header">
-            <form>
-                <div layout-gt-sm="row">
-                    <md-input-container class="md-block" flex-gt-sm>
+    <ion-content layout-padding>
+        <form>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
                         <span class="text-center" ng-cloak>
                             <img ngf-thumbnail="vm.data.photo || vm.data.image_file" alt="profile photo" width="100">
                         </span>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <!--<label>{{vm.label.photo}}</label>-->
-                        <input type="file"
-                               ng-model="vm.data.image_file"
-                               autocomplete="off"
-                               ngf-select
-                               accept="image/*"
-                               ngf-max-size="2MB"
-                               required
-                               base-sixty-four-input>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <!--<label>{{vm.label.photo}}</label>-->
+                    <input type="file"
+                           ng-model="vm.data.image_file"
+                           autocomplete="off"
+                           ngf-select
+                           accept="image/*"
+                           ngf-max-size="2MB"
+                           required
+                           base-sixty-four-input>
+                </md-input-container>
+                <div layout="row">
+                    <md-input-container class="md-block" flex>
                         <label>{{vm.label.first_name}}</label>
                         <input type="text"
                                ng-model="vm.data.first_name"
@@ -27,7 +27,7 @@
                                autocomplete="off"
                                required>
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex>
                         <label>{{vm.label.last_name}}</label>
                         <input type="text"
                                ng-model="vm.data.last_name"
@@ -35,66 +35,66 @@
                                autocomplete="off"
                                required>
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>{{vm.label.sity}}</label>
-                        <input id="autocomplete"
-                               type="text"
-                               ng-model="vm.data.sity_name"
-                               maxlength="32"
-                               autocomplete="off"
-                               required>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>{{vm.label.school}}</label>
-                        <input type="text"
-                               ng-model="vm.data.school"
-                               maxlength="32"
-                               autocomplete="off"
-                               required>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>{{vm.label.class}}</label>
-                        <input type="text"
-                               ng-model="vm.data.class"
-                               maxlength="32"
-                               autocomplete="off"
-                               required>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>{{vm.label.my_classes}}</label>
-                        <md-select ng-model="vm.data.my_classes" multiple>
-                            <md-optgroup label="{{vm.label.my_classes}}">
-                                <md-option ng-value="i" ng-selected="vm.my_classes.indexOf(i) != -1"
-                                           ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
-                                </md-option>
-                            </md-optgroup>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>{{vm.label.phone}}</label>
-                        <input name="phone"
-                               ui-mask-placeholder
-                               ui-mask-placeholder-char="_"
-                               type="tel"
-                               ng-model="vm.data.phone"
-                               key-enter="vm.login()"
-                               ui-mask="+38 (999) 999 - 99 - 99"
-                               autocomplete="off"
-                               ng-minlength="10"
-                               required>
-                    </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <label>{{vm.label.password}}</label>
-                        <input type="tel"
-                               ng-model="vm.data.password"
-                               minlength="6"
-                               maxlength="32"
-                               autocomplete="off">
-                    </md-input-container>
                 </div>
-                <md-button class="md-raised md-primary" ng-click="vm.save()">Save</md-button>
-            </form>
-        </md-content>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>{{vm.label.sity}}</label>
+                    <input id="autocomplete"
+                           type="text"
+                           ng-model="vm.data.sity_name"
+                           maxlength="32"
+                           autocomplete="off"
+                           required>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>{{vm.label.school}}</label>
+                    <input type="text"
+                           ng-model="vm.data.school"
+                           maxlength="32"
+                           autocomplete="off"
+                           required>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>{{vm.label.class}}</label>
+                    <input type="text"
+                           ng-model="vm.data.class"
+                           maxlength="32"
+                           autocomplete="off"
+                           required>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>{{vm.label.my_classes}}</label>
+                    <md-select ng-model="vm.data.my_classes" multiple>
+                        <md-optgroup label="{{vm.label.my_classes}}">
+                            <md-option ng-value="i" ng-selected="vm.my_classes.indexOf(i) != -1"
+                                       ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
+                            </md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>{{vm.label.phone}}</label>
+                    <input name="phone"
+                           ui-mask-placeholder
+                           ui-mask-placeholder-char="_"
+                           type="tel"
+                           ng-model="vm.data.phone"
+                           key-enter="vm.login()"
+                           ui-mask="+38 (999) 999 - 99 - 99"
+                           autocomplete="off"
+                           ng-minlength="10"
+                           required>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>{{vm.label.password}}</label>
+                    <input type="tel"
+                           ng-model="vm.data.password"
+                           minlength="6"
+                           maxlength="32"
+                           autocomplete="off">
+                </md-input-container>
+            </div>
+            <button class="button button-block button-positive" ng-click="vm.save()">Save</button>
+        </form>
     </ion-content>
 </ion-view>
 
