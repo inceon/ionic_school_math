@@ -8,7 +8,7 @@
                  ng-if="vm.task.files.length">
                 <img ng-src="{{ file.url }}"
                      alt="image"
-                     ng-repeat="file in vm.task.files" ng-if="$index < 1">
+                     ng-repeat="file in vm.task.files">
             </div>
             <p class="explanation" align="center">
                 {{ vm.task.explanation }}

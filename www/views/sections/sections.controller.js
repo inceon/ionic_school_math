@@ -10,7 +10,7 @@
     function Sections($rootScope, allSections, book) {
 
         $rootScope.page = {
-            title: 'Sections'
+            title: 'Теми'
         };
 
         var vm = this;

@@ -10,7 +10,7 @@
     function DisciplineBooks($state, discipline, book, $rootScope, userBook, allBooks, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
-            title: 'Discipline Books'
+            title: 'Книги з предмету'
         };
 
         var vm = this;

@@ -8,7 +8,7 @@
                 <img id="login_fox" src="../../../img/fox.png"/>
             </div>
         </div>
-        <form class="list">
+        <form class="list" name="registerForm">
             <!--TODO: restyle img-->
             <!--<md-input-container class="md-block" flex-gt-sm>-->
                 <!--<span class="text-center" ng-cloak>-->
@@ -37,56 +37,85 @@
                        autocomplete="off"
                        ng-minlength="10"
                        required>
+                <div ng-messages="registerForm.phone.$error">
+                    <div ng-message="minlength">Номер телефону повинен бути не менше 10 символів</div>
+                    <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.password}}</label>
                 <input placeholder="{{vm.label.password}}"
+                       name="password"
                        type="tel"
                        ng-model="vm.registerData.password"
                        minlength="6"
-                       maxlength="32"
                        autocomplete="off"
                        required>
+                <div ng-messages="registerForm.password.$error">
+                    <div ng-message="minlength">Пароль повинен бути не менше 6 символів</div>
+                    <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                </div>
             </md-input-container>
             <div layout="row">
                 <md-input-container class="md-block" flex>
                     <label>{{vm.label.last_name}}</label>
                     <input placeholder="{{vm.label.last_name}}"
+                           name="last_name"
                            ng-model="vm.registerData.last_name"
                            maxlength="55"
                            autocomplete="off"
                            required>
+                    <div ng-messages="registerForm.last_name.$error">
+                        <div ng-message="maxlength">Прізвище більше 55 символів</div>
+                        <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex>
                     <label>{{vm.label.first_name}}</label>
                     <input placeholder="{{vm.label.first_name}}"
+                           name="first_name"
                            ng-model="vm.registerData.first_name"
                            maxlength="55"
                            autocomplete="off"
                            required>
+                    <div ng-messages="registerForm.first_name.$error">
+                        <div ng-message="maxlength">Ім'я більше 55 символів</div>
+                        <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                    </div>
                 </md-input-container>
             </div>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.second_name}}</label>
                 <input placeholder="{{vm.label.second_name}}"
+                       name="second_name"
                        type="text"
                        ng-model="vm.registerData.second_name"
                        maxlength="55"
                        autocomplete="off">
+                <div ng-messages="registerForm.second_name.$error">
+                    <div ng-message="maxlength">По-батькові більше 55 символів</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.sity}}</label>
                 <input id="autocomplete"
                        placeholder="{{vm.label.sity}}"
+                       name="city"
                        type="text"
                        ng-model="vm.registerData.sity_name"
                        maxlength="32"
                        autocomplete="off"
                        required>
+                <div ng-messages="registerForm.city.$error">
+                    <div ng-message="maxlength">Назва міста більше 32 символів</div>
+                    <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm ng-if="vm.schools.length">
                 <label>{{vm.label.school}}</label>
-                <md-select ng-model="vm.registerData.school_id" required>
+                <md-select ng-model="vm.registerData.school_id"
+                           name="school"
+                           required>
                     <md-optgroup label="{{vm.label.school}}">
                         <md-option ng-value="i.id"
                                    ng-repeat="i in vm.schools">
@@ -94,10 +123,15 @@
                         </md-option>
                     </md-optgroup>
                 </md-select>
+                <div ng-messages="registerForm.school.$error">
+                    <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.role}}</label>
-                <md-select ng-model="vm.registerData.role_id" required>
+                <md-select ng-model="vm.registerData.role_id"
+                           name="role_id"
+                           required>
                     <md-optgroup label="{{vm.label.role}}">
                         <md-option ng-value="i.id"
                                    ng-repeat="i in vm.role">
@@ -105,37 +139,62 @@
                         </md-option>
                     </md-optgroup>
                 </md-select>
+                <div ng-messages="registerForm.role_id.$error">
+                    <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm ng-if="vm.registerData.role_id == 2">
                 <label>{{vm.label.my_classes}}</label>
-                <md-select ng-model="vm.registerData.my_classes" multiple required>
+                <md-select ng-model="vm.registerData.my_classes"
+                           name="my_classes"
+                           multiple
+                           required>
                     <md-optgroup label="{{vm.label.my_classes}}">
                         <md-option ng-value="i"
-                                   ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
+                                   ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">
+                            {{i}}
                         </md-option>
                     </md-optgroup>
                 </md-select>
+                <div ng-messages="registerForm.my_classes.$error">
+                    <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                </div>
             </md-input-container>
             <div layout="row">
                 <md-input-container class="md-block" flex>
                     <label>{{vm.label.class}}</label>
-                    <md-select ng-model="vm.registerData.number" required>
+                    <md-select ng-model="vm.registerData.number"
+                               name="number"
+                               required>
                         <md-optgroup label="{{vm.label.my_classes}}">
                             <md-option ng-value="i"
-                                       ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">{{i}}
+                                       ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">
+                                {{i}}
                             </md-option>
                         </md-optgroup>
                     </md-select>
+                    <div ng-messages="registerForm.number.$error">
+                        <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                    </div>
                 </md-input-container>
                 <!--TODO: FIX ng-model-->
                 <md-input-container>
-                    <input placeholder="{{vm.label.class}}" type="text" ng-model="vm.registerData.school" maxlength="32"
-                           autocomplete="off" required>
+                    <input placeholder="{{vm.label.class}}"
+                           type="text"
+                           name="letter"
+                           ng-model="vm.registerData.school"
+                           maxlength="32"
+                           autocomplete="off"
+                           required>
+                    <div ng-messages="registerForm.letter.$error">
+                        <div ng-message="maxlength">Текст більше 32 символів</div>
+                        <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                    </div>
                 </md-input-container>
             </div>
 
-            <button type="submit" class="button button-block button-positive" ng-click="vm.register()">Створити
-                аккаунт
+            <button type="submit" class="button button-block button-positive" ng-click="vm.register(registerForm)">
+                Створити аккаунт
             </button>
             <div class="link">
                 У Вас вже є аккаунт?

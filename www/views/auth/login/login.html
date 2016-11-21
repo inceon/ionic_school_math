@@ -8,7 +8,7 @@
         </div>
     </div>
     <div>
-        <form novalidate="" name="signinForm">
+        <form novalidate="" name="signinForm" ng-model="vm.signinForm">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.phone}}</label>
                 <input name="phone"
@@ -42,11 +42,11 @@
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
-                <md-checkbox ng-model="vm.authData.remember">
+                <md-checkbox class="blue" ng-model="vm.authData.remember">
                     Запомнить меня
                 </md-checkbox>
             </md-input-container>
-            <button class="button button-block button-positive" ng-click="vm.login()">Увійти</button>
+            <button class="button button-block button-positive" ng-click="vm.login(signinForm)">Увійти</button>
         </form>
         <div class="link">
             <a href="#/reset-password">Забули пароль?</a>

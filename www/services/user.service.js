@@ -49,7 +49,11 @@
         function register(data){
             return http.post(url.user.signup, data)
                 .then(function (response) {
-                    console.log(response);
+                    $localStorage.auth_key = response.auth_key;
+                    $sessionStorage.auth_key = response.auth_key;
+                    $rootScope.user = response.user;
+                    $rootScope.user.auth_key = response.auth_key;
+                    $state.go('app.discipline.all');
                 });
         }
 

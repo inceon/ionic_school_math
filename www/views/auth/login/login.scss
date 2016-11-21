@@ -4,4 +4,7 @@
         border-bottom: 1px solid #ccc;
     }
 
+    md-checkbox.md-checked.blue .md-icon  {
+        background-color: rgba(0, 0, 255, 0.56);
+    }
 }

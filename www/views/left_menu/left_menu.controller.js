@@ -4,9 +4,9 @@
         .module('app')
         .controller('LeftMenu', LeftMenu);
 
-    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicViewService'];
+    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicHistory'];
 
-    function LeftMenu ($rootScope, user, $state, $ionicViewService) {
+    function LeftMenu ($rootScope, user, $state, $ionicHistory) {
 
         var vm = this;
 
@@ -20,7 +20,7 @@
         }
 
         function discipline() {
-            $ionicViewService.nextViewOptions({
+            $ionicHistory.nextViewOptions({
                 disableBack: true
             });
             $state.go('app.discipline.all',{},{location:'replace'});

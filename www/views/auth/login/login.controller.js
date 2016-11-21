@@ -15,9 +15,12 @@
             phone: '1234567936',
             password: '11111111'
         };
+        // vm.authData = null;
+
         vm.label = prepGetLabels.label;
 
-        function login() {
+        function login(form) {
+            if (form.$invalid) { return; }
             user.login(vm.authData);
         }
     }

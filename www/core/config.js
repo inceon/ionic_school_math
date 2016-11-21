@@ -4,9 +4,10 @@
         .module('app')
         .config(mainConfig);
 
-    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider'];
 
-    function mainConfig($stateProvider, $urlRouterProvider) {
+    function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+        $ionicConfigProvider.views.maxCache(0);
         $stateProvider
             .state('login', {
                 url: '/login',

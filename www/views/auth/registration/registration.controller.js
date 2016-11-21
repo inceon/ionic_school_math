@@ -30,6 +30,8 @@
             class: Math.floor(Math.random() * (11 - 3) + 3)
         };
 
+        vm.registerData = null;
+
         vm.schools = null;
         vm.role = [
             {
@@ -46,16 +48,14 @@
         vm.label = prepGetLabels.label;
 
         vm.register = register;
-        function register(){
-            // if (vm.form.$invalid) { return; }
+
+        function register(form) {
+            if (form.$invalid) { return; }
             console.log(vm.registerData);
 
             // vm.registerData.role_id = vm.registerData.role_id.id;
             // vm.registerData.school_id = vm.registerData.school_id.id;
-            user.register(vm.registerData)
-                .then(function (response) {
-                    console.log(response);
-                });
+            user.register(vm.registerData);
         }
 
         initAutocomplete = function () {
