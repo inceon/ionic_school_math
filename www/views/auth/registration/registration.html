@@ -163,8 +163,8 @@
             <div layout="row">
                 <md-input-container class="md-block" flex>
                     <label>{{vm.label.class}}</label>
-                    <md-select ng-model="vm.registerData.number"
-                               name="number"
+                    <md-select ng-model="vm.registerData.class"
+                               name="class"
                                required>
                         <md-optgroup label="{{vm.label.my_classes}}">
                             <md-option ng-value="i"
@@ -173,16 +173,15 @@
                             </md-option>
                         </md-optgroup>
                     </md-select>
-                    <div ng-messages="registerForm.number.$error">
+                    <div ng-messages="registerForm.class.$error">
                         <div ng-message="required">Це поле обов'язкове для заповнення</div>
                     </div>
                 </md-input-container>
-                <!--TODO: FIX ng-model-->
                 <md-input-container>
                     <input placeholder="{{vm.label.class}}"
                            type="text"
                            name="letter"
-                           ng-model="vm.registerData.school"
+                           ng-model="vm.registerData.letter"
                            maxlength="32"
                            autocomplete="off"
                            required>

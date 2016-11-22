@@ -3,20 +3,36 @@
         <form name="settingForm">
             <div layout-gt-sm="row">
                 <md-input-container class="md-block" flex-gt-sm>
-                        <span class="text-center" ng-cloak>
-                            <img ngf-thumbnail="vm.data.photo || vm.data.image_file" alt="profile photo" width="100">
-                        </span>
+                        <div class="image_file" ng-cloak>
+                            <img ngf-thumbnail="vm.data.photo || vm.data.image_file"
+                                 alt="profile photo"
+                                 width="200"
+                                 type="file"
+                                 ngf-select="vm.upload($file)"
+                                 accept="image/*"
+                                 ng-model="vm.data.image_file"
+                                 ngf-no-object-url="true">
+                            <br>
+                            <!--<md-button class="md-fab"-->
+                                       <!--type="file"-->
+                                       <!--ngf-select="vm.upload($file)"-->
+                                       <!--accept="image/*"-->
+                                       <!--ng-model="vm.data.image_file"-->
+                                       <!--ngf-no-object-url="true">-->
+
+                            <!--</md-button>-->
+                        </div>
                 </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <!--<label>{{vm.label.photo}}</label>-->
-                    <input type="file"
-                           ng-model="vm.data.image_file"
-                           autocomplete="off"
-                           ngf-select
-                           accept="image/*"
-                           ngf-max-size="2MB"
-                           base-sixty-four-input>
-                </md-input-container>
+                <!--<md-input-container class="md-block" flex-gt-sm>-->
+                    <!--&lt;!&ndash;<label>{{vm.label.photo}}</label>&ndash;&gt;-->
+                    <!--<input type="file"-->
+                           <!--ng-model="vm.data.image_file"-->
+                           <!--autocomplete="off"-->
+                           <!--ngf-select-->
+                           <!--accept="image/*"-->
+                           <!--ngf-max-size="2MB"-->
+                           <!--base-sixty-four-input>-->
+                <!--</md-input-container>-->
                 <div layout="row">
                     <md-input-container class="md-block" flex>
                         <label>{{vm.label.first_name}}</label>
@@ -26,7 +42,6 @@
                                maxlength="32"
                                autocomplete="off"
                                required>
-                        {{settingForm.first_name}}
                         <div ng-messages="settingForm.first_name.$error">
                             <div ng-message="maxlength">Ім'я більше 55 символів</div>
                             <div ng-message="required">Це поле обов'язкове для заповнення</div>
@@ -87,26 +102,25 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex>
                         <label>{{vm.label.class}}</label>
-                        <md-select ng-model="vm.data.number"
-                                   name="number"
+                        <md-select ng-model="vm.data.class"
+                                   name="class"
                                    required>
                             <md-optgroup label="{{vm.label.my_classes}}">
-                                <md-option ng-value="i"
+                                <md-option ng-value="i" ng-selected="i == vm.data.class"
                                            ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11]">
                                     {{i}}
                                 </md-option>
                             </md-optgroup>
                         </md-select>
-                        <div ng-messages="settingForm.number.$error">
+                        <div ng-messages="settingForm.class.$error">
                             <div ng-message="required">Це поле обов'язкове для заповнення</div>
                         </div>
                     </md-input-container>
-                    <!--TODO: FIX ng-model-->
                     <md-input-container>
                         <input placeholder="{{vm.label.class}}"
                                type="text"
                                name="letter"
-                               ng-model="vm.data.school"
+                               ng-model="vm.data.letter"
                                maxlength="32"
                                autocomplete="off"
                                required>

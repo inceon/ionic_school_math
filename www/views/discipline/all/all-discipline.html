@@ -22,15 +22,15 @@
             <button class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
                 Обрати предмет
             </button>
-            <h4 class="text-center">TODO</h4>
+            <h4 class="text-center">Помилки</h4>
             <md-list>
                 <md-list-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
             </md-list>
-            <h4 class="text-center">Push Notifi</h4>
+            <h4 class="text-center">Цікаві завдання</h4>
             <md-list>
-                <md-list-item ng-repeat="item in vm.todo.push" ui-sref="app.discipline.task({ taskId : item.id})">
+                <md-list-item ng-repeat="item in vm.todo.tasks" ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
             </md-list>
