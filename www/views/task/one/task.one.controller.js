@@ -21,6 +21,7 @@
         vm.task = taskInfo;
         vm.upload = upload;
         vm.question = question;
+        vm.ask = ask;
 
         vm.data = vm.task.done || {};
         if (vm.task.done) {
@@ -71,6 +72,10 @@
                     console.log('Deletion canceled !');
                 }
             });
+        }
+
+        function ask() {
+            alert();
         }
 
     }

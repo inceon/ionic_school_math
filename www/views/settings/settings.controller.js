@@ -40,7 +40,7 @@
                 return;
             }
             console.log(vm.data);
-            delete vm.data.photo;
+            // delete vm.data.photo;
             // if (vm.data.image_file)
             //     vm.data.image_file = vm.data.image_file.base64;
 

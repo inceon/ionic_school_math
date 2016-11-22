@@ -55,9 +55,14 @@
                     <!--<md-checkbox class="check-tutor" ng-model="vm.data.status" value="1">-->
                     <!--{{ vm.label.status }}-->
                     <!--</md-checkbox>-->
-                    <md-button class="right md-raised md-primary submit-button" ng-click="vm.submit()">
-                        Send
-                    </md-button>
+                    <div class="submit-button">
+                        <md-button class="md-fab md-mini md-hue-2" ng-click="vm.ask()">
+                            ?
+                        </md-button>
+                        <md-button class="md-raised md-primary" ng-click="vm.submit()">
+                            Відповісти
+                        </md-button>
+                    </div>
                 </md-input-container>
             </form>
         </md-card>

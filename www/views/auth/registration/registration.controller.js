@@ -4,9 +4,9 @@
         .module('app')
         .controller('Registration', Registration);
 
-    Registration.$inject = ['user', 'site', 'discipline', '$scope', 'prepGetLabels'];
+    Registration.$inject = ['user', 'site', 'discipline', '$scope', 'prepGetLabels', 'Upload'];
 
-    function Registration(user, site, discipline, $scope, prepGetLabels) {
+    function Registration(user, site, discipline, $scope, prepGetLabels, Upload) {
 
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -48,6 +48,7 @@
         vm.label = prepGetLabels.label;
 
         vm.register = register;
+        vm.upload = upload;
 
         function register(form) {
             if (form.$invalid) { return; }
@@ -56,6 +57,13 @@
             // vm.registerData.role_id = vm.registerData.role_id.id;
             // vm.registerData.school_id = vm.registerData.school_id.id;
             user.register(vm.registerData);
+        }
+
+        function upload($file) {
+            vm.registerData.extension = $file.type.split('/')[1];
+            Upload.base64DataUrl($file).then(function(base64){
+                vm.registerData.image_file = base64.split(',',2)[1];
+            });
         }
 
         initAutocomplete = function () {

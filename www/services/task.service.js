@@ -12,7 +12,8 @@
             all: all,
             one: one,
             answer: answer,
-            update: update
+            update: update,
+            last: last
         };
 
         function all(id) {
@@ -55,6 +56,13 @@
                 }
             }
             return http.file(url.task.update, fd);
+        }
+
+        function last(data) {
+            return http.get(
+                url.task.last,
+                data
+            )
         }
     }
 })();

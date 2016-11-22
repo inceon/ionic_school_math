@@ -7,9 +7,9 @@
 
                 // var baseUrl = 'http://192.168.0.112/api/web/v1/';
                 // var baseUrl = 'http://192.168.0.118/api/web/v1/';
-                var baseUrl = 'http://192.168.0.107/api/web/v2/';
+                // var baseUrl = 'http://192.168.0.107/api/web/v2/';
                 // var baseUrl = 'http://school-maths/api/web/v1/';
-                // var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
+                var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
                 return {
 
                     user: {
@@ -40,7 +40,8 @@
                         all:         baseUrl + 'task/all',
                         one:         baseUrl + 'task/one',
                         answer:      baseUrl + 'done-task/create',
-                        update:      baseUrl + 'done-task/update'
+                        update:      baseUrl + 'done-task/update',
+                        last:        baseUrl + 'bookmark/for-user'
                     }
                 };
             }
