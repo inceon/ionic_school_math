@@ -9,19 +9,17 @@
             </div>
         </div>
         <form class="list" name="registerForm">
-            <!--TODO: restyle img-->
             <md-input-container class="md-block" flex-gt-sm>
-                <div class="text-center" ng-cloak>
-                    <img ngf-thumbnail="vm.registerData.photo" alt="gregergre" width="150">
-                    <br>
-                    <md-button class="md-raised md-primary"
-                               type="file"
-                               ng-model="vm.registerData.photo"
-                               autocomplete="off"
-                               ngf-select="vm.upload($file)"
-                               accept="image/*">
+                <div class="image_file" ng-cloak>
+                    <img ngf-thumbnail="vm.registerData.photo || 'http://school.apes-at-work.com/photo/users/empty.jpg'"
+                         alt="profile photo">
+                    <p type="file"
+                       ngf-select="vm.upload($file)"
+                       accept="image/*"
+                       ng-model="vm.registerData.photo"
+                       ngf-no-object-url="true">
                         Обрати фото
-                    </md-button>
+                    </p>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>

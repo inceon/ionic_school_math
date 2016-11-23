@@ -19,6 +19,7 @@
         width: 200px;
         margin: 0 auto;
         img {
+            max-width: 100%;
             border: 1px solid grey;
         }
         p {
@@ -26,7 +27,7 @@
             background-color: gray;
             margin: auto;
             position: absolute;
-            width: 222px;
+            width: 100%;
             padding: 10px;
             font-weight: bold;
             color: white;

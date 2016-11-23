@@ -3,25 +3,17 @@
         <form name="settingForm">
             <div layout-gt-sm="row">
                 <md-input-container class="md-block" flex-gt-sm>
-                        <div class="image_file" ng-cloak>
-                            <img ngf-thumbnail="vm.data.image_file || vm.data.photo"
-                                 alt="profile photo">
-                            <p type="file"
-                               ngf-select="vm.upload($file)"
-                               accept="image/*"
-                               ng-model="vm.data.image_file"
-                               ngf-no-object-url="true">
-                                Обрати фото
-                            </p>
-                            <!--<md-button class="md-fab"-->
-                                       <!--type="file"-->
-                                       <!--ngf-select="vm.upload($file)"-->
-                                       <!--accept="image/*"-->
-                                       <!--ng-model="vm.data.image_file"-->
-                                       <!--ngf-no-object-url="true">-->
-
-                            <!--</md-button>-->
-                        </div>
+                    <div class="image_file" ng-cloak>
+                        <img ngf-thumbnail="vm.data.image_file || vm.data.photo"
+                             alt="profile photo">
+                        <p type="file"
+                           ngf-select="vm.upload($file)"
+                           accept="image/*"
+                           ng-model="vm.data.image_file"
+                           ngf-no-object-url="true">
+                            Обрати фото
+                        </p>
+                    </div>
                 </md-input-container>
                 <!--<md-input-container class="md-block" flex-gt-sm>-->
                     <!--&lt;!&ndash;<label>{{vm.label.photo}}</label>&ndash;&gt;-->

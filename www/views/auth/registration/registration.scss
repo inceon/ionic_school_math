@@ -6,4 +6,26 @@
             left: 20%;
         }
     }
+    .image_file {
+        text-align: center;
+        position: relative;
+        width: 120px;
+        margin: 0 auto;
+        img {
+            max-width: 100%;
+            border: 1px solid grey;
+        }
+        p {
+            cursor: pointer;
+            background-color: gray;
+            margin: auto;
+            position: absolute;
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(0,0,0,0.4);
+            bottom: 5px;
+        }
+    }
 }
