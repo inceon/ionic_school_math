@@ -43,15 +43,10 @@
     }
 
     .answer {
-        padding: 10px 5px 0;
         .check-tutor {
             position: absolute;
             left: 30px;
         }
-    }
-
-    md-input-container {
-        margin: 5px 0 0;
     }
 
     .tutor-text {
@@ -76,5 +71,64 @@
 
     .ask-card {
         //float: right;
+    }
+
+    .fade-element-in.ng-enter {
+        transition: 0.8s linear all;
+        opacity: 0;
+    }
+
+    .fade-element-in-init .fade-element-in.ng-enter {
+        opacity: 1;
+    }
+
+    .fade-element-in.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+
+    .fade-element-in.ng-leave {
+        transition: 0.3s linear all;
+        opacity: 1;
+    }
+    .fade-element-in.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+
+    //.message {
+    //    background-color: white;
+    //}
+
+    .messages {
+        .message {
+            padding: 30px 10px;
+            margin: 5px;
+            max-width: 80%;
+            border-radius: 1px;
+            display: inline;
+            vertical-align: bottom;
+            &.my {
+                background-color: #1565C0;
+                color: white;
+                float: right;
+            }
+            &.not-my {
+                background-color: #ECEFF1;
+                float: left;
+            }
+        }
+
+        img {
+            width: 35px;
+            height: 35px;
+            margin: 5px 0 5px 5px;
+            border-radius: 50%;
+            &.my {
+                float: right;
+            }
+            &.not-my {
+                float: left;
+            }
+        }
+
     }
 }

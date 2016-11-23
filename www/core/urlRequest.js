@@ -7,7 +7,7 @@
 
                 // var baseUrl = 'http://192.168.0.112/api/web/v1/';
                 // var baseUrl = 'http://192.168.0.118/api/web/v1/';
-                // var baseUrl = 'http://192.168.0.107/api/web/v2/';
+                // var baseUrl = 'http://192.168.0.105/api/web/v2/';
                 // var baseUrl = 'http://school-maths/api/web/v1/';
                 var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
                 return {
