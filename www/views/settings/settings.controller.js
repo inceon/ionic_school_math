@@ -6,7 +6,7 @@
 
     Settings.$inject = ['$rootScope', 'user', 'userInfo', 'toastr', 'Upload'];
 
-    function Settings ($rootScope, user, userInfo, toastr, Upload) {
+    function Settings($rootScope, user, userInfo, toastr, Upload) {
 
         $rootScope.page = {
             title: 'Налаштування'
@@ -23,7 +23,7 @@
         vm.label = userInfo.label;
 
         vm.data = userInfo.user;
-        if(userInfo.my_classes) {
+        if (userInfo.my_classes) {
             vm.my_classes = userInfo.my_classes.map(function (item) {
                 return item.number;
             });
@@ -34,18 +34,18 @@
         vm.save = save;
         vm.upload = upload;
 
-        function save (form) {
+        function save(form) {
             if (form.$invalid) {
                 toastr.error("Ви ввели не всі дані");
                 return;
             }
             console.log(vm.data);
-            // delete vm.data.photo;
+            delete vm.data.photo;
             // if (vm.data.image_file)
             //     vm.data.image_file = vm.data.image_file.base64;
 
             user.update(vm.data)
-                .then(function(response){
+                .then(function (response) {
                     vm.data.photo = response.user.photo;
                     toastr.success("Дані успішно оновлені");
                 });
@@ -54,10 +54,10 @@
         function upload($file) {
             console.log($file);
             vm.data.extension = $file.type.split('/')[1];
-            Upload.base64DataUrl($file).then(function(base64){
-                // console.log(urls);
-                vm.data.image_file = base64.split(',',2)[1];
-            });
+            Upload.base64DataUrl($file)
+                .then(function (base64) {
+                    vm.data.image_file = base64.split(',', 2)[1];
+                });
         }
 
         initAutocomplete = function () {

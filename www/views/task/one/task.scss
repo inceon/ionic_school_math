@@ -100,27 +100,44 @@
 
     .messages {
         .message {
-            padding: 30px 10px;
+            padding: 10px;
             margin: 5px;
             max-width: 80%;
-            border-radius: 1px;
+            border-radius: 2px;
             display: inline;
             vertical-align: bottom;
+            position: relative;
             &.my {
                 background-color: #1565C0;
                 color: white;
                 float: right;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    right: -15px;
+                    top: 10px;
+                    border: 8px solid transparent;
+                    border-left: 8px solid #1565C0;
+                }
             }
             &.not-my {
                 background-color: #ECEFF1;
                 float: left;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: -15px;
+                    top: 10px;
+                    border: 8px solid transparent;
+                    border-right: 8px solid #ECEFF1;
+                }
             }
         }
 
         img {
             width: 35px;
             height: 35px;
-            margin: 5px 0 5px 5px;
+            margin: 5px;
             border-radius: 50%;
             &.my {
                 float: right;
