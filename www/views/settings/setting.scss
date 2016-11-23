@@ -13,10 +13,25 @@
     }
 
     .image_file {
+        box-sizing: border-box;
         text-align: center;
+        position: relative;
+        width: 200px;
+        margin: 0 auto;
         img {
             border: 1px solid grey;
+        }
+        p {
             cursor: pointer;
+            background-color: gray;
+            margin: auto;
+            position: absolute;
+            width: 222px;
+            padding: 10px;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(0,0,0,0.4);
+            bottom: 5px;
         }
     }
 }
