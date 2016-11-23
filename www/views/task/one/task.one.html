@@ -1,5 +1,9 @@
 <ion-view class="task">
     <ion-content class="has-header">
+        <ion-refresher
+            pulling-text="Оновити інформацію..."
+            on-refresh="vm.doRefresh()">
+        </ion-refresher>
         <div class="result" ng-if="vm.task.done" ng-cloak="">
             <h2 class="title">Завдання виконано</h2>
         </div>
@@ -52,9 +56,6 @@
                        class="fa fa-camera fa-2x photo"
                        required></i>
                     <img ngf-thumbnail="{{ file }}" width="100" ng-repeat="file in vm.data.photo">
-                    <!--<md-checkbox class="check-tutor" ng-model="vm.data.status" value="1">-->
-                    <!--{{ vm.label.status }}-->
-                    <!--</md-checkbox>-->
                     <div class="submit-button">
                         <md-button class="md-icon-button md-fab md-mini md-hue-2" ng-click="vm.changeForm()">
                             <md-icon md-font-icon="fa fa-question fa-2x" aria-hidden="true"></md-icon>
