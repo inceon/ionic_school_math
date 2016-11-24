@@ -10,7 +10,7 @@
     function Tasks($rootScope, allTasks, task) {
 
         $rootScope.page = {
-            title: 'Tasks'
+            title: 'Завдання'
         };
 
         var vm = this;
