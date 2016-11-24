@@ -11,12 +11,12 @@
         <form class="list" name="registerForm">
             <md-input-container class="md-block" flex-gt-sm>
                 <div class="image_file" ng-cloak>
-                    <img ngf-thumbnail="vm.registerData.photo || 'http://school.apes-at-work.com/photo/users/empty.jpg'"
+                    <img ngf-thumbnail="vm.registerData.image_file || 'http://school.apes-at-work.com/photo/users/empty.jpg'"
                          alt="profile photo">
                     <p type="file"
                        ngf-select="vm.upload($file)"
                        accept="image/*"
-                       ng-model="vm.registerData.photo"
+                       ng-model="vm.registerData.image_file"
                        ngf-no-object-url="true">
                         Обрати фото
                     </p>

@@ -62,7 +62,7 @@
         function upload($file) {
             vm.registerData.extension = $file.type.split('/')[1];
             Upload.base64DataUrl($file).then(function(base64){
-                vm.registerData.photo = base64.split(',',2)[1];
+                vm.registerData.image_file = base64.split(',',2)[1];
             });
         }
 

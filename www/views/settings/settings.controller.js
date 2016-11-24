@@ -4,9 +4,9 @@
         .module('app')
         .controller('Settings', Settings);
 
-    Settings.$inject = ['$rootScope', 'user', 'userInfo', 'toastr', 'Upload'];
+    Settings.$inject = ['$rootScope', 'site', 'user', 'userInfo', 'toastr', 'Upload'];
 
-    function Settings($rootScope, user, userInfo, toastr, Upload) {
+    function Settings($rootScope, site, user, userInfo, toastr, Upload) {
 
         $rootScope.page = {
             title: 'Налаштування'
@@ -30,6 +30,12 @@
         } else {
             vm.my_classes = [];
         }
+
+        site.getSchools(vm.data.sity_name)
+            .then(function (response) {
+                vm.schools = response.schools.models;
+                vm.data.school_id = vm.schools[1];
+            });
 
         vm.save = save;
         vm.upload = upload;
@@ -87,18 +93,18 @@
                     if (componentForm[addressType]) {
                         var val = place.address_components[i][componentForm[addressType]];
                         if (addressType === 'locality') {
-                            vm.registerData.sity_name = val;
+                            vm.data.sity_name = val;
                         } else if (addressType === 'administrative_area_level_1') {
-                            vm.registerData.region_name = val;
+                            vm.data.region_name = val;
                         }
                     }
                 }
 
-                if (vm.registerData.sity_name) {
-                    site.getSchools(vm.registerData.sity_name)
+                if (vm.data.sity_name) {
+                    site.getSchools(vm.data.sity_name)
                         .then(function (response) {
                             vm.schools = response.schools.models;
-                            vm.registerData.school_id = vm.schools[1];
+                            vm.data.school_id = vm.schools[1];
                         });
                 }
 
