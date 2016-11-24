@@ -34,36 +34,31 @@
                         <div ng-message="required">Это поле обязательное для заполнения</div>
                     </div>
                 </md-input-container>
-                <!--<choose-file-button>-->
-                <!--<md-button layout="row" layout-align="center center"-->
-                <!--class="md-fab md-primary button-accent"-->
-                <!--aria-label="Upload a file">-->
-                <!--<i class="material-icons">camera_enhance</i>-->
-                <!--</md-button>-->
-                <!--<input id="file" accept="image/x-png, image/jpeg"-->
-                <!--onchange="angular.element(this).scope().vm.changePhoto(this)" type="file">-->
-                <!--</choose-file-button>-->
 
-                <div class="md-block send-button">
-                    <i ng-model="vm.data.photo"
-                       autocomplete="off"
-                       ngf-select="vm.upload($file)"
-                       accept="image/*"
-                       ngf-max-size="2MB"
-                       ngf-max-files="5"
-                       id="answerPhoto"
-                       name="answerPhoto md-fab"
-                       class="fa fa-camera fa-2x photo"
-                       required></i>
-                    <img ngf-thumbnail="{{ file }}" width="100" ng-repeat="file in vm.data.photo">
-                    <div class="submit-button">
-                        <md-button class="md-icon-button md-fab md-mini md-hue-2" ng-click="vm.changeForm()">
-                            <md-icon md-font-icon="fa fa-question fa-2x" aria-hidden="true"></md-icon>
-                        </md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.submit()">
-                            Відповісти
+                <div class="md-block">
+                    <div layout-align="start center">
+                        <md-button class="photo md-icon-button md-fab md-mini md-hue-2"
+                                   ng-style="{'background-color': '#1E88E5'}"
+                                   ngf-multiple="true"
+                                   ngf-max-files="5"
+                                   ngf-select="vm.upload($files)"
+                                   accept="image/*">
+                            <md-icon md-font-icon="fa fa-camera fa-lg" aria-hidden="true"></md-icon>
                         </md-button>
                     </div>
+
+                    <div layout="row" layout-align="end center">
+                        <md-button class="md-icon-button md-fab md-mini md-hue-2" ng-click="vm.changeForm()">
+                            <md-icon md-font-icon="fa fa-question fa-lg" aria-hidden="true"></md-icon>
+                        </md-button>
+                        <md-button class="md-raised md-primary" ng-click="vm.submit()">
+                            Відправити
+                        </md-button>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                <div class="md-block">
+                    <img ngf-thumbnail="file" class="attach-image" ng-repeat="file in vm.data.photo">
                 </div>
             </form>
 
@@ -74,7 +69,7 @@
                               md-maxlength="150"
                               rows="3"
                               md-select-on-focus
-                              ng-model="vm.data.question"
+                              ng-model="vm.data.text"
                               autocomplete="off"
                               required> </textarea>
                     <div ng-messages="questionForm.question.$error">
@@ -83,8 +78,9 @@
                 </md-input-container>
                 <div class="md-block send-button">
                     <div class="submit-button">
-                        <md-button class="md-icon-button md-no-focus md-fab md-mini md-hue-2" ng-click="vm.changeForm()">
-                            <md-icon md-font-icon="fa fa-pencil fa-2x" aria-hidden="true"></md-icon>
+                        <md-button class="md-icon-button md-no-focus md-fab md-mini md-hue-2"
+                                   ng-click="vm.changeForm()">
+                            <md-icon md-font-icon="fa fa-pencil fa-lg" aria-hidden="true"></md-icon>
                         </md-button>
                         <md-button class="md-raised md-primary" ng-click="vm.submit()">
                             Задати питання
@@ -97,7 +93,9 @@
         <md-card>
             <div class="messages">
                 <div ng-repeat="i in vm.messages">
-                    <img ng-src="{{i.id == 1 ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}" alt="avatar"  ng-class="{'my': i.id == 1, 'not-my': i.id ==2}"/>
+                    <img
+                        ng-src="{{i.id == 1 ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}"
+                        alt="avatar" ng-class="{'my': i.id == 1, 'not-my': i.id ==2}"/>
                     <div class="message" ng-class="{'my': i.id == 1, 'not-my': i.id ==2}">
                         {{ i.text }}
                     </div>

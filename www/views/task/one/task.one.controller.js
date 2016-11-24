@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$stateParams', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicPopup'];
+    Task.$inject = ['$rootScope', '$stateParams', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicPopup', 'comment', 'Upload'];
 
-    function Task($rootScope, $stateParams, task, prepGetLabels, taskInfo, toastr, $ionicPopup) {
+    function Task($rootScope, $stateParams, task, prepGetLabels, taskInfo, toastr, $ionicPopup, comment, Upload) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -17,7 +17,7 @@
 
         vm.label = prepGetLabels.label;
 
-        vm.submit = answer;
+        vm.submit = submit;
         vm.task = taskInfo;
         vm.upload = upload;
         vm.question = question;
@@ -31,29 +31,37 @@
         ];
 
         vm.data = vm.task.done || {};
-        if (vm.task.done) {
-            vm.submit = update;
-        } else {
-            vm.submit = answer;
-        }
         vm.data.task_id = $stateParams.taskId;
 
-        function update (){
-            task.update(vm.data)
-                .then(function(){
-                    toastr.success("Відповідь успішно оновлена");
-                });
+        function submit() {
+            if (vm.askForm) {
+                comment.add(vm.data)
+                        .then(function () {
+                            toastr.success("Повідомлення успішно відправлено");
+                        });
+            } else {
+                if (vm.task.done) {
+                    task.update(vm.data)
+                        .then(function () {
+                            toastr.success("Відповідь успішно оновлена");
+                        });
+                } else {
+                    task.answer(vm.data)
+                        .then(function () {
+                            toastr.success("Відповідь успішно відправлена");
+                        });
+                }
+            }
         }
 
-        function answer() {
-            task.answer(vm.data)
-                .then(function(){
-                    toastr.success("Відповідь успішно відправлена");
-                });
-        }
-
-        function upload($file) {
-            console.log($file);
+        function upload($files) {
+            console.log($files);
+            vm.data.photo = $files;
+            // vm.data.extension = $file.type.split('/')[1];
+            // Upload.base64DataUrl($file)
+            //     .then(function (base64) {
+            //         vm.data.photo = base64.split(',', 2)[1];
+            //     });
         }
 
         function question() {

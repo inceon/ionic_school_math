@@ -42,6 +42,9 @@
                         answer:      baseUrl + 'done-task/create',
                         update:      baseUrl + 'done-task/update',
                         last:        baseUrl + 'bookmark/for-user'
+                    },
+                    comment: {
+                        add:        baseUrl + 'comment/create'
                     }
                 };
             }

@@ -6,7 +6,8 @@
             'model.site',
             'model.discipline',
             'model.book',
-            'model.task'
+            'model.task',
+            'model.comment'
         ])
 })();
 
