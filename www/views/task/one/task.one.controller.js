@@ -22,6 +22,7 @@
         vm.upload = upload;
         vm.question = question;
         vm.changeForm = changeForm;
+        vm.audio = audio;
         vm.hideLoader = $ionicLoading.hide;
         vm.askForm = false;
         vm.doRefresh = doRefresh;
@@ -96,6 +97,10 @@
         function changeForm() {
             vm.askForm = !vm.askForm;
             vm.label.result = vm.askForm ? "Задати питання" : "Відповідь";
+        }
+
+        function audio() {
+            window.plugins.audioReader.start();
         }
 
         $scope.deleteAttach = function(index) {
