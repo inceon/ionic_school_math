@@ -85,8 +85,7 @@
                 }
                 else if (err.status === 0) {
                     $state.go('error.internet');
-                    toastr.error('No internet connection');
-                    return $q.reject(0);
+                    // toastr.error('No internet connection');
                 }
                 else if (err.status === 500) {
                     toastr.error('Server Error: ' + err.status + ' ' + err.data.message);
@@ -94,7 +93,7 @@
                 else {
                     toastr.error('Server Error: ' + err.status + ' ' + err.statusText);
                 }
-                toastr.error('XHR Failed: ' + err.status);
+                // toastr.error('XHR Failed: ' + err.status);
             } else {
                 toastr.error('Error: ' + err.data.error);
             }

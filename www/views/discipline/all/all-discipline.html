@@ -13,7 +13,7 @@
             </div>
             <ion-slide-box active-slide="vm.slide" show-pager="false">
                 <ion-slide ng-repeat="discipline in vm.disciplines">
-                    <a class="slide-item" ui-sref="app.discipline.books({ disciplineId: discipline.id })">
+                    <a class="slide-item" ng-click="vm.disciplineBooks({ disciplineId: discipline.id })">
                         <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
                         <p>{{discipline.name}}</p>
                     </a>

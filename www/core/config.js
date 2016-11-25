@@ -85,9 +85,6 @@
                 controller: 'DisciplineBooks',
                 controllerAs: 'vm',
                 resolve: {
-                    userBook: function (discipline, $stateParams) {
-                        return discipline.myBook($stateParams.disciplineId);
-                    },
                     allBooks: function (discipline, $stateParams) {
                         return discipline.books($stateParams.disciplineId);
                     }

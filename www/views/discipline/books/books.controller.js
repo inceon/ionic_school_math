@@ -5,9 +5,9 @@
         .module('app')
         .controller('DisciplineBooks', DisciplineBooks);
 
-    DisciplineBooks.$inject = ['$state', 'discipline', 'task', 'book', '$rootScope', 'userBook', 'allBooks', '$ionicSlideBoxDelegate'];
+    DisciplineBooks.$inject = ['$state', 'discipline', 'book', '$rootScope', 'allBooks', '$ionicSlideBoxDelegate'];
 
-    function DisciplineBooks($state, discipline, task, book, $rootScope, userBook, allBooks, $ionicSlideBoxDelegate) {
+    function DisciplineBooks($state, discipline, book, $rootScope, allBooks, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
             title: 'Книги з предмету'
@@ -19,24 +19,7 @@
         vm.slide = 0;
         vm.selectBook = selectBook;
 
-        if (userBook.count_model > 1) {
-            task.last({
-                book_id: userBook.models[0].book.id
-            }).then(function (response) {
-                if (response.task_id) {
-                    $state.go('app.discipline.task', {
-                        taskId: response.task_id
-                    });
-                }
-                $state.go('app.discipline.book', {
-                    bookId: userBook.models[0].book.id
-                });
-            });
-        } else if (userBook.count_model > 1) {
-            vm.myBook = userBook.models;
-        } else {
-            vm.books = allBooks.models;
-        }
+        vm.books = allBooks.models;
 
         vm.next = function () {
             $ionicSlideBoxDelegate.next();
