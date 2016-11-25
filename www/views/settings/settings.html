@@ -4,7 +4,8 @@
             <md-input-container class="md-block" flex>
                 <div class="image_file" ng-cloak>
                     <img ngf-thumbnail="vm.data.image_file || vm.data.photo"
-                         alt="profile photo">
+                         ngf-as-background="true"
+                         class="photo">
                     <p type="file"
                        ngf-select="vm.upload($file)"
                        accept="image/*"
