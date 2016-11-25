@@ -1,0 +1,13 @@
+<div class="modal image-modal transparent">
+    <ion-slide-box on-slide-changed="slideChanged(index)"
+                   show-pager="true"
+                   active-slide="activeSlide"
+                   ng-click="closeModal()">
+        <ion-slide ng-repeat="file in vm.data.photo" ng-init="$last && vm.hideLoader()">
+            <img ng-src="img/spinner.gif" ngf-thumbnail="file" class="fullscreen-image"/>
+        </ion-slide>
+    </ion-slide-box>
+    <md-button class="remove md-icon-button md-fab md-mini md-hue-2" ng-click="deleteAttach(activeSlide)">
+        <md-icon md-font-icon="fa fa-times fa-lg" aria-hidden="true"></md-icon>
+    </md-button>
+</div>

@@ -58,7 +58,12 @@
                     <div style="clear: both"></div>
                 </div>
                 <div class="md-block">
-                    <img ngf-thumbnail="file" class="attach-image" ng-repeat="file in vm.data.photo">
+                    <img ng-src="img/spinner.gif"
+                         ngf-thumbnail="file"
+                         class="attach-image"
+                         ng-repeat="file in vm.data.photo"
+                         ng-click="showImages($index)"
+                         ng-init="$last && vm.hideLoader()">
                 </div>
             </form>
 
