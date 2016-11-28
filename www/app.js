@@ -14,9 +14,12 @@
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
-                window.plugins.audioReader.init();
-
             }
+
+            document.addEventListener('deviceready', function(){
+                window.plugins.audioReader.init();
+            }, false);
+
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }

@@ -22,7 +22,7 @@
         vm.upload = upload;
         vm.question = question;
         vm.changeForm = changeForm;
-        vm.audio = audio;
+        // vm.audio = audio;
         vm.hideLoader = $ionicLoading.hide;
         vm.askForm = false;
         vm.doRefresh = doRefresh;
@@ -105,10 +105,6 @@
             vm.label.result = vm.askForm ? "Задати питання" : "Відповідь";
         }
 
-        function audio() {
-            window.plugins.audioReader.start();
-        }
-
         $scope.deleteAttach = function(index) {
             vm.data.photo.splice(index, 1);
             vm.data.extension.splice(index, 1);
@@ -150,7 +146,6 @@
                 {id: 2, text: "Do they bend, do they break from the flight that they take"},
             ];
             $rootScope.$broadcast('scroll.refreshComplete');
-            console.log(vm.messages);
         }
 
     }
