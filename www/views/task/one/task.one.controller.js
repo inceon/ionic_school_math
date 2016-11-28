@@ -24,7 +24,6 @@
         // vm.audio = audio;
         vm.hideLoader = $ionicLoading.hide;
         vm.doRefresh = doRefresh;
-        vm.showAnswerPopup = showAnswerPopup;
         vm.messages = [
             {id: 1, text: "Did you get my message, the one I left"},
             {id: 1, text: "While I was trying to convince everything"},
@@ -97,15 +96,12 @@
             });
         }
 
-        function showAnswerPopup() {
-            $ionicModal.fromTemplateUrl('modal-answer.html', {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function(modal) {
-                $scope.modal = modal;
-                $scope.modal.show();
-            });
-        }
+        $ionicModal.fromTemplateUrl('modal-answer.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.answerModal = modal;
+        });
 
         $scope.deleteAttach = function(index) {
             vm.data.photo.splice(index, 1);

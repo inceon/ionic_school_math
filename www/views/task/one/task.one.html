@@ -19,7 +19,7 @@
         </div>
 
         <div layout="row" layout-align="end center" flex>
-            <md-button class="md-raised md-primary" ng-click="vm.showAnswerPopup()">
+            <md-button class="md-raised md-primary" ng-click="answerModal.show()">
                 <md-icon md-font-icon="fa fa-pencil fa-lg" aria-hidden="true"></md-icon>
                 Відправити відповідь
             </md-button>
@@ -27,10 +27,12 @@
 
         <script id="modal-answer.html" type="text/ng-template">
             <ion-modal-view>
-                <ion-header-bar class="positive">
-                    <h1 class="title">Відправити відповідь</h1>
-                </ion-header-bar>
-                <ion-content>
+                <ion-nav-bar>
+                    <ion-nav-back-button>
+                    </ion-nav-back-button>
+                    <ion-nav-title>Відправити відповідь</ion-nav-title>
+                </ion-nav-bar>
+                <ion-nav-view>
                     <md-card class="answer">
                         <form novalidate="" name="answerForm" class="fade-element-in">
                             <md-input-container class="md-block" flex>
@@ -67,6 +69,9 @@
                                 </div>
 
                                 <div layout-align="end center" flex class="submit-button">
+                                    <md-button class="md-raised md-primary" ng-click="answerModal.hide()">
+                                        Скасувати
+                                    </md-button>
                                     <md-button class="md-raised md-primary" ng-click="vm.submit()">
                                         Відправити
                                     </md-button>
@@ -82,7 +87,7 @@
                             </div>
                         </form>
                     </md-card>
-                </ion-content>
+                </ion-nav-view>
             </ion-modal-view>
         </script>
 
