@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$ionicSlideBoxDelegate', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$ionicHistory', '$ionicSlideBoxDelegate', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
 
-    function Task($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, $ionicHistory, $ionicSlideBoxDelegate, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -35,6 +35,8 @@
         vm.data = vm.task.done || {};
         vm.data.task_id = $stateParams.taskId;
 
+        console.log($ionicHistory);
+
         function submit() {
             if (vm.askForm) {
                 comment.add(vm.data)
@@ -61,11 +63,15 @@
             console.log($files);
             vm.data.photo = $files;
 
-            // vm.data.extension = $file.type.split('/')[1];
-            // Upload.base64DataUrl($file)
-            //     .then(function (base64) {
-            //         vm.data.photo = base64.split(',', 2)[1];
-            //     });
+            vm.data.extension = [];
+            vm.data.image_file = [];
+            angular.forEach($files, function (file) {
+                vm.data.extension.push(file.type.split('/')[1]);
+                Upload.base64DataUrl(file)
+                    .then(function (base64) {
+                        vm.data.image_file.push(base64.split(',', 2)[1]);
+                    });
+            });
             // $ionicLoading.hide();
         }
 
@@ -105,6 +111,8 @@
 
         $scope.deleteAttach = function(index) {
             vm.data.photo.splice(index, 1);
+            vm.data.extension.splice(index, 1);
+            vm.data.image_file.splice(index, 1);
             $ionicSlideBoxDelegate.update();
         };
 

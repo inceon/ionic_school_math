@@ -22,25 +22,25 @@
 
         function disciplineBooks(data) {
             discipline.myBook(data.disciplineId)
-                .then(function (userBook) {
-                    if (userBook.count_model > 1) {
-                        task.last({
-                            book_id: userBook.models[0].book.id
-                        }).then(function (last) {
-                            if (last.task_id) {
-                                $state.go('app.discipline.task', {
-                                    taskId: last.task_id
-                                });
-                            } else {
-                                $state.go('app.discipline.book', {
-                                    bookId: userBook.models[0].book.id
-                                });
-                            }
-                        });
-                    } else {
-                        $state.go('app.discipline.books', data);
-                    }
-                });
+                    .then(function (userBook) {
+                        if (userBook.count_model > 1) {
+                            task.last({
+                                book_id: userBook.models[0].book.id
+                            }).then(function (last) {
+                                if (last.task_id) {
+                                    $state.go('app.discipline.task', {
+                                        taskId: last.task_id
+                                    });
+                                } else {
+                                    $state.go('app.discipline.book', {
+                                        bookId: userBook.models[0].book.id
+                                    });
+                                }
+                            });
+                        } else {
+                            $state.go('app.discipline.books', data);
+                        }
+                    });
         }
 
         vm.next = function () {

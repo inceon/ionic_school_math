@@ -35,8 +35,8 @@
                     </div>
                 </md-input-container>
 
-                <div class="md-block">
-                    <div layout-align="start center">
+                <div class="md-block" layout="row">
+                    <div layout-align="start center" flex>
                         <md-button class="photo md-icon-button md-fab md-mini md-hue-2"
                                    ng-style="{'background-color': '#1E88E5'}"
                                    ngf-multiple="true"
@@ -52,7 +52,7 @@
                         </md-button>
                     </div>
 
-                    <div layout="row" layout-align="end center">
+                    <div layout-align="end center" flex class="submit-button">
                         <md-button class="md-icon-button md-fab md-mini md-hue-2" ng-click="vm.changeForm()">
                             <md-icon md-font-icon="fa fa-question fa-lg" aria-hidden="true"></md-icon>
                         </md-button>
@@ -60,7 +60,6 @@
                             Відправити
                         </md-button>
                     </div>
-                    <div style="clear: both"></div>
                 </div>
                 <div class="md-block">
                     <img ng-src="img/spinner.gif"
