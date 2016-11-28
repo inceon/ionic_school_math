@@ -22,14 +22,20 @@
             <button class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
                 Обрати предмет
             </button>
-            <h4 class="text-center">Помилки</h4>
-            <md-list>
+            <md-list ng-if="vm.lastTask.length">
+                <h4 class="text-center">Останні переглянуті</h4>
+                <md-list-item ng-repeat="item in vm.lastTask" ui-sref="app.discipline.task({ taskId : item.id})">
+                    {{item.text}}!
+                </md-list-item>
+            </md-list>
+            <md-list ng-if="vm.todo.done_error.length">
+                <h4 class="text-center">Помилки</h4>
                 <md-list-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
             </md-list>
-            <h4 class="text-center">Цікаві завдання</h4>
-            <md-list>
+            <md-list ng-if="vm.todo.tasks.length">
+                <h4 class="text-center">Цікаві завдання</h4>
                 <md-list-item ng-repeat="item in vm.todo.tasks" ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>

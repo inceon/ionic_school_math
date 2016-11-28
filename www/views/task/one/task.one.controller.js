@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$ionicHistory', '$ionicSlideBoxDelegate', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$ionicSlideBoxDelegate', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
 
-    function Task($rootScope, $scope, $stateParams, $ionicHistory, $ionicSlideBoxDelegate, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -34,8 +34,6 @@
 
         vm.data = vm.task.done || {};
         vm.data.task_id = $stateParams.taskId;
-
-        console.log($ionicHistory);
 
         function submit() {
             if (vm.askForm) {

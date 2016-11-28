@@ -71,6 +71,11 @@
                 controller: 'Disciplines',
                 controllerAs: 'vm',
                 resolve: {
+                    lastTask: function (task) {
+                        task.last({
+                            bookId: 11
+                        })
+                    },
                     allDiscipline: function (discipline) {
                         return discipline.all();
                     },
