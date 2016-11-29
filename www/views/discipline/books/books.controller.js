@@ -29,7 +29,7 @@
         };
 
         function selectBook(id) {
-            book.create(vm.books[id]);
+            book.create(vm.books[id].id);
         }
 
     }
