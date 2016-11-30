@@ -7,9 +7,9 @@
 
                 // var baseUrl = 'http://192.168.0.112/api/web/v1/';
                 // var baseUrl = 'http://192.168.0.118/api/web/v1/';
-                var baseUrl = 'http://192.168.1.51/api/web/v2/';
+                // var baseUrl = 'http://192.168.1.49/api/web/v2/';
                 // var baseUrl = 'http://school-maths/api/web/v1/';
-                // var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
+                var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
                 return {
 
                     user: {
@@ -45,7 +45,8 @@
                     },
                     comment: {
                         add:        baseUrl + 'comment/create',
-                        all:        baseUrl + 'comment/all'
+                        all:        baseUrl + 'comment/all',
+                        message:    baseUrl + 'comment/all-message'
                     }
                 };
             }

@@ -10,7 +10,8 @@
     function Disciplines($rootScope, $localStorage, allDiscipline, task, discipline, $state, todo, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
-            title: 'Предмети'
+            title: 'Предмети',
+            isHome: true
         };
 
         var vm = this;

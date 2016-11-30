@@ -29,7 +29,13 @@
         };
 
         function selectBook(id) {
-            book.create(vm.books[id].id);
+            book.create(vm.books[id].id)
+                .then(function(){
+                    $state.go('app.discipline.book', {
+                        bookId: vm.books[id].id
+                    });
+                });
+
         }
 
     }

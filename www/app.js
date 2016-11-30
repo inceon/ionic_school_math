@@ -28,8 +28,11 @@
                 $sessionStorage.auth_key = $localStorage.auth_key;
             }
             if ($sessionStorage.auth_key) {
-                //auth.get();
-                $state.go('app.discipline.task({taskId: 27})');
+                user.get()
+                    .then(function (response) {
+                        $rootScope.user = response.user;
+                    });
+                $state.go('app.discipline.all');
             } else {
                 $state.go('login');
             }

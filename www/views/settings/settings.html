@@ -127,7 +127,7 @@
                     </div>
                 </md-input-container>
             </div>
-            <md-input-container class="md-block" flex>
+            <md-input-container class="md-block" flex ng-if="vm.data.role_id > 1">
                 <label>{{vm.label.my_classes}}</label>
                 <md-select ng-model="vm.data.my_classes" multiple>
                     <md-optgroup label="{{vm.label.my_classes}}">

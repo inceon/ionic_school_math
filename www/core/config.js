@@ -139,6 +139,9 @@
                     },
                     taskInfo: function (task, $stateParams){
                         return task.one($stateParams.taskId);
+                    },
+                    chats: function (comment, $stateParams) {
+                        return comment.all($stateParams.taskId);
                     }
                 }
             })

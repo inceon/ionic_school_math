@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$ionicSlideBoxDelegate', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', 'chats', '$ionicSlideBoxDelegate', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
 
-    function Task($rootScope, $scope, $stateParams, $ionicSlideBoxDelegate, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, chats, $ionicSlideBoxDelegate, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -18,39 +18,36 @@
         vm.label = prepGetLabels.label;
 
         vm.submit = submit;
+        vm.chats = chats.models;
         vm.task = taskInfo;
         vm.upload = upload;
         vm.question = question;
+        vm.showChat = showChat;
         // vm.audio = audio;
         vm.hideLoader = $ionicLoading.hide;
         vm.doRefresh = doRefresh;
-        vm.messages = [
-            {id: 1, text: "Did you get my message, the one I left"},
-            {id: 1, text: "While I was trying to convince everything"},
-            {id: 2, text: "That I meant in a minute or less when I called to confess"},
-        ];
 
         vm.data = vm.task.done || {};
         vm.data.task_id = $stateParams.taskId;
 
+        if (vm.chats.length) {
+            comment.message(vm.chats[0].id)
+                .then(function (response) {
+                    vm.messages = response.models;
+                });
+        }
+
         function submit() {
-            if (vm.askForm) {
-                comment.add(vm.data)
+            if (vm.task.done) {
+                task.update(vm.data)
                     .then(function () {
-                        toastr.success("Повідомлення успішно відправлено");
+                        toastr.success("Відповідь успішно оновлена");
                     });
             } else {
-                if (vm.task.done) {
-                    task.update(vm.data)
-                        .then(function () {
-                            toastr.success("Відповідь успішно оновлена");
-                        });
-                } else {
-                    task.answer(vm.data)
-                        .then(function () {
-                            toastr.success("Відповідь успішно відправлена");
-                        });
-                }
+                task.answer(vm.data)
+                    .then(function () {
+                        toastr.success("Відповідь успішно відправлена");
+                    });
             }
         }
 
@@ -72,61 +69,57 @@
         }
 
         function question() {
-            var alertPopup = $ionicPopup.confirm({
-                title: 'Ця функція доступна тільки для School Math Premium!',
-                template: 'Зняти обмеження?',
-                buttons: [{
-                    text: 'Так',
-                    type: 'button-positive',
-                    onTap: function () {
-                        return 'OK';
-                    }
-                },
-                    {
-                        text: 'Ні',
-                        type: 'button-default'
-                    }]
-            });
-            alertPopup.then(function (res) {
-                if (res) {
-                    console.log('Deleted !');
-                } else {
-                    console.log('Deletion canceled !');
-                }
-            });
+            if (vm.chats.length) {
+                vm.data.comment_id = vm.chats[0].id;
+            }
+            comment.add(vm.data)
+                .then(function (response) {
+                    response.role = $rootScope.user.role_id;
+                    vm.messages.push(response);
+                    toastr.success("Повідомлення успішно відправлено");
+                    vm.data.text = ' ';
+                });
+        }
+
+        function showChat(chat) {
+            if (chat.show) {
+                chat.show = false;
+            } else {
+                chat.show = true;
+            }
         }
 
         $ionicModal.fromTemplateUrl('modal-answer.html', {
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.answerModal = modal;
         });
 
-        $scope.deleteAttach = function(index) {
+        $scope.deleteAttach = function (index) {
             vm.data.photo.splice(index, 1);
             vm.data.extension.splice(index, 1);
             vm.data.image_file.splice(index, 1);
             $ionicSlideBoxDelegate.update();
         };
 
-        $scope.showImages = function(index) {
+        $scope.showImages = function (index) {
             $scope.activeSlide = index;
             $scope.showModal('views/task/one/popover/image.html');
         };
 
-        $scope.showModal = function(templateUrl) {
+        $scope.showModal = function (templateUrl) {
             $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
             $ionicModal.fromTemplateUrl(templateUrl, {
                 scope: $scope,
                 animation: 'slide-in-up'
-            }).then(function(modal) {
+            }).then(function (modal) {
                 $scope.modal = modal;
                 $scope.modal.show();
             });
         };
 
-        $scope.closeModal = function() {
+        $scope.closeModal = function () {
             $scope.modal.hide();
             $scope.modal.remove()
         };

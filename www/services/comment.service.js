@@ -10,7 +10,8 @@
 
         return {
             add: add,
-            all: all
+            all: all,
+            message: message
         };
 
         function add (data) {
@@ -20,14 +21,21 @@
             )
         }
 
-        function all (data) {
+        function all (id) {
             return http.get(
                 url.comment.all,
-                data 
-                /*
-                    * adress_to if teacher
-                    * task_id
-                */
+                {
+                    task_id: id
+                }
+            )
+        }
+
+        function message (id) {
+            return http.get(
+                url.comment.message,
+                {
+                    comment_id: id
+                }
             )
         }
     }

@@ -25,74 +25,51 @@
             </md-button>
         </div>
 
-
-        <md-card>
-            <div class="messages">
-                <div ng-repeat="i in vm.messages">
-                    <img
-                        ng-src="{{i.id == 1 ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}"
-                        alt="avatar" ng-class="{'my': i.id == 1, 'not-my': i.id ==2}"/>
-                    <div class="message" ng-class="{'my': i.id == 1, 'not-my': i.id ==2}">
-                        {{ i.text }}
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-            </div>
-
-            <form novalidate="" name="questionForm" class="questionForm">
-                <md-input-container class="md-block" flex>
-                    <label>{{ vm.label.result }}</label>
-                    <textarea name="question"
-                              md-maxlength="150"
-                              rows="3"
-                              md-select-on-focus
-                              ng-model="vm.data.text"
-                              autocomplete="off"
-                              required> </textarea>
-                    <div ng-messages="questionForm.question.$error">
-                        <div ng-message="required">Это поле обязательное для заполнения</div>
-                    </div>
-                </md-input-container>
-                <div class="md-block send-button">
-                    <div class="submit-button">
-                        <md-button class="md-raised md-primary" ng-click="vm.submit()">
-                            Задати питання
-                        </md-button>
+        <md-card ng-repeat="chat in vm.chats">
+            <md-list-item ng-click="vm.showChat(chat)">
+                {{chat | json}}
+            </md-list-item>
+            <div ng-if="chat.show">
+                <div class="messages">
+                    <div ng-repeat="i in vm.messages">
+                        <img
+                            ng-src="{{i.role == 1 ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}"
+                            alt="avatar" ng-class="{'my': i.role == 1, 'not-my': i.role ==2}"/>
+                        <div class="message" ng-class="{'my': i.role == 1, 'not-my': i.role ==2}">
+                            {{ i.text }}
+                        </div>
+                        <div style="clear: both"></div>
                     </div>
                 </div>
-            </form>
-        </md-card>
 
-        <!--<p class="tutor-text">Виникли запитання? Зверніться до репетитора</p>
-        <form class="ask-form" ng-click="vm.question()">
-            <div layout-gt-sm="row">
-                <img src="../../../img/fox.png" class="fox">
-                <md-card class="ask-card">
-                    <md-input-container class="md-block" flex-gt-md>
+                <form novalidate="" name="questionForm" class="questionForm">
+                    <md-input-container class="md-block" flex>
                         <label>{{ vm.label.result }}</label>
-                        <textarea name="ask"
+                        <textarea name="question"
+                                  md-maxlength="150"
                                   rows="3"
                                   md-select-on-focus
-                                  type="text"
-                                  ng-model="vm.data.ask"
+                                  ng-model="vm.data.text"
                                   autocomplete="off"
-                                  required
-                                  disabled> </textarea>
+                                  required> </textarea>
+                        <div ng-messages="questionForm.question.$error">
+                            <div ng-message="required">Это поле обязательное для заполнения</div>
+                        </div>
                     </md-input-container>
-                    <md-input-container class="md-block send-button">
-                        <i class="fa fa-camera fa-2x photo"></i>
-                        <i class="fa fa-file-audio-o fa-2x audio"></i>
-                        <md-button class="right md-raised md-primary submit-button" ng-click="vm.question()" disabled>
-                            Send
-                        </md-button>
-                    </md-input-container>
-                </md-card>
+                    <div class="md-block send-button">
+                        <div class="submit-button">
+                            <md-button class="md-raised md-primary" ng-click="vm.question()">
+                                Задати питання
+                            </md-button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>-->
+        </md-card>
     </ion-content>
 </ion-view>
 <script id="modal-answer.html" type="text/ng-template">
-    <ion-modal-view class="task answerModal" >
+    <ion-modal-view class="task answerModal">
         <ion-header-bar>
             <h1 class="title">Відправити відповідь</h1>
             <div class="buttons">
