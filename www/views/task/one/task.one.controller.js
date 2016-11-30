@@ -52,20 +52,18 @@
         }
 
         function upload($files) {
-            // $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
             console.log($files);
-            vm.data.photo = $files;
+            vm.data.files = $files;
 
-            vm.data.extension = [];
-            vm.data.image_file = [];
-            angular.forEach($files, function (file) {
-                vm.data.extension.push(file.type.split('/')[1]);
-                Upload.base64DataUrl(file)
-                    .then(function (base64) {
-                        vm.data.image_file.push(base64.split(',', 2)[1]);
-                    });
-            });
-            // $ionicLoading.hide();
+            // vm.data.extension = [];
+            // vm.data.image_file = [];
+            // angular.forEach($files, function (file) {
+            //     vm.data.extension.push(file.type.split('/')[1]);
+            //     Upload.base64DataUrl(file)
+            //         .then(function (base64) {
+            //             vm.data.image_file.push(base64.split(',', 2)[1]);
+            //         });
+            // });
         }
 
         function question() {
