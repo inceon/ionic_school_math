@@ -22,20 +22,14 @@
         vm.task = taskInfo;
         vm.upload = upload;
         vm.question = question;
-        vm.showChat = showChat;
+        vm.openChat = openChat;
         // vm.audio = audio;
         vm.hideLoader = $ionicLoading.hide;
         vm.doRefresh = doRefresh;
+        vm.messages = [];
 
         vm.data = vm.task.done || {};
         vm.data.task_id = $stateParams.taskId;
-
-        // if (vm.chats.length) {
-        //     comment.message(vm.chats[0].id)
-        //         .then(function (response) {
-        //             vm.messages = response.models;
-        //         });
-        // }
 
         function submit() {
             if (vm.task.done) {
@@ -79,12 +73,14 @@
                 });
         }
 
-        function showChat(chat) {
-            if (chat.show) {
-                chat.show = false;
-            } else {
-                chat.show = true;
+        function openChat(id) {
+            if(id) {
+                comment.message(id)
+                    .then(function (response) {
+                        vm.messages = response.models;
+                    });
             }
+            $scope.chatModal.show();
         }
 
         $ionicModal.fromTemplateUrl('views/task/one/modal-answer.html', {

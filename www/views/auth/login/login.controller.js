@@ -12,9 +12,9 @@
 
         vm.login = login;
         vm.authData = {
-            phone: '1234567936',
-            // phone: '1111111111',
-            // phone: '1111111115',
+            phone: '1234567936', // 2
+            // phone: '1111111111', // 52
+            // phone: '1111111115', // 1
             password: '11111111'
         };
         // vm.authData = null;
