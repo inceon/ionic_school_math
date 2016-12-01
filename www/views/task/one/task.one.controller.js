@@ -47,21 +47,17 @@
 
         function upload($files) {
             console.log($files);
-            vm.data.files = $files;
+            // vm.data.files = $files;
 
-            // vm.data.extension = [];
-            // vm.data.image_file = [];
-            // angular.forEach($files, function (file) {
-            //     vm.data.extension.push(file.type.split('/')[1]);
-            //     Upload.base64DataUrl(file)
-            //         .then(function (base64) {
-            //             vm.data.image_file.push(base64.split(',', 2)[1]);
-            //         });
-            // });
+            angular.forEach($files, function (file) {
+                vm.data[file.lastModified] = file;
+                vm.data.files.push(file);
+            });
+            console.log(vm.data);
         }
 
         function question() {
-            if (vm.chats.length) {
+            if (vm.chats.length && vm.chats[0].id) {
                 vm.data.comment_id = vm.chats[0].id;
             }
             comment.add(vm.data)
@@ -73,9 +69,11 @@
                 });
         }
 
-        function openChat(id) {
-            if(id) {
-                comment.message(id)
+        function openChat(data) {
+            if(data.id) {
+                vm.data.comment_id = data.id;
+                vm.data.send_to = data.created_by;
+                comment.message(data.id)
                     .then(function (response) {
                         vm.messages = response.models;
                     });
@@ -128,14 +126,14 @@
         function doRefresh() {
             // alert();
             vm.messages = [
-                {id: 1, text: "And make all of my stresses go bye-bye"},
-                {id: 2, text: "Did you get my message, you did not guess"},
-                {id: 1, text: "Cause if you did you would have called me with your sweet intent"},
-                {id: 2, text: "And we could give it a rest"},
-                {id: 2, text: "stead of beating my breast"},
-                {id: 1, text: "Making all of the pressure go sky-high"},
-                {id: 1, text: "Do you ever wonder what happens to the words that we send"},
-                {id: 2, text: "Do they bend, do they break from the flight that they take"},
+                {role: 1, text: "And make all of my stresses go bye-bye"},
+                {role: 2, text: "Did you get my message, you did not guess"},
+                {role: 1, text: "Cause if you did you would have called me with your sweet intent"},
+                {role: 2, text: "And we could give it a rest"},
+                {role: 2, text: "stead of beating my breast"},
+                {role: 1, text: "Making all of the pressure go sky-high"},
+                {role: 1, text: "Do you ever wonder what happens to the words that we send"},
+                {role: 2, text: "Do they bend, do they break from the flight that they take"},
             ];
             $rootScope.$broadcast('scroll.refreshComplete');
         }

@@ -50,15 +50,15 @@
                         </md-button>
                     </div>
                 </div>
-                <div class="md-block">
-                    <img ng-src="img/spinner.gif"
-                         ngf-thumbnail="file"
-                         class="attach-image"
-                         ng-repeat="file in vm.data.photo"
-                         ng-click="showImages($index)"
-                         ng-init="$last && vm.hideLoader()">
-                </div>
             </form>
+            <div class="md-block">
+                <img ng-src="img/spinner.gif"
+                     ngf-thumbnail="file.url ? file.url : file"
+                     class="attach-image"
+                     ng-repeat="file in vm.data.files"
+                     ng-click="showImages($index)"
+                     ng-init="$last && vm.hideLoader()">
+            </div>
         </md-card>
     </ion-content>
 </ion-modal-view>

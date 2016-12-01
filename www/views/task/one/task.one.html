@@ -19,19 +19,17 @@
         </div>
 
         <div layout="row" layout-align="end center" flex>
-            <md-button class="md-raised md-primary" ng-click="vm.openChat()">
-                <md-icon md-font-icon="fa fa-pencil fa-lg" aria-hidden="true"></md-icon>
-                Чат
-            </md-button>
             <md-button class="md-raised md-primary" ng-click="answerModal.show()">
                 <md-icon md-font-icon="fa fa-pencil fa-lg" aria-hidden="true"></md-icon>
                 Відправити відповідь
             </md-button>
         </div>
 
+        <md-card ng-if="$root.user.role_id == 1" ng-include="'views/task/one/chat.html'"></md-card>
+
         <md-card ng-repeat="chat in vm.chats">
-            <md-list-item ng-click="vm.openChat(chat.id)">
-                {{chat | json}}
+            <md-list-item ng-click="vm.openChat(chat)">
+                <h5>Чат з користувачем {{chat.creator}}</h5>
             </md-list-item>
         </md-card>
     </ion-content>
