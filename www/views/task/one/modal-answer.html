@@ -1,0 +1,64 @@
+<ion-modal-view class="task answerModal">
+    <ion-header-bar>
+        <h1 class="title">Відправити відповідь</h1>
+        <div class="buttons">
+            <button class="button button-icon button-clear ion-close-circled" ng-click="answerModal.hide()">
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <md-card class="answer">
+            <form novalidate="" name="answerForm" class="fade-element-in">
+                <md-input-container class="md-block" flex>
+                    <textarea name="answer"
+                              md-maxlength="150"
+                              rows="8"
+                              md-select-on-focus
+                              placeholder="{{ vm.label.result }}"
+                              type="text"
+                              ng-model="vm.data.answer"
+                              autocomplete="off"
+                              required> </textarea>
+                    <div ng-messages="answerForm.answer.$error" ng-if="answerForm.answer.$touched">
+                        <div ng-message="required">Это поле обязательное для заполнения</div>
+                    </div>
+                </md-input-container>
+
+                <div class="md-block" layout="row">
+                    <div layout-align="start center" flex>
+                        <md-button class="photo md-icon-button md-fab md-mini md-hue-2"
+                                   ng-style="{'background-color': '#1E88E5'}"
+                                   ngf-multiple="true"
+                                   ngf-max-files="5"
+                                   ngf-select="vm.upload($files)"
+                                   accept="image/*">
+
+                            <md-icon md-font-icon="fa fa-camera fa-lg" aria-hidden="true"></md-icon>
+                        </md-button>
+                        <md-button class="md-icon-button md-fab md-mini md-hue-2"
+                                   ng-if="vm.audio"
+                                   ng-style="{'background-color': '#1E88E5'}"
+                                   ng-click="vm.audio()">
+                            <md-icon md-font-icon="fa fa-file-audio-o fa-lg"
+                                     aria-hidden="true"></md-icon>
+                        </md-button>
+                    </div>
+
+                    <div layout-align="end center" flex class="submit-button">
+                        <md-button class="md-raised md-primary" ng-click="vm.submit()">
+                            Відправити
+                        </md-button>
+                    </div>
+                </div>
+                <div class="md-block">
+                    <img ng-src="img/spinner.gif"
+                         ngf-thumbnail="file"
+                         class="attach-image"
+                         ng-repeat="file in vm.data.photo"
+                         ng-click="showImages($index)"
+                         ng-init="$last && vm.hideLoader()">
+                </div>
+            </form>
+        </md-card>
+    </ion-content>
+</ion-modal-view>

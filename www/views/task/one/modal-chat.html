@@ -1,0 +1,47 @@
+<ion-modal-view class="task answerModal">
+    <ion-header-bar>
+        <h1 class="title">Відправити відповідь</h1>
+        <div class="buttons">
+            <button class="button button-icon button-clear ion-close-circled" ng-click="chatModal.hide()">
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <md-card>
+            <div class="messages">
+                <div ng-repeat="i in vm.messages">
+                    <img
+                        ng-src="{{i.role == 1 ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}"
+                        alt="avatar" ng-class="{'my': i.role == 1, 'not-my': i.role ==2}"/>
+                    <div class="message" ng-class="{'my': i.role == 1, 'not-my': i.role ==2}">
+                        {{ i.text }}
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+
+            <form novalidate="" name="questionForm" class="questionForm">
+                <md-input-container class="md-block" flex>
+                    <label>{{ vm.label.result }}</label>
+                    <textarea name="question"
+                              md-maxlength="150"
+                              rows="3"
+                              md-select-on-focus
+                              ng-model="vm.data.text"
+                              autocomplete="off"
+                              required> </textarea>
+                    <div ng-messages="questionForm.question.$error">
+                        <div ng-message="required">Это поле обязательное для заполнения</div>
+                    </div>
+                </md-input-container>
+                <div class="md-block send-button">
+                    <div class="submit-button">
+                        <md-button class="md-raised md-primary" ng-click="vm.question()">
+                            Задати питання
+                        </md-button>
+                    </div>
+                </div>
+            </form>
+        </md-card>
+    </ion-content>
+</ion-modal-view>

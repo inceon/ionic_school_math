@@ -30,12 +30,12 @@
         vm.data = vm.task.done || {};
         vm.data.task_id = $stateParams.taskId;
 
-        if (vm.chats.length) {
-            comment.message(vm.chats[0].id)
-                .then(function (response) {
-                    vm.messages = response.models;
-                });
-        }
+        // if (vm.chats.length) {
+        //     comment.message(vm.chats[0].id)
+        //         .then(function (response) {
+        //             vm.messages = response.models;
+        //         });
+        // }
 
         function submit() {
             if (vm.task.done) {
@@ -87,11 +87,18 @@
             }
         }
 
-        $ionicModal.fromTemplateUrl('modal-answer.html', {
+        $ionicModal.fromTemplateUrl('views/task/one/modal-answer.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function (modal) {
             $scope.answerModal = modal;
+        });
+
+        $ionicModal.fromTemplateUrl('views/task/one/modal-chat.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.chatModal = modal;
         });
 
         $scope.deleteAttach = function (index) {
