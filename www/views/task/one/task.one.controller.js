@@ -32,7 +32,7 @@
         vm.data.task_id = $stateParams.taskId;
 
         if (vm.chats) {
-            vm.data.comment_id = vm.chats[0].id
+            vm.data.comment_id = vm.chats[0].id;
             comment.message(vm.data.comment_id)
                 .then(function (response) {
                     vm.messages = response.models;
@@ -55,11 +55,10 @@
 
         function upload($files) {
             console.log($files);
-            // vm.data.files = $files;
+            vm.data.attach = $files;
 
             angular.forEach($files, function (file) {
                 vm.data[file.lastModified] = file;
-                vm.data.files.push(file);
             });
             console.log(vm.data);
         }
@@ -103,42 +102,35 @@
             $scope.chatModal = modal;
         });
 
-        $scope.deleteAttach = function (index) {
-            vm.data.photo.splice(index, 1);
-            vm.data.extension.splice(index, 1);
-            vm.data.image_file.splice(index, 1);
-            $ionicSlideBoxDelegate.update();
+        $scope.deleteAttach = function (file) {
+            delete vm.data[file.lastModified];
         };
 
-        $scope.showImages = function (index) {
-            $scope.activeSlide = index;
-            $scope.showModal('views/task/one/popover/image.html');
-        };
-
-        $scope.showModal = function (templateUrl) {
-            $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
-            $ionicModal.fromTemplateUrl(templateUrl, {
+        $scope.showImages = function (file) {
+            // $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
+            $ionicModal.fromTemplateUrl('views/task/one/popover/image.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function (modal) {
-                $scope.modal = modal;
-                $scope.modal.show();
+                $scope.imagesModal = modal;
+                $scope.imagesModal.file = file;
+                $scope.imagesModal.show();
             });
         };
 
         $scope.closeModal = function () {
-            $scope.modal.hide();
-            $scope.modal.remove()
+            $scope.imagesModal.hide();
+            // $scope.modal.remove();
         };
 
-        function doRefresh() {
+        function doRefresh () {
             if (vm.chats) {
                 comment.message(vm.data.comment_id)
                     .then(function (response) {
                         vm.messages = response.models;
                     });
             }
-            $rootScope.$broadcast('scroll.refreshComplete');
+            $scope.$broadcast('scroll.refreshComplete');
         }
 
     }

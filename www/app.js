@@ -16,10 +16,6 @@
                 cordova.plugins.Keyboard.disableScroll(true);
             }
 
-            document.addEventListener('deviceready', function(){
-                window.plugins.audioReader.init();
-            }, false);
-
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
