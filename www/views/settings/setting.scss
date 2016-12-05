@@ -38,7 +38,11 @@
             font-weight: bold;
             color: white;
             background-color: rgba(0,0,0,0.4);
-            bottom: 5px;
+            bottom: 0;
         }
+    }
+    .cropArea {
+        background: #E4E4E4;
+        overflow: hidden;
     }
 }

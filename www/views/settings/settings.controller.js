@@ -21,8 +21,9 @@
         var vm = this;
 
         vm.label = userInfo.label;
-
+        vm.croppedImage = "";
         vm.data = userInfo.user;
+
         if (userInfo.my_classes) {
             vm.my_classes = userInfo.my_classes.map(function (item) {
                 return item.number;
@@ -45,10 +46,13 @@
                 toastr.error("Ви ввели не всі дані");
                 return;
             }
-            console.log(vm.data);
+
             delete vm.data.photo;
-            // if (vm.data.image_file)
-            //     vm.data.image_file = vm.data.image_file.base64;
+
+            var tmp = vm.croppedImage.split(';', 2);
+
+            vm.data.extension = tmp[0].split(':', 2)[1];
+            vm.data.image_file = tmp[1].split(',', 2)[1];
 
             user.update(vm.data)
                 .then(function (response) {

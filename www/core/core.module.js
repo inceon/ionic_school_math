@@ -10,6 +10,7 @@
         'ngMessages',
         'ngMaterial',
         'ngFileUpload',
+        'ngImgCrop',
         'ui.mask',
         /*
          * Our reusable cross app code modules

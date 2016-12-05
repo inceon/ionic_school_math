@@ -3,28 +3,26 @@
         <form name="settingForm">
             <md-input-container class="md-block" flex>
                 <div class="image_file" ng-cloak>
-                    <img ngf-thumbnail="vm.data.image_file || vm.data.photo"
+                    <img ngf-thumbnail="vm.data.photo"
+                         ng-if="!vm.data.photo2"
                          ngf-as-background="true"
                          class="photo">
+                    <div ng-if="vm.data.photo2"
+                         class="cropArea photo">
+                        <img-crop image="vm.data.photo2 | ngfDataUrl"
+                                  result-image="vm.croppedImage"
+                                  ngf-as-background="true">
+                        </img-crop>
+                    </div>
                     <p type="file"
-                       ngf-select="vm.upload($file)"
                        accept="image/*"
-                       ng-model="vm.data.image_file"
-                       ngf-no-object-url="true">
+                       ng-model="vm.data.photo2"
+                       ngf-no-object-url="true"
+                       ngf-select>
                         Обрати фото
                     </p>
                 </div>
             </md-input-container>
-            <!--<md-input-container class="md-block" flex>-->
-            <!--&lt;!&ndash;<label>{{vm.label.photo}}</label>&ndash;&gt;-->
-            <!--<input type="file"-->
-            <!--ng-model="vm.data.image_file"-->
-            <!--autocomplete="off"-->
-            <!--ngf-select-->
-            <!--accept="image/*"-->
-            <!--ngf-max-size="2MB"-->
-            <!--base-sixty-four-input>-->
-            <!--</md-input-container>-->
             <div layout="row">
                 <md-input-container class="md-block" flex>
                     <label>{{vm.label.first_name}}</label>
