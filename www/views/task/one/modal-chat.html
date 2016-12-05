@@ -7,6 +7,9 @@
         </div>
     </ion-header-bar>
     <ion-content>
+        <ion-refresher
+            pulling-text="Оновити інформацію..."
+            on-refresh="vm.doRefresh()"></ion-refresher>
         <md-card ng-include="'views/task/one/chat.html'">
         </md-card>
     </ion-content>

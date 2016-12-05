@@ -32,7 +32,8 @@
         vm.data.task_id = $stateParams.taskId;
 
         if (vm.chats) {
-            comment.message(vm.chats[0].id)
+            vm.data.comment_id = vm.chats[0].id
+            comment.message(vm.data.comment_id)
                 .then(function (response) {
                     vm.messages = response.models;
                 });
@@ -132,7 +133,7 @@
 
         function doRefresh() {
             if (vm.chats) {
-                comment.message(vm.chats[0].id)
+                comment.message(vm.data.comment_id)
                     .then(function (response) {
                         vm.messages = response.models;
                     });
