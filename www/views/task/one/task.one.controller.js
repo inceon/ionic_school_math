@@ -31,6 +31,13 @@
         vm.data = vm.task.done || {};
         vm.data.task_id = $stateParams.taskId;
 
+        if (vm.chats) {
+            comment.message(vm.chats[0].id)
+                .then(function (response) {
+                    vm.messages = response.models;
+                });
+        }
+
         function submit() {
             if (vm.task.done) {
                 task.update(vm.data)
@@ -57,9 +64,9 @@
         }
 
         function question() {
-            if (vm.chats.length && vm.chats[0].id) {
-                vm.data.comment_id = vm.chats[0].id;
-            }
+            // if (vm.chats.length && vm.chats[0].id) {
+            //     vm.data.comment_id = vm.chats[0].id;
+            // }
             comment.add(vm.data)
                 .then(function (response) {
                     response.role = $rootScope.user.role_id;
@@ -124,17 +131,12 @@
         };
 
         function doRefresh() {
-            // alert();
-            vm.messages = [
-                {role: 1, text: "And make all of my stresses go bye-bye"},
-                {role: 2, text: "Did you get my message, you did not guess"},
-                {role: 1, text: "Cause if you did you would have called me with your sweet intent"},
-                {role: 2, text: "And we could give it a rest"},
-                {role: 2, text: "stead of beating my breast"},
-                {role: 1, text: "Making all of the pressure go sky-high"},
-                {role: 1, text: "Do you ever wonder what happens to the words that we send"},
-                {role: 2, text: "Do they bend, do they break from the flight that they take"},
-            ];
+            if (vm.chats) {
+                comment.message(vm.chats[0].id)
+                    .then(function (response) {
+                        vm.messages = response.models;
+                    });
+            }
             $rootScope.$broadcast('scroll.refreshComplete');
         }
 
