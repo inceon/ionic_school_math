@@ -3,6 +3,11 @@
 $applicationBackground: rgb(253,253,253);
 $text: 25px;
 
+.clearfix {
+    clear: both;
+    display: table;
+}
+
 @import "../views/lazyload/lazyload";
 @import "../views/auth/auth";
 @import "../views/auth/login/login";

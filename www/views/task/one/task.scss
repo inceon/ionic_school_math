@@ -120,52 +120,69 @@
 
     .messages {
         .message {
-            padding: 10px;
-            margin: 5px;
-            max-width: 80%;
-            border-radius: 2px;
-            display: inline;
-            vertical-align: bottom;
-            position: relative;
+            img {
+                width: 35px;
+                height: 35px;
+                margin: 5px;
+                border-radius: 50%;
+            }
+            .show-time {
+                margin: 25px 5px 5px 5px;
+            }
+            .time {
+                font-size: 11px;
+                padding-right: 5px;
+            }
+            .text {
+                padding: 10px;
+                margin: 5px;
+                max-width: 80%;
+                border-radius: 2px;
+                display: inline;
+                vertical-align: bottom;
+                position: relative;
+            }
             &.my {
-                background-color: rgb(63,81,181);
-                color: white;
-                float: right;
-                &:after {
-                    content: '';
-                    position: absolute;
-                    right: -15px;
-                    top: 10px;
-                    border: 8px solid transparent;
-                    border-left: 8px solid rgb(63,81,181);
+                img {
+                    float: right;
+                }
+                .time {
+                    float: right;
+                }
+                .text {
+                    background-color: rgb(63,81,181);
+                    color: white;
+                    float: right;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        right: -15px;
+                        top: 10px;
+                        border: 8px solid transparent;
+                        border-left: 8px solid rgb(63,81,181);
+                    }
                 }
             }
             &.not-my {
-                background-color: #ECEFF1;
-                float: left;
-                &:after {
-                    content: '';
-                    position: absolute;
-                    left: -15px;
-                    top: 10px;
-                    border: 8px solid transparent;
-                    border-right: 8px solid #ECEFF1;
+                img {
+                    float: left;
+                }
+                .time {
+                    float: left;
+                }
+                .text {
+                    background-color: #ECEFF1;
+                    float: left;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: -15px;
+                        top: 10px;
+                        border: 8px solid transparent;
+                        border-right: 8px solid #ECEFF1;
+                    }
                 }
             }
         }
-
-        img {
-            width: 35px;
-            height: 35px;
-            margin: 5px;
-            border-radius: 50%;
-            &.my {
-                float: right;
-            }
-            &.not-my {
-                float: left;
-            }
-        }
-
     }
 }
