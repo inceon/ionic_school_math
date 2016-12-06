@@ -12,6 +12,7 @@
                 <md-input-container class="md-block" flex>
                     <textarea name="answer"
                               md-maxlength="150"
+                              ng-maxlength="150"
                               rows="8"
                               md-select-on-focus
                               placeholder="{{ vm.label.result }}"
@@ -20,7 +21,8 @@
                               autocomplete="off"
                               required> </textarea>
                     <div ng-messages="answerForm.answer.$error" ng-if="answerForm.answer.$touched">
-                        <div ng-message="required">Это поле обязательное для заполнения</div>
+                        <div ng-message="required">Поле обов'язкове для заповнення</div>
+                        <div ng-message="maxlength">Максимальна довжина відповіді повинна бути 150 символів</div>
                     </div>
                 </md-input-container>
 
@@ -45,7 +47,7 @@
                     </div>
 
                     <div layout-align="end center" flex class="submit-button">
-                        <md-button class="md-raised md-primary" ng-click="vm.submit()">
+                        <md-button class="md-raised md-primary" ng-click="vm.submit(answerForm)">
                             Відправити
                         </md-button>
                     </div>

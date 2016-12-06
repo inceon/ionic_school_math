@@ -1,10 +1,11 @@
 <div class="messages">
     <div ng-repeat="i in vm.messages">
         <img
-            ng-src="{{i.role == 1 ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}"
-            alt="avatar" ng-class="{'my': i.role == 1, 'not-my': i.role ==2}"/>
-        <div class="message" ng-class="{'my': i.role == 1, 'not-my': i.role ==2}">
-            {{ i.text }}
+            ng-src="{{i.send_from == $root.user.id ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}"
+            alt="avatar" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'"/>
+        <div class="time">{{i.created_at * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
+        <div class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
+            {{ i.text }} <br>
         </div>
         <div style="clear: both"></div>
     </div>
@@ -15,18 +16,20 @@
         <label>{{ vm.label.result }}</label>
         <textarea name="question"
                   md-maxlength="150"
+                  ng-maxlength="150"
                   rows="3"
                   md-select-on-focus
                   ng-model="vm.data.text"
                   autocomplete="off"
                   required> </textarea>
         <div ng-messages="questionForm.question.$error">
-            <div ng-message="required">Это поле обязательное для заполнения</div>
+            <div ng-message="required">Поле обов'язкове для заповнення</div>
+            <div ng-message="maxlength">Максимальна довжина відповіді повинна бути 150 символів</div>
         </div>
     </md-input-container>
     <div class="md-block send-button">
         <div class="submit-button">
-            <md-button class="md-raised md-primary" ng-click="vm.question()">
+            <md-button class="md-raised md-primary" ng-click="vm.question(questionForm)">
                 Надіслати
             </md-button>
         </div>

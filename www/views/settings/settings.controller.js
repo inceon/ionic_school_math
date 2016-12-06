@@ -77,7 +77,7 @@
             //     .then(function (base64) {
             //         vm.data.image_file = base64.split(',', 2)[1];
             //     });
-        }
+        };
 
         initAutocomplete = function () {
 
