@@ -1,0 +1,14 @@
+<div class="modal image-modal transparent" >
+    <img ngf-thumbnail="vm.data.photo2"
+         ngf-as-background="true"
+         class="photo">
+    <div ng-if="vm.data.photo2"
+         class="cropArea photo">
+        <img-crop image="vm.data.photo2 | ngfDataUrl"
+                  result-image="vm.croppedImage">
+        </img-crop>
+    </div>
+    <div class="save" ng-click="">
+        Зберегти
+    </div>
+</div>

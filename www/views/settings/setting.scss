@@ -16,10 +16,10 @@
         box-sizing: border-box;
         text-align: center;
         position: relative;
-        width: 375px;
-        height: 250px;
+        width: 325px;
+        height: 325px;
         margin: 0 auto;
-        @media (max-width: 375px) {
+        @media (max-width: 325px) {
             width: 100%;
         }
         .photo {
@@ -44,5 +44,6 @@
     .cropArea {
         background: #E4E4E4;
         overflow: hidden;
+        width: 500px;
     }
 }

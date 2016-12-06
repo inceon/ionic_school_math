@@ -1,0 +1,23 @@
+.image-list-thumb {
+    padding: 2px 2px 2px 2px;
+    height: 100px;
+}
+
+.image-modal {
+    .remove {
+        height: 35px;
+        bottom: 3px;
+        right: 3px;
+        left: 3px;
+        text-align: center;
+        position: fixed;
+        background-color: rgba(0,255,0,0.7);
+        color: rgb(30,30,255);
+        line-height: 35px;
+        font-size: 1.2em;
+        font-weight: bold;
+        z-index: 50;
+        cursor: pointer;
+
+    }
+}

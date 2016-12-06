@@ -4,9 +4,9 @@
         .module('app')
         .controller('Settings', Settings);
 
-    Settings.$inject = ['$rootScope', 'site', 'user', 'userInfo', 'toastr', 'Upload'];
+    Settings.$inject = ['$rootScope', '$scope', '$ionicModal', 'site', 'user', 'userInfo', 'toastr', 'Upload'];
 
-    function Settings($rootScope, site, user, userInfo, toastr, Upload) {
+    function Settings($rootScope, $scope, $ionicModal, site, user, userInfo, toastr, Upload) {
 
         $rootScope.page = {
             title: 'Налаштування'
@@ -39,7 +39,6 @@
             });
 
         vm.save = save;
-        vm.upload = upload;
 
         function save(form) {
             if (form.$invalid) {
@@ -51,23 +50,33 @@
 
             var tmp = vm.croppedImage.split(';', 2);
 
-            vm.data.extension = tmp[0].split(':', 2)[1];
+            vm.data.extension = tmp[0].split(':', 2)[1].split('/',2)[1];
             vm.data.image_file = tmp[1].split(',', 2)[1];
 
             user.update(vm.data)
                 .then(function (response) {
+                    delete vm.data.photo2;
                     vm.data.photo = response.user.photo;
                     toastr.success("Дані успішно оновлені");
                 });
         }
 
-        function upload($file) {
-            console.log($file);
-            vm.data.extension = $file.type.split('/')[1];
-            Upload.base64DataUrl($file)
-                .then(function (base64) {
-                    vm.data.image_file = base64.split(',', 2)[1];
-                });
+        $scope.upload = function ($file) {
+            // vm.data.photo2 = $file;
+            $ionicModal.fromTemplateUrl('views/settings/popover/image.html', {
+                scope: $scope,
+                animation: 'slide-in-up'
+            }).then(function (modal) {
+                $scope.imagesModal = modal;
+                $scope.photo2 = $file;
+                $scope.imagesModal.show();
+            });
+            // console.log($file);
+            // vm.data.extension = $file.type.split('/')[1];
+            // Upload.base64DataUrl($file)
+            //     .then(function (base64) {
+            //         vm.data.image_file = base64.split(',', 2)[1];
+            //     });
         }
 
         initAutocomplete = function () {
