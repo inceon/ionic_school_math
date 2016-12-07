@@ -26,8 +26,32 @@
             <div ng-message="maxlength">Максимальна довжина відповіді повинна бути 150 символів</div>
         </div>
     </md-input-container>
-    <div class="md-block send-button">
-        <div class="submit-button">
+    {{vm.audio.online}}
+    <div class="md-block" layout="row">
+        <div layout-align="start center" flex>
+            <md-button class="md-icon-button md-fab md-mini md-hue-2"
+                        ng-style="{'background-color':'#3f51b5'}"
+                        ng-click="vm.audio.record(); "
+                        ng-if="!vm.audio.online">
+                <md-icon md-font-icon="fa fa-microphone fa-lg" aria-hidden="true"></md-icon>
+            </md-button>
+
+            <md-button class="md-icon-button md-fab md-mini md-hue-2"
+                        ng-style="{'background-color':'white'}"
+                        ng-click="vm.audio.stop();"
+                        ng-if="vm.audio.online">
+                <md-icon md-font-icon="fa fa-stop fa-lg" ng-style="{'color':'#B71C1C'}" aria-hidden="true"></md-icon>
+            </md-button>
+
+            <md-button class="md-icon-button md-fab md-mini md-hue-2"
+                        ng-style="{'background-color':'#fff'}"
+                        ng-click="vm.audio.playback()"
+                        ng-if="vm.audio.recorded">
+                <md-icon md-font-icon="fa fa-play fa-lg" ng-style="{'color':'#3f51b5'}" aria-hidden="true"></md-icon>
+            </md-button>
+        </div>
+
+        <div layout-align="end center" flex class="submit-button">
             <md-button class="md-raised md-primary" ng-click="vm.question(questionForm)">
                 Надіслати
             </md-button>

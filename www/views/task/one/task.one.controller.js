@@ -5,15 +5,46 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', 'chats', '$ionicSlideBoxDelegate', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', 'chats', '$ionicSlideBoxDelegate', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
 
-    function Task($rootScope, $scope, $stateParams, chats, $ionicSlideBoxDelegate, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, chats, $ionicSlideBoxDelegate, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
 
         $rootScope.page = {
             title: 'Завдання'
         };
 
         var vm = this;
+        
+        vm.audio = {};
+
+        vm.audio.stop = function() {
+            vm.audio.online = false;
+            window.plugins.audioRecorderAPI.stop(function(msg) {
+                vm.audio.recorded = true;
+            }, function(msg) {
+                vm.audio.recorded = false;
+            });
+        }
+        vm.audio.record = function() {
+            vm.audio.online = true;
+            window.plugins.audioRecorderAPI.record(function(msg) {
+                console.log(vm.audio);
+            }, function(msg) {
+                vm.audio.recorded = false;
+                alert('ko: ' + msg);
+            }, 5); // record 30 seconds
+            $timeout(function (){
+                vm.audio.recorded = true;
+                vm.audio.online = false;
+            },5000);
+        }
+        vm.audio.playback = function() {
+            window.plugins.audioRecorderAPI.playback(function(msg) {
+                alert('ok: ' + msg);
+            }, function(msg) {
+                alert('ko: ' + msg);
+            });
+        }
 
         vm.label = prepGetLabels.label;
 
