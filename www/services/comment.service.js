@@ -11,11 +11,19 @@
         return {
             add: add,
             all: all,
-            message: message
+            message: message,
+            addAudio: addAudio
         };
 
         function add (data) {
             return http.post(
+                url.comment.add,
+                data
+            )
+        }
+
+        function addAudio (data) {
+            return http.audio(
                 url.comment.add,
                 data
             )

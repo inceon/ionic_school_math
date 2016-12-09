@@ -23,6 +23,9 @@
             },
             file: function (url, data) {
                 return requestFile(url, data);
+            },
+            audio: function (url, data) {
+                return requestAudio(url, data);
             }
         };
 
@@ -71,6 +74,30 @@
             return $http.post(url, data, config)
                 .then(requestComplete)
                 .catch(requestFailed);
+        }
+
+        function requestAudio(url, data) {
+            $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
+
+            if ($sessionStorage.auth_key) {
+                url = url + '?auth_key=' + $sessionStorage.auth_key;
+            }
+
+            var ft = new FileTransfer();
+            return ft.upload(data.audio, encodeURI(url), function(response){
+                console.log(response);
+                $ionicLoading.hide();
+            }, function(error){
+                console.log(error);
+                $ionicLoading.hide();
+            }, {
+                fileName: data.audio.substr(data.audio.lastIndexOf('/') + 1),
+                fileKey: 'file',
+                mimeType: 'audio/x-m4a',
+                httpMethod: 'POST',
+                chunkedMode: false,
+                params: data
+            });
         }
 
         function requestFailed(err) {

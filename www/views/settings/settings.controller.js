@@ -21,8 +21,10 @@
         var vm = this;
 
         vm.label = userInfo.label;
-        vm.croppedImage = "";
+        vm.croppedImage = null;
         vm.data = userInfo.user;
+
+        vm.data.photo2 = null;
 
         if (userInfo.my_classes) {
             vm.my_classes = userInfo.my_classes.map(function (item) {
@@ -53,6 +55,8 @@
             vm.data.extension = tmp[0].split(':', 2)[1].split('/',2)[1];
             vm.data.image_file = tmp[1].split(',', 2)[1];
 
+            console.log(vm.data);
+
             user.update(vm.data)
                 .then(function (response) {
                     delete vm.data.photo2;
@@ -62,21 +66,10 @@
         }
 
         $scope.upload = function ($file) {
-            // vm.data.photo2 = $file;
-            $ionicModal.fromTemplateUrl('views/settings/popover/image.html', {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function (modal) {
-                $scope.imagesModal = modal;
-                $scope.photo2 = $file;
-                $scope.imagesModal.show();
-            });
-            // console.log($file);
-            // vm.data.extension = $file.type.split('/')[1];
-            // Upload.base64DataUrl($file)
-            //     .then(function (base64) {
-            //         vm.data.image_file = base64.split(',', 2)[1];
-            //     });
+            Upload.base64DataUrl($file)
+                .then(function (base64) {
+                    vm.data.photo2 = base64;
+                });
         };
 
         initAutocomplete = function () {

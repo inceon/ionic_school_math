@@ -7,7 +7,9 @@
                      ngf-as-background="false"
                      class="photo">
                 <div ng-if="vm.data.photo2"
-                     class="cropArea photo">
+                     class="cropArea photo"
+                     ng-model="vm.data.photo2"
+                     ngf-pattern="image/*">
                     <img-crop image="vm.data.photo2 | ngfDataUrl"
                               result-image="vm.croppedImage"
                               ngf-as-background="true">
@@ -23,13 +25,6 @@
 
                     <md-icon md-font-icon="fa fa-camera fa-2x" aria-hidden="true"></md-icon>
                 </md-button>
-                <!--<p type="file"
-                   accept="image/*"
-                   ng-model="vm.data.photo2"
-                   ngf-no-object-url="true"
-                   ngf-select>
-                    Обрати фото
-                </p>-->
             </div>
         </div>
         <form name="settingForm" layout-padding>
