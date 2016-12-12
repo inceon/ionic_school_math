@@ -1,19 +1,25 @@
 <ion-view class="setting" ng-cloak>
-    <ion-content>
+    <ion-content style="overflow-y:scroll;">
         <div class="md-block" flex>
             <div class="image_file" ng-cloak>
                 <img ngf-thumbnail="vm.data.photo"
                      ng-if="!vm.data.photo2"
                      ngf-as-background="false"
                      class="photo">
-                <div ng-if="vm.data.photo2"
-                     class="cropArea photo"
-                     ng-model="vm.data.photo2"
-                     ngf-pattern="image/*">
-                    <img-crop image="vm.data.photo2 | ngfDataUrl"
-                              result-image="vm.croppedImage"
-                              ngf-as-background="true">
-                    </img-crop>
+                <div ng-show="vm.data.photo2"
+                     class="cropArea photo">
+                    <!--<img-crop image="vm.data.photo2 | ngfDataUrl"-->
+                              <!--result-image="vm.croppedImage">-->
+                    <!--</img-crop>-->
+                    <canvas width="500" height="300"
+                            id="canvas"
+                            image-cropper
+                            image="vm.data.photo2 | ngfDataUrl"
+                            cropped-image="vm.croppedImage"
+                            crop-width="200"
+                            crop-height="200"
+                            keep-aspect="true"
+                            touch-radius="30"></canvas>
                 </div>
                 <md-button class="select md-icon-button md-fab md-hue-2"
                            ng-style="{'background-color': '#1E88E5'}"
@@ -21,7 +27,9 @@
                            accept="image/*"
                            ng-model="vm.data.photo2"
                            ngf-no-object-url="true"
-                           ngf-select>
+                           ngf-include-dir="true"
+                           ngf-select
+                           img-cropper-fileread>
 
                     <md-icon md-font-icon="fa fa-camera fa-2x" aria-hidden="true"></md-icon>
                 </md-button>

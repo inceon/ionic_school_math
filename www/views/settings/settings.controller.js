@@ -52,7 +52,7 @@
 
             var tmp = vm.croppedImage.split(';', 2);
 
-            vm.data.extension = tmp[0].split(':', 2)[1].split('/',2)[1];
+            vm.data.extension = tmp[0].split(':', 2)[1].split('/', 2)[1];
             vm.data.image_file = tmp[1].split(',', 2)[1];
 
             console.log(vm.data);
@@ -68,7 +68,7 @@
         $scope.upload = function ($file) {
             Upload.base64DataUrl($file)
                 .then(function (base64) {
-                    vm.data.photo2 = base64;
+                    $scope.myImageio = base64;
                 });
         };
 

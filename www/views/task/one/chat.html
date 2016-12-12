@@ -27,7 +27,7 @@
         </div>
     </md-input-container>
     <div class="md-block" layout="row">
-        <div layout-align="start center" flex>
+        <div layout-align="start center" flex="7">
             <md-button class="md-icon-button md-fab md-mini md-hue-2"
                         ng-style="{'background-color':'#3f51b5'}"
                         ng-click="vm.audio.record(); "
@@ -41,13 +41,18 @@
                         ng-if="vm.audio.online">
                 <md-icon md-font-icon="fa fa-stop fa-lg" ng-style="{'color':'#B71C1C'}" aria-hidden="true"></md-icon>
             </md-button>
+        </div>
+        <div layout-align="center center" flex="50">
+            <audio ng-src="{{vm.audio.data}}" controls ng-if="vm.audio.recorded">
+                Тег audio не поддерживается вашим браузером.
+            </audio>
 
-            <md-button class="md-icon-button md-fab md-mini md-hue-2"
+            <!--<md-button class="md-icon-button md-fab md-mini md-hue-2"
                         ng-style="{'background-color':'#fff'}"
                         ng-click="vm.audio.playback()"
                         ng-if="vm.audio.recorded">
                 <md-icon md-font-icon="fa fa-play fa-lg" ng-style="{'color':'#3f51b5'}" aria-hidden="true"></md-icon>
-            </md-button>
+            </md-button>-->
         </div>
 
         <div layout-align="end center" flex class="submit-button">
