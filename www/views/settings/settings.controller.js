@@ -4,9 +4,9 @@
         .module('app')
         .controller('Settings', Settings);
 
-    Settings.$inject = ['$rootScope', '$scope', '$ionicModal', 'site', 'user', 'userInfo', 'toastr', 'Upload'];
+    Settings.$inject = ['$rootScope', '$scope', '$jrCrop', '$ionicModal', 'site', 'user', 'userInfo', 'toastr', 'Upload'];
 
-    function Settings($rootScope, $scope, $ionicModal, site, user, userInfo, toastr, Upload) {
+    function Settings($rootScope, $scope, $jrCrop, $ionicModal, site, user, userInfo, toastr, Upload) {
 
         $rootScope.page = {
             title: 'Налаштування'
@@ -66,9 +66,21 @@
         }
 
         $scope.upload = function ($file) {
+            delete vm.croppedImage;
             Upload.base64DataUrl($file)
                 .then(function (base64) {
-                    $scope.myImageio = base64;
+                    if($file) {
+                        $jrCrop.crop({
+                            url: base64,
+                            width: 200,
+                            height: 200,
+                            circle: true,
+                            chooseText: 'Обрати',
+                            cancelText: 'Відмінити'
+                        }).then(function (canvas) {
+                            vm.croppedImage = canvas.toDataURL();
+                        });
+                    }
                 });
         };
 

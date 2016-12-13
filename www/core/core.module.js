@@ -10,7 +10,7 @@
         'ngMessages',
         'ngMaterial',
         'ngFileUpload',
-        'angular-img-cropper',
+        'jrCrop',
         'ui.mask',
         /*
          * Our reusable cross app code modules
