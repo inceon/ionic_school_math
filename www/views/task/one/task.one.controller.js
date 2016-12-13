@@ -37,7 +37,7 @@
             }, function (msg) {
                 vm.audio.recorded = false;
                 vm.audio.online = false;
-            }, 5);
+            }, 15);
         };
 
         vm.audio.playback = function () {
