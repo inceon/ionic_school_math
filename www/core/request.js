@@ -84,12 +84,18 @@
             }
 
             var ft = new FileTransfer();
-            return ft.upload(data.audio, encodeURI(url), function(response){
-                console.log(response);
+
+            var promise = $q.defer();
+            ft.upload(data.audio, encodeURI(url), function (response) {
                 $ionicLoading.hide();
-            }, function(error){
+
+                console.info('response complete', JSON.parse(response.response));
+
+                promise.resolve(JSON.parse(response.response));
+            }, function (error) {
                 console.log(error);
                 $ionicLoading.hide();
+                promise.reject(error.body);
             }, {
                 fileName: data.audio.substr(data.audio.lastIndexOf('/') + 1),
                 fileKey: 'file',
@@ -98,6 +104,8 @@
                 chunkedMode: false,
                 params: data
             });
+
+            return promise.promise;
         }
 
         function requestFailed(err) {

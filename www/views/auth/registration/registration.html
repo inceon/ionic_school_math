@@ -8,20 +8,23 @@
                 <img id="login_fox" src="img/fox.png"/>
             </div>
         </div>
+        <div class="md-block" flex>
+            <div class="image_file" ng-cloak>
+                <img ngf-thumbnail="vm.registerData.image_file || 'http://school.apes-at-work.com/photo/users/empty.jpg'"
+                     alt="profile photo"
+                     class="photo">
+                <md-button class="select md-icon-button md-fab md-hue-2"
+                           ng-style="{'background-color': '#1E88E5'}"
+                           type="file"
+                           ngf-select="vm.upload($file)"
+                           accept="image/*"
+                           ngf-no-object-url="true"
+                           ng-model="vm.registerData.image_file">
+                    <md-icon md-font-icon="fa fa-camera fa-2x" aria-hidden="true"></md-icon>
+                </md-button>
+            </div>
+        </div>
         <form class="list" name="registerForm">
-            <md-input-container class="md-block" flex-gt-sm>
-                <div class="image_file" ng-cloak>
-                    <img ngf-thumbnail="vm.registerData.image_file || 'http://school.apes-at-work.com/photo/users/empty.jpg'"
-                         alt="profile photo">
-                    <p type="file"
-                       ngf-select="vm.upload($file)"
-                       accept="image/*"
-                       ng-model="vm.registerData.image_file"
-                       ngf-no-object-url="true">
-                        Обрати фото
-                    </p>
-                </div>
-            </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.phone}}</label>
                 <input name="phone"

@@ -4,9 +4,9 @@
         .module('app')
         .controller('Registration', Registration);
 
-    Registration.$inject = ['user', 'site', 'discipline', '$scope', 'prepGetLabels', 'Upload'];
+    Registration.$inject = ['user', 'site', '$jrCrop', 'discipline', '$scope', 'prepGetLabels', 'Upload'];
 
-    function Registration(user, site, discipline, $scope, prepGetLabels, Upload) {
+    function Registration(user, site, $jrCrop, discipline, $scope, prepGetLabels, Upload) {
 
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -62,7 +62,21 @@
         function upload($file) {
             vm.registerData.extension = $file.type.split('/')[1];
             Upload.base64DataUrl($file).then(function(base64){
-                vm.registerData.image_file = base64.split(',',2)[1];
+                if($file) {
+                    $jrCrop.crop({
+                        url: base64,
+                        width: 200,
+                        height: 200,
+                        circle: true,
+                        chooseText: 'Обрати',
+                        cancelText: 'Відмінити'
+                    }).then(function (canvas) {
+                        vm.registerData.image_file = canvas.toDataURL();
+                    }, function () {
+                        delete vm.registerData.image_file;
+                    });
+                }
+                // vm.registerData.image_file = base64.split(',',2)[1];
             });
         }
 

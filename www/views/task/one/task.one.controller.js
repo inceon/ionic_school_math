@@ -112,14 +112,16 @@
             }
             if (vm.audio.data) {
                 vm.data.audio = vm.audio.data;
-                comment.addAudio(vm.data);
-                    // .then(function (response) {
-                    //     console.log(response);
-                    //     response.role = $rootScope.user.role_id;
-                    //     vm.messages.push(response);
+
+                comment.addAudio(vm.data)
+                    .then(function (response) {
+                        // console.log(response);
+                        // response.role = $rootScope.user.role_id;
+                        // vm.messages.push(response);
                         toastr.success("Повідомлення успішно відправлено");
-                    //     vm.data.text = ' ';
-                    // });
+                        // vm.data.text = ' ';
+                    });
+                delete vm.data.audio;
             } else {
                 if (form.$invalid) {
                     toastr.error("Дані введені не вірно");
