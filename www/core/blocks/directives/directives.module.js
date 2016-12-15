@@ -2,7 +2,8 @@
     'use strict';
     angular
         .module('directives.module', [
-            'directive.inputFile'
+            'directive.inputFile',
+            'directive.record'
         ]);
 })();
 

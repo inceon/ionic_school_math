@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', 'chats', '$ionicSlideBoxDelegate', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$sce', 'chats', '$ionicSlideBoxDelegate', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
 
-    function Task($rootScope, $scope, $stateParams, chats, $ionicSlideBoxDelegate, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, $sce, chats, $ionicSlideBoxDelegate, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -40,12 +40,17 @@
             }, 15);
         };
 
-        vm.audio.playback = function () {
-            window.plugins.audioRecorderAPI.playback(function (msg) {
-                alert("audio.playback: " + msg);
-            }, function (msg) {
-                alert('ko: ' + msg);
-            });
+        vm.audio.play = function (range) {
+            var elem = document.getElementById(range);
+            elem.getElementsByTagName("audio")[0].play();
+            elem.getElementsByTagName("a")[0].style.display = "none";
+            elem.getElementsByTagName("a")[1].style.display = "inline";
+        };
+        vm.audio.pause = function (range) {
+            var elem = document.getElementById(range);
+            elem.getElementsByTagName("audio")[0].pause();
+            elem.getElementsByTagName("a")[0].style.display = "inline";
+            elem.getElementsByTagName("a")[1].style.display = "none";
         };
 
         vm.label = prepGetLabels.label;
@@ -115,13 +120,13 @@
 
                 comment.addAudio(vm.data)
                     .then(function (response) {
-                        // console.log(response);
+                        console.log(response);
+                        vm.messages.push(response);
                         // response.role = $rootScope.user.role_id;
-                        // vm.messages.push(response);
                         toastr.success("Повідомлення успішно відправлено");
-                        // vm.data.text = ' ';
+                        // vm.data.text = '';
+                        delete vm.data.audio;
                     });
-                delete vm.data.audio;
             } else {
                 if (form.$invalid) {
                     toastr.error("Дані введені не вірно");

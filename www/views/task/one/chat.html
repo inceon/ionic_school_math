@@ -5,6 +5,8 @@
         <br ng-show="i.show_date">
         <div class="text" ng-click="i.show_date = !i.show_date">
             {{ i.text }}
+            <record ng-if="i.files.length == 1 && i.files[0].extension == 'm4a'"
+                    src="{{i.files[0].url | trusted}}"></record>
         </div>
         <div style="clear: both"></div>
     </div>
@@ -43,10 +45,9 @@
             </md-button>
         </div>
         <div layout-align="center center" flex="50">
-            <audio src="http://msxa.userfiles.me/m/082236230255224103229017235147241218102171220183103011/1481645165/80480419/0/4fcf91e046902e4ebe09b8475315cf81/Drum_amp_Bass-Drum_amp_Bass-spaces.ru.mp3"
-                   controls>
-                Тег audio не поддерживается вашим браузером.
-            </audio>
+            <record ng-if="vm.audio.recorded"
+                    src="{{vm.audio.data}}">
+            </record>
 
             <!--<md-button class="md-icon-button md-fab md-mini md-hue-2"
                         ng-style="{'background-color':'#fff'}"

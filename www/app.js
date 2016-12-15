@@ -6,6 +6,7 @@
             'services.module',
             'directives.module',
             'request.module',
+            'filters.module'
         ])
         .run(runBlock);
 

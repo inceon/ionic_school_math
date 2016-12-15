@@ -5,7 +5,7 @@
         .factory('url', [
             function () {
 
-                var baseUrl = 'http://192.168.1.34/api/web/v2/';
+                var baseUrl = 'http://192.168.0.132/api/web/v2/';
                 // var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
                 return {
 
