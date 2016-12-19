@@ -141,6 +141,13 @@
                 display: inline;
                 vertical-align: bottom;
                 position: relative;
+                .record {
+                    background: none;
+                    margin: -10px 0px;
+                    a {
+                        color: white;
+                    }
+                }
             }
             &.my {
                 img {
@@ -184,6 +191,11 @@
                 }
             }
         }
+    }
+
+    .record {
+        background: #fff;
+        padding: 0 5px;
     }
     //audio::-webkit-media-controls-panel {
     //    background-color: rgb(63,81,181);

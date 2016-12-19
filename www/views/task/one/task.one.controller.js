@@ -20,37 +20,22 @@
         vm.audio.stop = function () {
             vm.audio.online = false;
             window.plugins.audioRecorderAPI.stop(function (msg) {
-                vm.audio.recorded = true;
                 vm.audio.data = msg;
                 alert("audio.stop: " + msg);
             }, function (msg) {
-                vm.audio.recorded = false;
+                delete vm.audio.data;
             });
         };
 
         vm.audio.record = function () {
             vm.audio.online = true;
             window.plugins.audioRecorderAPI.record(function (msg) {
-                vm.audio.recorded = true;
                 vm.audio.online = false;
                 vm.audio.data = msg;
             }, function (msg) {
-                vm.audio.recorded = false;
+                delete vm.audio.data;
                 vm.audio.online = false;
             }, 15);
-        };
-
-        vm.audio.play = function (range) {
-            var elem = document.getElementById(range);
-            elem.getElementsByTagName("audio")[0].play();
-            elem.getElementsByTagName("a")[0].style.display = "none";
-            elem.getElementsByTagName("a")[1].style.display = "inline";
-        };
-        vm.audio.pause = function (range) {
-            var elem = document.getElementById(range);
-            elem.getElementsByTagName("audio")[0].pause();
-            elem.getElementsByTagName("a")[0].style.display = "inline";
-            elem.getElementsByTagName("a")[1].style.display = "none";
         };
 
         vm.label = prepGetLabels.label;
@@ -146,6 +131,8 @@
             if (data.id) {
                 vm.data.comment_id = data.id;
                 vm.data.send_to = data.created_by;
+                delete vm.data.text;
+                delete vm.data.audio;
                 comment.message(data.id)
                     .then(function (response) {
                         vm.messages = response.models;
@@ -206,7 +193,7 @@
                         vm.messages = response.models;
                     });
             }
-            $scope.$broadcast('scroll.refreshComplete');
+            $rootScope.$broadcast('scroll.refreshComplete');
         }
 
     }

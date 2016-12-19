@@ -44,8 +44,8 @@
                 <md-icon md-font-icon="fa fa-stop fa-lg" ng-style="{'color':'#B71C1C'}" aria-hidden="true"></md-icon>
             </md-button>
         </div>
-        <div layout-align="center center" flex="50">
-            <record ng-if="vm.audio.recorded"
+        <div layout-align="center center" flex="50" style="margin-top: -5px">
+            <record ng-if="vm.audio.data"
                     src="{{vm.audio.data}}">
             </record>
 
