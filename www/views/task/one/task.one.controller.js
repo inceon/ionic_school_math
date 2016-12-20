@@ -111,6 +111,7 @@
                         toastr.success("Повідомлення успішно відправлено");
                         // vm.data.text = '';
                         delete vm.data.audio;
+                        delete vm.audio.data;
                     });
             } else {
                 if (form.$invalid) {
@@ -122,7 +123,7 @@
                         response.role = $rootScope.user.role_id;
                         vm.messages.push(response);
                         toastr.success("Повідомлення успішно відправлено");
-                        vm.data.text = ' ';
+                        delete vm.data.text;
                     });
             }
         }
@@ -133,6 +134,7 @@
                 vm.data.send_to = data.created_by;
                 delete vm.data.text;
                 delete vm.data.audio;
+                delete vm.audio.data;
                 comment.message(data.id)
                     .then(function (response) {
                         vm.messages = response.models;
@@ -170,7 +172,6 @@
         }
 
         $scope.showImages = function (file) {
-            // $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
             $ionicModal.fromTemplateUrl('views/task/one/popover/image.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
@@ -183,7 +184,6 @@
 
         $scope.closeModal = function () {
             $scope.imagesModal.hide();
-            // $scope.modal.remove();
         };
 
         function doRefresh() {
@@ -191,9 +191,11 @@
                 comment.message(vm.data.comment_id)
                     .then(function (response) {
                         vm.messages = response.models;
+                        $rootScope.$broadcast('scroll.refreshComplete');
                     });
+            } else {
+                $rootScope.$broadcast('scroll.refreshComplete');
             }
-            $rootScope.$broadcast('scroll.refreshComplete');
         }
 
     }

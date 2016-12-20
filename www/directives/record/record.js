@@ -13,17 +13,18 @@
                         audioSrc = 'file://' + audioSrc;
                     var audio = new Audio(audioSrc);
                     scope.time = 0;
-                    scope.audio = audio;
+                    audio.preload = "auto";
 
                     audio.addEventListener("loadedmetadata", function() {
                         scope.paused = false;
-                        $timeout(function(){
-                            scope.duration = audio.duration;
-                            console.log(audio.duration);
-                        }, 1000);
+                        scope.duration = audio.duration;
 
                         audio.addEventListener("canplaythrough", function(){
-                            scope.duration = audio.duration;
+                            scope.duration = Math.trunc(audio.duration);
+                        });
+
+                        audio.addEventListener('durationchange', function(e) {
+                            scope.duration = Math.trunc(e.target.duration);
                         });
 
                         audio.addEventListener("timeupdate", function (){
@@ -39,14 +40,11 @@
 
                         scope.play = function () {
                             scope.paused = true;
-                            //alert('play: ' + audioSrc);
-                            scope.duration = audio.duration;
                             audio.play();
                         };
 
                         scope.pause = function () {
                             scope.paused = false;
-                            alert('pause: ' + audioSrc);
                             audio.pause();
                         };
 

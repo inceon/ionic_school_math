@@ -72,9 +72,7 @@
                 controllerAs: 'vm',
                 resolve: {
                     lastTask: function (task) {
-                        task.last({
-                            bookId: 11
-                        })
+                        return task.last();
                     },
                     allDiscipline: function (discipline) {
                         return discipline.all();

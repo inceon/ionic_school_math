@@ -1,10 +1,12 @@
 <div class="messages">
     <div ng-repeat="i in vm.messages" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
-        <img ng-class="{'show-time':i.show_date}" ng-src="{{i.send_from == $root.user.id ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}">
+        <img ng-class="{'show-time':i.show_date}"
+             ng-click="i.show_date = !i.show_date"
+             ng-src="{{i.send_from == $root.user.id ? 'http://ecovoice.ru/uploads/images/e/8/c/7/3000/big/7b13345039.jpg':'https://rirl.ru/images/30754.jpg'}}">
         <div class="time" ng-show="i.show_date">{{i.created_at * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
         <br ng-show="i.show_date">
-        <div class="text" ng-click="i.show_date = !i.show_date">
-            {{ i.text }}
+        <div class="text">
+            <span ng-click="i.show_date = !i.show_date">{{ i.text }}</span>
             <record ng-if="i.files.length == 1 && i.files[0].extension == 'm4a'"
                     src="{{i.files[0].url | trusted}}"></record>
         </div>
@@ -45,8 +47,7 @@
             </md-button>
         </div>
         <div layout-align="center center" flex="50" style="margin-top: -5px">
-            <record ng-if="vm.audio.data"
-                    src="{{vm.audio.data}}">
+            <record src="{{vm.audio.data}}">
             </record>
 
             <!--<md-button class="md-icon-button md-fab md-mini md-hue-2"

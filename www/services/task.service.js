@@ -60,8 +60,7 @@
 
         function last(data) {
             return http.get(
-                url.task.last,
-                data
+                url.task.last
             )
         }
     }
