@@ -20,13 +20,13 @@
             </md-button>
         </div>
 
-        <md-card ng-include="'views/task/one/chat.html'"></md-card>
+        <div class="card" ng-include="'views/task/one/chat.html'"></div>
 
         <md-card ng-if="$root.user.role_id != 1" ng-repeat="chat in vm.chats">
             <md-list-item ng-click="vm.openChat(chat)" ng-if="$root.user.id != chat.created_by">
                 <h5>Чат з користувачем {{chat.creator}}</h5>
-            </md-list-item>
-        </md-card>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
 

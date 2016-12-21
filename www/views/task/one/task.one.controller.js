@@ -5,38 +5,20 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$sce', 'chats', '$ionicSlideBoxDelegate', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'chats', '$ionicSlideBoxDelegate', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
 
-    function Task($rootScope, $scope, $stateParams, $sce, chats, $ionicSlideBoxDelegate, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, $q, chats, $ionicSlideBoxDelegate, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
 
         $rootScope.page = {
             title: 'Завдання'
         };
 
+        $scope.alert = function(){
+            alert();
+            $scope.$broadcast('scroll.refreshComplete');
+        };
+
         var vm = this;
-
-        vm.audio = {};
-
-        vm.audio.stop = function () {
-            vm.audio.online = false;
-            window.plugins.audioRecorderAPI.stop(function (msg) {
-                vm.audio.data = msg;
-                alert("audio.stop: " + msg);
-            }, function (msg) {
-                delete vm.audio.data;
-            });
-        };
-
-        vm.audio.record = function () {
-            vm.audio.online = true;
-            window.plugins.audioRecorderAPI.record(function (msg) {
-                vm.audio.online = false;
-                vm.audio.data = msg;
-            }, function (msg) {
-                delete vm.audio.data;
-                vm.audio.online = false;
-            }, 15);
-        };
 
         vm.label = prepGetLabels.label;
 
@@ -54,6 +36,32 @@
 
         vm.data = vm.task.done || {};
         vm.data.task_id = $stateParams.taskId;
+
+        vm.audio = {};
+
+        vm.audio.stop = function () {
+            vm.audio.online = false;
+            window.plugins.audioRecorderAPI.stop(function (msg) {
+                // alert("audio.stop: " + msg);
+                vm.audio.data = msg;
+                $scope.apply();
+            }, function (msg) {
+                delete vm.audio.data;
+            });
+        };
+
+        vm.audio.record = function () {
+            vm.audio.online = true;
+            window.plugins.audioRecorderAPI.record(function (msg) {
+                vm.audio.online = false;
+                vm.audio.data = msg;
+                $scope.apply();
+            }, function (msg) {
+                delete vm.audio.data;
+                vm.audio.online = false;
+
+            }, 15);
+        };
 
         if (vm.chats) {
             angular.forEach(vm.chats, function (chat) {
@@ -187,16 +195,17 @@
         };
 
         function doRefresh() {
+            var deferred = $q.defer();
             if (vm.chats) {
                 comment.message(vm.data.comment_id)
                     .then(function (response) {
                         vm.messages = response.models;
-                        $rootScope.$broadcast('scroll.refreshComplete');
+                        deferred.resolve(true);
                     });
             } else {
-                $rootScope.$broadcast('scroll.refreshComplete');
+                deferred.resolve(true);
             }
+            return deferred.promise;
         }
-
     }
 })();

@@ -2,15 +2,17 @@
     <ion-header-bar>
         <h1 class="title">Чат</h1>
         <div class="buttons">
-            <button class="button button-icon button-clear ion-close-circled" ng-click="vm.loadMyChat();chatModal.hide()">
+            <button class="button button-icon button-clear ion-close-circled"
+                    ng-click="vm.loadMyChat();chatModal.hide()">
             </button>
         </div>
     </ion-header-bar>
-    <ion-content scroll="true">
-        <ion-refresher
-            pulling-text="Оновити інформацію..."
-            on-refresh="vm.doRefresh()"></ion-refresher>
+    <ion-content>
+        <refresher></refresher>
+            <!--<div pull-to-refresh="vm.doRefresh()"></div>-->
+        <!--<md-content  refresh-function="vm.doRefresh()">-->
         <md-card ng-include="'views/task/one/chat.html'">
         </md-card>
+        <!--</md-content>-->
     </ion-content>
 </ion-modal-view>

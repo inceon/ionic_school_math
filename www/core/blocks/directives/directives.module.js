@@ -3,7 +3,8 @@
     angular
         .module('directives.module', [
             'directive.inputFile',
-            'directive.record'
+            'directive.record',
+            'directive.refresher'
         ]);
 })();
 
