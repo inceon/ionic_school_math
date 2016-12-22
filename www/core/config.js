@@ -48,17 +48,6 @@
                 controller: 'LeftMenu',
                 controllerAs: 'vm'
             })
-            .state('app.dashboard', {
-                url: '/dashboard',
-                templateUrl: 'views/dashboard/dashboard.html',
-                controller: 'Dashboard',
-                controllerAs: 'vm',
-                resolve: {
-                    dashboardPrepService: function (user) {
-                        return user.get();
-                    }
-                }
-            })
             .state('app.discipline', {
                 url: '/discipline/:disciplineId',
                 template: "<ion-nav-view></ion-nav-view>",

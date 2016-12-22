@@ -7,7 +7,7 @@
         <br ng-show="i.show_date">
         <div class="text">
             <span ng-click="i.show_date = !i.show_date">{{ i.text }}</span>
-            <record ng-if="i.files.length == 1 && i.files[0].extension == 'm4a'"
+            <record ng-if="i.files.length > 0 && i.files[0].extension == 'm4a'"
                     src="{{i.files[0].url | trusted}}"></record>
         </div>
         <div style="clear: both"></div>

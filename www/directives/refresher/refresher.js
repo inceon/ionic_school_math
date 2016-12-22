@@ -1,24 +1,50 @@
 'use strict';
 
 angular.module('directive.refresher', [])
-    .directive('refresher', function () {
+    .directive('refresher', function ($timeout) {
         return {
-            restrict: 'AE',
+            restrict: 'A',
+            transclude: true,
             templateUrl: 'directives/refresher/refresher.html',
-            scope: {},
-            replace: true,
+            scope: {
+                refreshFunction: '&' // This function is expected to return a future
+            },
             link: function postLink(scope, element, attrs) {
-                window.addEventListener("load", function() {
-                    window.scrollBy(0, 100);
-                }, false);
+                scope.hasCallback = angular.isDefined(attrs.refreshFunction);
+                scope.isAtTop = false;
+                scope.pullToRefreshActive = false;
+                scope.lastScrollTop = 0;
 
-                window.document.addEventListener("scroll", function(){
-                    if(window.pageYOffset == 0)
-                    {
-                        alert("Loading data using AJAX");
-                        window.scrollBy(0, 100);
+                scope.pullToRefresh = function () {
+                    if (scope.hasCallback) {
+                        if (!scope.pullToRefreshActive) {
+                            scope.pullToRefreshActive = true;
+                            scope.refreshFunction().then(function () {
+                                scope.pullToRefreshActive = false;
+                            });
+                            scope.$digest();
+                        }
                     }
-                }, false);
+
+                };
+
+                // Wait 1 second and then add an event listener to the scroll events on this list- this enables pull to refresh functionality
+                $timeout(function () {
+                    var onScroll = function (event) {
+                        // if (element[0].scrollTop <= 0 && scope.lastScrollTop <= 0) {
+                        //uncomment this line for desktop testing
+                        if (element[0].scrollTop <= 0) {
+                            if (scope.isAtTop) {
+                                scope.pullToRefresh();
+                            } else {
+                                scope.isAtTop = true;
+                            }
+                        }
+                        scope.lastScrollTop = element[0].scrollTop;
+                    };
+                    element[0].addEventListener('scroll', onScroll);
+                    element[0].addEventListener('touchmove', onScroll);
+                }, 1000);
             }
         };
     });

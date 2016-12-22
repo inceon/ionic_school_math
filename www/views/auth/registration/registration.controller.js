@@ -4,15 +4,15 @@
         .module('app')
         .controller('Registration', Registration);
 
-    Registration.$inject = ['user', 'site', '$jrCrop', 'discipline', '$scope', 'prepGetLabels', 'Upload'];
+    Registration.$inject = ['user', 'site', '$jrCrop', '$q', '$scope', 'prepGetLabels', 'Upload'];
 
-    function Registration(user, site, $jrCrop, discipline, $scope, prepGetLabels, Upload) {
+    function Registration(user, site, $jrCrop, $q, $scope, prepGetLabels, Upload) {
 
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://maps.googleapis.com/maps/api/' +
-            'js?key=AIzaSyCkSnpfwNLeEWBxrvb81-k2puMWIkTg_nM&libraries=places&callback=initAutocomplete&language=ru';
-        document.body.appendChild(script);
+        // var script = document.createElement('script');
+        // script.type = 'text/javascript';
+        // script.src = 'https://maps.googleapis.com/maps/api/' +
+        //     'js?key=AIzaSyCkSnpfwNLeEWBxrvb81-k2puMWIkTg_nM&libraries=places&callback=initAutocomplete&language=ru';
+        // document.body.appendChild(script);
 
         var vm = this;
 
@@ -30,7 +30,7 @@
             class: Math.floor(Math.random() * (11 - 3) + 3)
         };
 
-        vm.registerData = null;
+        vm.registerData = {};
 
         vm.schools = null;
         vm.role = [
@@ -49,6 +49,7 @@
 
         vm.register = register;
         vm.upload = upload;
+        vm.changeCity = changeCity;
 
         function register(form) {
             if (form.$invalid) { return; }
@@ -80,7 +81,47 @@
             });
         }
 
-        initAutocomplete = function () {
+        vm.gmapsService = new google.maps.places.AutocompleteService();
+        vm.search = search;
+
+        function search(address) {
+            var deferred = $q.defer();
+            getResults(address).then(
+                function (predictions) {
+                    var results = [];
+                    for (var i = 0, prediction; prediction = predictions[i]; i++) {
+                        results.push(prediction);
+                    }
+                    deferred.resolve(results);
+                }
+            );
+            return deferred.promise;
+        }
+
+        function getResults(address) {
+            var deferred = $q.defer();
+            vm.gmapsService.getPlacePredictions({
+                input: address,
+                types: ['(cities)'],
+                componentRestrictions: {country: 'ua'}
+            }, function (data) {
+                deferred.resolve(data);
+            });
+            return deferred.promise;
+        }
+
+        function changeCity(){
+            console.log(vm.selectedItem);
+            vm.registerData.sity_name = vm.selectedItem.terms[0].value;
+            vm.registerData.region_name = vm.selectedItem.terms[1].value;
+            site.getSchools(vm.registerData.sity_name)
+                .then(function (response) {
+                    vm.schools = response.schools.models;
+                    vm.registerData.school_id = vm.schools[1];
+                });
+        }
+
+        /*initAutocomplete = function () {
 
             var componentForm = {
                 street_number: 'short_name',
@@ -124,7 +165,7 @@
 
                 $scope.$apply();
             });
-        };
+        };*/
 
     }
 })();

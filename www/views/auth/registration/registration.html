@@ -97,7 +97,31 @@
                     <div ng-message="maxlength">По-батькові більше 55 символів</div>
                 </div>
             </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-block" flex>
+                <label>{{vm.label.sity}}</label>
+                <md-autocomplete md-no-cache="true"
+                                 md-selected-item="vm.selectedItem"
+                                 md-search-text-change="vm.search(vm.searchText)"
+                                 md-search-text="vm.searchText"
+                                 md-items="item in vm.search(vm.searchText)"
+                                 md-item-text="item.description"
+                                 md-min-length="0"
+                                 md-selected-item-change="vm.changeCity()"
+                                 required
+                                 name="city"
+                                 md-menu-class="md-input">
+                    <md-item-template>
+                        <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.description}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        Не знайдено "{{vm.searchText}}".
+                    </md-not-found>
+                    <div ng-messages="settingForm.city.$error">
+                        <div ng-message="required">Це поле обов'язкове для заповнення</div>
+                    </div>
+                </md-autocomplete>
+            </md-input-container>
+            <!--<md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.sity}}</label>
                 <input id="autocomplete"
                        placeholder="{{vm.label.sity}}"
@@ -111,7 +135,7 @@
                     <div ng-message="maxlength">Назва міста більше 32 символів</div>
                     <div ng-message="required">Це поле обов'язкове для заповнення</div>
                 </div>
-            </md-input-container>
+            </md-input-container>-->
             <md-input-container class="md-block" flex-gt-sm ng-if="vm.schools.length">
                 <label>{{vm.label.school}}</label>
                 <md-select ng-model="vm.registerData.school_id"

@@ -13,11 +13,6 @@
             title: 'Завдання'
         };
 
-        $scope.alert = function(){
-            alert();
-            $scope.$broadcast('scroll.refreshComplete');
-        };
-
         var vm = this;
 
         vm.label = prepGetLabels.label;
@@ -40,10 +35,10 @@
         vm.audio = {};
 
         vm.audio.stop = function () {
-            vm.audio.online = false;
-            window.plugins.audioRecorderAPI.stop(function (msg) {
+            window.plugins.audioRecorderAPI.stop(function (msg, $scope) {
                 // alert("audio.stop: " + msg);
                 vm.audio.data = msg;
+                vm.audio.online = false;
                 $scope.apply();
             }, function (msg) {
                 delete vm.audio.data;
@@ -52,14 +47,13 @@
 
         vm.audio.record = function () {
             vm.audio.online = true;
-            window.plugins.audioRecorderAPI.record(function (msg) {
-                vm.audio.online = false;
+            window.plugins.audioRecorderAPI.record(function (msg, $scope) {
                 vm.audio.data = msg;
+                vm.audio.online = false;
                 $scope.apply();
             }, function (msg) {
                 delete vm.audio.data;
                 vm.audio.online = false;
-
             }, 15);
         };
 
@@ -115,10 +109,8 @@
                     .then(function (response) {
                         console.log(response);
                         vm.messages.push(response);
-                        // response.role = $rootScope.user.role_id;
                         toastr.success("Повідомлення успішно відправлено");
-                        // vm.data.text = '';
-                        delete vm.data.audio;
+                        vm.data.text = ' ';
                         delete vm.audio.data;
                     });
             } else {
@@ -131,7 +123,7 @@
                         response.role = $rootScope.user.role_id;
                         vm.messages.push(response);
                         toastr.success("Повідомлення успішно відправлено");
-                        delete vm.data.text;
+                        vm.data.text = ' ';
                     });
             }
         }
@@ -140,15 +132,14 @@
             if (data.id) {
                 vm.data.comment_id = data.id;
                 vm.data.send_to = data.created_by;
-                delete vm.data.text;
-                delete vm.data.audio;
+                vm.data.text = ' ';
                 delete vm.audio.data;
                 comment.message(data.id)
                     .then(function (response) {
                         vm.messages = response.models;
+                        $scope.chatModal.show();
                     });
             }
-            $scope.chatModal.show();
         }
 
         $ionicModal.fromTemplateUrl('views/task/one/modal-answer.html', {

@@ -41,4 +41,10 @@
         width: 500px;
         min-height: 350px;
     }
+    md-autocomplete-wrap {
+        box-shadow: none;
+        input {
+            order: 0;
+        }
+    }
 }

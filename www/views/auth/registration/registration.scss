@@ -29,4 +29,10 @@
             right: 5px;
         }
     }
+    md-autocomplete-wrap {
+        box-shadow: none;
+        input {
+            order: 0;
+        }
+    }
 }

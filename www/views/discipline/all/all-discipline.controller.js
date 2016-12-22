@@ -20,7 +20,7 @@
         vm.todo = todo;
         vm.disciplines = allDiscipline.models;
         vm.disciplineBooks = disciplineBooks;
-        vm.lastTask = lastTask;
+        vm.lastTask = lastTask.models;
 
         function disciplineBooks(data) {
             discipline.myBook(data.disciplineId)
