@@ -121,21 +121,6 @@
                     </div>
                 </md-autocomplete>
             </md-input-container>
-            <!--<md-input-container class="md-block" flex-gt-sm>
-                <label>{{vm.label.sity}}</label>
-                <input id="autocomplete"
-                       placeholder="{{vm.label.sity}}"
-                       name="city"
-                       type="text"
-                       ng-model="vm.registerData.sity_name"
-                       maxlength="32"
-                       autocomplete="off"
-                       required>
-                <div ng-messages="registerForm.city.$error">
-                    <div ng-message="maxlength">Назва міста більше 32 символів</div>
-                    <div ng-message="required">Це поле обов'язкове для заповнення</div>
-                </div>
-            </md-input-container>-->
             <md-input-container class="md-block" flex-gt-sm ng-if="vm.schools.length">
                 <label>{{vm.label.school}}</label>
                 <md-select ng-model="vm.registerData.school_id"
