@@ -24,7 +24,7 @@
             class: Math.floor(Math.random() * (11 - 3) + 3)
         };
 
-        vm.registerData = {};
+        // vm.registerData = {};
 
         vm.schools = null;
         vm.role = [
@@ -49,13 +49,20 @@
             if (form.$invalid) { return; }
             console.log(vm.registerData);
 
+            if (vm.croppedImage) {
+                var tmp = vm.croppedImage.split(';', 2);
+
+                vm.registerData.extension = tmp[0].split(':', 2)[1].split('/', 2)[1];
+                vm.registerData.image_file = tmp[1].split(',', 2)[1];
+            }
+
+
             // vm.registerData.role_id = vm.registerData.role_id.id;
             // vm.registerData.school_id = vm.registerData.school_id.id;
             user.register(vm.registerData);
         }
 
         function upload($file) {
-            vm.registerData.extension = $file.type.split('/')[1];
             Upload.base64DataUrl($file).then(function(base64){
                 if($file) {
                     $jrCrop.crop({
@@ -67,6 +74,7 @@
                         cancelText: 'Відмінити'
                     }).then(function (canvas) {
                         vm.registerData.image_file = canvas.toDataURL();
+                        vm.croppedImage = canvas.toDataURL();
                     }, function () {
                         delete vm.registerData.image_file;
                     });
