@@ -1,13 +1,25 @@
 <ion-view class="taskAll">
     <ion-content class="has-header">
+        <div class="wrap">
+            <div class="linkToTask" ng-repeat="task in vm.tasks"
+                 ui-sref="app.discipline.task({ taskId : task.id})">
+                <md-button class="md-fab md-primary task"
+                           aria-label="{{task.number}}">
+                    {{task.number}}
+                </md-button>
+                <span ng-if="task.done && task.done.result == 1" class="info success">✓</span>
+                <span ng-if="task.done && task.done.result == 0" class="info error">!</span>
+                <span ng-if="false" class="info message">1</span>
+            </div>
+        </div>
         <md-list ng-if="vm.tasks">
-            <md-list-item class="name"
+            <!--<md-list-item class="name"
                           ui-sref="app.discipline.task({ taskId : task.id})"
-                          ng-class="{'positive-item': task.done}"
+                          ng-class="{'positive-item'  : task.done}"
                           ng-repeat="task in vm.tasks">
                 <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466">
                 <p>{{task.number}}. {{task.text}}</p>
-            </md-list-item>
+            </md-list-item>-->
             <md-list-item ng-if="!vm.tasks.length" class="name text-center">
                 <p>Завдань не знайдено.</p>
             </md-list-item>
