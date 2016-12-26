@@ -21,7 +21,7 @@
                 </md-button>
             </div>
         </div>
-        <form name="settingForm" layout-padding>
+        <form name="settingForm" layout-padding ng-submit="vm.save(settingForm)">
             <div layout="row">
                 <md-input-container class="md-block" flex>
                     <label>{{vm.label.first_name}}</label>
@@ -189,7 +189,7 @@
                     <div ng-message="required">Це поле обов'язкове для заповнення</div>
                 </div>
             </md-input-container>
-            <button class="button button-block button-positive" ng-click="vm.save(settingForm)">Зберегти</button>
+            <input type="submit" class="button button-block button-positive" value="Зберегти" />
         </form>
     </ion-content>
 </ion-view>

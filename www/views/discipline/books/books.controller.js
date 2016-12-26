@@ -32,7 +32,7 @@
             book.create(vm.books[id].id)
                 .then(function(){
                     $state.go('app.discipline.book', {
-                        bookId: vm.books[id].id
+                        bookId: vm.books[id].book.id
                     });
                 });
 

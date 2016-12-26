@@ -19,9 +19,10 @@
                     </a>
                 </ion-slide>
             </ion-slide-box>
-            <button class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)">
-                Обрати предмет
-            </button>
+            <input type="button"
+                   class="button button-block button-positive"
+                   ng-click="vm.selectBook(vm.slide)"
+                   value="Обрати предмет">
             <md-list ng-if="vm.lastTask.length">
                 <h4 class="text-center">Останні переглянуті</h4>
                 <md-list-item ng-repeat="item in vm.lastTask" ui-sref="app.discipline.task({ taskId : item.id})">
