@@ -40,6 +40,9 @@
                         update:      baseUrl + 'done-task/update',
                         last:        baseUrl + 'bookmark/for-user'
                     },
+                    subtask: {
+                        all:         baseUrl + 'subtask/all'
+                    },
                     comment: {
                         add:        baseUrl + 'comment/create',
                         all:        baseUrl + 'comment/all',

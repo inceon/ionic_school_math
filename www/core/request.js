@@ -48,7 +48,7 @@
             }
 
             if ($sessionStorage.auth_key) {
-                config.url = url + '?auth_key=' + $sessionStorage.auth_key + '&lang=uk-UK';
+                config.url = url + '?auth_key=' + $sessionStorage.auth_key + '&lang=uk-UA';
             }
             else {
                 config.url = url+ '?lang=uk-UK';

@@ -13,7 +13,8 @@
             one: one,
             answer: answer,
             update: update,
-            last: last
+            last: last,
+            subtasks: subtasks
         };
 
         function all(id) {
@@ -62,6 +63,15 @@
             return http.get(
                 url.task.last
             )
+        }
+
+        function subtasks(id) {
+            return http.get(
+                url.subtask.all,
+                {
+                    task_id: id
+                }
+            );
         }
     }
 })();

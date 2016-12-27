@@ -127,6 +127,9 @@
                     taskInfo: function (task, $stateParams){
                         return task.one($stateParams.taskId);
                     },
+                    subtasks: function (task, $stateParams){
+                        return task.subtasks($stateParams.taskId);
+                    },
                     chats: function (comment, $stateParams) {
                         return comment.all($stateParams.taskId);
                     }

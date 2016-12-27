@@ -4,5 +4,5 @@
         <a ng-hide="!paused" class="button button-icon icon ion-pause" ng-click="pause()"></a>
     </div>
     <input type="range" ng-model="time" min="0" max="{{duration}}">
-    {{duration}}
+    <span ng-show="duration">{{duration}}</span>
 </div>

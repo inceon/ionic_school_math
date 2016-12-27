@@ -5,10 +5,11 @@
                  ui-sref="app.discipline.task({ taskId : task.id})">
                 <md-button class="md-fab md-primary task"
                            aria-label="{{task.number}}">
-                    {{task.number}}
+                    {{task.number}} <span ng-if="task.subtasks.length">/ {{task.subtasks.length}}</span>
                 </md-button>
-                <span ng-if="task.done && task.done.result == 1" class="info success">✓</span>
-                <span ng-if="task.done && task.done.result == 0" class="info error">!</span>
+                <span ng-if="!task.messages && task.done && task.done.result == 1" class="info success">✓</span>
+                <span ng-if="!task.messages && task.done && task.done.result == 0" class="info error">!</span>
+                <span ng-if="task.messages" class="info message">{{task.messages}}</span>
                 <span ng-if="false" class="info message">1</span>
             </div>
         </div>

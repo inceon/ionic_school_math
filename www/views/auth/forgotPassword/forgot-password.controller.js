@@ -14,7 +14,8 @@
         vm.reset = reset;
         vm.label = prepGetLabels.label;
 
-        function reset() {
+        function reset(form) {
+            if (form.$invalid) { return; }
             user.reset(vm.resetData);
         }
     }

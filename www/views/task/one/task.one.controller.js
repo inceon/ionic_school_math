@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'chats', '$ionicSlideBoxDelegate', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'chats', 'subtasks', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
 
-    function Task($rootScope, $scope, $stateParams, $q, chats, $ionicSlideBoxDelegate, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, $q, chats, subtasks, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -20,6 +20,8 @@
         vm.submit = submit;
         vm.chats = chats.models;
         vm.task = taskInfo;
+        vm.subtasks = subtasks.models;
+        console.log(vm.subtasks);
         vm.upload = upload;
         vm.question = question;
         vm.openChat = openChat;
@@ -27,6 +29,8 @@
         vm.hideLoader = $ionicLoading.hide;
         vm.doRefresh = doRefresh;
         vm.loadMyChat = loadMyChat;
+        vm.showAnswerModal = showAnswerModal;
+        vm.closeAnswerModal = closeAnswerModal;
         vm.messages = [];
 
         vm.data = vm.task.done || {};
@@ -60,9 +64,9 @@
         if (vm.chats) {
             angular.forEach(vm.chats, function (chat) {
                 if (chat.created_by == $rootScope.user.id) {
-                    vm.data.comment_id = chat.id;
+                    vm.comment_id = chat.id;
                     vm.data.my_chat = chat;
-                    comment.message(vm.data.comment_id)
+                    comment.message(vm.comment_id)
                         .then(function (response) {
                             vm.messages = response.models;
                         });
@@ -75,7 +79,7 @@
                 toastr.error("Дані введені не вірно");
                 return;
             }
-            if (vm.task.done) {
+            if (vm.data.created_by) {
                 task.update(vm.data)
                     .then(function () {
                         toastr.success("Відповідь успішно оновлена");
@@ -99,15 +103,14 @@
         }
 
         function question(form) {
-            if (vm.data.comment_id) {
-                vm.data.send_to = vm.data.comment_id;
+            if (vm.comment_id) {
+                vm.data.send_to = vm.comment_id;
             }
             if (vm.audio.data) {
                 vm.data.audio = vm.audio.data;
 
                 comment.addAudio(vm.data)
                     .then(function (response) {
-                        console.log(response);
                         vm.messages.push(response);
                         toastr.success("Повідомлення успішно відправлено");
                         vm.data.text = ' ';
@@ -130,7 +133,7 @@
 
         function openChat(data) {
             if (data.id) {
-                vm.data.comment_id = data.id;
+                vm.comment_id = data.id;
                 vm.data.send_to = data.created_by;
                 vm.data.text = ' ';
                 delete vm.audio.data;
@@ -162,12 +165,29 @@
 
         function loadMyChat() {
             if (vm.data.my_chat) {
-                vm.data.comment_id = vm.data.my_chat.id;
+                vm.comment_id = vm.data.my_chat.id;
                 comment.message(vm.data.my_chat.id)
                     .then(function (response) {
                         vm.messages = response.models;
                     });
             }
+        }
+
+        function showAnswerModal(subtask) {
+            vm.data = subtask.done || {};
+            vm.data.subtask_id = subtask.id;
+            vm.data.task_id = $stateParams.taskId;
+            console.log(vm.data);
+            $scope.answerModal.show();
+        }
+
+        function closeAnswerModal(){
+            task.subtasks($stateParams.taskId)
+                .then(function(response){
+                    vm.subtasks = response.models;
+                    vm.subtask = null;
+                    $scope.answerModal.hide();
+                });
         }
 
         $scope.showImages = function (file) {
@@ -186,17 +206,12 @@
         };
 
         function doRefresh() {
-            var deferred = $q.defer();
             if (vm.chats) {
-                comment.message(vm.data.comment_id)
+                comment.message(vm.comment_id)
                     .then(function (response) {
                         vm.messages = response.models;
-                        deferred.resolve(true);
                     });
-            } else {
-                deferred.resolve(true);
             }
-            return deferred.promise;
         }
     }
 })();
