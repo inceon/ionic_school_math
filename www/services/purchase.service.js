@@ -1,8 +1,11 @@
 (function() {
     "use strict";
     angular
-        .module('model.purchase')
-        .service('purchase', function($rootScope, $timeout) {
+        .module('model.purchase', [])
+        .service('purchase', purchase);
+
+    purchase.$inject = ['$rootScope', '$timeout'];
+    function purchase($rootScope, $timeout) {
         var IAP = {
             initialize: function() {
                 if (!window.store) {
@@ -92,5 +95,5 @@
         };
 
         return IAP;
-    });
+    }
 })();

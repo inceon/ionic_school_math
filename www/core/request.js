@@ -113,24 +113,24 @@
 
             if (err.data == null || !err.data.error) {
                 if (err.status === 200) {
-                    toastr.error('Server Error: ' + err.data);
+                    toastr.error('Помилка сервера: ' + err.data);
                 }
                 else if (err.status === -1) {
-                    toastr.error('Server unavailable');
+                    toastr.error('Сервер не доступний');
                 }
                 else if (err.status === 0) {
-                    $state.go('error.internet');
-                    // toastr.error('No internet connection');
+                    // $state.go('error.internet');
+                    toastr.error('Відсутнє інтернет підключення');
                 }
                 else if (err.status === 500) {
-                    toastr.error('Server Error: ' + err.status + ' ' + err.data.message);
+                    toastr.error('Помилка сервера: ' + err.status + ' ' + err.data.message);
                 }
                 else {
-                    toastr.error('Server Error: ' + err.status + ' ' + err.statusText);
+                    toastr.error('Помилка сервера: ' + err.status + ' ' + err.statusText);
                 }
                 // toastr.error('XHR Failed: ' + err.status);
             } else {
-                toastr.error('Error: ' + err.data.error);
+                toastr.error('Помилка: ' + err.data.error);
             }
 
             $ionicLoading.hide();
