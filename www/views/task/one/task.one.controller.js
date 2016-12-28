@@ -170,6 +170,8 @@
                     .then(function (response) {
                         vm.messages = response.models;
                     });
+            } else {
+                vm.messages = [];
             }
         }
 

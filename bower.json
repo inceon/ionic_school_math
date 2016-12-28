@@ -13,7 +13,8 @@
     "components-font-awesome": "^4.6.3",
     "ng-img-crop": "ngImgCrop#^0.3.2",
     "angular-img-cropper": "^1.1.0",
-    "jr-crop": "^1.1.2"
+    "jr-crop": "^1.1.2",
+    "angular-moment": "^1.0.1"
   },
   "resolutions": {
     "angular-material": "^1.1.1",

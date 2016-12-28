@@ -18,6 +18,7 @@
         'factory.request',
         'toastr',
         'naif.base64',
+        'angularMoment',
         /*
          * 3rd Party modules
          */

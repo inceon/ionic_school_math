@@ -14,6 +14,21 @@
 
         var vm = this;
 
+        nonRenewing.onStatusChange(function(status) {
+            if (status) {
+                console.log(
+                    'isSubscribed: ' + status.subscriber + '\n' +
+                    'expiryDate: ' + status.expiryDate + '\n'
+                );
+            }
+            else {
+                console.log('Status is Unknown');
+            }
+        });
+
+        vm.buy = function () {
+            nonRenewing.openSubscriptionManager();
+        }
     }
 
 })();

@@ -51,7 +51,7 @@
                 config.url = url + '?auth_key=' + $sessionStorage.auth_key + '&lang=uk-UA';
             }
             else {
-                config.url = url+ '?lang=uk-UK';
+                config.url = url+ '?lang=uk-UA';
             }
 
             return $http(config)

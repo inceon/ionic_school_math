@@ -20,8 +20,7 @@
                        ui-mask="+38 (999) 999 - 99 - 99"
                        autocomplete="off"
                        ng-minlength="10"
-                       required
-                       md-no-asterisk>
+                       required>
                 <div ng-messages="signinForm.phone.$error">
                     <div ng-message="minlength">Номер телефону повинен бути не менше 10 символів</div>
                     <div ng-message="required">Це поле обов'язкове для заповнення</div>
@@ -30,7 +29,7 @@
             <md-input-container class="md-block" flex-gt-sm>
                 <label>{{vm.label.password}}</label>
                 <input name="password"
-                       type="tel"
+                       type="password"
                        ng-model="vm.authData.password"
                        minlength="6"
                        maxlength="32"
@@ -43,7 +42,7 @@
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <md-checkbox class="blue" ng-model="vm.authData.remember">
-                    Запомнить меня
+                    Запам'ятати мене
                 </md-checkbox>
             </md-input-container>
             <input type="button" class="button button-block button-positive" ng-click="vm.login(signinForm)" value="Увійти"/>

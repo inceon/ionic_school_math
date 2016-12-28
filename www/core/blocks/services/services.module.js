@@ -7,7 +7,8 @@
             'model.discipline',
             'model.book',
             'model.task',
-            'model.comment'
+            'model.comment',
+            'model.purchase'
         ])
 })();
 

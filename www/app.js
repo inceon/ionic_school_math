@@ -10,7 +10,7 @@
         ])
         .run(runBlock);
 
-    function runBlock($ionicPlatform, $ionicHistory, $localStorage, $sessionStorage, user, $rootScope, $state, toastr) {
+    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr) {
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -20,6 +20,19 @@
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
+
+            purchase.initialize();
+
+            // nonRenewing.initialize({
+            //     verbosity: store.DEBUG,
+            //     products: [{
+            //         id: 'cc.fovea.purchase.nonrenewing.1hour',
+            //         duration: 3600
+            //     }, {
+            //         id: 'cc.fovea.purchase.nonrenewing.5minutes',
+            //         duration: 300
+            //     }]
+            // });
 
             if ($localStorage.auth_key) {
                 $sessionStorage.auth_key = $localStorage.auth_key;
