@@ -28,7 +28,7 @@
     <engine name="android" spec="~4.2.2" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.0" />
     <plugin spec="https://github.com/apache/cordova-plugin-device.git" source="git" />
-    <plugin name="cc.fovea.cordova.purchase" spec="~5.0.2">
+    <plugin name="cc.fovea.cordova.purchase" spec="https://github.com/d3orn/cordova-plugin-purchase.git">
         <variable name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm2r9Upu9f6kSmUPyiQQlt3bEyGXHlUfpvZxnjWns9jJWqL6UcjvdlfStmpi7lqQrQr/Gvo0EwF0ICVhSjDZhhs/0K3oon98MQRQGanyqltLzdtoYXy3p2GoscyfsCx0Sh2xjBuejA1wkSJNYeQ5W+Jh7jvNWwzKRsPz4HKyLcTpaQ0WJNMferCQoI8EDo+vnGxK0cUOVBhK4FCx+D3d9f6/3YzOd45QL9VU4PK+7GkWMhvEt+VswdQ6W8NFLQGrCKjGsjNbSi6dvmovlRT17Jv66sGlo/NZEuhOe8hqfaXktJXflfbIoNIjZD2n9jSfBQx0OOHTAm/7XWxl0Ygs0fwIDAQAB" />
     </plugin>
     <platform name="android">

@@ -5,8 +5,8 @@
             'app.core',
             'services.module',
             'directives.module',
-            'request.module',
-            'filters.module'
+            'filters.module',
+            'factories.module'
         ])
         .run(runBlock);
 

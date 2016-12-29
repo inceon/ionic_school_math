@@ -15,7 +15,6 @@
         /*
          * Our reusable cross app code modules
          */
-        'factory.request',
         'toastr',
         'naif.base64',
         'angularMoment',
