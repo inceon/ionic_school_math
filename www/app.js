@@ -9,8 +9,8 @@
             'factories.module'
         ])
         .run(runBlock);
-
-    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr) {
+    runBlock.$inject = ['$ionicPlatform', '$localStorage', '$sessionStorage', 'purchase', 'user', '$rootScope', '$state', 'toastr', '$ionicLoading'];
+    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr, $ionicLoading) {
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -22,6 +22,7 @@
             }
 
             purchase.initialize();
+            console.log("app.run");
 
             // nonRenewing.initialize({
             //     verbosity: store.DEBUG,
@@ -63,6 +64,15 @@
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             };
+
+            $rootScope.$on('$stateChangeStart',
+                function(event, toState, toParams, fromState, fromParams, options){
+                    $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
+                });
+            $rootScope.$on('$stateChangeSuccess',
+                function(event, toState, toParams, fromState, fromParams){
+                    $ionicLoading.hide();
+                })
         });
 
     }

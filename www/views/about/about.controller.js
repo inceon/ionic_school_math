@@ -15,7 +15,8 @@
         var vm = this;
 
         vm.buy = function () {
-            fpurchase.showBuyOptions();
+            console.log("click on buy");
+            purchase.showBuyOptions();
         }
     }
 

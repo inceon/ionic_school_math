@@ -10,6 +10,7 @@
 
         return {
             showBuyOptions: function() {
+                console.log("show modal");
                 var hideSheet = $ionicActionSheet.show({
                     buttons: [
                         { text: 'Buy 1 month membership' },
@@ -22,9 +23,12 @@
                         hideSheet();
                     },
                     buttonClicked: function(index) {
+                        console.log("button click for buy product");
                         var options = [1, 3, 6],
                             selected = options[index],
                             purchaseName = '';
+
+                        console.log(options, selected);
 
                         if (selected == 1) {
                             purchaseName = 'onemonthsubscription'
@@ -35,10 +39,10 @@
                         }
 
                         purchase.buy(purchaseName);
-
                         return true;
                     }
                 });
+
             }
         };
     }

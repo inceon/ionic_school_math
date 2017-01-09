@@ -27,11 +27,17 @@
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
     <engine name="android" spec="~4.2.2" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.0" />
-    <plugin spec="https://github.com/apache/cordova-plugin-device.git" source="git" />
+    <uses-permission name="com.android.vending.BILLING"/>
     <plugin name="cc.fovea.cordova.purchase" spec="https://github.com/d3orn/cordova-plugin-purchase.git">
-        <variable name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm2r9Upu9f6kSmUPyiQQlt3bEyGXHlUfpvZxnjWns9jJWqL6UcjvdlfStmpi7lqQrQr/Gvo0EwF0ICVhSjDZhhs/0K3oon98MQRQGanyqltLzdtoYXy3p2GoscyfsCx0Sh2xjBuejA1wkSJNYeQ5W+Jh7jvNWwzKRsPz4HKyLcTpaQ0WJNMferCQoI8EDo+vnGxK0cUOVBhK4FCx+D3d9f6/3YzOd45QL9VU4PK+7GkWMhvEt+VswdQ6W8NFLQGrCKjGsjNbSi6dvmovlRT17Jv66sGlo/NZEuhOe8hqfaXktJXflfbIoNIjZD2n9jSfBQx0OOHTAm/7XWxl0Ygs0fwIDAQAB" />
+        <variable name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7cDtzZDCGXvn9wV2zu2rTd0AiBZlM+mfgtDh3gcw5avGjunwzkV3zVTB9rlKCBSpQWgZfmFNi5ZWGuYxifKY790L7/LkfESU8yx3CGNM/NeJQ9CYt05UOMbz3Lh1WRX9ldxwrUhwG7QQLTWNjM53CegeWLWXG3kE4zqs8Y8hD38RJL8qqGWmB35u6uu6jnpsP1PIgt/FuNqKyXvzt/UE8//zKBhzTLOojhzPUwwKvSJSGBL1xsefAL6DPiazkdM2jDzwHaQm+3MkJ9syrDCmRjz7qvX7sUHrL277Zs+50jBRBNp25+6XqbZw/VlR3ybiXZ5zySgyqWG2Zu/ioB1gDQIDAQAB" />
     </plugin>
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
 </widget>
