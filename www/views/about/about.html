@@ -1,6 +1,11 @@
 <ion-view>
     <ion-content class="has-header">
         <p class="text-center">ABOUT PAGE</p>
+        {{root.test}}
+        <pre>
+            {{vm.products | json}}
+        </pre>
         <p class="button" ng-click="vm.buy()">BUY</p>
+        <p class="button" ng-click="vm.refresh()">REFRESH</p>
     </ion-content>
 </ion-view>

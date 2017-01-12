@@ -3,15 +3,15 @@
         <div class="list" ng-if="vm.disciplines">
             <div class="left">
                 <button class="button button-positive button-clear no-animation icon ion-chevron-left"
-                        ng-click="vm.previous()" ng-if="vm.slide > 0">
+                        ng-click="vm.previous()">
                 </button>
             </div>
             <div class="right">
                 <button class="button button-positive button-clear no-animation icon ion-chevron-right"
-                        ng-click="vm.next()" ng-if="vm.slide != vm.disciplines.length-1">
+                        ng-click="vm.next()">
                 </button>
             </div>
-            <ion-slide-box active-slide="vm.slide" show-pager="false">
+            <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true" ng-init="vm.lockSlide()">
                 <ion-slide ng-repeat="discipline in vm.disciplines">
                     <a class="slide-item" ng-click="vm.disciplineBooks({ disciplineId: discipline.id })">
                         <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
@@ -19,19 +19,24 @@
                     </a>
                 </ion-slide>
             </ion-slide-box>
-            <input type="button"
-                   class="button button-block button-positive"
-                   ng-click="vm.selectBook(vm.slide)"
-                   value="Обрати предмет">
-            <md-list ng-if="vm.lastTask.length">
-                <h4 class="text-center">Останні переглянуті</h4>
-                <md-list-item ng-repeat="item in vm.lastTask" ui-sref="app.discipline.task({ taskId : item.id})">
-                    {{item.text}}!
-                </md-list-item>
-            </md-list>
+            <md-content flex>
+                <div layout="column">
+                    <md-button class="md-primary md-raised waves-effect waves-light"
+                               md-colors="{background: 'blue-grey'}"
+                               ng-click="vm.selectBook(vm.slide)">
+                        Обрати предмет
+                    </md-button>
+                </div>
+            </md-content>
             <md-list ng-if="vm.todo.done_error.length">
                 <h4 class="text-center">Помилки</h4>
                 <md-list-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">
+                    {{item.text}}!
+                </md-list-item>
+            </md-list>
+            <md-list ng-if="vm.lastTask.length">
+                <h4 class="text-center">Останні переглянуті</h4>
+                <md-list-item ng-repeat="item in vm.lastTask | limitTo: 5" ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
             </md-list>

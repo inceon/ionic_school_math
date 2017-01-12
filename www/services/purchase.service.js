@@ -10,7 +10,8 @@
             initialize: initialize,
             buy: buy,
             restore: restore,
-            showBuyOptions: showBuyOptions
+            showBuyOptions: showBuyOptions,
+            getProducts: getProducts
         };
 
         function initialize() {
@@ -18,25 +19,21 @@
                 console.log('In-App Purchases not available');
                 return;
             }
-            console.log("init");
             window.store.verbosity = store.DEBUG;
 
             window.store.register({
                 id: 'onemonthsubscription',
-                type: window.store.NON_RENEWING_SUBSCRIPTION,
-                duration: 3600
+                type: window.store.PAID_SUBSCRIPTION
             });
 
             window.store.register({
                 id: 'threemonthsubscription',
-                type: window.store.NON_RENEWING_SUBSCRIPTION,
-                duration: 3600
+                type: window.store.PAID_SUBSCRIPTION
             });
 
             window.store.register({
                 id: 'sixmonthsubscription',
-                type: window.store.NON_RENEWING_SUBSCRIPTION,
-                duration: 3600
+                type: window.store.PAID_SUBSCRIPTION
             });
 
             /*window.store.when('onemonthsubscription')
@@ -83,25 +80,41 @@
 
             window.store.error(function(e) {
                 alert('[' + e.code + ']: ' + e.message, null, 'Error', 'dismiss');
-            });*/
+            });
+            this.restore();*/
 
             window.store.when("product").updated(function(p) {
-                console.log("updated");
+                console.log("Product updated: " + p.id + " (" + p.state + ")");
+                // Warn about invalid products
+                if (p.state == window.store.INVALID) {
+                    console.log("Product " + p.id + " can't be loaded from the store.");
+                    // this.products[p.id];
+                }
+                if (p.owned)
+                    $rootScope.test = "TEEEEEEEEEEEEEEEEEST";
+                // window.store.refresh();
+                // p.finish();
             });
 
             window.store.error(function(err) {
                 console.log("error");
             });
 
-            window.store.when("product").cancelled(function(p) {
-                console.log("canceled");
+            window.store.when("product").approved(function(product) {
+                console.log("approved");
+                product.finish();
             });
 
-            window.store.refresh();
+            window.store.when("product").cancelled(function(product) {
+                console.log("cancel");
+            });
+
+            this.restore();
         }
 
         function buy(productId) {
             window.store.order(productId);
+            window.store.refresh();
         }
 
         function restore() {
@@ -111,12 +124,12 @@
         function showBuyOptions() {
             var hideSheet = $ionicActionSheet.show({
                 buttons: [
-                    { text: 'Buy 1 month membership' },
-                    { text: 'Buy 3 month membership' },
-                    { text: 'Buy 6 month membership' }
+                    { text: 'Придбати 1 місяць підписки' },
+                    { text: 'Придбати 3 місяця підписки' },
+                    { text: 'Придбати 6 місяців підписки' }
                 ],
-                titleText: 'All memberships include <b>unlimited tracking</b> and <b>remove ads</b>',
-                cancelText: 'Cancel',
+                titleText: 'Підписка дозволяє задавати питання репетитору',
+                cancelText: 'Відмінити',
                 cancel: function() {
                     hideSheet();
                 },
@@ -134,10 +147,15 @@
                     }
 
                     window.store.order(purchaseName);
+                    window.store.refresh();
                     return true;
                 }
             });
             return hideSheet;
+        }
+
+        function getProducts(){
+            return window.store.products;
         }
     }
 })();

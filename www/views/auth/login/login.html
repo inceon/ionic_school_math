@@ -45,7 +45,13 @@
                     Запам'ятати мене
                 </md-checkbox>
             </md-input-container>
-            <input type="button" class="button button-block button-positive" ng-click="vm.login(signinForm)" value="Увійти"/>
+            <div layout="column">
+                <md-button class="md-primary md-raised waves-effect waves-light"
+                           md-colors="{background: 'blue-grey'}"
+                           ng-click="vm.login(signinForm)">
+                    Увійти
+                </md-button>
+            </div>
         </form>
         <div class="link">
             <a href="#/reset-password">Забули пароль?</a>

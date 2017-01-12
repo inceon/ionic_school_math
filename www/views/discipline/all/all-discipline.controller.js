@@ -21,6 +21,7 @@
         vm.disciplines = allDiscipline.models;
         vm.disciplineBooks = disciplineBooks;
         vm.lastTask = lastTask.models;
+        vm.lockSlide = lockSlide;
 
         function disciplineBooks(data) {
             discipline.myBook(data.disciplineId)
@@ -33,6 +34,10 @@
                         $state.go('app.discipline.books', data);
                     }
                 });
+        }
+
+        function lockSlide () {
+            $ionicSlideBoxDelegate.enableSlide( false );
         }
 
         vm.selectBook = function (idSlide) {

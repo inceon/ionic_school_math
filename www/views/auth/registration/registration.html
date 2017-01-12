@@ -201,11 +201,13 @@
                     </div>
                 </md-input-container>
             </div>
-
-            <input type="button"
-                   class="button button-block button-positive"
-                   ng-click="vm.register(registerForm)"
-                   value="Створити аккаунт">
+            <div layout="column">
+                <md-button class="md-primary md-raised waves-effect waves-light"
+                           md-colors="{background: 'blue-grey'}"
+                           ng-click="vm.register(registerForm)">
+                    Створити аккаунт
+                </md-button>
+            </div>
             <div class="link">
                 У Вас вже є аккаунт?
                 <a href="#/login">Увійти</a>

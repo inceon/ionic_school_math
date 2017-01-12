@@ -18,8 +18,8 @@
         vm.books = null;
         vm.slide = 0;
         vm.selectBook = selectBook;
-
         vm.books = allBooks.models;
+        vm.lockSlide = lockSlide;
 
         vm.next = function () {
             $ionicSlideBoxDelegate.next();
@@ -35,7 +35,10 @@
                         bookId: vm.books[id].book.id
                     });
                 });
+        }
 
+        function lockSlide () {
+            $ionicSlideBoxDelegate.enableSlide( false );
         }
 
     }

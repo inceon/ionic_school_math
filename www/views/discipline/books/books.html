@@ -11,15 +11,15 @@
         <div class="list" ng-if="vm.books">
             <div class="left">
                 <button class="button button-positive button-clear no-animation icon ion-chevron-left"
-                        ng-click="vm.previous()" ng-if="vm.slide > 0">
+                        ng-click="vm.previous()">
                 </button>
             </div>
             <div class="right">
                 <button class="button button-positive button-clear no-animation icon ion-chevron-right"
-                        ng-click="vm.next()" ng-if="vm.slide != vm.books.length-1">
+                        ng-click="vm.next()">
                 </button>
             </div>
-            <ion-slide-box active-slide="vm.slide" show-pager="false">
+            <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true">
                 <ion-slide ng-repeat="book in vm.books">
                     <a class="slide-item">
                         <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
