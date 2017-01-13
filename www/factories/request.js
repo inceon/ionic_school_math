@@ -30,7 +30,9 @@
         };
 
         function request(method, url, data) {
-            $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
+            $ionicLoading.show({
+                templateUrl: 'views/lazyload/lazyload.html'
+            });
             var config = {
                 dataType: 'json',
                 method: method,

@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'chats', 'subtasks', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'chats', 'subtasks', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading', 'purchase'];
 
-    function Task($rootScope, $scope, $stateParams, $q, chats, subtasks, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading) {
+    function Task($rootScope, $scope, $stateParams, $q, chats, subtasks, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading, purchase) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -31,6 +31,7 @@
         vm.loadMyChat = loadMyChat;
         vm.showAnswerModal = showAnswerModal;
         vm.closeAnswerModal = closeAnswerModal;
+        vm.checkOrder = checkOrder;
         vm.messages = [];
 
         vm.data = vm.task.done || {};
@@ -39,26 +40,33 @@
         vm.audio = {};
 
         vm.audio.stop = function () {
-            window.plugins.audioRecorderAPI.stop(function (msg, $scope) {
+            window.plugins.audioRecorderAPI.stop(function (msg) {
                 // alert("audio.stop: " + msg);
-                vm.audio.data = msg;
-                vm.audio.online = false;
-                $scope.apply();
+                $scope.$apply(function () {
+                    vm.audio.data = msg;
+                    vm.audio.online = false;
+                });
+                console.log("stop success");
             }, function (msg) {
-                delete vm.audio.data;
+                vm.audio.data = null;
+                vm.audio.online = false;
+                console.log("stop error");
             });
         };
 
         vm.audio.record = function () {
             vm.audio.online = true;
-            window.plugins.audioRecorderAPI.record(function (msg, $scope) {
-                vm.audio.data = msg;
-                vm.audio.online = false;
-                $scope.apply();
+            window.plugins.audioRecorderAPI.record(function (msg) {
+                $scope.$apply(function () {
+                    vm.audio.data = msg;
+                    vm.audio.online = false;
+                });
+                console.log("record success");
             }, function (msg) {
-                delete vm.audio.data;
+                vm.audio.data = null;
                 vm.audio.online = false;
-            }, 15);
+                console.log("record error");
+            }, 100);
         };
 
         if (vm.chats) {
@@ -103,32 +111,55 @@
         }
 
         function question(form) {
-            if (vm.comment_id) {
-                vm.data.send_to = vm.comment_id;
-            }
-            if (vm.audio.data) {
-                vm.data.audio = vm.audio.data;
+            this.checkOrder()
+                .then(function(){
+                    if (vm.comment_id) {
+                        vm.data.send_to = vm.comment_id;
+                    }
+                    if (vm.audio.data) {
+                        vm.data.audio = vm.audio.data;
 
-                comment.addAudio(vm.data)
-                    .then(function (response) {
-                        vm.messages.push(response);
-                        toastr.success("Повідомлення успішно відправлено");
-                        vm.data.text = ' ';
-                        delete vm.audio.data;
+                        comment.addAudio(vm.data)
+                            .then(function (response) {
+                                vm.messages.push(response);
+                                toastr.success("Повідомлення успішно відправлено");
+                                vm.data.text = ' ';
+                                delete vm.audio.data;
+                            });
+                    } else {
+                        if (form.$invalid) {
+                            toastr.error("Дані введені не вірно");
+                            return;
+                        }
+                        comment.add(vm.data)
+                            .then(function (response) {
+                                response.role = $rootScope.user.role_id;
+                                vm.messages.push(response);
+                                toastr.success("Повідомлення успішно відправлено");
+                                vm.data.text = ' ';
+                            });
+                    }
+                }, function () {
+                    $ionicPopup.show({
+                        title: 'Підписка дозволяє задавати питання репетитору',
+                        template: '',
+                        scope: $scope,
+                        cssClass: "popup-vertical-buttons",
+                        buttons: [
+                            {
+                                text: 'Підписатися',
+                                type: 'button-positive',
+                                onTap: function (e) {
+                                    return purchase.buy("onemonthsubscription");
+                                }
+                            },
+                            {
+                                text: 'Відмінити',
+                                type: 'button-default',
+                            }
+                        ]
                     });
-            } else {
-                if (form.$invalid) {
-                    toastr.error("Дані введені не вірно");
-                    return;
-                }
-                comment.add(vm.data)
-                    .then(function (response) {
-                        response.role = $rootScope.user.role_id;
-                        vm.messages.push(response);
-                        toastr.success("Повідомлення успішно відправлено");
-                        vm.data.text = ' ';
-                    });
-            }
+                });
         }
 
         function openChat(data) {
@@ -190,6 +221,18 @@
                     vm.subtask = null;
                     $scope.answerModal.hide();
                 });
+        }
+
+        function checkOrder() {
+            return purchase.checkSubscription()
+                    .then(function(data){
+                        if(data){
+                            console.log(data);
+                            return true
+                        } else {
+                            throw "Not order";
+                        }
+                    });
         }
 
         $scope.showImages = function (file) {

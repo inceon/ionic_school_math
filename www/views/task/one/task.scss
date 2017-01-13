@@ -214,6 +214,9 @@
         .control {
             width: 30px;
         }
+        a {
+            color: rgb(63,81,181);
+        }
     }
     //audio::-webkit-media-controls-panel {
     //    background-color: rgb(63,81,181);
@@ -263,4 +266,13 @@
 
     }
 
+}
+.popup-vertical-buttons button
+{
+    min-width: 100%;
+    margin-bottom: 5px;
+}
+.popup-vertical-buttons .popup-buttons
+{
+    display: block;
 }

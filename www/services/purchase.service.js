@@ -11,7 +11,8 @@
             buy: buy,
             restore: restore,
             showBuyOptions: showBuyOptions,
-            getProducts: getProducts
+            getProducts: getProducts,
+            checkSubscription: checkSubscription
         };
 
         function initialize() {
@@ -83,31 +84,32 @@
             });
             this.restore();*/
 
-            window.store.when("product").updated(function(p) {
-                console.log("Product updated: " + p.id + " (" + p.state + ")");
-                // Warn about invalid products
-                if (p.state == window.store.INVALID) {
-                    console.log("Product " + p.id + " can't be loaded from the store.");
-                    // this.products[p.id];
-                }
-                if (p.owned)
-                    $rootScope.test = "TEEEEEEEEEEEEEEEEEST";
-                // window.store.refresh();
-                // p.finish();
-            });
+            window.store.when("product")
+                .updated(function(p) {
+                    console.log("Product updated: " + p.id + " (" + p.state + ")");
+                    // Warn about invalid products
+                    if (p.state == window.store.INVALID) {
+                        console.log("Product " + p.id + " can't be loaded from the store.");
+                        // this.products[p.id];
+                    }
+                    // window.store.refresh();
+                    // p.finish();
+                });
 
             window.store.error(function(err) {
                 console.log("error");
             });
 
-            window.store.when("product").approved(function(product) {
-                console.log("approved");
-                product.finish();
-            });
+            window.store.when("product")
+                .approved(function(product) {
+                    console.log("approved");
+                    product.finish();
+                });
 
-            window.store.when("product").cancelled(function(product) {
-                console.log("cancel");
-            });
+            window.store.when("product")
+                .cancelled(function(product) {
+                    console.log("cancel");
+                });
 
             this.restore();
         }
@@ -152,6 +154,17 @@
                 }
             });
             return hideSheet;
+        }
+
+        function checkSubscription() {
+            var res = Promise.reject();
+            angular.forEach(window.store.products, function(product){
+                console.log(product);
+                if(product.transaction && product.owned){
+                    res = Promise.resolve(product);
+                }
+            });
+            return res;
         }
 
         function getProducts(){
