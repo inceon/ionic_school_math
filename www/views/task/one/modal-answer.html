@@ -52,12 +52,12 @@
                      ngf-thumbnail="file.url ? file.url : file"
                      class="attach-image"
                      ng-repeat="file in vm.data.files"
-                     ng-click="showImages(file)">
+                     ng-click="showImages(file)"><br>
                 <img ng-src="img/spinner.gif"
                      ngf-thumbnail="file"
                      class="attach-image"
                      ng-repeat="file in vm.data.attach"
-                     ng-click="showImages(file)">
+                     ng-click="showImages(file, true)">
             </div>
         </md-card>
     </ion-content>

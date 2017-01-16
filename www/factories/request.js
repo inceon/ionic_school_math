@@ -31,7 +31,8 @@
 
         function request(method, url, data) {
             $ionicLoading.show({
-                templateUrl: 'views/lazyload/lazyload.html'
+                templateUrl: 'views/lazyload/lazyload.html',
+                duration: 2000
             });
             var config = {
                 dataType: 'json',
@@ -62,7 +63,10 @@
         }
 
         function requestFile(url, data) {
-            $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
+            $ionicLoading.show({
+                templateUrl: 'views/lazyload/lazyload.html',
+                duration: 2000
+            });
             var config = {
                 transformRequest: angular.identity,
                 headers: {
@@ -79,7 +83,10 @@
         }
 
         function requestAudio(url, data) {
-            $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
+            $ionicLoading.show({
+                templateUrl: 'views/lazyload/lazyload.html',
+                duration: 2000
+            });
 
             if ($sessionStorage.auth_key) {
                 url = url + '?auth_key=' + $sessionStorage.auth_key;
@@ -123,6 +130,7 @@
                 else if (err.status === 0) {
                     // $state.go('error.internet');
                     toastr.error('Відсутнє інтернет підключення');
+                    throw "Internet";
                 }
                 else if (err.status === 500) {
                     toastr.error('Помилка сервера: ' + err.status + ' ' + err.data.message);

@@ -98,6 +98,9 @@
 
     .questionForm {
         border-top: 1px solid #bbb;
+        .inputButton {
+            padding-bottom: 10px;
+        }
     }
 
     @media (min-width: 680px) {

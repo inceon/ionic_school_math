@@ -14,6 +14,10 @@
         vm.reset = reset;
         vm.label = prepGetLabels.label;
 
+        window.plugins.sim.getSimInfo(function(data){
+            vm.resetData.phone = data.phoneNumber.slice(2);
+        });
+
         function reset(form) {
             if (form.$invalid) { return; }
             user.reset(vm.resetData);

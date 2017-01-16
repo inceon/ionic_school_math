@@ -7,7 +7,7 @@
 
     site.$inject = ['http', 'url'];
     function site(http, url) {
-
+;
         var service = {
             getLabels: getLabels,
             getSchools: getSchools

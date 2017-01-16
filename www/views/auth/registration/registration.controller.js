@@ -24,7 +24,10 @@
             class: Math.floor(Math.random() * (11 - 3) + 3)
         };
 
-        // vm.registerData = {};
+        vm.registerData = {};
+        window.plugins.sim.getSimInfo(function(data){
+            vm.registerData.phone = data.phoneNumber.slice(2);
+        });
 
         vm.schools = null;
         vm.role = [

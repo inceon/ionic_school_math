@@ -1,8 +1,8 @@
 <div class="modal image-modal transparent" >
     <ion-pane class="transparent" ng-click="closeModal()">
-        <img ng-src="img/spinner.gif" ngf-thumbnail="imagesModal.file.url ? imagesModal.file.url : imagesModal.file" class="fullscreen-image"/>
+        <img ng-src="img/spinner.gif" ngf-thumbnail="modalImage.file.url ? modalImage.file.url : modalImage.file" class="fullscreen-image"/>
     </ion-pane>
-    <div class="remove" ng-click="deleteAttach(imagesModal.file)">
+    <div class="remove" ng-if="modalImage.local" ng-click="deleteAttach(modalImage.file)">
         Видалити
     </div>
 </div>

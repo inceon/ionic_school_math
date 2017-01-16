@@ -17,6 +17,12 @@
             // phone: '1111111115', // 1
             password: '11111111'
         };
+
+        // TODO
+        // window.plugins.sim.getSimInfo(function(data){
+        //     vm.authData.phone = data.phoneNumber.slice(2);
+        //     vm.authData.password = null;
+        // });
         // vm.authData = null;
 
         vm.label = prepGetLabels.label;

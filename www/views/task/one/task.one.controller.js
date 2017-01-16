@@ -5,9 +5,9 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'chats', 'subtasks', '$timeout', 'task', 'prepGetLabels', 'taskInfo', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading', 'purchase'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'resolveData', '$timeout', 'task', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading', 'purchase'];
 
-    function Task($rootScope, $scope, $stateParams, $q, chats, subtasks, $timeout, task, prepGetLabels, taskInfo, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading, purchase) {
+    function Task($rootScope, $scope, $stateParams, $q, resolveData, $timeout, task, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading, purchase) {
 
         $rootScope.page = {
             title: 'Завдання'
@@ -15,12 +15,12 @@
 
         var vm = this;
 
-        vm.label = prepGetLabels.label;
+        vm.label = resolveData.prepGetLabels.label;
 
         vm.submit = submit;
-        vm.chats = chats.models;
-        vm.task = taskInfo;
-        vm.subtasks = subtasks.models;
+        vm.chats = resolveData.chats.models;
+        vm.task = resolveData.taskInfo;
+        vm.subtasks = resolveData.subtasks.models;
         console.log(vm.subtasks);
         vm.upload = upload;
         vm.question = question;
@@ -56,6 +56,7 @@
 
         vm.audio.record = function () {
             vm.audio.online = true;
+            vm.audio.data = null;
             window.plugins.audioRecorderAPI.record(function (msg) {
                 $scope.$apply(function () {
                     vm.audio.data = msg;
@@ -98,6 +99,11 @@
                         toastr.success("Відповідь успішно відправлена");
                     });
             }
+
+            angular.forEach(vm.data.attach, function (file) {
+                vm.data.files.push(file);
+            });
+            vm.data.attach = null;
         }
 
         function upload($files) {
@@ -107,6 +113,7 @@
             angular.forEach($files, function (file) {
                 vm.data[file.lastModified] = file;
             });
+
             console.log(vm.data);
         }
 
@@ -166,7 +173,7 @@
             if (data.id) {
                 vm.comment_id = data.id;
                 vm.data.send_to = data.created_by;
-                vm.data.text = ' ';
+                vm.data.text = '';
                 delete vm.audio.data;
                 comment.message(data.id)
                     .then(function (response) {
@@ -192,6 +199,12 @@
 
         $scope.deleteAttach = function (file) {
             delete vm.data[file.lastModified];
+            vm.data.attach = vm.data.attach.filter(function( obj ) {
+               return obj.lastModified !== file.lastModified;
+            });
+            console.log(file);
+            console.log(vm.data.attach);
+            $scope.modalImage.hide();
         };
 
         function loadMyChat() {
@@ -232,22 +245,26 @@
                         } else {
                             throw "Not order";
                         }
+                    }, function (){
+                        // TODO
+                        return true;
                     });
         }
 
-        $scope.showImages = function (file) {
+        $scope.showImages = function (file, local) {
             $ionicModal.fromTemplateUrl('views/task/one/popover/image.html', {
                 scope: $scope,
                 animation: 'slide-in-up'
             }).then(function (modal) {
-                $scope.imagesModal = modal;
-                $scope.imagesModal.file = file;
-                $scope.imagesModal.show();
+                $scope.modalImage = modal;
+                $scope.modalImage.file = file;
+                $scope.modalImage.local = local;
+                $scope.modalImage.show();
             });
         };
 
         $scope.closeModal = function () {
-            $scope.imagesModal.hide();
+            $scope.modalImage.hide();
         };
 
         function doRefresh() {

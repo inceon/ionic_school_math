@@ -31,13 +31,13 @@
                   md-select-on-focus
                   ng-model="vm.data.text"
                   autocomplete="off"
-                  required> </textarea>
+                  required></textarea>
         <div ng-messages="questionForm.question.$error">
             <div ng-message="required">Поле обов'язкове для заповнення</div>
             <div ng-message="maxlength">Максимальна довжина відповіді повинна бути 150 символів</div>
         </div>
     </md-input-container>
-    <div class="md-block" layout="row">
+    <div class="md-block inputButton" layout="row">
         <div layout-align="start center" flex="7">
             <md-button class="md-icon-button md-fab md-mini md-hue-2"
                         ng-style="{'background-color':'#3f51b5'}"

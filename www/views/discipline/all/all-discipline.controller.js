@@ -5,9 +5,9 @@
         .module('app')
         .controller('Disciplines', Disciplines);
 
-    Disciplines.$inject = ['$rootScope', '$localStorage', 'allDiscipline', 'lastTask', 'task', 'discipline', '$state', 'todo', '$ionicSlideBoxDelegate'];
+    Disciplines.$inject = ['$rootScope', '$localStorage', 'resolveData', 'task', 'discipline', '$state', '$ionicSlideBoxDelegate'];
 
-    function Disciplines($rootScope, $localStorage, allDiscipline, lastTask, task, discipline, $state, todo, $ionicSlideBoxDelegate) {
+    function Disciplines($rootScope, $localStorage, resolveData, task, discipline, $state, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
             title: 'Предмети',
@@ -17,10 +17,11 @@
         var vm = this;
 
         vm.slide = 0;
-        vm.todo = todo;
-        vm.disciplines = allDiscipline.models;
+        console.log(resolveData);
+        vm.todo = resolveData.todo;
+        vm.disciplines = resolveData.allDiscipline.models;
         vm.disciplineBooks = disciplineBooks;
-        vm.lastTask = lastTask.models;
+        vm.lastTask = resolveData.lastTask.models;
         vm.lockSlide = lockSlide;
 
         function disciplineBooks(data) {

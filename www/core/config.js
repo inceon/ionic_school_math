@@ -60,14 +60,12 @@
                 controller: 'Disciplines',
                 controllerAs: 'vm',
                 resolve: {
-                    lastTask: function (task) {
-                        return task.last();
-                    },
-                    allDiscipline: function (discipline) {
-                        return discipline.all();
-                    },
-                    todo: function (user) {
-                        return user.todo();
+                    resolveData: function (task, discipline, user, $q){
+                        return $q.all({
+                            lastTask: task.last(),
+                            allDiscipline: discipline.all(),
+                            todo: user.todo()
+                        });
                     }
                 }
             })
@@ -121,17 +119,13 @@
                 controller: 'Task',
                 controllerAs: 'vm',
                 resolve: {
-                    prepGetLabels: function(site) {
-                        return site.getLabels('DoneTask');
-                    },
-                    taskInfo: function (task, $stateParams){
-                        return task.one($stateParams.taskId);
-                    },
-                    subtasks: function (task, $stateParams){
-                        return task.subtasks($stateParams.taskId);
-                    },
-                    chats: function (comment, $stateParams) {
-                        return comment.all($stateParams.taskId);
+                    resolveData: function (task, comment, site, $stateParams, $q){
+                        return $q.all({
+                            prepGetLabels: site.getLabels('DoneTask'),
+                            taskInfo: task.one($stateParams.taskId),
+                            subtasks: task.subtasks($stateParams.taskId),
+                            chats: comment.all($stateParams.taskId)
+                        });
                     }
                 }
             })

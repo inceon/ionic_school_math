@@ -67,7 +67,10 @@
 
             $rootScope.$on('$stateChangeStart',
                 function(event, toState, toParams, fromState, fromParams, options){
-                    $ionicLoading.show({templateUrl: 'views/lazyload/lazyload.html'});
+                    $ionicLoading.show({
+                        templateUrl: 'views/lazyload/lazyload.html',
+                        duration: 2000
+                    });
                 });
             $rootScope.$on('$stateChangeSuccess',
                 function(event, toState, toParams, fromState, fromParams){

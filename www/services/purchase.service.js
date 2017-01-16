@@ -27,15 +27,15 @@
                 type: window.store.PAID_SUBSCRIPTION
             });
 
-            window.store.register({
-                id: 'threemonthsubscription',
-                type: window.store.PAID_SUBSCRIPTION
-            });
+            // window.store.register({
+            //     id: 'threemonthsubscription',
+            //     type: window.store.PAID_SUBSCRIPTION
+            // });
 
-            window.store.register({
-                id: 'sixmonthsubscription',
-                type: window.store.PAID_SUBSCRIPTION
-            });
+            // window.store.register({
+            //     id: 'sixmonthsubscription',
+            //     type: window.store.PAID_SUBSCRIPTION
+            // });
 
             /*window.store.when('onemonthsubscription')
                 .approved(function(product) {
@@ -104,6 +104,7 @@
                 .approved(function(product) {
                     console.log("approved");
                     product.finish();
+                    window.store.refresh();
                 });
 
             window.store.when("product")
@@ -123,6 +124,7 @@
             window.store.refresh();
         }
 
+        // TODO
         function showBuyOptions() {
             var hideSheet = $ionicActionSheet.show({
                 buttons: [
@@ -157,6 +159,7 @@
         }
 
         function checkSubscription() {
+            window.store.refresh();
             var res = Promise.reject();
             angular.forEach(window.store.products, function(product){
                 console.log(product);
