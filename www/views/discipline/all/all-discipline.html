@@ -2,14 +2,14 @@
     <ion-content class="has-header">
         <div class="list" ng-if="vm.disciplines">
             <div class="left">
-                <div class="button button-positive button-clear no-animation icon ion-chevron-left"
+                <button class="button button-positive button-clear no-animation icon ion-chevron-left"
                         ng-click="vm.previous()">
-                </div>
+                </button>
             </div>
             <div class="right">
-                <div class="button button-positive button-clear no-animation icon ion-chevron-right"
+                <button class="button button-positive button-clear no-animation icon ion-chevron-right"
                         ng-click="vm.next()">
-                </div>
+                </button>
             </div>
             <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true" ng-init="vm.lockSlide()">
                 <ion-slide ng-repeat="discipline in vm.disciplines">
@@ -28,26 +28,29 @@
                     </md-button>
                 </div>
             </md-content>
-            <md-list ng-if="vm.todo.done_error.length" ng-init="limitErrorTasks = 5">
+            <md-list ng-if="vm.todo.done_error.length">
                 <h4 class="text-center">Помилки</h4>
-                <md-list-item ng-repeat="item in vm.todo.done_error | limitTo: limitErrorTasks" ui-sref="app.discipline.task({ taskId : item.id})">
+                <md-list-item ng-repeat="item in vm.todo.done_error | limitTo : limitError"
+                              ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
-                <md-button class="text-center show-more"
-                     ng-click="limitErrorTasks = limitErrorTasks + 5"
-                     ng-hide="limitErrorTasks >= vm.todo.done_error.length">
+                <md-button class="more"
+                     ng-init="limitError = 5"
+                     ng-click="limitError = limitError + 5"
+                     ng-hide="limitError >= vm.todo.done_error.length">
                     ...
                 </md-button>
             </md-list>
-
-            <md-list ng-if="vm.lastTask.length" ng-init="limitLastViewedTask = 5">
+            <md-list ng-if="vm.lastTask.length">
                 <h4 class="text-center">Останні переглянуті</h4>
-                <md-list-item ng-repeat="item in vm.lastTask | limitTo: limitLastViewedTask" ui-sref="app.discipline.task({ taskId : item.id})">
+                <md-list-item ng-repeat="item in vm.lastTask | limitTo: limitLast"
+                              ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
-                <md-button class="text-center show-more"
-                     ng-click="limitLastViewedTask = limitLastViewedTask + 5"
-                     ng-hide="limitLastViewedTask >= vm.lastTask.length">
+                <md-button class="more"
+                     ng-init="limitLast = 5"
+                     ng-click="limitLast = limitLast + 5"
+                     ng-hide="limitLast >= vm.lastTask.length">
                     ...
                 </md-button>
             </md-list>

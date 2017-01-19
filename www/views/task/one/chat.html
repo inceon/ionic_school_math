@@ -1,11 +1,11 @@
 <div class="messages">
-    <md-button class="text-center show-more waves-effect waves-light waves-button"
-         ng-click="limitComment = limitComment + 5"
-         ng-init="limitComment = 5"
-         ng-hide="limitComment >= vm.messages.length">
+    <md-button class="more"
+               ng-init="limitMessage = 7"
+               ng-click="limitMessage = limitMessage + 5"
+               ng-hide="limitMessage >= vm.messages.length">
         ...
     </md-button>
-    <div ng-repeat="i in vm.messages.slice(-limitComment)" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
+    <div ng-repeat="i in vm.messages | limitTo : limitMessage" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
         <img ng-class="{'show-time':i.show_date}"
              ng-click="i.show_date = !i.show_date"
              ng-src="{{i.avatar}}">

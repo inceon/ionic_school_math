@@ -2,7 +2,7 @@
     md-list-item {
         border-bottom: 1px solid #ccc;
         &:first-of-type {
-            border-top: 1px solid #eee;
+            border-top: 1px solid #efefef;
         }
     }
 
@@ -84,20 +84,19 @@
         left: 0;
     }
 
-    .right{
+    .right {
         right: 0;
     }
 
-    .show-more {
-        font-weight: bold;
+
+    .more {
+        text-align: center;
         border-bottom: 1px solid #ccc;
-        padding: 3px 0 8px 0;
-        background: #f5f5f5;
+        font-weight: bold;
+        background: #Efefef;
         cursor: pointer;
-        display: block;
-        width: 100%;
         margin: 0;
-        line-height: 1em;
+        width: 100%;
     }
 
     .list {
