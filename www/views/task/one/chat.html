@@ -5,7 +5,7 @@
                ng-hide="limitMessage >= vm.messages.length">
         ...
     </md-button>
-    <div ng-repeat="i in vm.messages | limitTo : limitMessage" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
+    <div ng-repeat="i in vm.messages.slice(-limitMessage)" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
         <img ng-class="{'show-time':i.show_date}"
              ng-click="i.show_date = !i.show_date"
              ng-src="{{i.avatar}}">
