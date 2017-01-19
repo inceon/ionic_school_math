@@ -1,8 +1,8 @@
 .all-discipline {
     md-list-item {
         border-bottom: 1px solid #ccc;
-        &:first-child {
-            border-top: 1px solid #ccc;
+        &:first-of-type {
+            border-top: 1px solid #efefef;
         }
     }
 
@@ -86,5 +86,14 @@
 
     .right{
         right: 0;
+    }
+
+    .more {
+        text-align: center;
+        font-weight: bold;
+        background: #Efefef;
+        cursor: pointer;
+        margin: 0;
+        width: 100%;
     }
 }

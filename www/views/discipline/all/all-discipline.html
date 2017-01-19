@@ -30,15 +30,29 @@
             </md-content>
             <md-list ng-if="vm.todo.done_error.length">
                 <h4 class="text-center">Помилки</h4>
-                <md-list-item ng-repeat="item in vm.todo.done_error" ui-sref="app.discipline.task({ taskId : item.id})">
+                <md-list-item ng-repeat="item in vm.todo.done_error | limitTo : limitError"
+                              ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
+                <md-button class="more"
+                     ng-init="limitError = 5"
+                     ng-click="limitError = limitError + 5"
+                     ng-hide="limitError >= vm.todo.done_error.length">
+                    ...
+                </md-button>
             </md-list>
             <md-list ng-if="vm.lastTask.length">
                 <h4 class="text-center">Останні переглянуті</h4>
-                <md-list-item ng-repeat="item in vm.lastTask | limitTo: 5" ui-sref="app.discipline.task({ taskId : item.id})">
+                <md-list-item ng-repeat="item in vm.lastTask | limitTo: limitLast"
+                              ui-sref="app.discipline.task({ taskId : item.id})">
                     {{item.text}}!
                 </md-list-item>
+                <md-button class="more"
+                     ng-init="limitLast = 5"
+                     ng-click="limitLast = limitLast + 5"
+                     ng-hide="limitLast >= vm.lastTask.length">
+                    ...
+                </md-button>
             </md-list>
             <md-list ng-if="vm.todo.tasks.length">
                 <h4 class="text-center">Цікаві завдання</h4>
