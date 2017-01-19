@@ -215,7 +215,7 @@ var SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
   NON_ALPHANUMERIC_REGEXP = /([^\#-~ |!])/g;
 
 
-// Good source of info about elements and attributes
+// Good source of info premium elements and attributes
 // http://dev.w3.org/html5/spec/Overview.html#semantics
 // http://simon.html5.org/html-elements
 

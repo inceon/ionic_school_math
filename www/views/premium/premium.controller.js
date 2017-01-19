@@ -2,14 +2,14 @@
     "use strict";
     angular
         .module('app')
-        .controller('About', About);
+        .controller('Premium', About);
 
     About.$inject = ['$rootScope', 'purchase'];
 
     function About ($rootScope, purchase) {
 
         $rootScope.page = {
-            title: 'Disciplines'
+            title: 'Підписки'
         };
 
         var vm = this;

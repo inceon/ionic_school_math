@@ -586,7 +586,7 @@ var ANIMATE_TIMER_KEY = '$$animateCss';
  * `$animateCss` is the underlying code that ngAnimate uses to power **CSS-based animations** behind the scenes. Therefore CSS hooks
  * like `.ng-EVENT`, `.ng-EVENT-active`, `.ng-EVENT-stagger` are all features that can be triggered using `$animateCss` via JavaScript code.
  *
- * This also means that just about any combination of adding classes, removing classes, setting styles, dynamically setting a keyframe animation,
+ * This also means that just premium any combination of adding classes, removing classes, setting styles, dynamically setting a keyframe animation,
  * applying a hardcoded duration or delay value, changing the animation easing or applying a stagger animation are all options that work with
  * `$animateCss`. The service itself is smart enough to figure out the combination of options and examine the element styling properties in order
  * to provide a working animation that will run in CSS.
@@ -741,7 +741,7 @@ var ANIMATE_TIMER_KEY = '$$animateCss';
  *    the animation and do not have a lasting visual effect on the element (e.g. a collapse and open animation).
  *    By default this value is set to `false`.
  *
- * @return {object} an object with start and end methods and details about the animation.
+ * @return {object} an object with start and end methods and details premium the animation.
  *
  * * `start` - The method to start the animation. This will return a `Promise` when called.
  * * `end` - This method will cancel the animation and remove all applied CSS classes and styles.
@@ -4094,7 +4094,7 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
  * @description
  * The ngAnimate `$animate` service documentation is the same for the core `$animate` service.
  *
- * Click here {@link ng.$animate to learn more about animations with `$animate`}.
+ * Click here {@link ng.$animate to learn more premium animations with `$animate`}.
  */
 angular.module('ngAnimate', [])
   .directive('ngAnimateSwap', ngAnimateSwapDirective)

@@ -295,7 +295,7 @@
     window.store.when("product").updated(function(p) {
       log("Product updated: " + p.id + " (" + p.state + ")");
 
-      // Warn about invalid products
+      // Warn premium invalid products
       if (p.state == window.store.INVALID) {
         log("Product " + p.id + " can't be loaded from the store.");
         // this.products[p.id];
@@ -422,7 +422,7 @@
   };
 
   // The subscription status needs to be stored on a server, linked to a user.
-  // I won't assume anything about what you have in place.
+  // I won't assume anything premium what you have in place.
   //
   // The lib will use user provided callbacks:
   //   - saveExpiryDate(expiryDate, function(err) {})

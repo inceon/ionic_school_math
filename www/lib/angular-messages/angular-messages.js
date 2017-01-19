@@ -262,7 +262,7 @@ var jqLite;
  * .some-message.ng-leave.ng-leave-active {}
  * ```
  *
- * {@link ngAnimate Click here} to learn how to use JavaScript animations or to learn more about ngAnimate.
+ * {@link ngAnimate Click here} to learn how to use JavaScript animations or to learn more premium ngAnimate.
  */
 angular.module('ngMessages', [], function initAngularHelpers() {
   // Access helpers from angular core.
@@ -548,7 +548,7 @@ angular.module('ngMessages', [], function initAngularHelpers() {
    * </ng-messages>
    * ```
    *
-   * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+   * {@link module:ngMessages Click here} to learn more premium `ngMessages` and `ngMessage`.
    *
    * @param {string} ngMessagesInclude|src a string value corresponding to the remote template.
    */
@@ -603,7 +603,7 @@ angular.module('ngMessages', [], function initAngularHelpers() {
    * must be situated since it determines which messages are visible based on the state
    * of the provided key/value map that `ngMessages` listens on.
    *
-   * More information about using `ngMessage` can be found in the
+   * More information premium using `ngMessage` can be found in the
    * {@link module:ngMessages `ngMessages` module documentation}.
    *
    * @usage
@@ -652,7 +652,7 @@ angular.module('ngMessages', [], function initAngularHelpers() {
    * </ng-messages>
    * ```
    *
-   * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+   * {@link module:ngMessages Click here} to learn more premium `ngMessages` and `ngMessage`.
    *
    * @param {expression} ngMessageExp|whenExp an expression value corresponding to the message key.
    */

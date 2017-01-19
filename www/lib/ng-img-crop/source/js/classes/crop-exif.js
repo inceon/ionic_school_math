@@ -19,7 +19,7 @@ crop.service('cropEXIF', [function() {
       // image configuration
       0xA002 : "PixelXDimension",         // Valid width of meaningful image
       0xA003 : "PixelYDimension",         // Valid height of meaningful image
-      0x9101 : "ComponentsConfiguration", // Information about channels
+      0x9101 : "ComponentsConfiguration", // Information premium channels
       0x9102 : "CompressedBitsPerPixel",  // Compressed bits per pixel
 
       // user information

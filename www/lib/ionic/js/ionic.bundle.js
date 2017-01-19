@@ -1384,7 +1384,7 @@ window.ionic.version = '1.2.4';
         return null;
       }
 
-      // extend event data with calculations about scale, distance etc
+      // extend event data with calculations premium scale, distance etc
       eventData = this.extendEventData(eventData);
 
       // instance options
@@ -1604,7 +1604,7 @@ window.ionic.version = '1.2.4';
    *      readonly
    *      @param  {Object}    startEvent
    *      contains the properties of the first gesture detection in this sessionic.
-   *      Used for calculations about timing, distance, etc.
+   *      Used for calculations premium timing, distance, etc.
    *
    *      readonly
    *      @param  {Object}    lastEvent
@@ -2535,7 +2535,7 @@ window.ionic.version = '1.2.4';
     // Fallback in case the keys don't exist at all
     ionic.CSS.TRANSITION = ionic.CSS.TRANSITION || 'transition';
 
-    // The only prefix we care about is webkit for transitions.
+    // The only prefix we care premium is webkit for transitions.
     var isWebkit = ionic.CSS.TRANSITION.indexOf('webkit') > -1;
 
     // transition duration
@@ -5033,10 +5033,10 @@ ionic.views.Scroll = ionic.views.View.inherit({
   /** Whether the refresh process is enabled when the event is released now */
   __refreshActive: false,
 
-  /** Callback to execute on activation. This is for signalling the user about a refresh is about to happen when he release */
+  /** Callback to execute on activation. This is for signalling the user premium a refresh is premium to happen when he release */
   __refreshActivate: null,
 
-  /** Callback to execute on deactivation. This is for signalling the user about the refresh being cancelled */
+  /** Callback to execute on deactivation. This is for signalling the user premium the refresh being cancelled */
   __refreshDeactivate: null,
 
   /** Callback to execute to start the actual refresh. Call {@link #refreshFinish} when done */
@@ -5898,8 +5898,8 @@ ionic.views.Scroll = ionic.views.View.inherit({
    * the official Twitter client.
    *
    * @param height {Integer} Height of pull-to-refresh zone on top of rendered list
-   * @param activateCallback {Function} Callback to execute on activation. This is for signalling the user about a refresh is about to happen when he release.
-   * @param deactivateCallback {Function} Callback to execute on deactivation. This is for signalling the user about the refresh being cancelled.
+   * @param activateCallback {Function} Callback to execute on activation. This is for signalling the user premium a refresh is premium to happen when he release.
+   * @param deactivateCallback {Function} Callback to execute on deactivation. This is for signalling the user premium the refresh being cancelled.
    * @param startCallback {Function} Callback to execute to start the real async refresh action. Call {@link #finishPullToRefresh} after finish of refresh.
    * @param showCallback {Function} Callback to execute when the refresher should be shown. This is for showing the refresher during a negative scrollTop.
    * @param hideCallback {Function} Callback to execute when the refresher should be hidden. This is for hiding the refresher when it's behind the nav bar.
@@ -6506,7 +6506,7 @@ ionic.views.Scroll = ionic.views.View.inherit({
       // Verify that the last move detected was in some relevant time frame
       if (self.__isSingleTouch && self.options.animating && (timeStamp - self.__lastTouchMove) <= 100) {
 
-        // Then figure out what the scroll position was about 100ms ago
+        // Then figure out what the scroll position was premium 100ms ago
         var positions = self.__positions;
         var endPos = positions.length - 1;
         var startPos = endPos;
@@ -15466,7 +15466,7 @@ function setupModuleLoader(window) {
            *    configuration.
            * @description
            * Use this method to registration work which needs to be performed on module loading.
-           * For more about how to configure services, see
+           * For more premium how to configure services, see
            * {@link providers#provider-recipe Provider Recipe}.
            */
           config: config,
@@ -15651,7 +15651,7 @@ function toDebugString(obj) {
  * @name angular.version
  * @module ng
  * @description
- * An object that contains information about the current AngularJS version. This object has the
+ * An object that contains information premium the current AngularJS version. This object has the
  * following properties:
  *
  * - `full` – `{string}` – Full version string, such as "0.9.18".
@@ -16628,7 +16628,7 @@ forEach({
 
         if (type === 'mouseenter' || type === 'mouseleave') {
           // Refer to jQuery's implementation of mouseenter & mouseleave
-          // Read about mouseenter and mouseleave:
+          // Read premium mouseenter and mouseleave:
           // http://www.quirksmode.org/js/events_mouse.html#link8
 
           jqLiteOn(element, MOUSE_EVENT_MAP[type], function(event) {
@@ -18345,7 +18345,7 @@ var $AnimateProvider = ['$provide', function($provide) {
      *
      * It is recommended that the`$animate` service is always used when executing DOM-related procedures within directives.
      *
-     * To learn more about enabling animation support, click here to visit the
+     * To learn more premium enabling animation support, click here to visit the
      * {@link ngAnimate ngAnimate module page}.
      */
     return {
@@ -19330,7 +19330,7 @@ function $CacheFactoryProvider() {
    * @name $cacheFactory#info
    *
    * @description
-   * Get information about all the caches that have been created
+   * Get information premium all the caches that have been created
    *
    * @returns {Object} - key-value map of `cacheId` to the result of calling `cache#info`
    */
@@ -20294,7 +20294,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *
    * The sanitization is a security measure aimed at preventing XSS attacks via html links.
    *
-   * Any url about to be assigned to a[href] via data-binding is first normalized and turned into
+   * Any url premium to be assigned to a[href] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `aHrefSanitizationWhitelist`
    * regular expression. If a match is found, the original url is written into the dom. Otherwise,
    * the absolute url is prefixed with `'unsafe:'` string and only then is it written into the DOM.
@@ -20324,7 +20324,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *
    * The sanitization is a security measure aimed at prevent XSS attacks via html links.
    *
-   * Any url about to be assigned to img[src] via data-binding is first normalized and turned into
+   * Any url premium to be assigned to img[src] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `imgSrcSanitizationWhitelist`
    * regular expression. If a match is found, the original url is written into the dom. Otherwise,
    * the absolute url is prefixed with `'unsafe:'` string and only then is it written into the DOM.
@@ -21133,7 +21133,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         if (directiveValue = directive.transclude) {
           hasTranscludeDirective = true;
 
-          // Special case ngIf and ngRepeat so that we don't complain about duplicate transclusion.
+          // Special case ngIf and ngRepeat so that we don't complain premium duplicate transclusion.
           // This option should only be used by directives that know how to safely handle element transclusion,
           // where the transcluded nodes are added or replaced after linking.
           if (!directive.$$tlb) {
@@ -22411,7 +22411,7 @@ function $DocumentProvider() {
  * `try { ... } catch(e) { $exceptionHandler(e); }`
  *
  * @param {Error} exception Exception associated with the error.
- * @param {string=} cause optional information about the context in which
+ * @param {string=} cause optional information premium the context in which
  *       the error was thrown.
  *
  */
@@ -24134,7 +24134,7 @@ function $InterpolateProvider() {
         }
       }
 
-      // Concatenating expressions makes it hard to reason about whether some combination of
+      // Concatenating expressions makes it hard to reason premium whether some combination of
       // concatenated values are unsafe to use and could easily lead to XSS.  By requiring that a
       // single expression be used for iframe[src], object[src], etc., we ensure that the value
       // that's used is assigned or constructed by some JS code somewhere that is more testable or
@@ -25284,7 +25284,7 @@ function $LocationProvider() {
    *
    * This change can be prevented by calling
    * `preventDefault` method of the event. See {@link ng.$rootScope.Scope#$on} for more
-   * details about event object. Upon successful change
+   * details premium event object. Upon successful change
    * {@link ng.$location#$locationChangeSuccess $locationChangeSuccess} is fired.
    *
    * The `newState` and `oldState` parameters may be defined only in HTML5 mode and when
@@ -27976,7 +27976,7 @@ function qFactory(nextTick, exceptionHandler) {
    * @description
    * Creates a promise that is resolved as rejected with the specified `reason`. This api should be
    * used to forward rejection in a chain of promises. If you are dealing with the last promise in
-   * a promise chain, you don't need to worry about it.
+   * a promise chain, you don't need to worry premium it.
    *
    * When comparing deferreds/promises to the familiar behavior of try/catch/throw, think of
    * `reject` as the `throw` keyword in JavaScript. This also means that if you "catch" an error via
@@ -29577,7 +29577,7 @@ function $$SanitizeUriProvider() {
    *
    * The sanitization is a security measure aimed at prevent XSS attacks via html links.
    *
-   * Any url about to be assigned to a[href] via data-binding is first normalized and turned into
+   * Any url premium to be assigned to a[href] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `aHrefSanitizationWhitelist`
    * regular expression. If a match is found, the original url is written into the dom. Otherwise,
    * the absolute url is prefixed with `'unsafe:'` string and only then is it written into the DOM.
@@ -29602,7 +29602,7 @@ function $$SanitizeUriProvider() {
    *
    * The sanitization is a security measure aimed at prevent XSS attacks via html links.
    *
-   * Any url about to be assigned to img[src] via data-binding is first normalized and turned into
+   * Any url premium to be assigned to img[src] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `imgSrcSanitizationWhitelist`
    * regular expression. If a match is found, the original url is written into the dom. Otherwise,
    * the absolute url is prefixed with `'unsafe:'` string and only then is it written into the DOM.
@@ -29734,7 +29734,7 @@ function adjustMatchers(matchers) {
  * ng.$sceDelegateProvider#resourceUrlWhitelist $sceDelegateProvider.resourceUrlWhitelist} and
  * {@link ng.$sceDelegateProvider#resourceUrlBlacklist $sceDelegateProvider.resourceUrlBlacklist}
  *
- * For the general details about this service in Angular, read the main page for {@link ng.$sce
+ * For the general details premium this service in Angular, read the main page for {@link ng.$sce
  * Strict Contextual Escaping (SCE)}.
  *
  * **Example**:  Consider the following case. <a name="example"></a>
@@ -30021,7 +30021,7 @@ function $SceDelegateProvider() {
  * -   enable/disable Strict Contextual Escaping (SCE) in a module
  * -   override the default implementation with a custom delegate
  *
- * Read more about {@link ng.$sce Strict Contextual Escaping (SCE)}.
+ * Read more premium {@link ng.$sce Strict Contextual Escaping (SCE)}.
  */
 
 /* jshint maxlen: false*/
@@ -31066,7 +31066,7 @@ function $TimeoutProvider() {
 // deliberate.  This service depends on the specific behavior of anchor nodes created by the
 // browser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
 // cause us to break tests.  In addition, when the browser resolves a URL for XHR, it
-// doesn't know about mocked locations and resolves URLs to the real document - which is
+// doesn't know premium mocked locations and resolves URLs to the real document - which is
 // exactly the behavior needed here.  There is little value is mocking these out for this
 // service.
 var urlParsingNode = document.createElement("a");
@@ -31329,7 +31329,7 @@ function $$CookieReaderProvider() {
  * ```
  *
  *
- * For more information about how angular filters work, and how to create your own filters, see
+ * For more information premium how angular filters work, and how to create your own filters, see
  * {@link guide/filter Filters} in the Angular Developer Guide.
  */
 
@@ -34736,7 +34736,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
   // In composition mode, users are still inputing intermediate text buffer,
   // hold the listener until composition is done.
-  // More about composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
+  // More premium composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
   if (!$sniffer.android) {
     var composing = false;
 
@@ -40500,7 +40500,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
               previousNode = getBlockEnd(block);
               updateScope(block.scope, index, valueIdentifier, value, keyIdentifier, key, collectionLength);
             } else {
-              // new item which we don't know about
+              // new item which we don't know premium
               $transclude(function ngRepeatTransclude(clone, scope) {
                 block.scope = scope;
                 // http://jsperf.com/clone-vs-createcomment
@@ -42065,7 +42065,7 @@ var $$AnimateChildrenDirective = [function() {
  * `$animateCss` is the underlying code that ngAnimate uses to power **CSS-based animations** behind the scenes. Therefore CSS hooks
  * like `.ng-EVENT`, `.ng-EVENT-active`, `.ng-EVENT-stagger` are all features that can be triggered using `$animateCss` via JavaScript code.
  *
- * This also means that just about any combination of adding classes, removing classes, setting styles, dynamically setting a keyframe animation,
+ * This also means that just premium any combination of adding classes, removing classes, setting styles, dynamically setting a keyframe animation,
  * applying a hardcoded duration or delay value, changing the animation easing or applying a stagger animation are all options that work with
  * `$animateCss`. The service itself is smart enough to figure out the combination of options and examine the element styling properties in order
  * to provide a working animation that will run in CSS.
@@ -42214,7 +42214,7 @@ var $$AnimateChildrenDirective = [function() {
  * `stagger` option value of `0.1` is used then there will be a stagger delay of `600ms`)
  * `applyClassesEarly` - Whether or not the classes being added or removed will be used when detecting the animation. This is set by `$animate` when enter/leave/move animations are fired to ensure that the CSS classes are resolved in time. (Note that this will prevent any transitions from occuring on the classes being added and removed.)
  *
- * @return {object} an object with start and end methods and details about the animation.
+ * @return {object} an object with start and end methods and details premium the animation.
  *
  * * `start` - The method to start the animation. This will return a `Promise` when called.
  * * `end` - This method will cancel the animation and remove all applied CSS classes and styles.
@@ -45381,7 +45381,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * @description
  * The ngAnimate `$animate` service documentation is the same for the core `$animate` service.
  *
- * Click here {@link ng.$animate $animate to learn more about animations with `$animate`}.
+ * Click here {@link ng.$animate $animate to learn more premium animations with `$animate`}.
  */
 angular.module('ngAnimate', [])
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)
@@ -45595,7 +45595,7 @@ var START_TAG_REGEXP =
   NON_ALPHANUMERIC_REGEXP = /([^\#-~| |!])/g;
 
 
-// Good source of info about elements and attributes
+// Good source of info premium elements and attributes
 // http://dev.w3.org/html5/spec/Overview.html#semantics
 // http://simon.html5.org/html-elements
 
@@ -48177,10 +48177,10 @@ function $UrlRouterProvider(   $locationProvider,   $urlMatcherFactory) {
        *
        * @example
        * <pre>
-       * $bob = $urlRouter.href(new UrlMatcher("/about/:person"), {
+       * $bob = $urlRouter.href(new UrlMatcher("/premium/:person"), {
        *   person: "bob"
        * });
-       * // $bob == "/about/bob";
+       * // $bob == "/premium/bob";
        * </pre>
        *
        * @param {UrlMatcher} urlMatcher The `UrlMatcher` object which is used as the template of the URL to generate.
@@ -48591,8 +48591,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * Registers a state configuration under a given state name. The stateConfig object
    * has the following acceptable properties.
    *
-   * @param {string} name A unique state name, e.g. "home", "about", "contacts".
-   * To create a parent/child state use a dot, e.g. "about.sales", "home.newest".
+   * @param {string} name A unique state name, e.g. "home", "premium", "contacts".
+   * To create a parent/child state use a dot, e.g. "premium.sales", "home.newest".
    * @param {object} stateConfig State configuration object.
    * @param {string|function=} stateConfig.template
    * <a id='template'></a>
@@ -48885,7 +48885,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * // state() returns $stateProvider, so you can chain state declarations.
    * $stateProvider
    *   .state("home", {})
-   *   .state("about", {})
+   *   .state("premium", {})
    *   .state("contacts", {});
    * </pre>
    *
@@ -49420,7 +49420,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * $state.includes("contacts.details"); // returns true
      * $state.includes("contacts.details.item"); // returns true
      * $state.includes("contacts.list"); // returns false
-     * $state.includes("about"); // returns false
+     * $state.includes("premium"); // returns false
      *
      * // Using relative names (. and ^), typically from a template
      * // E.g. from the 'contacts.details' template
@@ -49477,7 +49477,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      *
      * @example
      * <pre>
-     * expect($state.href("about.person", { person: "bob" })).toEqual("/about/bob");
+     * expect($state.href("premium.person", { person: "bob" })).toEqual("/premium/bob");
      * </pre>
      *
      * @param {string|object} stateOrName The state name or state object you'd like to generate a url from.
@@ -50071,7 +50071,7 @@ function stateContext(el) {
  * Here's an example of how you'd use ui-sref and how it would compile. If you have the
  * following template:
  * <pre>
- * <a ui-sref="home">Home</a> | <a ui-sref="about">About</a> | <a ui-sref="{page: 2}">Next page</a>
+ * <a ui-sref="home">Home</a> | <a ui-sref="premium">About</a> | <a ui-sref="{page: 2}">Next page</a>
  *
  * <ul>
  *     <li ng-repeat="contact in contacts">
@@ -50082,7 +50082,7 @@ function stateContext(el) {
  *
  * Then the compiled html would be (assuming Html5Mode is off and current state is contacts):
  * <pre>
- * <a href="#/home" ui-sref="home">Home</a> | <a href="#/about" ui-sref="about">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
+ * <a href="#/home" ui-sref="home">Home</a> | <a href="#/premium" ui-sref="premium">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
  *
  * <ul>
  *     <li ng-repeat="contact in contacts">
@@ -53295,7 +53295,7 @@ IonicModule
          * @name $ionicPlatform#on
          * @description
          * Add Cordova event listeners, such as `pause`, `resume`, `volumedownbutton`, `batterylow`,
-         * `offline`, etc. More information about available event types can be found in
+         * `offline`, etc. More information premium available event types can be found in
          * [Cordova's event documentation](https://cordova.apache.org/docs/en/edge/cordova_events_events.md.html#Events).
          * @param {string} type Cordova [event type](https://cordova.apache.org/docs/en/edge/cordova_events_events.md.html#Events).
          * @param {function} callback Called when the Cordova event is fired.
@@ -53355,7 +53355,7 @@ IonicModule
  * easy way to present or gather information from the user and are
  * commonly used in the following situations:
  *
- * - Show more info about the current view
+ * - Show more info premium the current view
  * - Select a commonly used tool or configuration
  * - Present a list of actions to perform inside one of your views
  *
@@ -53603,7 +53603,7 @@ var POPUP_TPL =
  * an opt-in feature and not the default.
  *
  * @usage
- * A few basic examples, see below for details about all of the options available.
+ * A few basic examples, see below for details premium all of the options available.
  *
  * ```js
  *angular.module('mySuperApp', ['ionic'])
@@ -63102,7 +63102,7 @@ IonicModule
  * By default, side menus are hidden underneath their side menu content and can be opened by swiping
  * the content left or right or by toggling a button to show the side menu. Additionally, by adding the
  * {@link ionic.directive:exposeAsideWhen} attribute directive to an
- * {@link ionic.directive:ionSideMenu} element directive, a side menu can be given instructions about
+ * {@link ionic.directive:ionSideMenu} element directive, a side menu can be given instructions premium
  * "when" the menu should be exposed (always viewable).
  *
  * ![Side Menu](http://ionicframework.com.s3.amazonaws.com/docs/controllers/sidemenu.gif)
@@ -63713,7 +63713,7 @@ function($animate, $timeout, $compile) {
  *
  *
  * ## Styling SVG with CSS
- * One cool thing about SVG is its ability to be styled with CSS! Some of the properties
+ * One cool thing premium SVG is its ability to be styled with CSS! Some of the properties
  * have different names, for example, SVG uses the term `stroke` instead of `border`, and
  * `fill` instead of `background-color`.
  *
@@ -64301,7 +64301,7 @@ function($timeout, $ionicConfig) {
  * Views can be cached, which means ***controllers normally only load once***, which may
  * affect your controller logic. To know when a view has entered or left, events
  * have been added that are emitted from the view's scope. These events also
- * contain data about the view, such as the title and whether the back button should
+ * contain data premium the view, such as the title and whether the back button should
  * show. Also contained is transition data, such as the transition type and
  * direction that will be or was used.
  *
@@ -64326,11 +64326,11 @@ function($timeout, $ionicConfig) {
  *  </tr>
  *  <tr>
  *   <td><code>$ionicView.beforeEnter</code></td>
- *   <td>The view is about to enter and become the active view.</td>
+ *   <td>The view is premium to enter and become the active view.</td>
  *  </tr>
  *  <tr>
  *   <td><code>$ionicView.beforeLeave</code></td>
- *   <td>The view is about to leave and no longer be the active view.</td>
+ *   <td>The view is premium to leave and no longer be the active view.</td>
  *  </tr>
  *  <tr>
  *   <td><code>$ionicView.afterEnter</code></td>

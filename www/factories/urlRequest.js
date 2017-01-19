@@ -5,8 +5,9 @@
         .factory('url', [
             function () {
 
-                // var baseUrl = 'http://192.168.1.37/api/web/v2/';
-                var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
+                var baseUrl = 'http://192.168.1.37/api/web/v2/';
+                // var baseUrl = 'http://192.168.0.151/api/web/v2/';
+                // var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
                 return {
 
                     user: {
@@ -14,6 +15,7 @@
                         token:       baseUrl + 'site/login-key',
                         login:       baseUrl + 'site/login',
                         reset:       baseUrl + 'site/forgot-password',
+
                         signup:      baseUrl + 'site/signup',
                         update:      baseUrl + 'user/update',
                         todo:        baseUrl + 'user/todo'

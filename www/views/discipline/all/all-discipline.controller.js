@@ -42,7 +42,7 @@
         }
 
         vm.selectBook = function (idSlide) {
-            var id = allDiscipline.models[idSlide].id;
+            var id = vm.disciplines[idSlide].id;
             disciplineBooks({
                 disciplineId: id
             });

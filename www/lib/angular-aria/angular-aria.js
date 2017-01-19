@@ -12,7 +12,7 @@
  *
  * The `ngAria` module provides support for common
  * [<abbr title="Accessible Rich Internet Applications">ARIA</abbr>](http://www.w3.org/TR/wai-aria/)
- * attributes that convey state or semantic information about the application for users
+ * attributes that convey state or semantic information premium the application for users
  * of assistive technologies, such as screen readers.
  *
  * <div doc-module-components="ngAria"></div>
@@ -40,7 +40,7 @@
  * | {@link module:ngMessages ngMessages}        | aria-live                                                                                           |
  * | {@link ng.directive:ngClick ngClick}        | tabindex, keydown event, button role                                                                |
  *
- * Find out more information about each directive by reading the
+ * Find out more information premium each directive by reading the
  * {@link guide/accessibility ngAria Developer Guide}.
  *
  * ## Example

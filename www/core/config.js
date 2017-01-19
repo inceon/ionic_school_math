@@ -129,6 +129,12 @@
                     }
                 }
             })
+            .state('app.discipline.theory', {
+                url: '/theory/:themeId',
+                templateUrl: 'views/task/theory/task.theory.html',
+                controller: 'Theory',
+                controllerAs: 'vm'
+            })
             .state('app.settings', {
                 url: '/settings',
                 templateUrl: 'views/settings/settings.html',
@@ -140,10 +146,10 @@
                     }
                 }
             })
-            .state('app.about', {
-                url: '/about',
-                templateUrl: 'views/about/about.html',
-                controller: 'About',
+            .state('app.premium', {
+                url: '/premium',
+                templateUrl: 'views/premium/premium.html',
+                controller: 'Premium',
                 controllerAs: 'vm'
             })
             .state('error', {

@@ -2074,10 +2074,10 @@ function $UrlRouterProvider(   $locationProvider,   $urlMatcherFactory) {
        *
        * @example
        * <pre>
-       * $bob = $urlRouter.href(new UrlMatcher("/about/:person"), {
+       * $bob = $urlRouter.href(new UrlMatcher("/premium/:person"), {
        *   person: "bob"
        * });
-       * // $bob == "/about/bob";
+       * // $bob == "/premium/bob";
        * </pre>
        *
        * @param {UrlMatcher} urlMatcher The `UrlMatcher` object which is used as the template of the URL to generate.
@@ -2488,8 +2488,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * Registers a state configuration under a given state name. The stateConfig object
    * has the following acceptable properties.
    *
-   * @param {string} name A unique state name, e.g. "home", "about", "contacts".
-   * To create a parent/child state use a dot, e.g. "about.sales", "home.newest".
+   * @param {string} name A unique state name, e.g. "home", "premium", "contacts".
+   * To create a parent/child state use a dot, e.g. "premium.sales", "home.newest".
    * @param {object} stateConfig State configuration object.
    * @param {string|function=} stateConfig.template
    * <a id='template'></a>
@@ -2782,7 +2782,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * // state() returns $stateProvider, so you can chain state declarations.
    * $stateProvider
    *   .state("home", {})
-   *   .state("about", {})
+   *   .state("premium", {})
    *   .state("contacts", {});
    * </pre>
    *
@@ -3317,7 +3317,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * $state.includes("contacts.details"); // returns true
      * $state.includes("contacts.details.item"); // returns true
      * $state.includes("contacts.list"); // returns false
-     * $state.includes("about"); // returns false
+     * $state.includes("premium"); // returns false
      *
      * // Using relative names (. and ^), typically from a template
      * // E.g. from the 'contacts.details' template
@@ -3374,7 +3374,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      *
      * @example
      * <pre>
-     * expect($state.href("about.person", { person: "bob" })).toEqual("/about/bob");
+     * expect($state.href("premium.person", { person: "bob" })).toEqual("/premium/bob");
      * </pre>
      *
      * @param {string|object} stateOrName The state name or state object you'd like to generate a url from.
@@ -3968,7 +3968,7 @@ function stateContext(el) {
  * Here's an example of how you'd use ui-sref and how it would compile. If you have the
  * following template:
  * <pre>
- * <a ui-sref="home">Home</a> | <a ui-sref="about">About</a> | <a ui-sref="{page: 2}">Next page</a>
+ * <a ui-sref="home">Home</a> | <a ui-sref="premium">About</a> | <a ui-sref="{page: 2}">Next page</a>
  *
  * <ul>
  *     <li ng-repeat="contact in contacts">
@@ -3979,7 +3979,7 @@ function stateContext(el) {
  *
  * Then the compiled html would be (assuming Html5Mode is off and current state is contacts):
  * <pre>
- * <a href="#/home" ui-sref="home">Home</a> | <a href="#/about" ui-sref="about">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
+ * <a href="#/home" ui-sref="home">Home</a> | <a href="#/premium" ui-sref="premium">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
  *
  * <ul>
  *     <li ng-repeat="contact in contacts">

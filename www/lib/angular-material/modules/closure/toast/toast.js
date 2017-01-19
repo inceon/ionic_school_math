@@ -28,7 +28,7 @@ function MdToastDirective($mdToast) {
     restrict: 'E',
     link: function postLink(scope, element) {
       element.addClass('_md');     // private md component indicator for styling
-      
+
       // When navigation force destroys an interimElement, then
       // listen and $destroy() that interim instance...
       scope.$on('$destroy', function() {
@@ -129,7 +129,7 @@ function MdToastDirective($mdToast) {
 /**
  * @ngdoc method
  * @name $mdToast#showSimple
- * 
+ *
  * @param {string} message The message to display inside the toast
  * @description
  * Convenience method which builds and shows a simple toast.
@@ -291,7 +291,7 @@ function MdToastDirective($mdToast) {
   * @name $mdToast#cancel
   *
   * @description
-  * `DEPRECATED` - The promise returned from opening a toast is used only to notify about the closing of the toast.
+  * `DEPRECATED` - The promise returned from opening a toast is used only to notify premium the closing of the toast.
   * As such, there isn't any reason to also allow that promise to be rejected,
   * since it's not clear what the difference between resolve and reject would be.
   *

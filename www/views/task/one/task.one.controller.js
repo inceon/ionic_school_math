@@ -22,7 +22,7 @@
         vm.task = resolveData.taskInfo;
         vm.subtasks = resolveData.subtasks.models;
         console.log(vm.subtasks);
-        vm.upload = upload;
+        vm.photo = photo;
         vm.question = question;
         vm.openChat = openChat;
         // vm.audio = audio;
@@ -35,6 +35,7 @@
         vm.messages = [];
 
         vm.data = vm.task.done || {};
+        vm.data.attach = [];
         vm.data.task_id = $stateParams.taskId;
 
         vm.audio = {};
@@ -106,18 +107,24 @@
             vm.data.attach = null;
         }
 
-        function upload($files) {
-            console.log($files);
-            vm.data.attach = $files;
-
-            angular.forEach($files, function (file) {
-                vm.data[file.lastModified] = file;
+        function photo() {
+            navigator.camera.getPicture(function(src){
+                console.log(src);
+                vm.data.attach.push(src);
+                // vm.data.attach.push(src);
+                // $scope.$apply();
+            }, function(data){
+                console.log('error', data);
+            },{
+                destinationType: Camera.DestinationType.FILE_URI
             });
-
-            console.log(vm.data);
         }
 
         function question(form) {
+            if (form.$invalid || !form.question.$modelValue.trim()) {
+                toastr.error("Дані введені не вірно");
+                return;
+            }
             this.checkOrder()
                 .then(function(){
                     if (vm.comment_id) {
@@ -198,12 +205,9 @@
         });
 
         $scope.deleteAttach = function (file) {
-            delete vm.data[file.lastModified];
             vm.data.attach = vm.data.attach.filter(function( obj ) {
-               return obj.lastModified !== file.lastModified;
+               return obj !== file;
             });
-            console.log(file);
-            console.log(vm.data.attach);
             $scope.modalImage.hide();
         };
 
@@ -220,10 +224,11 @@
         }
 
         function showAnswerModal(subtask) {
-            vm.data = subtask.done || {};
-            vm.data.subtask_id = subtask.id;
-            vm.data.task_id = $stateParams.taskId;
-            console.log(vm.data);
+            if(subtask) {
+                vm.data = subtask.done || {};
+                vm.data.subtask_id = subtask.id;
+                vm.data.task_id = $stateParams.taskId;
+            }
             $scope.answerModal.show();
         }
 

@@ -4954,7 +4954,7 @@ prx.components.webview = {
 	,caption: 'Web View'
 	,icon: '0 -80px'
 	,helper: prx.url.devices+'/common/webview/helper.png'
-	,url: 'about:blank'
+	,url: 'premium:blank'
 	,width: 100*prx.componentsHelper.getScale(_library)
 	,height: 100*prx.componentsHelper.getScale(_library)
 	,scrollable: true

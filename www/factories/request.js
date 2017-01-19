@@ -102,7 +102,7 @@
 
                 promise.resolve(JSON.parse(response.response));
             }, function (error) {
-                console.log(error);
+                console.log('error', error);
                 $ionicLoading.hide();
                 promise.reject(error.body);
             }, {

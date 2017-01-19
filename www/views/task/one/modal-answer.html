@@ -31,10 +31,7 @@
                     <div layout-align="start center" flex>
                         <md-button class="photo md-icon-button md-fab md-mini md-hue-2"
                                    ng-style="{'background-color': '#1E88E5'}"
-                                   ngf-multiple="true"
-                                   ngf-max-files="5"
-                                   ngf-select="vm.upload($files)"
-                                   accept="image/*">
+                                   ng-click="vm.photo()">
 
                             <md-icon md-font-icon="fa fa-camera fa-lg" aria-hidden="true"></md-icon>
                         </md-button>
@@ -53,8 +50,8 @@
                      class="attach-image"
                      ng-repeat="file in vm.data.files"
                      ng-click="showImages(file)"><br>
-                <img ng-src="img/spinner.gif"
-                     ngf-thumbnail="file"
+                <img src="img/spinner.gif"
+                     ng-src="{{file}}"
                      class="attach-image"
                      ng-repeat="file in vm.data.attach"
                      ng-click="showImages(file, true)">

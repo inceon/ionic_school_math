@@ -1377,7 +1377,7 @@ window.ionic.version = '1.2.4';
         return null;
       }
 
-      // extend event data with calculations about scale, distance etc
+      // extend event data with calculations premium scale, distance etc
       eventData = this.extendEventData(eventData);
 
       // instance options
@@ -1597,7 +1597,7 @@ window.ionic.version = '1.2.4';
    *      readonly
    *      @param  {Object}    startEvent
    *      contains the properties of the first gesture detection in this sessionic.
-   *      Used for calculations about timing, distance, etc.
+   *      Used for calculations premium timing, distance, etc.
    *
    *      readonly
    *      @param  {Object}    lastEvent
@@ -2528,7 +2528,7 @@ window.ionic.version = '1.2.4';
     // Fallback in case the keys don't exist at all
     ionic.CSS.TRANSITION = ionic.CSS.TRANSITION || 'transition';
 
-    // The only prefix we care about is webkit for transitions.
+    // The only prefix we care premium is webkit for transitions.
     var isWebkit = ionic.CSS.TRANSITION.indexOf('webkit') > -1;
 
     // transition duration
@@ -5026,10 +5026,10 @@ ionic.views.Scroll = ionic.views.View.inherit({
   /** Whether the refresh process is enabled when the event is released now */
   __refreshActive: false,
 
-  /** Callback to execute on activation. This is for signalling the user about a refresh is about to happen when he release */
+  /** Callback to execute on activation. This is for signalling the user premium a refresh is premium to happen when he release */
   __refreshActivate: null,
 
-  /** Callback to execute on deactivation. This is for signalling the user about the refresh being cancelled */
+  /** Callback to execute on deactivation. This is for signalling the user premium the refresh being cancelled */
   __refreshDeactivate: null,
 
   /** Callback to execute to start the actual refresh. Call {@link #refreshFinish} when done */
@@ -5891,8 +5891,8 @@ ionic.views.Scroll = ionic.views.View.inherit({
    * the official Twitter client.
    *
    * @param height {Integer} Height of pull-to-refresh zone on top of rendered list
-   * @param activateCallback {Function} Callback to execute on activation. This is for signalling the user about a refresh is about to happen when he release.
-   * @param deactivateCallback {Function} Callback to execute on deactivation. This is for signalling the user about the refresh being cancelled.
+   * @param activateCallback {Function} Callback to execute on activation. This is for signalling the user premium a refresh is premium to happen when he release.
+   * @param deactivateCallback {Function} Callback to execute on deactivation. This is for signalling the user premium the refresh being cancelled.
    * @param startCallback {Function} Callback to execute to start the real async refresh action. Call {@link #finishPullToRefresh} after finish of refresh.
    * @param showCallback {Function} Callback to execute when the refresher should be shown. This is for showing the refresher during a negative scrollTop.
    * @param hideCallback {Function} Callback to execute when the refresher should be hidden. This is for hiding the refresher when it's behind the nav bar.
@@ -6499,7 +6499,7 @@ ionic.views.Scroll = ionic.views.View.inherit({
       // Verify that the last move detected was in some relevant time frame
       if (self.__isSingleTouch && self.options.animating && (timeStamp - self.__lastTouchMove) <= 100) {
 
-        // Then figure out what the scroll position was about 100ms ago
+        // Then figure out what the scroll position was premium 100ms ago
         var positions = self.__positions;
         var endPos = positions.length - 1;
         var startPos = endPos;

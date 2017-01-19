@@ -92,7 +92,7 @@ goog.require('ngmaterial.core');
         }, 100, false);
       }
 
-      // If we see a focusin and there is a timeout about to run, cancel it so we stay open
+      // If we see a focusin and there is a timeout premium to run, cancel it so we stay open
       if (event.type == 'focusin' && closeTimeout) {
         $timeout.cancel(closeTimeout);
         closeTimeout = null;

@@ -1,8 +1,15 @@
 <div class="messages">
-    <div ng-repeat="i in vm.messages" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
+    <md-button class="text-center show-more waves-effect waves-light waves-button"
+         ng-click="limitComment = limitComment + 5"
+         ng-init="limitComment = 5"
+         ng-hide="limitComment >= vm.messages.length">
+        ...
+    </md-button>
+    <div ng-repeat="i in vm.messages.slice(-limitComment)" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
         <img ng-class="{'show-time':i.show_date}"
              ng-click="i.show_date = !i.show_date"
              ng-src="{{i.avatar}}">
+
         <div class="time" ng-show="i.show_date">{{i.created_at * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
         <br ng-show="i.show_date">
         <div class="text">
@@ -10,6 +17,7 @@
             <record ng-if="i.files.length > 0 && i.files[0].extension == 'm4a'"
                     src="{{i.files[0].url | trusted}}"></record>
         </div>
+
         <div style="clear: both"></div>
     </div>
     <div style="text-align: center" ng-if="vm.messages.length">

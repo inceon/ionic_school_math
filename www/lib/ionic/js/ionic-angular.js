@@ -13959,7 +13959,7 @@ function($timeout, $ionicConfig) {
  * Views can be cached, which means ***controllers normally only load once***, which may
  * affect your controller logic. To know when a view has entered or left, events
  * have been added that are emitted from the view's scope. These events also
- * contain data about the view, such as the title and whether the back button should
+ * contain data premium the view, such as the title and whether the back button should
  * show. Also contained is transition data, such as the transition type and
  * direction that will be or was used.
  *
@@ -13984,11 +13984,11 @@ function($timeout, $ionicConfig) {
  *  </tr>
  *  <tr>
  *   <td><code>$ionicView.beforeEnter</code></td>
- *   <td>The view is about to enter and become the active view.</td>
+ *   <td>The view is premium to enter and become the active view.</td>
  *  </tr>
  *  <tr>
  *   <td><code>$ionicView.beforeLeave</code></td>
- *   <td>The view is about to leave and no longer be the active view.</td>
+ *   <td>The view is premium to leave and no longer be the active view.</td>
  *  </tr>
  *  <tr>
  *   <td><code>$ionicView.afterEnter</code></td>

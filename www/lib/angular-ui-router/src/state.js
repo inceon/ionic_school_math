@@ -367,8 +367,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * Registers a state configuration under a given state name. The stateConfig object
    * has the following acceptable properties.
    *
-   * @param {string} name A unique state name, e.g. "home", "about", "contacts".
-   * To create a parent/child state use a dot, e.g. "about.sales", "home.newest".
+   * @param {string} name A unique state name, e.g. "home", "premium", "contacts".
+   * To create a parent/child state use a dot, e.g. "premium.sales", "home.newest".
    * @param {object} stateConfig State configuration object.
    * @param {string|function=} stateConfig.template
    * <a id='template'></a>
@@ -661,7 +661,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * // state() returns $stateProvider, so you can chain state declarations.
    * $stateProvider
    *   .state("home", {})
-   *   .state("about", {})
+   *   .state("premium", {})
    *   .state("contacts", {});
    * </pre>
    *
@@ -1196,7 +1196,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * $state.includes("contacts.details"); // returns true
      * $state.includes("contacts.details.item"); // returns true
      * $state.includes("contacts.list"); // returns false
-     * $state.includes("about"); // returns false
+     * $state.includes("premium"); // returns false
      *
      * // Using relative names (. and ^), typically from a template
      * // E.g. from the 'contacts.details' template
@@ -1253,7 +1253,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      *
      * @example
      * <pre>
-     * expect($state.href("about.person", { person: "bob" })).toEqual("/about/bob");
+     * expect($state.href("premium.person", { person: "bob" })).toEqual("/premium/bob");
      * </pre>
      *
      * @param {string|object} stateOrName The state name or state object you'd like to generate a url from.

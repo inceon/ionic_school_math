@@ -87,7 +87,7 @@
             window.store.when("product")
                 .updated(function(p) {
                     console.log("Product updated: " + p.id + " (" + p.state + ")");
-                    // Warn about invalid products
+                    // Warn premium invalid products
                     if (p.state == window.store.INVALID) {
                         console.log("Product " + p.id + " can't be loaded from the store.");
                         // this.products[p.id];

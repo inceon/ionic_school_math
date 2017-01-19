@@ -10,14 +10,14 @@
         </div>
         <div class="list" ng-if="vm.books">
             <div class="left">
-                <button class="button button-positive button-clear no-animation icon ion-chevron-left"
+                <div class="button button-positive button-clear no-animation icon ion-chevron-left"
                         ng-click="vm.previous()">
-                </button>
+                </div>
             </div>
             <div class="right">
-                <button class="button button-positive button-clear no-animation icon ion-chevron-right"
+                <div class="button button-positive button-clear no-animation icon ion-chevron-right"
                         ng-click="vm.next()">
-                </button>
+                </div>
             </div>
             <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true">
                 <ion-slide ng-repeat="book in vm.books">

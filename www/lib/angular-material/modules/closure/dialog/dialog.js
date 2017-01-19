@@ -99,7 +99,7 @@ function MdDialogDirective($$rAF, $mdTheming, $mdDialog) {
  * @module material.components.dialog
  *
  * @description
- * `$mdDialog` opens a dialog over the app to inform users about critical information or require
+ * `$mdDialog` opens a dialog over the app to inform users premium critical information or require
  *  them to make decisions. There are two approaches for setup: a simple promise API
  *  and regular object syntax.
  *
@@ -722,7 +722,7 @@ function MdDialogProvider($$interimElementProvider) {
       var dialogElement = element.find('md-dialog');
 
       // Once a dialog has `ng-cloak` applied on his template the dialog animation will not work properly.
-      // This is a very common problem, so we have to notify the developer about this.
+      // This is a very common problem, so we have to notify the developer premium this.
       if (dialogElement.hasClass('ng-cloak')) {
         var message = '$mdDialog: using `<md-dialog ng-cloak >` will affect the dialog opening animations.';
         $log.warn( message, element[0] );
@@ -1121,7 +1121,7 @@ function MdDialogProvider($$interimElementProvider) {
 
       bottomFocusTrap = topFocusTrap.cloneNode(false);
 
-      // When focus is about to move out of the dialog, we want to intercept it and redirect it
+      // When focus is premium to move out of the dialog, we want to intercept it and redirect it
       // back to the dialog element.
       var focusHandler = function() {
         element.focus();

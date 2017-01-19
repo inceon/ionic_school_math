@@ -137,6 +137,17 @@
     //}
 
     .messages {
+        .show-more {
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            padding: 3px 0 8px 0;
+            background: #f5f5f5;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin: 0;
+            line-height: 1em;
+        }
         .message {
             img {
                 width: 35px;
@@ -162,9 +173,6 @@
                 .record {
                     background: none;
                     margin: -10px 0px;
-                    a {
-                        color: white;
-                    }
                 }
             }
             &.my {
@@ -175,8 +183,8 @@
                     float: right;
                 }
                 .text {
-                    background-color: rgb(63,81,181);
-                    color: white;
+                    background-color: rgb(205, 225, 252);
+                    //color: white;
                     float: right;
                     &:after {
                         content: '';
@@ -184,7 +192,7 @@
                         right: -15px;
                         top: 10px;
                         border: 8px solid transparent;
-                        border-left: 8px solid rgb(63,81,181);
+                        border-left: 8px solid rgb(205, 225, 252);
                     }
                 }
             }
@@ -196,7 +204,7 @@
                     float: left;
                 }
                 .text {
-                    background-color: #ECEFF1;
+                    background-color: #f3f6f8;
                     float: left;
                     &:after {
                         content: '';
@@ -204,7 +212,7 @@
                         left: -15px;
                         top: 10px;
                         border: 8px solid transparent;
-                        border-right: 8px solid #ECEFF1;
+                        border-right: 8px solid #f3f6f8;
                     }
                 }
             }
@@ -221,54 +229,19 @@
             color: rgb(63,81,181);
         }
     }
-    //audio::-webkit-media-controls-panel {
-    //    background-color: rgb(63,81,181);
-    //    border-radius: 3px;
-    //}
-    //audio {
-    //    padding-top: 38px;
-    //    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-    //}
 
-    #audioplayer{
-        width: 480px;
-        height: 60px;
-        margin: 50px auto auto auto;
-        border: solid;
+    md-card:last-child {
+        margin-bottom: 25px;
     }
 
-    #pButton{
-        height:60px;
-        width: 60px;
-        border: none;
-        background-size: 50% 50%;
-        background-repeat: no-repeat;
-        background-position: center;
-        float:left;
-        outline:none;
+    .chat-item {
+        img {
+            width: 35px;
+            height: 35px;
+            margin: 5px 5px 5px -5px;
+            border-radius: 50%;
+        }
     }
-
-    .play{background: url('http://www.alexkatz.me/codepen/images/play.png') ;}
-    .pause{background: url('http://www.alexkatz.me/codepen/images/pause.png') ;}
-
-    #timeline{
-        width: 400px;
-        height: 20px;
-        margin-top: 20px;
-        float: left;
-        border-radius: 15px;
-        background: rgba(0,0,0,.3);
-
-    }
-    #playhead{
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        margin-top: 1px;
-        background: rgba(0, 0, 0,1);
-
-    }
-
 }
 .popup-vertical-buttons button
 {

@@ -12,7 +12,7 @@
 
         vm.logout = logout;
         vm.settings = settings;
-        vm.about = about;
+        vm.premium = premium;
         vm.discipline = discipline;
 
         function logout () {
@@ -30,8 +30,8 @@
             $state.go('app.settings');
         }
 
-        function about() {
-            $state.go('app.about');
+        function premium() {
+            $state.go('app.premium');
         }
 
     }

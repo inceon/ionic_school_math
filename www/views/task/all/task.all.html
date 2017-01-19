@@ -1,16 +1,27 @@
 <ion-view class="taskAll">
     <ion-content class="has-header">
         <div class="wrap">
+            <span>Теорія</span>
+            <div class="linkToTask"
+                 ui-sref="app.discipline.theory({ themeId : 5})">
+                <md-button class="md-fab md-primary theory"
+                           aria-label="Т">
+                    <md-icon md-font-icon="fa fa-book fa-lg" aria-hidden="true"></md-icon>
+                </md-button>
+            </div>
+        </div>
+        <div class="wrap">
+            <span>Завдання</span>
             <div class="linkToTask" ng-repeat="task in vm.tasks"
                  ui-sref="app.discipline.task({ taskId : task.id})">
                 <md-button class="md-fab md-primary task"
                            aria-label="{{task.number}}">
-                    {{task.number}} <span ng-if="task.subtasks.length">/ {{task.subtasks.length}}</span>
+                    {{task.number}}
+                    <span ng-if="task.subtasks.length">/ {{task.subtasks.length}}</span>
                 </md-button>
                 <span ng-if="!task.messages && task.done && task.done.result == 1" class="info success">✓</span>
                 <span ng-if="!task.messages && task.done && task.done.result == 0" class="info error">!</span>
                 <span ng-if="task.messages" class="info message">{{task.messages}}</span>
-                <span ng-if="false" class="info message">1</span>
             </div>
         </div>
         <md-list ng-if="vm.tasks">

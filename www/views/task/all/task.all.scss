@@ -15,35 +15,49 @@
         }
     }
 
-    .linkToTask {
-        display: inline-block;
-        position: relative;
-        margin: 5px 8px;
-        .task {
-            font-size: 1.4em;
-            background-color: #42b032 !important;
+    .wrap {
+        > span {
+            display: block;
+            color: #777;
+            margin: 0 1.2em;
         }
-        .info {
-            position: absolute;
-            top: 3px;
-            right: 3px;
-            z-index: 50;
-            text-align: center;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-sizing: content-box;
-            width: 19px;
-            height: 19px;
-            font-weight: 500;
-            color: white;
-            &.success {
-                background: #56c844;
+        .linkToTask {
+            display: inline-block;
+            position: relative;
+            margin: 5px 8px;
+            .task {
+                font-size: 1.4em;
+                background-color: #18b9de !important;
             }
-            &.error {
-                background: #fc3424;
+            .theory {
+                font-size: 1.4em;
+                background-color: #e2e2e2 !important;
+                md-icon {
+                    color: darkblue !important;
+                }
             }
-            &.message {
-                background: #45a2c1;
+            .info {
+                position: absolute;
+                top: 3px;
+                right: 3px;
+                z-index: 50;
+                text-align: center;
+                border-radius: 50%;
+                border: 3px solid white;
+                box-sizing: content-box;
+                width: 19px;
+                height: 19px;
+                font-weight: 500;
+                color: white;
+                &.success {
+                    background: #56c844;
+                }
+                &.error {
+                    background: #fc3424;
+                }
+                &.message {
+                    background: #45a2c1;
+                }
             }
         }
     }

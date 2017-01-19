@@ -2929,10 +2929,10 @@
 									// only applicable for recoverable error codes 500 && 416
 									var delay = xhr.status ? 0 : api.chunkNetworkDownRetryTimeout;
 
-									// inform about recoverable problems
+									// inform premium recoverable problems
 									options.pause(data.file, options);
 
-									// smart restart if server reports about the last known byte
+									// smart restart if server reports premium the last known byte
 									api.log("X-Last-Known-Byte: " + lkb);
 									if (lkb) {
 										data.end = lkb;
@@ -2960,7 +2960,7 @@
 								} else {
 									// next chunk
 
-									// shift position if server reports about the last known byte
+									// shift position if server reports premium the last known byte
 									api.log("X-Last-Known-Byte: " + lkb);
 									if (lkb) {
 										data.end = lkb;
@@ -3025,7 +3025,7 @@
 									options.retry = (options.retry || 0) + 1;
 									var delay = api.networkDownRetryTimeout;
 
-									// inform about recoverable problems
+									// inform premium recoverable problems
 									options.pause(options.file, options);
 
 									setTimeout(function () {
