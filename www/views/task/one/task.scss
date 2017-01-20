@@ -162,9 +162,6 @@
                 .record {
                     background: none;
                     margin: -10px 0px;
-                    a {
-                        color: white;
-                    }
                 }
             }
             &.my {
@@ -175,8 +172,7 @@
                     float: right;
                 }
                 .text {
-                    background-color: rgb(63,81,181);
-                    color: white;
+                    background-color: rgb(205, 225, 252);
                     float: right;
                     &:after {
                         content: '';
@@ -184,7 +180,7 @@
                         right: -15px;
                         top: 10px;
                         border: 8px solid transparent;
-                        border-left: 8px solid rgb(63,81,181);
+                        border-left: 8px solid rgb(205, 225, 252);
                     }
                 }
             }

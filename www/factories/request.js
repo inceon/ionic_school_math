@@ -4,9 +4,9 @@
         .module('factory.request', [])
         .factory('http', http);
 
-    http.$inject = ['$http', '$sessionStorage', 'toastr', '$ionicLoading', '$q', '$state'];
+    http.$inject = ['$http', '$sessionStorage', 'toastr', '$ionicLoading', '$q', '$timeout'];
 
-    function http($http, $sessionStorage, toastr, $ionicLoading, $q, $state) {
+    function http($http, $sessionStorage, toastr, $ionicLoading, $q, $timeout) {
 
         return {
             get: function (url, data) {
@@ -26,14 +26,22 @@
             },
             audio: function (url, data) {
                 return requestAudio(url, data);
+            },
+            init: function () {
+                loading = 0;
+                timeout = 1000;
             }
         };
 
+        var loading, timeout;
+
         function request(method, url, data) {
             $ionicLoading.show({
-                templateUrl: 'views/lazyload/lazyload.html',
-                duration: 2000
+                templateUrl: 'views/lazyload/lazyload.html'
             });
+            loading++;
+            console.log(loading, "start request");
+
             var config = {
                 dataType: 'json',
                 method: method,
@@ -54,7 +62,7 @@
                 config.url = url + '?auth_key=' + $sessionStorage.auth_key + '&lang=uk-UA';
             }
             else {
-                config.url = url+ '?lang=uk-UA';
+                config.url = url + '?lang=uk-UA';
             }
 
             return $http(config)
@@ -64,9 +72,10 @@
 
         function requestFile(url, data) {
             $ionicLoading.show({
-                templateUrl: 'views/lazyload/lazyload.html',
-                duration: 2000
+                templateUrl: 'views/lazyload/lazyload.html'
             });
+            loading++;
+
             var config = {
                 transformRequest: angular.identity,
                 headers: {
@@ -84,9 +93,9 @@
 
         function requestAudio(url, data) {
             $ionicLoading.show({
-                templateUrl: 'views/lazyload/lazyload.html',
-                duration: 2000
+                templateUrl: 'views/lazyload/lazyload.html'
             });
+            loading++;
 
             if ($sessionStorage.auth_key) {
                 url = url + '?auth_key=' + $sessionStorage.auth_key;
@@ -96,14 +105,23 @@
 
             var promise = $q.defer();
             ft.upload(data.audio, encodeURI(url), function (response) {
-                $ionicLoading.hide();
+                $timeout(function () {
+                    if (!--loading) {
+                        $ionicLoading.hide();
+                    }
+                }, timeout);
 
                 console.info('response complete', JSON.parse(response.response));
 
                 promise.resolve(JSON.parse(response.response));
             }, function (error) {
                 console.log('error', error);
-                $ionicLoading.hide();
+                $timeout(function () {
+                    if (!--loading) {
+                        $ionicLoading.hide();
+                    }
+                }, timeout);
+
                 promise.reject(error.body);
             }, {
                 fileName: data.audio.substr(data.audio.lastIndexOf('/') + 1),
@@ -130,7 +148,6 @@
                 else if (err.status === 0) {
                     // $state.go('error.internet');
                     toastr.error('Відсутнє інтернет підключення');
-                    throw "Internet";
                 }
                 else if (err.status === 500) {
                     toastr.error('Помилка сервера: ' + err.status + ' ' + err.data.message);
@@ -143,13 +160,21 @@
                 toastr.error('Помилка: ' + err.data.error);
             }
 
-            $ionicLoading.hide();
+            $timeout(function () {
+                if (!--loading) {
+                    $ionicLoading.hide();
+                }
+            }, timeout);
             return $q.reject(err.data.error);
         }
 
         function requestComplete(response) {
             var promise = $q.defer();
-            $ionicLoading.hide();
+            $timeout(function () {
+                if (!--loading) {
+                    $ionicLoading.hide();
+                }
+            }, timeout);
 
             console.info('response complete', response.config.url, response);
 
@@ -159,6 +184,8 @@
             else {
                 promise.reject(response);
             }
+
+            console.log("stop request");
 
             return promise.promise;
         }

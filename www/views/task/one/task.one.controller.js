@@ -22,7 +22,7 @@
         vm.task = resolveData.taskInfo;
         vm.subtasks = resolveData.subtasks.models;
         console.log(vm.subtasks);
-        vm.photo = photo;
+        vm.upload = upload;
         vm.question = question;
         vm.openChat = openChat;
         // vm.audio = audio;
@@ -35,7 +35,6 @@
         vm.messages = [];
 
         vm.data = vm.task.done || {};
-        vm.data.attach = [];
         vm.data.task_id = $stateParams.taskId;
 
         vm.audio = {};
@@ -107,17 +106,15 @@
             vm.data.attach = null;
         }
 
-        function photo() {
-            navigator.camera.getPicture(function(src){
-                console.log(src);
-                vm.data.attach.push(src);
-                // vm.data.attach.push(src);
-                // $scope.$apply();
-            }, function(data){
-                console.log('error', data);
-            },{
-                destinationType: Camera.DestinationType.FILE_URI
+        function upload($files) {
+            console.log($files);
+            vm.data.attach = $files;
+
+            angular.forEach($files, function (file) {
+                vm.data[file.lastModified] = file;
             });
+
+            console.log(vm.data);
         }
 
         function question(form) {
@@ -148,6 +145,7 @@
                         comment.add(vm.data)
                             .then(function (response) {
                                 response.role = $rootScope.user.role_id;
+                                vm.comment_id = response.comment_id;
                                 vm.messages.push(response);
                                 toastr.success("Повідомлення успішно відправлено");
                                 vm.data.text = ' ';
@@ -205,8 +203,9 @@
         });
 
         $scope.deleteAttach = function (file) {
+            delete vm.data[file.lastModified];
             vm.data.attach = vm.data.attach.filter(function( obj ) {
-               return obj !== file;
+               return obj.lastModified !== file.lastModified;
             });
             $scope.modalImage.hide();
         };

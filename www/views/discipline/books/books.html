@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-        <div class="list" ng-if="vm.books">
+        <div class="list" ng-if="vm.books.length">
             <div class="left">
                 <div class="button button-positive button-clear no-animation icon ion-chevron-left"
                         ng-click="vm.previous()">
@@ -29,5 +29,10 @@
             </ion-slide-box>
             <input type="button" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)" value="Обрати книгу" \>
         </div>
+        <md-list ng-if="!vm.books.length">
+            <md-list-item ng-if="!vm.books.length" class="name text-center">
+                <p>Книг не знайдено.</p>
+            </md-list-item>
+        </md-list>
     </ion-content>
 </ion-view>

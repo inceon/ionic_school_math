@@ -4,10 +4,30 @@
         .module('app')
         .config(mainConfig);
 
-    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider'];
+    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'toastrConfig'];
 
-    function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, toastrConfig) {
+
         $ionicConfigProvider.views.maxCache(0);
+
+        var options = {
+            debug: false,
+            newestOnTop: false,
+            positionClass: "toast-top-full-width",
+            preventOpenDuplicates: true,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+        };
+
+        angular.extend(toastrConfig, options);
+
         $stateProvider
             .state('login', {
                 url: '/login',
