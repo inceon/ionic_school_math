@@ -30,7 +30,6 @@
 
         function login(data) {
             var remember = data.remember;
-            delete data.remember;
             return http.post(url.user.login, data)
                 .then(function (response) {
                     if (remember) {

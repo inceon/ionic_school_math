@@ -9,10 +9,11 @@
     function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, toastrConfig) {
 
         $ionicConfigProvider.views.maxCache(0);
+        $ionicConfigProvider.backButton.text('Назад');
 
         var options = {
             debug: false,
-            newestOnTop: false,
+            newestOnTop: true,
             positionClass: "toast-top-full-width",
             preventOpenDuplicates: true,
             onclick: null,
@@ -74,7 +75,7 @@
                 abstract: true
             })
             .state('app.discipline.all', {
-                url: 'all',
+                url: '/all',
                 parent: 'app.discipline',
                 templateUrl: 'views/discipline/all/all-discipline.html',
                 controller: 'Disciplines',
@@ -108,7 +109,14 @@
                 resolve: {
                     allSections: function (book, $stateParams) {
                         return book.sections($stateParams.bookId);
+                    },
+                    allBooks: function (discipline, $stateParams) {
+                        return discipline.books($stateParams.disciplineId);
                     }
+                },
+                params: {
+                    id: null,
+                    book_discipline_id: null
                 }
             })
             .state('app.discipline.themes', {

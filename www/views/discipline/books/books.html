@@ -1,13 +1,5 @@
 <ion-view class="books">
     <ion-content class="has-header">
-        <div class="list" ng-if="vm.myBook" >
-            <div ng-repeat="book in vm.myBook" class="card">
-                <a class="item item-thumbnail-left" ui-sref="app.discipline.book({ bookId: book.book.id })">
-                    <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466">
-                    <h2>{{book.book.author}}. {{book.book.name}}. {{book.book.edition}}, {{book.book.year}}</h2>
-                </a>
-            </div>
-        </div>
         <div class="list" ng-if="vm.books.length">
             <div class="left">
                 <div class="button button-positive button-clear no-animation icon ion-chevron-left"
@@ -19,7 +11,7 @@
                         ng-click="vm.next()">
                 </div>
             </div>
-            <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true">
+            <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true" ng-init="vm.lockSlide()">
                 <ion-slide ng-repeat="book in vm.books">
                     <a class="slide-item">
                         <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
@@ -27,7 +19,15 @@
                     </a>
                 </ion-slide>
             </ion-slide-box>
-            <input type="button" class="button button-block button-positive" ng-click="vm.selectBook(vm.slide)" value="Обрати книгу" \>
+            <md-content flex>
+                <div layout="column">
+                    <md-button class="md-primary md-raised waves-effect waves-light"
+                               md-colors="{background: 'blue-grey'}"
+                               ng-click="vm.selectBook(vm.slide)">
+                        Обрати книгу
+                    </md-button>
+                </div>
+            </md-content>
         </div>
         <md-list ng-if="!vm.books.length">
             <md-list-item ng-if="!vm.books.length" class="name text-center">

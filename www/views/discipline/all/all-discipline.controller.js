@@ -17,7 +17,6 @@
         var vm = this;
 
         vm.slide = 0;
-        console.log(resolveData);
         vm.todo = resolveData.todo;
         vm.disciplines = resolveData.allDiscipline.models;
         vm.disciplineBooks = disciplineBooks;
@@ -29,7 +28,10 @@
                 .then(function (userBook) {
                     if (userBook.count_model >= 1) {
                         $state.go('app.discipline.book', {
-                            bookId: userBook.models[0].book.id
+                            bookId: userBook.models[0].book.id,
+                            disciplineId: data.disciplineId,
+                            id: userBook.models[0].id,
+                            book_discipline_id: userBook.models[0].book_discipline_id
                         });
                     } else {
                         $state.go('app.discipline.books', data);

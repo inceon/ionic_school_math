@@ -1,9 +1,18 @@
 <ion-view class="sections">
     <ion-content class="has-header">
         <md-list>
+            <md-list-item class="book">
+                <img ng-src="{{vm.bookImage}}"/>
+                <md-select ng-model="vm.selectedBook"
+                           ng-change="vm.selectNewBook()">
+                    <md-option ng-repeat="book in vm.books"
+                               ng-value="book.id">
+                        {{book.book.name}}. {{book.book.edition}} {{book.book.year}}
+                    </md-option>
+                </md-select>
+            </md-list-item>
             <md-card ng-repeat="section in vm.sections">
                 <md-list-item class="name" ng-click="vm.showThemes(section)">
-                    <img src="http://s3.amazonaws.com/alivenotdead-v2/avatars/6e/57/img-7973.JPG"/>
                     <div class="md-list-item-text" layout="column">
                         {{section.name}}
                     </div>
@@ -13,6 +22,9 @@
                     <p>{{item.name}}</p>
                 </md-list-item>
             </md-card>
+            <md-list-item ng-if="vm.sections.length == 0" class="text-center">
+                <p>Тем не знайдено.</p>
+            </md-list-item>
         </md-list>
     </ion-content>
 </ion-view>

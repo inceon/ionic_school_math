@@ -75,6 +75,7 @@
                 templateUrl: 'views/lazyload/lazyload.html'
             });
             loading++;
+            console.log(loading, "start request");
 
             var config = {
                 transformRequest: angular.identity,
@@ -96,6 +97,7 @@
                 templateUrl: 'views/lazyload/lazyload.html'
             });
             loading++;
+            console.log(loading, "start request");
 
             if ($sessionStorage.auth_key) {
                 url = url + '?auth_key=' + $sessionStorage.auth_key;
@@ -106,7 +108,7 @@
             var promise = $q.defer();
             ft.upload(data.audio, encodeURI(url), function (response) {
                 $timeout(function () {
-                    if (!--loading) {
+                    if (--loading <= 0) {
                         $ionicLoading.hide();
                     }
                 }, timeout);
@@ -117,7 +119,7 @@
             }, function (error) {
                 console.log('error', error);
                 $timeout(function () {
-                    if (!--loading) {
+                    if (--loading <= 0) {
                         $ionicLoading.hide();
                     }
                 }, timeout);
@@ -161,7 +163,7 @@
             }
 
             $timeout(function () {
-                if (!--loading) {
+                if (--loading <= 0) {
                     $ionicLoading.hide();
                 }
             }, timeout);
@@ -171,7 +173,7 @@
         function requestComplete(response) {
             var promise = $q.defer();
             $timeout(function () {
-                if (!--loading) {
+                if (--loading <= 0) {
                     $ionicLoading.hide();
                 }
             }, timeout);
@@ -185,7 +187,7 @@
                 promise.reject(response);
             }
 
-            console.log("stop request");
+            console.log(loading, "stop request");
 
             return promise.promise;
         }

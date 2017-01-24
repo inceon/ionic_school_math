@@ -5,9 +5,9 @@
         .module('app')
         .controller('Sections', Sections);
 
-    Sections.$inject = ['$rootScope', 'allSections', 'book'];
+    Sections.$inject = ['$rootScope', '$stateParams', 'allSections', 'allBooks', 'book'];
 
-    function Sections($rootScope, allSections, book) {
+    function Sections($rootScope, $stateParams, allSections, allBooks, book) {
 
         $rootScope.page = {
             title: 'Теми'
@@ -16,6 +16,14 @@
         var vm = this;
 
         vm.showThemes = showThemes;
+        vm.books = allBooks.models;
+        vm.selectedBook = $stateParams.book_discipline_id;
+
+        vm.bookImage = vm.books.filter(function (el) {
+            return el.id == vm.selectedBook;
+        })[0].book.image;
+
+        vm.selectNewBook = selectNewBook;
         vm.sections = allSections.section.models;
 
         function showThemes(section) {
@@ -28,6 +36,24 @@
             } else {
                 section.data.show = !section.data.show;
             }
+        }
+
+        function selectNewBook(){
+            var findBook = vm.books.filter(function (el) {
+                return el.id == vm.selectedBook;
+            })[0];
+
+            vm.bookImage = findBook.book.image;
+
+            book.sections(findBook.book.id)
+                .then(function(res){
+                    vm.sections = res.section.models;
+                });
+
+            book.update({
+                id: $stateParams.id,
+                book_discipline_id: vm.selectedBook
+            });
         }
     }
 })();

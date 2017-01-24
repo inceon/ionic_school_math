@@ -10,6 +10,7 @@
 
         return {
             create: create,
+            update: update,
             sections: sections,
             themes: themes,
             task: {
@@ -24,6 +25,13 @@
                 {
                     book_discipline_id: id
                 }
+            )
+        }
+
+        function update (data) {
+            return http.post(
+                url.book.update,
+                data
             )
         }
 

@@ -5,9 +5,9 @@
         .module('app')
         .controller('DisciplineBooks', DisciplineBooks);
 
-    DisciplineBooks.$inject = ['$state', 'discipline', 'book', '$rootScope', 'allBooks', '$ionicSlideBoxDelegate'];
+    DisciplineBooks.$inject = ['$state', '$stateParams', 'discipline', 'book', '$rootScope', 'allBooks', '$ionicSlideBoxDelegate'];
 
-    function DisciplineBooks($state, discipline, book, $rootScope, allBooks, $ionicSlideBoxDelegate) {
+    function DisciplineBooks($state, $stateParams, discipline, book, $rootScope, allBooks, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
             title: 'Книги з предмету'
@@ -15,10 +15,10 @@
 
         var vm = this;
 
-        vm.books = null;
         vm.slide = 0;
         vm.selectBook = selectBook;
         vm.books = allBooks.models;
+        console.log(vm.books);
         vm.lockSlide = lockSlide;
 
         vm.next = function () {
@@ -29,10 +29,14 @@
         };
 
         function selectBook(id) {
-            book.create(vm.books[id].id)
-                .then(function(){
+            console.log(id);
+            book.create(vm.books[id%vm.books.length].id)
+                .then(function(res){
+                    console.log(res);
                     $state.go('app.discipline.book', {
-                        bookId: vm.books[id].book.id
+                        bookId: vm.books[id%vm.books.length].book.id,
+                        disciplineId: $stateParams.disciplineId,
+                        id: res.id
                     });
                 });
         }
