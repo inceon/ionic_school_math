@@ -6,25 +6,34 @@
 
     About.$inject = ['$rootScope', 'purchase'];
 
-    function About ($rootScope, purchase) {
+    function About($rootScope, purchase) {
 
         $rootScope.page = {
             title: 'Підписки'
         };
 
         var vm = this;
+        vm.refresh = refresh;
+        vm.buy = buy;
 
-        vm.products = purchase.getProducts();
+        // vm.products = purchase.getProducts();
+        vm.products = [{
+            transaction: {
+                receipt: {
+                    purchaseTime: 1484322559002
+                }
+            }
+        }];
 
-        vm.buy = function () {
-            console.log("click on buy");
-            purchase.showBuyOptions();
-        };
+        function refresh() {
+            purchase.restore();
+            vm.products = purchase.getProducts();
+        }
 
-        vm.refresh = function () {
-           purchase.restore();
-        };
-
+        function buy() {
+            purchase.buy("onemonthsubscription");
+            this.refresh();
+        }
 
     }
 

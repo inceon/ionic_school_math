@@ -1,11 +1,38 @@
-<ion-view>
+<ion-view class="premium">
     <ion-content class="has-header">
-        <p class="text-center">ABOUT PAGE</p>
-        {{root.test}}
-        <pre>
-            {{vm.products | json}}
-        </pre>
-        <p class="button" ng-click="vm.buy()">BUY</p>
-        <p class="button" ng-click="vm.refresh()">REFRESH</p>
+        <div ng-if="vm.products[0].transaction">
+            <div class="md-padding info text-center">
+                Ваша підписка дійсна до:
+                <span>{{(vm.products[0].transaction.receipt.purchaseTime + 30*24*60*60*1000) | date:'yyyy.MM.dd HH:mm'}}</span>
+            </div>
+            <div align="justify" class="md-padding cancel">
+                Для того щоб відмінити підписку необхідно:
+                <ol type="1">
+                    <li>Відкрити Play Маркет.</li>
+                    <li>Натиснути Меню > Акаунт > Підписки.</li>
+                    <li>Обрати підписку.</li>
+                    <li>Натиснути Відмінити.</li>
+                </ol>
+            </div>
+            <div layout="column">
+                <md-button class="md-primary md-raised waves-effect waves-light"
+                           md-colors="{background: 'blue-grey'}"
+                           ng-click="vm.refresh()">
+                    Оновити інформацію
+                </md-button>
+            </div>
+        </div>
+        <div ng-if="!vm.products[0].transaction">
+            <div class="md-padding info text-center">
+                Нажаль підписка не оформлена. <br>Підписка дозволяє задавати питання репетитору
+            </div>
+            <div layout="column">
+                <md-button class="md-primary md-raised waves-effect waves-light"
+                           md-colors="{background: 'blue-grey'}"
+                           ng-click="vm.buy()">
+                    Підписатися
+                </md-button>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

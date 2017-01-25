@@ -19,8 +19,10 @@ $text: 25px;
 @import "../views/task/one/task";
 @import "../views/task/one/popover/style";
 @import "../views/task/all/task.all";
+@import "../views/task/theory/task.theory";
 @import "../views/discipline/books/books";
 @import "../views/discipline/all/all-discipline";
+@import "../views/premium/premium";
 
 .error-block {
     margin: 5px auto;

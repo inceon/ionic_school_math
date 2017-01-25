@@ -1,0 +1,14 @@
+.premium {
+    .info {
+        font-size: 1.2em;
+        span {
+            white-space: nowrap;
+        }
+    }
+    .cancel {
+        ol {
+            list-style-type: decimal;
+            padding-left: 15px;
+        }
+    }
+}

@@ -138,6 +138,12 @@
                 resolve: {
                     allTasks: function (task, $stateParams) {
                         return task.all($stateParams.themeId);
+                    },
+                    allTheory: function (theory, $stateParams) {
+                        return theory.all({
+                            table: 'theme',
+                            row_id: $stateParams.themeId
+                        })
                     }
                 }
             })
@@ -158,10 +164,15 @@
                 }
             })
             .state('app.discipline.theory', {
-                url: '/theory/:themeId',
+                url: '/theory/:id',
                 templateUrl: 'views/task/theory/task.theory.html',
                 controller: 'Theory',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    data: function (theory, $stateParams) {
+                        return theory.one($stateParams.id);
+                    }
+                }
             })
             .state('app.settings', {
                 url: '/settings',

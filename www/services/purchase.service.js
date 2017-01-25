@@ -10,7 +10,6 @@
             initialize: initialize,
             buy: buy,
             restore: restore,
-            showBuyOptions: showBuyOptions,
             getProducts: getProducts,
             checkSubscription: checkSubscription
         };
@@ -26,16 +25,6 @@
                 id: 'onemonthsubscription',
                 type: window.store.PAID_SUBSCRIPTION
             });
-
-            // window.store.register({
-            //     id: 'threemonthsubscription',
-            //     type: window.store.PAID_SUBSCRIPTION
-            // });
-
-            // window.store.register({
-            //     id: 'sixmonthsubscription',
-            //     type: window.store.PAID_SUBSCRIPTION
-            // });
 
             /*window.store.when('onemonthsubscription')
                 .approved(function(product) {
@@ -122,40 +111,6 @@
 
         function restore() {
             window.store.refresh();
-        }
-
-        // TODO
-        function showBuyOptions() {
-            var hideSheet = $ionicActionSheet.show({
-                buttons: [
-                    { text: 'Придбати 1 місяць підписки' },
-                    { text: 'Придбати 3 місяця підписки' },
-                    { text: 'Придбати 6 місяців підписки' }
-                ],
-                titleText: 'Підписка дозволяє задавати питання репетитору',
-                cancelText: 'Відмінити',
-                cancel: function() {
-                    hideSheet();
-                },
-                buttonClicked: function(index) {
-                    var options = [1, 3, 6],
-                        selected = options[index],
-                        purchaseName = '';
-
-                    if (selected == 1) {
-                        purchaseName = 'onemonthsubscription'
-                    } else if (selected == 3) {
-                        purchaseName = 'threemonthsubscription'
-                    } else if (selected == 6) {
-                        purchaseName = 'sixmonthsubscription';
-                    }
-
-                    window.store.order(purchaseName);
-                    window.store.refresh();
-                    return true;
-                }
-            });
-            return hideSheet;
         }
 
         function checkSubscription() {

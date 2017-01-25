@@ -1,4 +1,4 @@
-;(function () {
+(function () {
     'use strict';
     angular
         .module('factory.urlRequest', [])
@@ -41,6 +41,10 @@
                         answer:      baseUrl + 'done-task/create',
                         update:      baseUrl + 'done-task/update',
                         last:        baseUrl + 'bookmark/for-user'
+                    },
+                    theory: {
+                        all:         baseUrl + 'theory/all',
+                        one:         baseUrl + 'theory/one'
                     },
                     subtask: {
                         all:         baseUrl + 'subtask/all'

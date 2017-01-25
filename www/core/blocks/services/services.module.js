@@ -8,7 +8,8 @@
             'model.book',
             'model.task',
             'model.comment',
-            'model.purchase'
+            'model.purchase',
+            'model.theory'
         ])
 })();
 

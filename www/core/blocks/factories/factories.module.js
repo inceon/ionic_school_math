@@ -4,7 +4,6 @@
         .module('factories.module', [
             'factory.urlRequest',
             'factory.request',
-            'factory.purchase'
         ])
 })();
 

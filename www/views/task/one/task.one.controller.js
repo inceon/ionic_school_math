@@ -153,7 +153,7 @@
                     }
                 }, function () {
                     $ionicPopup.show({
-                        title: 'Підписка дозволяє задавати питання репетитору',
+                        title: 'Ця функція доступна тільки користувачам що підписалися',
                         template: '',
                         scope: $scope,
                         cssClass: "popup-vertical-buttons",

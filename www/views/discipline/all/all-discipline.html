@@ -2,19 +2,19 @@
     <ion-content class="has-header">
         <div class="list" ng-if="vm.disciplines">
             <div class="left">
-                <button class="button button-positive button-clear no-animation icon ion-chevron-left"
+                <div class="button button-positive button-clear no-animation icon ion-chevron-left"
                         ng-click="vm.previous()">
-                </button>
+                </div>
             </div>
             <div class="right">
-                <button class="button button-positive button-clear no-animation icon ion-chevron-right"
+                <div class="button button-positive button-clear no-animation icon ion-chevron-right"
                         ng-click="vm.next()">
-                </button>
+                </div>
             </div>
             <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true" ng-init="vm.lockSlide()">
                 <ion-slide ng-repeat="discipline in vm.disciplines">
                     <a class="slide-item" ng-click="vm.disciplineBooks({ disciplineId: discipline.id })">
-                        <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
+                        <img ng-src="{{discipline.image}}">
                         <p>{{discipline.name}}</p>
                     </a>
                 </ion-slide>
