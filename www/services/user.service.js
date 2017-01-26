@@ -16,7 +16,8 @@
             reset: reset,
             logout: logout,
             update: update,
-            todo: todo
+            todo: todo,
+            subscription: subscription
         };
 
         function one(id) {
@@ -81,6 +82,13 @@
 
         function todo() {
             return http.get(url.user.todo);
+        }
+
+        function subscription(data) {
+            return http.post(
+                url.subscription.create,
+                data
+            );
         }
     }
 

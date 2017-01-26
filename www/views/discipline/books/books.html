@@ -14,7 +14,7 @@
             <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true" ng-init="vm.lockSlide()">
                 <ion-slide ng-repeat="book in vm.books">
                     <a class="slide-item">
-                        <img src="http://www.beautyta.ru/UserFiles/Image/img729_21187.jpg">
+                        <img ng-src="{{book.book.image}}">
                         <p>({{book.book.author}}) <br> {{book.book.name}}. {{book.book.edition}} <br> {{book.book.year}}</p>
                     </a>
                 </ion-slide>

@@ -15,6 +15,7 @@
         var vm = this;
         vm.refresh = refresh;
         vm.buy = buy;
+        vm.openMarket = openMarket;
 
         // vm.products = purchase.getProducts();
         vm.products = [{
@@ -33,6 +34,10 @@
         function buy() {
             purchase.buy("onemonthsubscription");
             this.refresh();
+        }
+
+        function openMarket() {
+            cordova.plugins.market.open('com.apes.schoolMathApp');
         }
 
     }

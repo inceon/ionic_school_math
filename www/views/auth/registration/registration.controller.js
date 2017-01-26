@@ -12,22 +12,24 @@
 
         vm.emailRegExp = /^((([a-zA-Z\-0-9_.])+[a-zA-Z0-9_.]{2,})|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        vm.registerData = {
-            phone: Math.floor(Math.random() * (9999999999 - 1111111111) + 1111111111),
-            password: '111111',
-            first_name: 'User',
-            second_name: 'User',
-            last_name: '12345454',
-            role_id: 2,
-            school_id: 3,
-            sity_id: 1,
-            class: Math.floor(Math.random() * (11 - 3) + 3)
-        };
+        /*vm.registerData = {
+         phone: Math.floor(Math.random() * (9999999999 - 1111111111) + 1111111111),
+         password: '111111',
+         first_name: 'User',
+         second_name: 'User',
+         last_name: '12345454',
+         role_id: 2,
+         school_id: 3,
+         sity_id: 1,
+         class: Math.floor(Math.random() * (11 - 3) + 3)
+         };*/
 
         vm.registerData = {};
-        window.plugins.sim.getSimInfo(function(data){
-            vm.registerData.phone = data.phoneNumber.slice(2);
-        });
+        if (window.plugins.sim) {
+            window.plugins.sim.getSimInfo(function (data) {
+                vm.registerData.phone = data.phoneNumber.slice(2);
+            });
+        }
 
         vm.schools = null;
         vm.role = [
@@ -49,7 +51,9 @@
         vm.changeCity = changeCity;
 
         function register(form) {
-            if (form.$invalid) { return; }
+            if (form.$invalid) {
+                return;
+            }
             console.log(vm.registerData);
 
             if (vm.croppedImage) {
@@ -66,8 +70,8 @@
         }
 
         function upload($file) {
-            Upload.base64DataUrl($file).then(function(base64){
-                if($file) {
+            Upload.base64DataUrl($file).then(function (base64) {
+                if ($file) {
                     $jrCrop.crop({
                         url: base64,
                         width: 200,
@@ -115,7 +119,7 @@
             return deferred.promise;
         }
 
-        function changeCity(){
+        function changeCity() {
             console.log(vm.selectedItem);
             vm.registerData.sity_name = vm.selectedItem.terms[0].value;
             vm.registerData.region_name = vm.selectedItem.terms[1].value;

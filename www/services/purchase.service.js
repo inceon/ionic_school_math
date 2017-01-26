@@ -4,8 +4,8 @@
         .module('model.purchase', [])
         .service('purchase', purchase);
 
-    purchase.$inject = ['$rootScope', '$timeout', '$ionicActionSheet'];
-    function purchase($rootScope, $timeout, $ionicActionSheet) {
+    purchase.$inject = ['$rootScope', '$timeout', '$ionicActionSheet', 'user', 'toastr'];
+    function  purchase($rootScope, $timeout, $ionicActionSheet, user, toastr) {
         return {
             initialize: initialize,
             buy: buy,
@@ -87,13 +87,21 @@
 
             window.store.error(function(err) {
                 console.log("error");
+                toastr.error('Помилка Google Play');
             });
 
             window.store.when("product")
                 .approved(function(product) {
                     console.log("approved");
-                    product.finish();
-                    window.store.refresh();
+                    user.subscription({
+                        summa: product.price,
+                        code: product.transaction.purchaseToken
+
+                    })
+                    .then(function () {
+                        product.finish();
+                        window.store.refresh();
+                    });
                 });
 
             window.store.when("product")

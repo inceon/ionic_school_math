@@ -10,10 +10,12 @@
              ng-click="i.show_date = !i.show_date"
              ng-src="{{i.avatar}}">
 
-        <div class="time" ng-show="i.show_date">{{i.created_at * 1000 | date:'yyyy-MM-dd HH:mm'}}</div>
+        <div class="time"
+             ng-show="i.show_date"
+             ng-bind="i.created_at * 1000 | date:'yyyy-MM-dd HH:mm'"></div>
         <br ng-show="i.show_date">
         <div class="text">
-            <span ng-click="i.show_date = !i.show_date">{{ i.text }}</span>
+            <span ng-click="i.show_date = !i.show_date" ng-bind="i.text"></span>
             <record ng-if="i.files.length > 0 && i.files[0].extension == 'm4a'"
                     src="{{i.files[0].url | trusted}}"></record>
         </div>

@@ -53,6 +53,9 @@
                         add:        baseUrl + 'comment/create',
                         all:        baseUrl + 'comment/all',
                         message:    baseUrl + 'comment/all-message'
+                    },
+                    subscription: {
+                        create:     baseUrl + 'subscription/create'
                     }
                 };
             }
