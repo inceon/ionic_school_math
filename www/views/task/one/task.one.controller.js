@@ -118,15 +118,12 @@
         }
 
         function question(form) {
-            if (form.$invalid || !form.question.$modelValue.trim()) {
-                toastr.error("Дані введені не вірно");
-                return;
-            }
             this.checkOrder()
                 .then(function(){
                     if (vm.comment_id) {
                         vm.data.send_to = vm.comment_id;
                     }
+
                     if (vm.audio.data) {
                         vm.data.audio = vm.audio.data;
 
@@ -138,7 +135,7 @@
                                 delete vm.audio.data;
                             });
                     } else {
-                        if (form.$invalid) {
+                        if (form.$invalid || !form.question.$modelValue.trim()) {
                             toastr.error("Дані введені не вірно");
                             return;
                         }
@@ -153,7 +150,7 @@
                     }
                 }, function () {
                     $ionicPopup.show({
-                        title: 'Ця функція доступна тільки користувачам що підписалися',
+                        title: 'Ця функція доступна тільки користувачам які підписалися',
                         template: '',
                         scope: $scope,
                         cssClass: "popup-vertical-buttons",

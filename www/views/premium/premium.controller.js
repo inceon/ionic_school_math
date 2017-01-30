@@ -17,14 +17,14 @@
         vm.buy = buy;
         vm.openMarket = openMarket;
 
-        // vm.products = purchase.getProducts();
-        vm.products = [{
+        vm.products = purchase.getProducts();
+        /*vm.products = [{
             transaction: {
                 receipt: {
                     purchaseTime: 1484322559002
                 }
             }
-        }];
+        }];*/
 
         function refresh() {
             purchase.restore();

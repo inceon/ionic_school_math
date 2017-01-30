@@ -19,7 +19,7 @@
             password: '11111111'
         };*/
 
-        if(window.plugins.sim) {
+        if(window.plugins && window.plugins.sim) {
             window.plugins.sim.getSimInfo(function (data) {
                 vm.authData.phone = data.phoneNumber.slice(2);
                 vm.authData.password = null;

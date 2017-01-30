@@ -13,7 +13,7 @@
             </div>
             <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true" ng-init="vm.lockSlide()">
                 <ion-slide ng-repeat="discipline in vm.disciplines">
-                    <a class="slide-item" ng-click="vm.disciplineBooks({ disciplineId: discipline.id })">
+                    <a class="slide-item">
                         <img ng-src="{{discipline.image}}">
                         <p ng-bind="discipline.name"></p>
                     </a>

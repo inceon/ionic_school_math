@@ -25,7 +25,7 @@
          };*/
 
         vm.registerData = {};
-        if (window.plugins.sim) {
+        if(window.plugins && window.plugins.sim) {
             window.plugins.sim.getSimInfo(function (data) {
                 vm.registerData.phone = data.phoneNumber.slice(2);
             });
