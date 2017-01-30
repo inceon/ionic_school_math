@@ -10,13 +10,11 @@
     <div>
         <form novalidate="" name="signinForm" ng-model="vm.signinForm">
             <md-input-container class="md-block" flex-gt-sm>
-                <label>{{vm.label.phone}}</label>
                 <input name="phone"
                        ui-mask-placeholder
                        ui-mask-placeholder-char="_"
                        type="tel"
                        ng-model="vm.authData.phone"
-                       key-enter="vm.login()"
                        ui-mask="+38 (999) 999 - 99 - 99"
                        autocomplete="off"
                        ng-minlength="10"
@@ -33,6 +31,7 @@
                        ng-model="vm.authData.password"
                        minlength="6"
                        maxlength="32"
+                       ng-enter="vm.login(signinForm)"
                        autocomplete="off"
                        required>
                 <div ng-messages="signinForm.password.$error">

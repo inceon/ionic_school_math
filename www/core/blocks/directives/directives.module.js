@@ -4,7 +4,7 @@
         .module('directives.module', [
             'directive.inputFile',
             'directive.record',
-            'directive.refresher'
+            'directive.ngEnter'
         ]);
 })();
 

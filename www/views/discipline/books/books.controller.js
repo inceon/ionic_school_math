@@ -36,7 +36,8 @@
                     $state.go('app.discipline.book', {
                         bookId: vm.books[id%vm.books.length].book.id,
                         disciplineId: $stateParams.disciplineId,
-                        id: res.id
+                        id: res.id,
+                        book_discipline_id: res.book_discipline_id
                     });
                 });
         }
