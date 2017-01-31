@@ -51,6 +51,7 @@
                 vm.audio.data = null;
                 vm.audio.online = false;
                 console.log("stop error");
+                toastr.error("Помилка запису");
             });
         };
 
@@ -67,6 +68,7 @@
                 vm.audio.data = null;
                 vm.audio.online = false;
                 console.log("record error");
+                toastr.error("Помилка запису");
             }, 100);
         };
 
@@ -124,7 +126,29 @@
                         vm.data.send_to = vm.comment_id;
                     }
 
-                    if (vm.audio.data) {
+                    if (vm.audio.online) {
+                        window.plugins.audioRecorderAPI.stop(function (msg) {
+                            $scope.$apply(function () {
+                                vm.audio.data = msg;
+                                vm.audio.online = false;
+                            });
+
+                            vm.data.audio = vm.audio.data;
+
+                            comment.addAudio(vm.data)
+                                .then(function (response) {
+                                    vm.messages.push(response);
+                                    toastr.success("Повідомлення успішно відправлено");
+                                    vm.data.text = ' ';
+                                    delete vm.audio.data;
+                                });
+                        }, function (msg) {
+                            vm.audio.data = null;
+                            vm.audio.online = false;
+                            console.log("stop error");
+                            toastr.error("Помилка запису");
+                        });
+                    } else if (vm.audio.data) {
                         vm.data.audio = vm.audio.data;
 
                         comment.addAudio(vm.data)
@@ -235,6 +259,7 @@
                     vm.subtask = null;
                     $scope.answerModal.hide();
                 });
+            this.doRefresh();
         }
 
         function checkOrder() {

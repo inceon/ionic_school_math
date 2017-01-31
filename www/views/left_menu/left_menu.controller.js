@@ -4,11 +4,13 @@
         .module('app')
         .controller('LeftMenu', LeftMenu);
 
-    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicHistory'];
+    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicHistory', '$ionicSideMenuDelegate'];
 
-    function LeftMenu ($rootScope, user, $state, $ionicHistory) {
+    function LeftMenu ($rootScope, user, $state, $ionicHistory, $ionicSideMenuDelegate) {
 
         var vm = this;
+
+        $ionicSideMenuDelegate.canDragContent(false);
 
         vm.logout = logout;
         vm.settings = settings;

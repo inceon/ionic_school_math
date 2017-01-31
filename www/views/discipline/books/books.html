@@ -11,7 +11,7 @@
                         ng-click="vm.next()">
                 </div>
             </div>
-            <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true" ng-init="vm.lockSlide()">
+            <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true">
                 <ion-slide ng-repeat="book in vm.books">
                     <a class="slide-item">
                         <img ng-src="{{book.book.image}}">

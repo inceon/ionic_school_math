@@ -19,7 +19,6 @@
         vm.selectBook = selectBook;
         vm.books = allBooks.models;
         console.log(vm.books);
-        vm.lockSlide = lockSlide;
 
         vm.next = function () {
             $ionicSlideBoxDelegate.next();
@@ -40,10 +39,6 @@
                         book_discipline_id: res.book_discipline_id
                     });
                 });
-        }
-
-        function lockSlide () {
-            $ionicSlideBoxDelegate.enableSlide( false );
         }
 
     }
