@@ -9,10 +9,11 @@
             'factories.module'
         ])
         .run(runBlock);
-    runBlock.$inject = ['$ionicPlatform', '$localStorage', '$sessionStorage', 'purchase', 'user', '$rootScope', '$state', 'toastr', '$ionicLoading', 'http'];
-    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr, $ionicLoading, http) {
+    runBlock.$inject = ['$ionicPlatform', '$localStorage', '$sessionStorage', 'purchase', 'user', '$rootScope', '$state', 'toastr', '$ionicLoading', 'http', 'cache'];
+    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr, $ionicLoading, http, cache) {
 
         http.init();
+        cache.check();
 
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -25,6 +26,8 @@
             }
 
             purchase.initialize();
+
+
             console.log("app.run");
 
             // nonRenewing.initialize({

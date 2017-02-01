@@ -4,12 +4,13 @@
         .module('app')
         .config(mainConfig);
 
-    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'toastrConfig'];
+    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'toastrConfig', 'CacheFactoryProvider'];
 
-    function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, toastrConfig) {
+    function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, toastrConfig, CacheFactoryProvider) {
 
         $ionicConfigProvider.views.maxCache(0);
         $ionicConfigProvider.backButton.text('Назад');
+        angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
 
         var options = {
             debug: false,
@@ -81,12 +82,8 @@
                 controller: 'Disciplines',
                 controllerAs: 'vm',
                 resolve: {
-                    resolveData: function (task, discipline, user, $q){
-                        return $q.all({
-                            lastTask: task.last(),
-                            allDiscipline: discipline.all(),
-                            todo: user.todo()
-                        });
+                    allDiscipline: function(discipline) {
+                        return discipline.all();
                     }
                 }
             })

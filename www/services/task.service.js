@@ -22,7 +22,8 @@
                 url.task.all,
                 {
                     theme_id: id
-                }
+                },
+                true
             )
         }
 
@@ -31,7 +32,8 @@
                 url.task.one,
                 {
                     id: id
-                }
+                },
+                true
             )
         }
 
@@ -44,7 +46,7 @@
                     }
                 }
             }
-            return http.file(url.task.answer, fd);
+            return http.file(url.doneTask.answer, fd);
         }
 
         function update(data) {
@@ -56,12 +58,15 @@
                     }
                 }
             }
-            return http.file(url.task.update, fd);
+            return http.file(url.doneTask.update, fd);
         }
 
         function last(data) {
             return http.get(
-                url.task.last
+                url.task.last,
+                {},
+                true,
+                true
             )
         }
 
@@ -70,7 +75,8 @@
                 url.subtask.all,
                 {
                     task_id: id
-                }
+                },
+                true
             );
         }
     }

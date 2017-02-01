@@ -19,7 +19,8 @@
                 url.site.getLabels,
                 {
                     model: model
-                }
+                },
+                true
             );
         }
 

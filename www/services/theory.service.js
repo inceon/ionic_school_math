@@ -16,7 +16,8 @@
         function all(data) {
             return http.get(
                 url.theory.all,
-                data
+                data,
+                true
             )
         }
 
@@ -25,7 +26,8 @@
                 url.theory.one,
                 {
                     id: id
-                }
+                },
+                true
             )
         }
 

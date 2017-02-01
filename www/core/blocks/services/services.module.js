@@ -9,7 +9,8 @@
             'model.task',
             'model.comment',
             'model.purchase',
-            'model.theory'
+            'model.theory',
+            'model.cache'
         ])
 })();
 

@@ -31,7 +31,7 @@
 
         function login(data) {
             var remember = data.remember;
-            return http.post(url.user.login, data)
+            return http.post(url.site.login, data)
                 .then(function (response) {
                     if (remember) {
                         $localStorage.auth_key = response.user.auth_key;
@@ -43,11 +43,14 @@
         }
 
         function get() {
-            return http.get(url.user.token, {});
+            return http.get(
+                url.site.token,
+                {}
+            );
         }
 
         function register(data){
-            return http.post(url.user.signup, data)
+            return http.post(url.site.signup, data)
                 .then(function (response) {
                     $localStorage.auth_key = response.auth_key;
                     $sessionStorage.auth_key = response.auth_key;
@@ -66,7 +69,7 @@
 
         function reset(data) {
             return http.post(
-                url.user.reset,
+                url.site.reset,
                 data
             ).then(function(response){
                 $state.go('login');
@@ -81,7 +84,12 @@
         }
 
         function todo() {
-            return http.get(url.user.todo);
+            return http.get(
+                url.user.todo,
+                {},
+                false,
+                true
+            );
         }
 
         function subscription(data) {

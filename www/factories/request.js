@@ -4,22 +4,24 @@
         .module('factory.request', [])
         .factory('http', http);
 
-    http.$inject = ['$http', '$sessionStorage', 'toastr', '$ionicLoading', '$q', '$timeout'];
+    http.$inject = ['$http', '$sessionStorage', 'toastr', '$ionicLoading', '$q', '$timeout', 'CacheFactory'];
 
-    function http($http, $sessionStorage, toastr, $ionicLoading, $q, $timeout) {
+    function http($http, $sessionStorage, toastr, $ionicLoading, $q, $timeout, CacheFactory) {
+        console.log('create request service');
+
+        $http.defaults.cache = CacheFactory('defaultCache', {
+            maxAge: 20 * 60 * 60 * 1000, // Items added to this cache expire after 15 minutes
+            cacheFlushInterval: 24 * 60 * 60 * 1000, // This cache will clear itself every hour
+            deleteOnExpire: 'aggressive', // Items will be deleted from this cache when they expire
+            storageMode: 'localStorage'
+        });
 
         return {
-            get: function (url, data) {
-                return request('GET', url, data);
+            get: function (url, data, cache, loader) {
+                return request('GET', url, data, cache, loader);
             },
             post: function (url, data) {
                 return request('POST', url, data);
-            },
-            delete: function (url, data) {
-                return request('DELETE', url, data);
-            },
-            put: function (url, data) {
-                return request('PUT', url, data);
             },
             file: function (url, data) {
                 return requestFile(url, data);
@@ -29,16 +31,29 @@
             },
             init: function () {
                 loading = 0;
-                timeout = 1000;
+                timeout = 0;
             }
         };
 
         var loading, timeout;
 
-        function request(method, url, data) {
-            $ionicLoading.show({
-                templateUrl: 'views/lazyload/lazyload.html'
-            });
+
+        /**
+         *
+         * @param {string} method - Method for request
+         * @param {string} url - Request url
+         * @param {object} data - Data to request
+         * @param {bool} cache - True if you want to cache the page
+         * @param {bool} loader - True if you want to hide loader
+         * @returns {Promise}
+         */
+        function request(method, url, data, cache, loader) {
+            if (loader != true && cache != true) {
+                console.log('loader', url, loader, cache);
+                $ionicLoading.show({
+                    templateUrl: 'views/lazyload/lazyload.html'
+                });
+            }
             loading++;
             console.log(loading, "start request");
 
@@ -52,7 +67,14 @@
             };
 
             if (method === 'GET') {
+                if (cache === true) {
+                    console.log(url, 'cache active');
+                    config.cache = true;
+                } else {
+                    config.cache = false;
+                }
                 config.params = data;
+                config.timeout = 20000;
             }
             else {
                 config.data = data;

@@ -20,14 +20,16 @@
                 url.discipline.one,
                 {
                     id: id
-                }
+                },
+                true
             )
         }
 
         function all() {
             return http.get(
                 url.discipline.all,
-                {}
+                {},
+                true
             )
         }
 
@@ -36,7 +38,8 @@
                 url.discipline.books,
                 {
                     discipline_id: id
-                }
+                },
+                true
             )
         }
 

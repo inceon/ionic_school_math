@@ -12,6 +12,7 @@
         'ngFileUpload',
         'jrCrop',
         'ui.mask',
+        'angular-cache',
         /*
          * Our reusable cross app code modules
          */

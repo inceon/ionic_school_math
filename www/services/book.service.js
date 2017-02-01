@@ -21,7 +21,7 @@
 
         function create (id) {
             return http.post(
-                url.book.create,
+                url.myBook.create,
                 {
                     book_discipline_id: id
                 }
@@ -30,7 +30,7 @@
 
         function update (data) {
             return http.post(
-                url.book.update,
+                url.myBook.update,
                 data
             )
         }
@@ -40,7 +40,8 @@
                 url.book.sections,
                 {
                     book_id: id
-                }
+                },
+                true
             )
         }
 
@@ -49,7 +50,8 @@
                 url.book.themes,
                 {
                     section_id: id
-                }
+                },
+                true
             )
         }
 
@@ -58,7 +60,8 @@
                 url.book.tasks,
                 {
                     theme_id: id
-                }
+                },
+                true
             )
         }
 
@@ -67,7 +70,8 @@
                 url.book.task,
                 {
                     id: id
-                }
+                },
+                true
             )
         }
     }

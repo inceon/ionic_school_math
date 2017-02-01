@@ -14,7 +14,7 @@
             {{::i.created_at * 1000 | date:'yyyy-MM-dd HH:mm'}}
         </div>
         <br ng-show="i.show_date">
-        <div class="text">
+        <div class="text" ng-class="{'answer': i.type}">
             <span ng-click="i.show_date = !i.show_date">
                 {{::i.text}}
             </span>
