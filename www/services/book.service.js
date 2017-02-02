@@ -5,8 +5,8 @@
         .module('model.book', [])
         .service('book', book);
 
-    book.$inject = ['http', 'url'];
-    function book(http, url) {
+    book.$inject = ['http', 'url', 'cache'];
+    function book(http, url, cache) {
 
         return {
             create: create,
@@ -20,6 +20,7 @@
         };
 
         function create (id) {
+            cache.delete('my-book');
             return http.post(
                 url.myBook.create,
                 {
@@ -29,6 +30,7 @@
         }
 
         function update (data) {
+            cache.delete('my-book');
             return http.post(
                 url.myBook.update,
                 data

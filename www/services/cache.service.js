@@ -13,7 +13,8 @@
         }
 
         return {
-            check: check
+            check: check,
+            delete: deleteCache
         };
 
         function deleteCache(key) {

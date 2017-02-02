@@ -87,7 +87,7 @@
             return http.get(
                 url.user.todo,
                 {},
-                false,
+                true,
                 true
             );
         }

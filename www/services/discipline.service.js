@@ -48,7 +48,8 @@
                 url.discipline.myBook,
                 {
                     discipline_id: id
-                }
+                },
+                true
             )
         }
     }

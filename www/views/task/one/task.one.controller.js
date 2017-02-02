@@ -5,13 +5,15 @@
         .module('app')
         .controller('Task', Task);
 
-    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'resolveData', '$timeout', 'task', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading', 'purchase'];
+    Task.$inject = ['$rootScope', '$scope', '$stateParams', '$q', 'resolveData', '$timeout', 'task', 'toastr', '$ionicModal', '$ionicPopup', 'comment', 'Upload', '$ionicLoading', 'purchase', 'cache'];
 
-    function Task($rootScope, $scope, $stateParams, $q, resolveData, $timeout, task, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading, purchase) {
+    function Task($rootScope, $scope, $stateParams, $q, resolveData, $timeout, task, toastr, $ionicModal, $ionicPopup, comment, Upload, $ionicLoading, purchase, cache) {
 
         $rootScope.page = {
             title: 'Завдання'
         };
+
+        cache.delete('bookmark');
 
         var vm = this;
 
