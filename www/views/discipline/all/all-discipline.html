@@ -32,6 +32,7 @@
                 <h4 class="text-center">Помилки</h4>
                 <md-list-item ng-repeat="item in vm.todo.done_error | limitTo : limitError"
                               ui-sref="app.discipline.task({ taskId : item.id})">
+                    <i class="fa fa-exclamation-triangle" style="color: #b00000" aria-hidden="true"></i>&nbsp;
                     {{item.text}}!
                 </md-list-item>
                 <md-button class="more"
@@ -45,6 +46,7 @@
                 <h4 class="text-center">Останні переглянуті</h4>
                 <md-list-item ng-repeat="item in vm.lastTask | limitTo: limitLast"
                               ui-sref="app.discipline.task({ taskId : item.id})">
+                    <i class="fa fa-thumb-tack" style="color: #005300" aria-hidden="true"></i>&nbsp;
                     {{item.text}}!
                 </md-list-item>
                 <md-button class="more"

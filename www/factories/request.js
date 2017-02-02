@@ -10,8 +10,6 @@
         console.log('create request service');
 
         $http.defaults.cache = CacheFactory('defaultCache', {
-            maxAge: 20 * 60 * 60 * 1000, // Items added to this cache expire after 15 minutes
-            cacheFlushInterval: 24 * 60 * 60 * 1000, // This cache will clear itself every hour
             deleteOnExpire: 'aggressive', // Items will be deleted from this cache when they expire
             storageMode: 'localStorage'
         });
@@ -31,7 +29,7 @@
             },
             init: function () {
                 loading = 0;
-                timeout = 0;
+                timeout = 200;
             }
         };
 
@@ -55,7 +53,7 @@
                 });
             }
             loading++;
-            console.log(loading, "start request");
+            console.log(loading, "start request", loader);
 
             var config = {
                 dataType: 'json',

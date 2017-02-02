@@ -5,9 +5,9 @@
         .module('app')
         .controller('Sections', Sections);
 
-    Sections.$inject = ['$rootScope', '$stateParams', 'allSections', 'allBooks', 'book'];
+    Sections.$inject = ['$rootScope', '$stateParams', 'allBooks', 'book'];
 
-    function Sections($rootScope, $stateParams, allSections, allBooks, book) {
+    function Sections($rootScope, $stateParams, allBooks, book) {
 
         $rootScope.page = {
             title: 'Теми'
@@ -24,7 +24,10 @@
         })[0].book.image;
 
         vm.selectNewBook = selectNewBook;
-        vm.sections = allSections.section.models;
+        book.sections($stateParams.bookId)
+            .then(function(res){
+                vm.sections = res.section.models;
+            });
 
         function showThemes(section) {
             if (!section.data) {

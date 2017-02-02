@@ -6,9 +6,9 @@
                      alt="image"
                      ng-repeat="file in vm.task.files" ng-if="$index < 1">
             </div>
-            <md-card class="explanation">
+            <div class="explanation">
                 {{ vm.task.explanation }}
-            </md-card>
+            </div>
         </div>
         <ion-list class="subtasks" flex ng-if="vm.subtasks.length">
             <ion-item ng-repeat="subtask in vm.subtasks">
@@ -27,9 +27,9 @@
         <md-card class="answer-btn" ng-if="!vm.subtasks.length">
             <div layout="row">
                 <span flex>
-                    може ти хочеш отвітить?
+                    Ви знаєте рішення?
                 </span>
-                <div flex="30" layout-align="end center">
+                <div layout="row" flex layout-align="end center">
                     <md-button class="md-raised md-primary" ng-click="vm.showAnswerModal()">
                         Відповідь
                     </md-button>

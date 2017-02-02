@@ -27,15 +27,18 @@
     }
 
     .explanation {
+        background-color: rgb(210, 210, 210);
+        border: 1px dashed #b2b2b2;
+        margin: 8px;
         font-weight: 600;
         line-height: 1.5em;
         padding: 10px;
-        letter-spacing: 0px;
+        letter-spacing: 1px;
         color: rgb(0, 0, 0);
         font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
         text-align: justify;
         text-indent: 1.5em;
-        font-size: 19px;
+        font-size: 110%;
     }
 
     .answer-btn {
@@ -192,9 +195,9 @@
                     }
                 }
                 .answer {
-                    background-color: rgb(200, 252, 225);
+                    background-color: rgb(192, 236, 211);
                     &:after {
-                        border-left: 8px solid rgb(200, 252, 225);
+                        border-left: 8px solid rgb(192, 236, 211);
                     }
                 }
             }

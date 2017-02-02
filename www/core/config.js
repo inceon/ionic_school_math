@@ -104,9 +104,6 @@
                 controller: 'Sections',
                 controllerAs: 'vm',
                 resolve: {
-                    allSections: function (book, $stateParams) {
-                        return book.sections($stateParams.bookId);
-                    },
                     allBooks: function (discipline, $stateParams) {
                         return discipline.books($stateParams.disciplineId);
                     }

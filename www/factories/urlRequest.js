@@ -5,9 +5,9 @@
         .factory('url', [
             function () {
 
-                // var baseUrl = 'http://192.168.1.53/api/web/v2/';
+                var baseUrl = 'http://192.168.1.53/api/web/v2/';
                 // var baseUrl = 'http://192.168.0.130/api/web/v2/';
-                var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
+                // var baseUrl = 'http://school.apes-at-work.com/api/web/v2/';
                 return {
 
                     user: {
