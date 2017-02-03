@@ -1,7 +1,7 @@
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content drag-content="false">
         <ion-nav-bar align-title="center">
-            <ion-nav-back-button>
+            <ion-nav-back-button ng-click="vm.myGoBack()">
             </ion-nav-back-button>
             <ion-nav-title ng-cloak>{{ $root.page.title }}</ion-nav-title>
             <ion-nav-buttons side="right">

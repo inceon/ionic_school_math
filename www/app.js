@@ -9,8 +9,8 @@
             'factories.module'
         ])
         .run(runBlock);
-    runBlock.$inject = ['$ionicPlatform', '$localStorage', '$sessionStorage', 'purchase', 'user', '$rootScope', '$state', 'toastr', '$ionicLoading', 'http', 'cache'];
-    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr, $ionicLoading, http, cache) {
+    runBlock.$inject = ['$ionicPlatform', '$localStorage', '$sessionStorage', 'purchase', 'user', '$rootScope', '$state', 'toastr', 'http', 'cache'];
+    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr , http, cache) {
 
         http.init();
         cache.check();

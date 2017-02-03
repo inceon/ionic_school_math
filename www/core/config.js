@@ -4,13 +4,14 @@
         .module('app')
         .config(mainConfig);
 
-    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'toastrConfig', 'CacheFactoryProvider'];
+    mainConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'toastrConfig', 'CacheFactoryProvider', '$mdGestureProvider'];
 
-    function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, toastrConfig, CacheFactoryProvider) {
+    function mainConfig($stateProvider, $urlRouterProvider, $ionicConfigProvider, toastrConfig, CacheFactoryProvider, $mdGestureProvider) {
 
         $ionicConfigProvider.views.maxCache(0);
         $ionicConfigProvider.backButton.text('Назад');
-        angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+        $mdGestureProvider.skipClickHijack();
+        angular.extend(CacheFactoryProvider.defaults, { });
 
         var options = {
             debug: false,

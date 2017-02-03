@@ -26,13 +26,6 @@
             </div>
         </div>
         <md-list ng-if="!vm.tasks.length">
-            <!--<md-list-item class="name"
-                          ui-sref="app.discipline.task({ taskId : task.id})"
-                          ng-class="{'positive-item'  : task.done}"
-                          ng-repeat="task in vm.tasks">
-                <img src="http://cmapspublic.ihmc.us/?thumbnail=1323171841631_1691287663_43466">
-                <p>{{task.number}}. {{task.text}}</p>
-            </md-list-item>-->
             <md-list-item ng-if="!vm.tasks.length" class="name text-center">
                 <p>Завдань не знайдено.</p>
             </md-list-item>

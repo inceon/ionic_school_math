@@ -17,7 +17,7 @@
                 </p>
                 <div layout="row" layout-align="end center" flex>
                     <i ng-if="subtask.done && subtask.done.result == 1" class="fa fa-check-circle fa-lg success"></i>
-                    <i ng-if="subtask.done && subtask.done.result == 0" class="fa fa-exclamation-circle fa-lg error"></i>
+                    <i ng-if="subtask.done && subtask.done.result == 0" class="fa fa-exclamation-triangle fa-lg error"></i>
                     <md-button class="md-raised md-primary" ng-click="vm.showAnswerModal(subtask)">
                         Відповідь
                     </md-button>
@@ -37,14 +37,14 @@
             </div>
         </md-card>
 
-        <md-card ng-include="'views/task/one/chat.html'"></div>
+        <md-card ng-include="'views/task/one/chat.html'"></md-card>
 
         <md-card ng-if="$root.user.role_id != 1 && $root.user.id != chat.created_by" ng-repeat="chat in vm.chats">
             <md-list-item class="chat-item" ng-click="vm.openChat(chat)" ng-if="$root.user.id != chat.created_by">
                 <img ng-src="{{chat.avatar}}" alt="{{chat.creator}}">
                 <h5>{{chat.creator}}</h5>
-            </div>
-        </div>
+            </md-list-item>
+        </md-card>
     </ion-content>
 </ion-view>
 

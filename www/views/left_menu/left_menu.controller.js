@@ -4,20 +4,19 @@
         .module('app')
         .controller('LeftMenu', LeftMenu);
 
-    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicHistory', '$ionicSideMenuDelegate'];
+    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicHistory'];
 
-    function LeftMenu ($rootScope, user, $state, $ionicHistory, $ionicSideMenuDelegate) {
+    function LeftMenu($rootScope, user, $state, $ionicHistory) {
 
         var vm = this;
-
-        $ionicSideMenuDelegate.canDragContent(false);
 
         vm.logout = logout;
         vm.settings = settings;
         vm.premium = premium;
         vm.discipline = discipline;
+        vm.myGoBack = back;
 
-        function logout () {
+        function logout() {
             user.logout();
         }
 
@@ -25,16 +24,28 @@
             $ionicHistory.nextViewOptions({
                 disableBack: true
             });
-            $state.go('app.discipline.all',{},{location:'replace'});
+            $state.go('app.discipline.all', {}, {location: 'replace'});
         }
 
         function settings() {
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
             $state.go('app.settings');
         }
 
         function premium() {
+            $ionicHistory.nextViewOptions({
+                disableBack: true
+            });
             $state.go('app.premium');
         }
+
+        function back() {
+            $ionicHistory.goBack();
+            console.log(1);
+        };
+
 
     }
 
