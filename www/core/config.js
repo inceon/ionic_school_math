@@ -107,6 +107,9 @@
                 resolve: {
                     allBooks: function (discipline, $stateParams) {
                         return discipline.books($stateParams.disciplineId);
+                    },
+                    allSection: function(book, $stateParams) {
+                        return book.sections($stateParams.bookId);
                     }
                 },
                 params: {
@@ -195,7 +198,7 @@
             });
 
 
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/app');
     }
 
 

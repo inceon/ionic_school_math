@@ -2,7 +2,8 @@
     <md-button class="more"
                ng-init="limitMessage = 7"
                ng-click="limitMessage = limitMessage + 5"
-               ng-hide="limitMessage >= vm.messages.length">
+               ng-hide="limitMessage >= vm.messages.length"
+               aria-label="true">
         ...
     </md-button>
     <div ng-repeat="i in vm.messages.slice(-limitMessage)" class="message" ng-class="i.send_from == $root.user.id ? 'my' : 'not-my'">
@@ -74,7 +75,7 @@
         </div>
 
         <div layout-align="end center" flex class="submit-button">
-            <md-button class="md-raised md-primary" ng-click="vm.question(questionForm)">
+            <md-button class="md-raised md-primary" ng-click="vm.question(questionForm)" aria-label="true">
                 Надіслати
             </md-button>
         </div>

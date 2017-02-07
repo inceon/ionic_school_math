@@ -4,9 +4,9 @@
         .module('app')
         .controller('LeftMenu', LeftMenu);
 
-    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicHistory'];
+    LeftMenu.$inject = ['$rootScope', 'user', '$state', '$ionicHistory', '$scope'];
 
-    function LeftMenu($rootScope, user, $state, $ionicHistory) {
+    function LeftMenu($rootScope, user, $state, $ionicHistory, $scope) {
 
         var vm = this;
 
@@ -43,8 +43,7 @@
 
         function back() {
             $ionicHistory.goBack();
-            console.log(1);
-        };
+        }
 
 
     }

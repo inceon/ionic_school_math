@@ -19,7 +19,8 @@
                            ngf-select="vm.upload($file)"
                            accept="image/*"
                            ngf-no-object-url="true"
-                           ng-model="vm.registerData.image_file">
+                           ng-model="vm.registerData.image_file"
+                           aria-label="true">
                     <md-icon md-font-icon="fa fa-camera fa-2x" aria-hidden="true"></md-icon>
                 </md-button>
             </div>
@@ -204,7 +205,8 @@
             <div layout="column">
                 <md-button class="md-primary md-raised waves-effect waves-light"
                            md-colors="{background: 'blue-grey'}"
-                           ng-click="vm.register(registerForm)">
+                           ng-click="vm.register(registerForm)"
+                           aria-label="true">
                     Створити аккаунт
                 </md-button>
             </div>

@@ -46,14 +46,14 @@
          * @returns {Promise}
          */
         function request(method, url, data, cache, loader) {
-            if (loader != true && cache != true) {
-                console.log('loader', url, loader, cache);
+            if (loader != true) {
+                console.log('loader', 'url: '+url, 'loader: '+loader, 'cache: '+cache);
                 $ionicLoading.show({
                     templateUrl: 'views/lazyload/lazyload.html'
                 });
             }
             loading++;
-            console.log(loading, "start request", loader);
+            console.log(loading, "start request;", "loader: " + loader);
 
             var config = {
                 dataType: 'json',
@@ -66,7 +66,6 @@
 
             if (method === 'GET') {
                 if (cache === true) {
-                    console.log(url, 'cache active');
                     config.cache = true;
                 } else {
                     config.cache = false;

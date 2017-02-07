@@ -18,7 +18,7 @@
                 <div layout="row" layout-align="end center" flex>
                     <i ng-if="subtask.done && subtask.done.result == 1" class="fa fa-check-circle fa-lg success"></i>
                     <i ng-if="subtask.done && subtask.done.result == 0" class="fa fa-exclamation-triangle fa-lg error"></i>
-                    <md-button class="md-raised md-primary" ng-click="vm.showAnswerModal(subtask)">
+                    <md-button class="md-raised md-primary" ng-click="vm.showAnswerModal(subtask)" aria-label="true">
                         Відповідь
                     </md-button>
                 </div>
@@ -30,7 +30,7 @@
                     Ви знаєте рішення?
                 </span>
                 <div layout="row" flex layout-align="end center">
-                    <md-button class="md-raised md-primary" ng-click="vm.showAnswerModal()">
+                    <md-button class="md-raised md-primary" ng-click="vm.showAnswerModal()" aria-label="true">
                         Відповідь
                     </md-button>
                 </div>

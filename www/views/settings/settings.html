@@ -15,7 +15,8 @@
                            type="file"
                            accept="image/*"
                            ngf-no-object-url="true"
-                           ngf-select="upload($file)">
+                           ngf-select="upload($file)"
+                           aria-label="true">
 
                     <md-icon md-font-icon="fa fa-camera fa-2x" aria-hidden="true"></md-icon>
                 </md-button>
@@ -192,7 +193,8 @@
             <div layout="column">
                 <md-button class="md-primary md-raised waves-effect waves-light"
                            md-colors="{background: 'blue-grey'}"
-                           ng-click="vm.save(settingForm)">
+                           ng-click="vm.save(settingForm)"
+                           aria-label="true">
                     Зберегти
                 </md-button>
             </div>

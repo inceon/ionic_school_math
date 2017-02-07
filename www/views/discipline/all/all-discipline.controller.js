@@ -5,9 +5,9 @@
         .module('app')
         .controller('Disciplines', Disciplines);
 
-    Disciplines.$inject = ['$rootScope', '$localStorage', 'allDiscipline', 'task', 'user', 'discipline', '$state', '$ionicSlideBoxDelegate'];
+    Disciplines.$inject = ['$rootScope', 'allDiscipline', 'task', 'user', 'discipline', '$state', '$ionicSlideBoxDelegate'];
 
-    function Disciplines($rootScope, $localStorage, allDiscipline, task, user, discipline, $state, $ionicSlideBoxDelegate) {
+    function Disciplines($rootScope, allDiscipline, task, user, discipline, $state, $ionicSlideBoxDelegate) {
 
         $rootScope.page = {
             title: 'Предмети',
@@ -16,7 +16,7 @@
 
         var vm = this;
 
-        vm.slide = 0;
+        vm.slide = $rootScope.activeDisciplineSlide | 0;
         task.last()
             .then(function(res){
                 vm.lastTask = res.models;
@@ -28,6 +28,8 @@
 
         vm.disciplines = allDiscipline.models;
         vm.disciplineBooks = disciplineBooks;
+        vm.selectDiscipline = selectDiscipline;
+        vm.slideHasChanged = slideHasChanged;
 
         function disciplineBooks(data) {
             discipline.myBook(data.disciplineId)
@@ -45,12 +47,16 @@
                 });
         }
 
-        vm.selectBook = function (idSlide) {
-            var id = vm.disciplines[idSlide].id;
+        function selectDiscipline() {
+            var id = vm.disciplines[vm.slide].id;
             disciplineBooks({
                 disciplineId: id
             });
-        };
+        }
+
+        function slideHasChanged(index) {
+            $rootScope.activeDisciplineSlide = index;
+        }
 
         vm.next = function () {
             $ionicSlideBoxDelegate.next();

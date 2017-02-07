@@ -11,7 +11,10 @@
                         ng-click="vm.next()">
                 </div>
             </div>
-            <ion-slide-box active-slide="vm.slide" show-pager="false" does-continue="true">
+            <ion-slide-box active-slide="vm.slide"
+                           show-pager="false"
+                           does-continue="true"
+                           on-slide-changed="vm.slideHasChanged($index)">
                 <ion-slide ng-repeat="discipline in vm.disciplines">
                     <a class="slide-item">
                         <img ng-src="{{discipline.image}}">
@@ -23,7 +26,8 @@
                 <div layout="column">
                     <md-button class="md-primary md-raised waves-effect waves-light"
                                md-colors="{background: 'blue-grey'}"
-                               ng-click="vm.selectBook(vm.slide)">
+                               ng-click="vm.selectDiscipline()"
+                               aria-label="true">
                         Обрати предмет
                     </md-button>
                 </div>
@@ -36,9 +40,10 @@
                     {{item.text}}!
                 </md-list-item>
                 <md-button class="more"
-                     ng-init="limitError = 5"
-                     ng-click="limitError = limitError + 5"
-                     ng-hide="limitError >= vm.todo.done_error.length">
+                           ng-init="limitError = 5"
+                           ng-click="limitError = limitError + 5"
+                           ng-hide="limitError >= vm.todo.done_error.length"
+                           aria-label="true">
                     ...
                 </md-button>
             </md-list>
@@ -50,9 +55,10 @@
                     {{item.text}}!
                 </md-list-item>
                 <md-button class="more"
-                     ng-init="limitLast = 5"
-                     ng-click="limitLast = limitLast + 5"
-                     ng-hide="limitLast >= vm.lastTask.length">
+                           ng-init="limitLast = 5"
+                           ng-click="limitLast = limitLast + 5"
+                           ng-hide="limitLast >= vm.lastTask.length"
+                           aria-label="true">
                     ...
                 </md-button>
             </md-list>

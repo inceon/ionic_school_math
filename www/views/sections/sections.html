@@ -4,7 +4,8 @@
             <md-list-item class="book">
                 <img ng-src="{{vm.bookImage}}"/>
                 <md-select ng-model="vm.selectedBook"
-                           ng-change="vm.selectNewBook()">
+                           ng-change="vm.selectNewBook()"
+                           aria-label="true">
                     <md-option ng-repeat="book in vm.books"
                                ng-value="book.id">
                         {{book.book.name}}. {{book.book.edition}} {{book.book.year}}

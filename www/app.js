@@ -10,7 +10,7 @@
         ])
         .run(runBlock);
     runBlock.$inject = ['$ionicPlatform', '$localStorage', '$sessionStorage', 'purchase', 'user', '$rootScope', '$state', 'toastr', 'http', 'cache'];
-    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr , http, cache) {
+    function runBlock($ionicPlatform, $localStorage, $sessionStorage, purchase, user, $rootScope, $state, toastr, http, cache) {
 
         http.init();
         cache.check();
@@ -26,7 +26,6 @@
             }
 
             purchase.initialize();
-
 
             console.log("app.run");
 

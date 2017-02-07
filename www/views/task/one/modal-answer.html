@@ -34,14 +34,15 @@
                                    ngf-multiple="true"
                                    ngf-max-files="5"
                                    ngf-select="vm.upload($files)"
-                                   accept="image/*">
+                                   accept="image/*"
+                                   aria-label="true">
 
                             <md-icon md-font-icon="fa fa-camera fa-lg" aria-hidden="true"></md-icon>
                         </md-button>
                     </div>
 
                     <div layout-align="end center" flex class="submit-button">
-                        <md-button class="md-raised md-primary" ng-click="vm.submit(answerForm)">
+                        <md-button class="md-raised md-primary" ng-click="vm.submit(answerForm)" aria-label="true">
                             Відправити
                         </md-button>
                     </div>

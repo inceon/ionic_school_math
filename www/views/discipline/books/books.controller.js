@@ -18,7 +18,6 @@
         vm.slide = 0;
         vm.selectBook = selectBook;
         vm.books = allBooks.models;
-        console.log(vm.books);
 
         vm.next = function () {
             $ionicSlideBoxDelegate.next();
@@ -28,10 +27,8 @@
         };
 
         function selectBook(id) {
-            console.log(id);
             book.create(vm.books[id%vm.books.length].id)
                 .then(function(res){
-                    console.log(res);
                     $state.go('app.discipline.book', {
                         bookId: vm.books[id%vm.books.length].book.id,
                         disciplineId: $stateParams.disciplineId,
